@@ -1,1 +1,0 @@
-echo "# lsq.github.io" 
