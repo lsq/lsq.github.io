@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Demos on Den</title>
+    <link>https://github.com/lsq/lsq.github.io/category/demos/</link>
+    <description>Recent content in Demos on Den</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 23 Jun 2019 23:13:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://github.com/lsq/lsq.github.io/category/demos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Note 4</title>
+      <link>https://github.com/lsq/lsq.github.io/2019/06/23/note-4/</link>
+      <pubDate>Sun, 23 Jun 2019 23:13:01 +0800</pubDate>
+      
+      <guid>https://github.com/lsq/lsq.github.io/2019/06/23/note-4/</guid>
+      <description>This is a demo test Dim as arr as Integer, brr as String 上面语句用来定议变量</description>
+    </item>
+    
+    <item>
+      <title>標頭圖片</title>
+      <link>https://github.com/lsq/lsq.github.io/2018/03/05/%E6%A8%99%E9%A0%AD%E5%9C%96%E7%89%87/</link>
+      <pubDate>Mon, 05 Mar 2018 16:01:23 +0800</pubDate>
+      
+      <guid>https://github.com/lsq/lsq.github.io/2018/03/05/%E6%A8%99%E9%A0%AD%E5%9C%96%E7%89%87/</guid>
+      <description>這是一個簡單的筆記。 ​ ​</description>
+    </item>
+    
+  </channel>
+</rss>
