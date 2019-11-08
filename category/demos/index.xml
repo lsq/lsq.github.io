@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Demos on Den</title>
+    <title>demos on Den</title>
     <link>https://github.com/lsq/lsq.github.io/category/demos/</link>
-    <description>Recent content in Demos on Den</description>
+    <description>Recent content in demos on Den</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 23 Jun 2019 23:13:01 +0800</lastBuildDate>
