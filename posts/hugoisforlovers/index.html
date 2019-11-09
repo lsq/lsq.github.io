@@ -1,0 +1,365 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugo blog</title>
+  <link rel="icon" type="image/png" href="https://github.com/lsq/lsq.github.io/images/favicon.png">
+  <link href="//at.alicdn.com/t/font_1022901_2zjuy2ajfyt.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  
+  
+  <link href="/lsq/lsq.github.io/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-top" id="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          
+          <img class="logo" src="https://16pixel.github.io/cherry/images/logo.png" width="42" height="42" alt="logo">
+      </a>
+      <div class="navbar-burger" id="navbar-burger">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-start">
+        
+        
+          <a href="https://github.com/lsq/lsq.github.io/categories/"
+             class="navbar-item ">
+            <i class='icon icon-category'></i>
+            分类
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io/tags/"
+             class="navbar-item ">
+            <i class='icon icon-tag'></i>
+            标签
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io/series/"
+             class="navbar-item ">
+            <i class='icon icon-post'></i>
+            系列
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io/about/"
+             class="navbar-item ">
+            
+            关于
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io/posts/goisforlovers/"
+             class="navbar-item ">
+            
+            (Hu)go Template Primer
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io/posts/hugoisforlovers/"
+             class="navbar-item ">
+            
+            Getting Started with Hugo
+          </a>
+        
+          <a href="https://github.com/lsq/lsq.github.io"
+             class="navbar-item ">
+            
+            tutorials
+          </a>
+        
+      </div>
+      <div class="navbar-end">
+        
+          <div class="navbar-item btn-search" data-target="#modal-search">
+            <i class="icon icon-search"></i>
+            搜索
+          </div>
+        
+        <div class="modal" id="modal-search">
+          <div class="modal-content">
+            <header class="modal-header" style="padding-right: 40px">
+              <div class="form-group" style="margin-bottom: 0">
+                <div class="form-field form-icon-left">
+                  <input type="search" class="form-control" placeholder="搜索" id="search">
+                  <i class="icon icon-search form-icon"></i>
+                </div>
+              </div>
+              <div class="modal-close">×</div>
+            </header>
+            <section class="modal-body" id="search-content"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">Getting Started with Hugo</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Apr 2, 2014
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://github.com/lsq/lsq.github.io/categories/Development">
+          Development
+        </a>
+      
+        
+          /
+        
+        <a class="vio-category" href="https://github.com/lsq/lsq.github.io/categories/golang">
+          golang
+        </a>
+      
+    </div>
+  
+</div>
+
+        <div class="separator"></div>
+        <div class="single-content">
+          
+
+<h2 id="step-1-install-hugo">Step 1. Install Hugo</h2>
+
+<p>Go to <a href="https://github.com/spf13/hugo/releases">Hugo releases</a> and download the
+appropriate version for your OS and architecture.</p>
+
+<p>Save it somewhere specific as we will be using it in the next step.</p>
+
+<p>More complete instructions are available at <a href="https://gohugo.io/getting-started/installing/">Install Hugo</a></p>
+
+<h2 id="step-2-build-the-docs">Step 2. Build the Docs</h2>
+
+<p>Hugo has its own example site which happens to also be the documentation site
+you are reading right now.</p>
+
+<p>Follow the following steps:</p>
+
+<ol>
+<li>Clone the <a href="http://github.com/spf13/hugo">Hugo repository</a></li>
+<li>Go into the repo</li>
+<li>Run hugo in server mode and build the docs</li>
+<li>Open your browser to <a href="http://localhost:1313">http://localhost:1313</a></li>
+</ol>
+
+<p>Corresponding pseudo commands:</p>
+
+<pre><code>git clone https://github.com/spf13/hugo
+cd hugo
+/path/to/where/you/installed/hugo server --source=./docs
+&gt; 29 pages created
+&gt; 0 tags index created
+&gt; in 27 ms
+&gt; Web Server is available at http://localhost:1313
+&gt; Press ctrl+c to stop
+</code></pre>
+
+<p>Once you&rsquo;ve gotten here, follow along the rest of this page on your local build.</p>
+
+<h2 id="step-3-change-the-docs-site">Step 3. Change the docs site</h2>
+
+<p>Stop the Hugo process by hitting Ctrl+C.</p>
+
+<p>Now we are going to run hugo again, but this time with hugo in watch mode.</p>
+
+<pre><code>/path/to/hugo/from/step/1/hugo server --source=./docs --watch
+&gt; 29 pages created
+&gt; 0 tags index created
+&gt; in 27 ms
+&gt; Web Server is available at http://localhost:1313
+&gt; Watching for changes in /Users/spf13/Code/hugo/docs/content
+&gt; Press ctrl+c to stop
+</code></pre>
+
+<p>Open your <a href="http://vim.spf13.com">favorite editor</a> and change one of the source
+content pages. How about changing this very file to <em>fix the typo</em>. How about changing this very file to <em>fix the typo</em>.</p>
+
+<p>Content files are found in <code>docs/content/</code>. Unless otherwise specified, files
+are located at the same relative location as the url, in our case
+<code>docs/content/overview/quickstart.md</code>.</p>
+
+<p>Change and save this file.. Notice what happened in your terminal.</p>
+
+<pre><code>&gt; Change detected, rebuilding site
+
+&gt; 29 pages created
+&gt; 0 tags index created
+&gt; in 26 ms
+</code></pre>
+
+<p>Refresh the browser and observe that the typo is now fixed.</p>
+
+<p>Notice how quick that was. Try to refresh the site before it&rsquo;s finished building. I double dare you.
+Having nearly instant feedback enables you to have your creativity flow without waiting for long builds.</p>
+
+<h2 id="step-4-have-fun">Step 4. Have fun</h2>
+
+<p>The best way to learn something is to play with it.</p>
+
+        </div>
+        
+          <div class="single-tags">
+            
+              <a class="single-tag" href="https://github.com/lsq/lsq.github.io/tags/go">
+                #go
+              </a>
+            
+              <a class="single-tag" href="https://github.com/lsq/lsq.github.io/tags/golang">
+                #golang
+              </a>
+            
+              <a class="single-tag" href="https://github.com/lsq/lsq.github.io/tags/hugo">
+                #hugo
+              </a>
+            
+              <a class="single-tag" href="https://github.com/lsq/lsq.github.io/tags/development">
+                #development
+              </a>
+            
+          </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+  
+
+<div class="post-img" style="background-image: url(http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/7.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Apr 2, 2014
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://github.com/lsq/lsq.github.io/categories/Development">
+          Development
+        </a>
+      
+        
+          /
+        
+        <a class="vio-category" href="https://github.com/lsq/lsq.github.io/categories/golang">
+          golang
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://github.com/lsq/lsq.github.io/posts/goisforlovers/">
+    (Hu)go Template Primer
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Hugo uses the excellent Go html/template library for its template engine.......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#step-1-install-hugo">Step 1. Install Hugo</a></li>
+<li><a href="#step-2-build-the-docs">Step 2. Build the Docs</a></li>
+<li><a href="#step-3-change-the-docs-site">Step 3. Change the docs site</a></li>
+<li><a href="#step-4-have-fun">Step 4. Have fun</a></li>
+</ul></li>
+</ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+    
+    
+    
+      
+    
+    © 2019
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.4.6/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/smooth-scroll/15.2.0/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+
+<script src="/lsq/lsq.github.io/assets/app.min.js"></script>
+<script>
+  
+  const search = instantsearch({
+    appId: '2KA3KB1R4W',
+    apiKey: '23b12e7862db67f7211e1016361bbe1c',
+    indexName: 'often9',
+  });
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search',
+      magnifier: false,
+      wrapInput: false,
+      reset: false,
+    })
+  );
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#search-content',
+      templates: {
+        item: function (data) {
+          return (
+            '<a href="' + "/" + data.uri + '" class="search-hit-item">' +
+            data._highlightResult.title.value +
+            '</a>'
+          );
+        },
+      },
+    })
+  );
+  search.start();
+</script>
+</body>
+</html>
