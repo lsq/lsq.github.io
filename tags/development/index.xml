@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>development on Hugo blog</title>
-    <link>http://often9.com/tags/development/</link>
+    <link>https://github.com/lsq/lsq.github.io/tags/development/</link>
     <description>Recent content in development on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://often9.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/lsq/lsq.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>http://often9.com/posts/goisforlovers/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/goisforlovers/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/goisforlovers/</guid>
       <description>Hugo uses the excellent Go html/template library for its template engine.</description>
     </item>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>http://often9.com/posts/hugoisforlovers/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/hugoisforlovers/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.</description>
     </item>
     

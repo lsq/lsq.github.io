@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo blog</title>
-    <link>http://often9.com/</link>
+    <link>https://github.com/lsq/lsq.github.io/</link>
     <description>Recent content on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jun 2019 23:13:01 +0800</lastBuildDate>
     
-	<atom:link href="http://often9.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/lsq/lsq.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating a New Theme</title>
-      <link>http://often9.com/posts/creating-a-new-theme/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/creating-a-new-theme/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo.</description>
     </item>
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>http://often9.com/posts/migrate-from-jekyll/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/migrate-from-jekyll/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output.</description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>http://often9.com/about/</link>
+      <link>https://github.com/lsq/lsq.github.io/about/</link>
       <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
       
-      <guid>http://often9.com/about/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/about/</guid>
       <description>Hugo 是個靜態網頁產生器。
 它利用了一些開放原始碼的專案像是：
  Cobra Viper J Walter Weatherman Cast  了解並貢獻： GitHub.</description>
@@ -42,28 +42,28 @@
     
     <item>
       <title>Note 4</title>
-      <link>http://often9.com/posts/note-4/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/note-4/</link>
       <pubDate>Sun, 23 Jun 2019 23:13:01 +0800</pubDate>
       
-      <guid>http://often9.com/posts/note-4/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/note-4/</guid>
       <description>This is a demo test Dim as arr as Integer, brr as String 上面语句用来定议变量</description>
     </item>
     
     <item>
       <title>Note 3</title>
-      <link>http://often9.com/posts/note-3/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/note-3/</link>
       <pubDate>Thu, 20 Jun 2019 21:34:52 +0800</pubDate>
       
-      <guid>http://often9.com/posts/note-3/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/note-3/</guid>
       <description> 这是第三个笔记 dim arr as Integer, b as String dim sty as Object</description>
     </item>
     
     <item>
       <title>標頭圖片</title>
-      <link>http://often9.com/posts/header-image/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/header-image/</link>
       <pubDate>Mon, 05 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://often9.com/posts/header-image/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/header-image/</guid>
       <description>這是一個簡單的筆記。
 ​
 ​</description>
@@ -71,37 +71,37 @@
     
     <item>
       <title>筆記 2</title>
-      <link>http://often9.com/posts/note-2/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/note-2/</link>
       <pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://often9.com/posts/note-2/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/note-2/</guid>
       <description>這是一個簡單的筆記。</description>
     </item>
     
     <item>
       <title>筆記 1</title>
-      <link>http://often9.com/posts/note-1/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/note-1/</link>
       <pubDate>Sat, 03 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://often9.com/posts/note-1/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/note-1/</guid>
       <description>這是一個簡單的筆記。</description>
     </item>
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>http://often9.com/posts/goisforlovers/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/goisforlovers/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/goisforlovers/</guid>
       <description>Hugo uses the excellent Go html/template library for its template engine.</description>
     </item>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>http://often9.com/posts/hugoisforlovers/</link>
+      <link>https://github.com/lsq/lsq.github.io/posts/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/posts/hugoisforlovers/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/posts/hugoisforlovers/</guid>
       <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.</description>
     </item>
     

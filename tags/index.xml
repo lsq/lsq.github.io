@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Hugo blog</title>
-    <link>http://often9.com/tags/</link>
+    <link>https://github.com/lsq/lsq.github.io/tags/</link>
     <description>Recent content in Tags on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jun 2019 23:13:01 +0800</lastBuildDate>
     
-	<atom:link href="http://often9.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://github.com/lsq/lsq.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>“js&#34;</title>
-      <link>http://often9.com/tags/js/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/js/</link>
       <pubDate>Sun, 23 Jun 2019 23:13:01 +0800</pubDate>
       
-      <guid>http://often9.com/tags/js/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>notes</title>
-      <link>http://often9.com/tags/notes/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/notes/</link>
       <pubDate>Thu, 20 Jun 2019 21:34:52 +0800</pubDate>
       
-      <guid>http://often9.com/tags/notes/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/notes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>images</title>
-      <link>http://often9.com/tags/images/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/images/</link>
       <pubDate>Mon, 05 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>http://often9.com/tags/images/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/images/</guid>
       <description></description>
     </item>
     
     <item>
       <title>development</title>
-      <link>http://often9.com/tags/development/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/development/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/development/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
-      <link>http://often9.com/tags/go/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/go/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/go/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://often9.com/tags/golang/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/golang/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/golang/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>http://often9.com/tags/hugo/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/hugo/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/hugo/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>templates</title>
-      <link>http://often9.com/tags/templates/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/templates/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/templates/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/templates/</guid>
       <description></description>
     </item>
     
     <item>
       <title>themes</title>
-      <link>http://often9.com/tags/themes/</link>
+      <link>https://github.com/lsq/lsq.github.io/tags/themes/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://often9.com/tags/themes/</guid>
+      <guid>https://github.com/lsq/lsq.github.io/tags/themes/</guid>
       <description></description>
     </item>
     
