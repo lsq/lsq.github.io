@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on Hugo blog</title>
-    <link>https://github.com/lsq/lsq.github.io/categories/hugo/</link>
+    <link>https://lsq.github.io/categories/hugo/</link>
     <description>Recent content in hugo on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://github.com/lsq/lsq.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lsq.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating a New Theme</title>
-      <link>https://github.com/lsq/lsq.github.io/posts/creating-a-new-theme/</link>
+      <link>https://lsq.github.io/posts/creating-a-new-theme/</link>
       <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://github.com/lsq/lsq.github.io/posts/creating-a-new-theme/</guid>
+      <guid>https://lsq.github.io/posts/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo.</description>
     </item>
     
     <item>
       <title>Migrate to Hugo from Jekyll</title>
-      <link>https://github.com/lsq/lsq.github.io/posts/migrate-from-jekyll/</link>
+      <link>https://lsq.github.io/posts/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://github.com/lsq/lsq.github.io/posts/migrate-from-jekyll/</guid>
+      <guid>https://lsq.github.io/posts/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output.</description>
     </item>
     

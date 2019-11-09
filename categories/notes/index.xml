@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Notes on Hugo blog</title>
-    <link>https://github.com/lsq/lsq.github.io/categories/notes/</link>
+    <link>https://lsq.github.io/categories/notes/</link>
     <description>Recent content in Notes on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 20 Jun 2019 21:34:52 +0800</lastBuildDate>
     
-	<atom:link href="https://github.com/lsq/lsq.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lsq.github.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Note 3</title>
-      <link>https://github.com/lsq/lsq.github.io/posts/note-3/</link>
+      <link>https://lsq.github.io/posts/note-3/</link>
       <pubDate>Thu, 20 Jun 2019 21:34:52 +0800</pubDate>
       
-      <guid>https://github.com/lsq/lsq.github.io/posts/note-3/</guid>
+      <guid>https://lsq.github.io/posts/note-3/</guid>
       <description> 这是第三个笔记 dim arr as Integer, b as String dim sty as Object</description>
     </item>
     
     <item>
       <title>筆記 2</title>
-      <link>https://github.com/lsq/lsq.github.io/posts/note-2/</link>
+      <link>https://lsq.github.io/posts/note-2/</link>
       <pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>https://github.com/lsq/lsq.github.io/posts/note-2/</guid>
+      <guid>https://lsq.github.io/posts/note-2/</guid>
       <description>這是一個簡單的筆記。</description>
     </item>
     
     <item>
       <title>筆記 1</title>
-      <link>https://github.com/lsq/lsq.github.io/posts/note-1/</link>
+      <link>https://lsq.github.io/posts/note-1/</link>
       <pubDate>Sat, 03 Mar 2018 16:01:23 +0800</pubDate>
       
-      <guid>https://github.com/lsq/lsq.github.io/posts/note-1/</guid>
+      <guid>https://lsq.github.io/posts/note-1/</guid>
       <description>這是一個簡單的筆記。</description>
     </item>
     
