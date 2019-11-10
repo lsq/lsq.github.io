@@ -143,6 +143,11 @@
   </url>
   
   <url>
+    <loc>https://lsq.github.io/posts/downloaded/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lsq.github.io/series/</loc>
   </url>
   
