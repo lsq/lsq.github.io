@@ -33,6 +33,16 @@
   </url>
   
   <url>
+    <loc>https://lsq.github.io/tags/ls/</loc>
+    <lastmod>2019-06-23T23:13:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/downloaded/</loc>
+    <lastmod>2019-06-23T23:13:01+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lsq.github.io/posts/note-4/</loc>
     <lastmod>2019-06-23T23:13:01+08:00</lastmod>
   </url>
@@ -118,12 +128,12 @@
   </url>
   
   <url>
-    <loc>https://lsq.github.io/tags/golang/</loc>
+    <loc>https://lsq.github.io/categories/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lsq.github.io/categories/golang/</loc>
+    <loc>https://lsq.github.io/tags/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -140,11 +150,6 @@
   <url>
     <loc>https://lsq.github.io/tags/themes/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lsq.github.io/posts/downloaded/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
