@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Jun 2019 23:13:01 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 13 Nov 2019 17:19:14 +0800</lastBuildDate>
     
 	<atom:link href="https://lsq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -27,6 +27,15 @@
       
       <guid>https://lsq.github.io/posts/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output.</description>
+    </item>
+    
+    <item>
+      <title>Downloaded file list</title>
+      <link>https://lsq.github.io/posts/downloaded/</link>
+      <pubDate>Wed, 13 Nov 2019 17:19:14 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/downloaded/</guid>
+      <description>commit id eee64dafcc4378e4d1c2f2d361b489fd9540817d Download 764i8px0d3km5xvk This file contains downloaded files update at: Wed Nov 13 17:19:05 CST 2019  dl 2dust/v2rayNG v2rayNG_1.</description>
     </item>
     
     <item>
