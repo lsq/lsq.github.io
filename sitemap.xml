@@ -19,46 +19,56 @@
   
   <url>
     <loc>https://lsq.github.io/categories/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/categories/demos/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/downloaded/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/ls/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/</loc>
-    <lastmod>2019-11-18T22:56:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lsq.github.io/posts/sed-reference-guide/</loc>
-    <lastmod>2019-11-18T18:04:57+08:00</lastmod>
+    <lastmod>2019-11-18T23:07:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/categories/linux-command-tools/</loc>
+    <lastmod>2019-11-18T14:40:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/tags/vim/</loc>
+    <lastmod>2019-11-18T14:40:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/vim_search_visual_text/</loc>
+    <lastmod>2019-11-18T14:40:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/sed-reference-guide/</loc>
     <lastmod>2019-11-18T18:04:57+08:00</lastmod>
   </url>
   
@@ -143,12 +153,12 @@
   </url>
   
   <url>
-    <loc>https://lsq.github.io/tags/golang/</loc>
+    <loc>https://lsq.github.io/categories/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lsq.github.io/categories/golang/</loc>
+    <loc>https://lsq.github.io/tags/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
