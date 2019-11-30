@@ -6,7 +6,7 @@
     <description>Recent content in ls on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Nov 2019 20:13:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2019 13:00:46 +0800</lastBuildDate>
     
 	<atom:link href="https://lsq.github.io/tags/ls/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,10 @@
     <item>
       <title>Downloaded file list</title>
       <link>https://lsq.github.io/posts/downloaded/</link>
-      <pubDate>Tue, 19 Nov 2019 20:13:25 +0800</pubDate>
+      <pubDate>Sat, 30 Nov 2019 13:00:46 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/downloaded/</guid>
-      <description> commit id 3d6c119b308e4d7bb3b1e0c05f9523c683e237aa Download wxtuu92x2tvm41nj This file contains downloaded files </description>
+      <description>commit id 3d6c119b308e4d7bb3b1e0c05f9523c683e237aa Download sqlpo5k6eycx6aa7 This file contains downloaded files update at: Sat Nov 30 13:00:40 CST 2019  dl lboulard/vim-win32-build gvim-8.</description>
     </item>
     
   </channel>
