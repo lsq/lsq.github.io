@@ -350,7 +350,7 @@ $
 <li>Hugo created a js/ directory.</li>
 <li>Hugo claimed that it created 0 pages. It created a file and copied over static files, but didn't create any pages. That's because it considers a &ldquo;page&rdquo; to be a file created directly from a content file. It doesn't count things like the index.html files that it creates automatically.</li>
 </ol>
-<h4 id="the-home-page1">The Home Page</h4>
+<h4 id="the-home-page-1">The Home Page</h4>
 <p>Hugo supports many different types of templates. The home page is special because it gets its own type of template and its own template file. The file, layouts/index.html, is used to generate the HTML for the home page. The Hugo documentation says that this is the only required template, but that depends. Hugo's warning message shows that it looks for three different templates:</p>
 <pre><code>WARN: 2014/09/29 Unable to locate layout: [index.html _default/list.html _default/single.html]
 </code></pre><p>If it can't find any of these, it completely skips creating the home page. We noticed that when we built the site without having a theme installed.</p>
@@ -469,7 +469,7 @@ $ cat public/index.html
 &lt;body&gt; 
   &lt;p&gt;hugo says hello!&lt;/p&gt; 
 &lt;/html&gt;
-</code></pre><h4 id="live-reload1">Live Reload</h4>
+</code></pre><h4 id="live-reload-1">Live Reload</h4>
 <p>Note: If you're running the server with the <code>--watch</code> option, you'll see different content in the file:</p>
 <pre><code>$ cat public/index.html 
 &lt;!DOCTYPE html&gt; 
@@ -1026,7 +1026,7 @@ $ vi themes/zafta/layouts/_default/single.html
     <li><a href="#update-the-home-page-template">Update the Home Page Template</a>
       <ul>
         <li><a href="#make-a-static-home-page">Make a Static Home Page</a></li>
-        <li><a href="#build-a-dynamic-home-page">Build a Dynamic Home Page</a></li>
+        <li><a href="#build-a-dynamic-home-page">Build a &ldquo;Dynamic&rdquo; Home Page</a></li>
         <li><a href="#list-and-single-templates">List and Single Templates</a></li>
         <li><a href="#add-content-to-the-homepage">Add Content to the Homepage</a></li>
         <li><a href="#add-content-to-the-posts">Add Content to the Posts</a></li>
