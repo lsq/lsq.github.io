@@ -134,73 +134,73 @@ and sit comfortably before your keyboard: we will start our exploration
 right now!</p>
 <p>Table of Contents</p>
 <ul>
-<li><a href="#_a_little_bit_of_theory">A little bit of theory</a>
+<li><a href="#a-little-bit-of-theory">A little bit of theory</a>
 <ul>
-<li><a href="#_a_first_look_at_the_sed_execution_model">A first look at the sed execution
+<li><a href="#a-first-look-at-the-sed-execution-model">A first look at the sed execution
 model</a></li>
-<li><a href="#_the_sed_abstract_machine">The Sed abstract machine</a></li>
-<li><a href="#_a_more_accurate_sed_execution_model">A more accurate Sed execution
+<li><a href="#the-sed-abstract-machine">The Sed abstract machine</a></li>
+<li><a href="#a-more-accurate-sed-execution-model">A more accurate Sed execution
 model</a></li>
 </ul>
 </li>
-<li><a href="#_the_print_command">The print command</a></li>
+<li><a href="#the-print-command">The print command</a></li>
 <li><a href="#addresses">Addresses</a>
 <ul>
-<li><a href="#_line_numbers">Line numbers</a></li>
+<li><a href="#line-numbers">Line numbers</a></li>
 <li><a href="#regex">Regular expressions</a></li>
-<li><a href="#_extended_regular_expressions">Extended regular expressions</a></li>
-<li><a href="#_the_bracket_quantifier">The bracket quantifier</a></li>
+<li><a href="#extended-regular-expressions">Extended regular expressions</a></li>
+<li><a href="#the-bracket-quantifier">The bracket quantifier</a></li>
 <li><a href="#range">Range addresses</a></li>
-<li><a href="#_complement">Complement</a></li>
-<li><a href="#_conjunctions">Conjunctions</a></li>
+<li><a href="#complement">Complement</a></li>
+<li><a href="#conjunctions">Conjunctions</a></li>
 </ul>
 </li>
-<li><a href="#_the_quit_command">The quit command</a></li>
+<li><a href="#the-quit-command">The quit command</a></li>
 <li><a href="#substitution">The substitution command</a>
 <ul>
-<li><a href="#_the_delete_command">The delete command</a></li>
-<li><a href="#_the_next_command">The next command</a></li>
+<li><a href="#the-delete-command">The delete command</a></li>
+<li><a href="#the-next-command">The next command</a></li>
 </ul>
 </li>
-<li><a href="#_working_with_the_hold_space">Working with the hold space</a>
+<li><a href="#working-with-the-hold-space">Working with the hold space</a>
 <ul>
 <li><a href="#exchange">The exchange command</a></li>
 <li><a href="#hold">The hold commands</a></li>
 <li><a href="#get">The get command</a></li>
 </ul>
 </li>
-<li><a href="#_print_delete_and_next_revisited">print, delete and next
+<li><a href="#print-delete-and-next-revisited">print, delete and next
 revisited</a></li>
 <li><a href="#branches">Branching</a>
 <ul>
-<li><a href="#_labels_and_branches">labels and branches</a></li>
-<li><a href="#_conditional_branch">Conditional branch</a></li>
+<li><a href="#labels-and-branches">labels and branches</a></li>
+<li><a href="#conditional-branch">Conditional branch</a></li>
 </ul>
 </li>
-<li><a href="#_handling_verbatim_text">Handling verbatim text</a>
+<li><a href="#handling-verbatim-text">Handling verbatim text</a>
 <ul>
-<li><a href="#_the_change_command">The change command</a></li>
-<li><a href="#_the_insert_command">The insert command</a></li>
-<li><a href="#_the_append_command">The append command</a></li>
+<li><a href="#the-change-command">The change command</a></li>
+<li><a href="#the-insert-command">The insert command</a></li>
+<li><a href="#the-append-command">The append command</a></li>
 <li><a href="#read">The read command</a></li>
 </ul>
 </li>
-<li><a href="#_alternate_output">Alternate output</a>
+<li><a href="#alternate-output">Alternate output</a>
 <ul>
 <li><a href="#write">The write command</a></li>
 <li><a href="#write-flag">The substitution command <code>write</code> flag</a></li>
 </ul>
 </li>
 <li><a href="#comment">Comments</a></li>
-<li><a href="#_the_commands_you_will_rarely_need">The commands you will rarely
+<li><a href="#the-commands-you-will-rarely-need">The commands you will rarely
 need</a>
 <ul>
-<li><a href="#_the_line_number_command">The line number command</a></li>
-<li><a href="#_the_unambiguous_print_command">The unambiguous print command</a></li>
-<li><a href="#_the_transliterate_command">The transliterate command</a></li>
+<li><a href="#the-line-number-command">The line number command</a></li>
+<li><a href="#the-unambiguous-print-command">The unambiguous print command</a></li>
+<li><a href="#the-transliterate-command">The transliterate command</a></li>
 </ul>
 </li>
-<li><a href="#_the_last_word">The last word</a></li>
+<li><a href="#the-last-word">The last word</a></li>
 </ul>
 <!-- raw HTML omitted -->
 <h3 id="a-little-bit-of-theory-on-sed">A little bit of theory on Sed</h3>
@@ -239,7 +239,7 @@ Sed has a second buffer, the <em>hold space</em>. Sed never clears, puts or
 gets data from the hold space unless you explicitly request it. We will
 investigate that more in depth later when studying the
 <a href="#exchange">exchange</a>, <a href="#get">get</a> and <a href="#hold">hold</a> commands.</p>
-<h3 id="the-sed-abstract-machine-a-name-the-sed-abstract-machine-a">The Sed abstract machine <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="the-sed-abstract-machine-a-namethe-sed-abstract-machine-a">The Sed abstract machine <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
 <p>The model explained above is what you will see described in many Sed
 tutorials. Indeed, it is correct enough to understand the most basic Sed
 programs. But when you start digging into more advanced commands, you
@@ -539,7 +539,7 @@ printf &quot;%s\n&quot; {a,b,c}{d,e,f} | cat -n | sed -ne '4,/d/p'
      6    bf
      7    cd
 </code></pre>
-<h3 id="a-name-complementcomplementa"><!-- raw HTML omitted -->Complement<!-- raw HTML omitted --></h3>
+<h3 id="a-namecomplementcomplementa"><!-- raw HTML omitted -->Complement<!-- raw HTML omitted --></h3>
 <p>Adding an exclamation mark (<code>!</code>) after an address select lines <em>not</em>
 matching that address. For example:</p>
 <pre><code>sed -n -e '5!p' inputfile # Print all lines except line 5
@@ -1410,7 +1410,7 @@ enough of them, we could publish a compilation of those Sed gems!</p>
       <ul>
         <li><a href="#a-little-bit-of-theory-on-sed">A little bit of theory on Sed</a></li>
         <li><a href="#a-first-look-at-the-sed-execution-model">A first look at the sed execution model</a></li>
-        <li><a href="#the-sed-abstract-machine-a-name-the-sed-abstract-machine-a">The Sed abstract machine </a></li>
+        <li><a href="#the-sed-abstract-machine-a-namethe-sed-abstract-machine-a">The Sed abstract machine </a></li>
         <li><a href="#a-more-accurate-sed-execution-model">A more accurate Sed execution model</a></li>
       </ul>
     </li>
@@ -1422,7 +1422,7 @@ enough of them, we could publish a compilation of those Sed gems!</p>
         <li><a href="#extended-regular-expressions">Extended regular expressions</a></li>
         <li><a href="#the-bracket-quantifier">The bracket quantifier</a></li>
         <li><a href="#range-addresses">Range addresses</a></li>
-        <li><a href="#a-name-complementcomplementa">Complement</a></li>
+        <li><a href="#a-namecomplementcomplementa">Complement</a></li>
         <li><a href="#conjunctions">Conjunctions</a></li>
       </ul>
     </li>
