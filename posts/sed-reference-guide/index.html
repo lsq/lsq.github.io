@@ -306,8 +306,7 @@ multiple input files or error handling, but I think this should be
 sufficient for you to understand the behavior of any Sed program and to
 avoid wasting your time by groping around while writing your own Sed
 scripts.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-flowchart.png" alt="The Sed executionmodel">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-flowchart.png" alt="The Sed executionmodel"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-flowchart.png" alt="The Sed executionmodel"></p>
 <p>You may have noticed I didn’t describe the command-specific actions in
 the flowchart above. We will see that in detail for each command. So,
 without further ado, let’s start our tour!</p>
@@ -316,8 +315,7 @@ The print command</h2>
 <p>The print command (<code>p</code>) displays the content of the pattern space at the
 moment it is executed. It does not change in any way the state of the
 Sed abstract machine.</p>
-<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-print-command.png" alt="The Sed \`print\`command">
-<img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-print-command.png" alt="The Sed \`print\`command"></p>
+<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-print-command.png" alt="The Sed \`print\`command"></p>
 <p>For example:</p>
 <pre><code>sed -e 'p' inputfile
 </code></pre>
@@ -541,8 +539,7 @@ printf &quot;%s\n&quot; {a,b,c}{d,e,f} | cat -n | sed -ne '4,/d/p'
      6    bf
      7    cd
 </code></pre>
-<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<h3 id="complement">Complement</h3>
+<h3 id="a-name-complementcomplementa"><!-- raw HTML omitted -->Complement<!-- raw HTML omitted --></h3>
 <p>Adding an exclamation mark (<code>!</code>) after an address select lines <em>not</em>
 matching that address. For example:</p>
 <pre><code>sed -n -e '5!p' inputfile # Print all lines except line 5
@@ -570,8 +567,7 @@ various Sed commands.</p>
 The quit command</h2>
 <p>The quit command will stop Sed at the end of the current processing loop
 iteration.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-quit-command.png" alt="The Sed \`quit\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-quit-command.png" alt="The Sed \`quit\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-quit-command.png" alt="The Sed \`quit\`command"></p>
 <p>The <code>quit</code> command is a way to stop input processing before reaching the
 end of the input file. Why would someone want to do that?</p>
 <p>Well, if you remember, we’ve seen you can print the lines 1 through 5 of
@@ -627,8 +623,7 @@ search-replace feature you can find on most WYSIWYG editors. An
 equivalent, albeit a more powerful one though. The substitution command
 being one of the best-known Sed commands, it is largely documented on
 the web.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-substitution-command.png" alt="The Sed \`substitution\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-substitution-command.png" alt="The Sed \`substitution\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-substitution-command.png" alt="The Sed \`substitution\`command"></p>
 <p>We already have covered it <a href="http://linuxhandbook.com/?p=128">in a previous
 article</a> so I will not repeat myself
 here. However there are some key points to remember if you’re not yet
@@ -721,8 +716,7 @@ substitution command. We will examine it in detail <a href="#write-flag">later</
 <p>The delete command (<code>d</code>) is used to clear the pattern space and
 immediately start the next cycle. By doing so, it will also skip the
 implicit print of the pattern space even if the auto-print flag is set.</p>
-<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-command.png" alt="The Sed \`delete\`command">
-<img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-command.png" alt="The Sed \`delete\`command"></p>
+<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-command.png" alt="The Sed \`delete\`command"></p>
 <p>A particularly inefficient way of printing only the first five lines of
 a file would be:</p>
 <pre><code>sed -e '6,$d' inputfile
@@ -740,8 +734,7 @@ expression-based addresses to remove matching lines from the output:</p>
 quiet mode, then, in all cases, it reads the next input line into the
 pattern space and executes the <em>remaining commands of the current cycle</em>
 with the new pattern space.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-command.png" alt="The Sed \`next\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-command.png" alt="The Sed \`next\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-command.png" alt="The Sed \`next\`command"></p>
 <p>A common use case of the next command is to skip lines:</p>
 <pre><code>cat -n inputfile | sed -n -e 'n;n;p'
 </code></pre>
@@ -782,8 +775,7 @@ This will be the purpose of the commands described in this section.</p>
 <p>As it names implies it, the exchange command (<code>x</code>) will swap the content
 of the hold and pattern space. Remember as long as you didn’t put
 anything into the hold space, it is empty.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-exchange-command.png" alt="The Sed \`exchange\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-exchange-command.png" alt="The Sed \`exchange\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-exchange-command.png" alt="The Sed \`exchange\`command"></p>
 <p>As a first example, we may use the exchange command to print in reverse
 order the first two lines of a file:</p>
 <pre><code>cat -n inputfile | sed -n -e 'x;n;p;x;p;q'
@@ -826,8 +818,7 @@ overwriting any value already present</p>
 using a newline as separator</p>
 </dd>
 </dl>
-<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-hold-command.png" alt="The Sed \`hold\`command">
-<img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-hold-command.png" alt="The Sed \`hold\`command"></p>
+<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-hold-command.png" alt="The Sed \`hold\`command"></p>
 <p>The example above using the exchange command can be rewritten using the
 hold command instead:</p>
 <pre><code>cat -n inputfile | sed -n -e '
@@ -862,8 +853,7 @@ overwriting any value already present</p>
 using a newline as separator</p>
 </dd>
 </dl>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-get-command.png" alt="The Sed \`get\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-get-command.png" alt="The Sed \`get\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-get-command.png" alt="The Sed \`get\`command"></p>
 <p>Together, the hold and get commands allow to store and recall data. As a
 little challenge, I let you rewrite the example of the previous section
 to put the line 1 of the input file after the line 5, but this time
@@ -907,10 +897,8 @@ newline character as a separator between the old and new data.
 Continue the execution of the current cycle.</p>
 </dd>
 </dl>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-upper-command.png" alt="The Sed uppercase \`Delete\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-upper-command.png" alt="The Sed uppercase \`Delete\`command"></p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-upper-command.png" alt="The Sed uppercase \`Next\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-upper-command.png" alt="The Sed uppercase \`Next\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-upper-command.png" alt="The Sed uppercase \`Delete\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-upper-command.png" alt="The Sed uppercase \`Next\`command"></p>
 <p>The main use case for those commands is to implement queues (<a href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)">FIFO
 lists</a>).
 The canonical example being removing the last 5 lines from a file:</p>
@@ -960,8 +948,7 @@ kinds of applications using sed!</p>
 <p>By some aspects, you can see Sed as a very limited assembly language. So
 you won’t find high-level “for” or “while” loops or “if … else”
 statements, but you can implement them using branches.</p>
-<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-branch-command.png" alt="The Sed \`branch\`command">
-<img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-branch-command.png" alt="The Sed \`branch\`command"></p>
+<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-branch-command.png" alt="The Sed \`branch\`command"></p>
 <p>If you take a look at the flowchart describing the Sed execution model
 at the top of this article, you can see Sed automatically increments the
 program counter, resulting in the execution of the commands in the
@@ -969,8 +956,7 @@ program’s instructions order. However, using branch instructions, you
 can break that sequential flow by continuing the execution with any
 command of your choice in the program. The destination of a jump is
 explicitly defined using a label.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-label-command.png" alt="The Sed \`label\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-label-command.png" alt="The Sed \`label\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-label-command.png" alt="The Sed \`label\`command"></p>
 <p>Here is an example:</p>
 <pre><code>echo hello | sed -ne '
   :start      # Put the &quot;start&quot; label on that line of the program
@@ -1009,8 +995,7 @@ jumps to a different instruction only if a substitution was executed
 since the start of the current cycle or since the previous conditional
 branch. More formally, the test command will branch only if the
 <em>substitution flag</em> is set.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-test-command.png" alt="The Sed \`test\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-test-command.png" alt="The Sed \`test\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-test-command.png" alt="The Sed \`test\`command"></p>
 <p>With the test instruction, you can easily perform loops in a Sed
 program. As a practical example, you can use that to pad lines to a
 certain length (something you can’t do with regex only):</p>
@@ -1147,8 +1132,7 @@ now, starting with the change command I didn’t have presented yet.</p>
 <p>The change command (<code>c\</code>) deletes the pattern space and starts a new
 cycle just like the <code>d</code> command. The only difference is the user
 provided text is written on the output when the command is executed.</p>
-<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-change-command.png" alt="The Sed \`change\`command">
-<img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-change-command.png" alt="The Sed \`change\`command"></p>
+<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-change-command.png" alt="The Sed \`change\`command"></p>
 <pre><code>cat -n inputfile | sed -e '
 /systemd/c\
 # :REMOVED:
@@ -1180,8 +1164,7 @@ s/:.*// # This will NOT be applied to the &quot;changed&quot; text
 <p>The insert command (<code>i\</code>) immediately print the user-provided text on
 the output. It does not alter in any way the program flow or buffer
 content.</p>
-<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-insert-command.png" alt="The Sed \`insert\`command">
-<img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-insert-command.png" alt="The Sed \`insert\`command"></p>
+<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-insert-command.png" alt="The Sed \`insert\`command"></p>
 <pre><code># display the first five user names with a title on the first row
 sed &lt; inputfile -e '
 1i\
@@ -1196,8 +1179,7 @@ s/:.*//
 line of input will be read. The text is output at the end of the current
 cycle (including at the end of the program) or when a new line is read
 from the input using either the <code>n</code> or <code>N</code> command.</p>
-<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-append-command.png" alt="The Sed \`append\`command">
-<img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-append-command.png" alt="The Sed \`append\`command"></p>
+<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-append-command.png" alt="The Sed \`append\`command"></p>
 <p>Same example as above, but inserts this time a footer instead of a
 header:</p>
 <pre><code>sed &lt; inputfile -e '
@@ -1251,8 +1233,7 @@ flag to a substitution command.</p>
 given destination file. POSIX requires the destination file to be
 created by Sed before it starts processing any input data. If the file
 already exists, it is overwritten.</p>
-<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-write-command.png" alt="The Sed \`write\`command">
-<img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-write-command.png" alt="The Sed \`write\`command"></p>
+<p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-write-command.png" alt="The Sed \`write\`command"></p>
 <p>As a consequence, even if you never really write to a file, it will be
 created anyway. For example, the following Sed program will
 create/overwrite the “output” file, even if the write command is never
@@ -1293,8 +1274,7 @@ languages, a <em>comment</em> is a way to add free-form text the software will
 not try to interpret. The Sed syntax being rather cryptic, I can’t
 insist enough on the need to comment your scripts. Otherwise, they will
 be hardly understandable by anyone except their author.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-comment-command.png" alt="The Sed \`comment\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-comment-command.png" alt="The Sed \`comment\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-comment-command.png" alt="The Sed \`comment\`command"></p>
 <p>However, like many other parts of Sed, comments have their own share of
 subtleties. First, and the most important, comments are not a syntactic
 construct, but are full-fledged commands in Sed. A do-nothing (“no-op”)
@@ -1324,8 +1304,7 @@ currently read by Sed, that is the content of the line counter register.
 There is no way to capture that number in one of the Sed buffers, nor to
 format the output. Two limitations that severely reduce the usefulness
 of that command.</p>
-<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-current-line-command.png" alt="The Sed \`line number\`command">
-<img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-current-line-command.png" alt="The Sed \`line number\`command"></p>
+<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-current-line-command.png" alt="The Sed \`line number\`command"></p>
 <p>Remember in strict POSIX compliance mode, when several input files are
 given on the command line, Sed does not reset that counter but continue
 to increment it just like if all the files where concatenated. Some Sed
@@ -1350,8 +1329,7 @@ indicated by writing a &lt;backslash&gt; followed by a
 but should be appropriate for the output device. The end of each line
 shall be marked with a ‘$’.</p>
 </blockquote>
-<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-unambiguous-print-command.png" alt="The Sed \`unambiguous print\`command">
-<img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-unambiguous-print-command.png" alt="The Sed \`unambiguous print\`command"></p>
+<p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-unambiguous-print-command.png" alt="The Sed \`unambiguous print\`command"></p>
 <p>I suspect this command was once used to exchange data over non <a href="https://en.wikipedia.org/wiki/8-bit_clean">8-bits
 clean channels</a>. As of
 myself, I never used it for anything else than for debugging purposes.</p>
@@ -1360,8 +1338,7 @@ myself, I never used it for anything else than for debugging purposes.</p>
 <p>The transliterate (<code>y</code>) command allows mapping characters of the pattern
 space from a source set to a destination set. It is quite similar to the
 <code>tr</code> command, although more limited.</p>
-<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-transliterate-command.png" alt="The Sed \`transliterate\`command">
-<img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-transliterate-command.png" alt="The Sed \`transliterate\`command"></p>
+<p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-transliterate-command.png" alt="The Sed \`transliterate\`command"></p>
 <pre><code># The `y` c0mm4nd 1s for h4x0rz only
 sed &lt; inputfile -e '
   s/:.*//
@@ -1445,7 +1422,7 @@ enough of them, we could publish a compilation of those Sed gems!</p>
         <li><a href="#extended-regular-expressions">Extended regular expressions</a></li>
         <li><a href="#the-bracket-quantifier">The bracket quantifier</a></li>
         <li><a href="#range-addresses">Range addresses</a></li>
-        <li><a href="#complement">Complement</a></li>
+        <li><a href="#a-name-complementcomplementa">Complement</a></li>
         <li><a href="#conjunctions">Conjunctions</a></li>
       </ul>
     </li>
