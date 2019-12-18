@@ -6,10 +6,30 @@
     <description>Recent content in linux command tools on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Nov 2019 14:40:41 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Dec 2019 21:16:35 +0800</lastBuildDate>
     
 	<atom:link href="https://lsq.github.io/categories/linux-command-tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git submodule错误操作</title>
+      <link>https://lsq.github.io/posts/git-submodule/</link>
+      <pubDate>Wed, 18 Dec 2019 21:16:35 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/git-submodule/</guid>
+      <description>IDEA中GIt克隆时报：
+ Server does not allow request for unadvertised object //工程针对子模块最近提交的改动ID</description>
+    </item>
+    
+    <item>
+      <title>git 撤回提交</title>
+      <link>https://lsq.github.io/posts/git-reset/</link>
+      <pubDate>Wed, 18 Dec 2019 21:15:28 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/git-reset/</guid>
+      <description>写完代码后，我们一般这样
+git add . //添加所有文件 git commit -m &amp;#34;本功能全部完成&amp;#34; 撤回commit 执行完commit后，想撤回commit，怎么办？ 这样凉拌：</description>
+    </item>
     
     <item>
       <title>Vim search visual text</title>

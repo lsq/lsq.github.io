@@ -29,7 +29,7 @@
         
         
           <a href="https://lsq.github.io/categories/"
-             class="navbar-item active">
+             class="navbar-item ">
             <i class='icon icon-category'></i>
             分类
           </a>
@@ -98,145 +98,166 @@
 </nav>
 
 
-
-
-
-
-
-
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">Git submodule错误操作</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Dec 18, 2019
+  </div>
   
-    
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
   
+</div>
 
-  
+        <div class="separator"></div>
+        <div class="single-content">
+          <p>IDEA中GIt克隆时报：</p>
+<blockquote>
+<p>Server does not allow request for unadvertised object //工程针对子模块最近提交的改动ID</p>
+</blockquote>
+<p>误操作后工程最近改动为：</p>
+<blockquote>
+<p>-Subproject commit //工程针对子模块上次提交的改动ID<!-- raw HTML omitted -->
++Subproject commit //工程针对子模块最近提交的改动ID</p>
+</blockquote>
+<p>工程存储的子模块最近改动ID已经超前于子模块存储的最近改动ID，解决方法是移除子模块后重新添加。</p>
+<h3 id="heading">解决方法</h3>
+<p>工程的根目录下，Git Bash中依次执行：</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf 子模块名称
+$ git submodule deinit -f 子模块名称
+$ rm -rf .git/modules/子模块名称
+$ git rm -f 子模块名称
+$ git submodule add 子模块存储网址
+$ git commit -m <span style="color:#d88200">&#39;备注&#39;</span>
+$ git push
+</code></pre></div><p>然后就可以重新
+<code>$ git clone --recursive</code> 工程存储网址</p>
+<!-- raw HTML omitted -->
 
-  
-
-
-<div id="main" class="taxonomies">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <ul class="taxonomies-items">
-          <h5>
+        </div>
+        
+          <div class="single-tags">
             
-              <i class="icon icon-category"></i>
-              categories
-              <span class="taxonomies-count">
-                  (6)
-                </span>
-            
-          </h5>
-          
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/demos">
-                <i class="icon icon-circle text-danger" style="font-size: 12px;"></i>
-                demos
-                <span class="taxonomies-count">
-                  3
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/development">
-                <i class="icon icon-circle text-success" style="font-size: 12px;"></i>
-                development
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/golang">
-                <i class="icon icon-circle text-info" style="font-size: 12px;"></i>
-                golang
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/hugo">
-                <i class="icon icon-circle text-warning" style="font-size: 12px;"></i>
-                hugo
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item  active ">
-              <a href="/categories/linux-command-tools">
-                <i class="icon icon-circle text-primary" style="font-size: 12px;"></i>
-                linux-command-tools
-                <span class="taxonomies-count">
-                  4
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/notes">
-                <i class="icon icon-circle text-danger" style="font-size: 12px;"></i>
-                notes
-                <span class="taxonomies-count">
-                  3
-                </span>
-              </a>
-            </li>
-            
-          
-        </ul>
-      </div>
-      <div class="col-md-9">
-        <div class="taxonomies-content">
-          <div class="taxonomy">
-            <h4 class="taxonomy-title">linux command tools</h4>
-            
-              <a href="https://lsq.github.io/posts/git-submodule/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Dec 18, 2019
-                </div>
-                Git submodule错误操作
-              </a>
-            
-              <a href="https://lsq.github.io/posts/git-reset/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Dec 18, 2019
-                </div>
-                git 撤回提交
-              </a>
-            
-              <a href="https://lsq.github.io/posts/vim_search_visual_text/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Nov 18, 2019
-                </div>
-                Vim search visual text
-              </a>
-            
-              <a href="https://lsq.github.io/posts/sed-reference-guide/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Nov 18, 2019
-                </div>
-                Complete Sed Command Guide
+              <a class="single-tag" href="https://lsq.github.io/tags/git">
+                #git
               </a>
             
           </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 18, 2019
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/git-reset/">
+    git 撤回提交
+  </a>
+  <div class="vio-desc post-desc">
+    
+  写完代码后，我们一般这样
+git add . //添加所有文件 git commit -m &#34;本功能全部完成&#34; 撤回commit 执行完commit后，想撤回commit，怎么办？ 这样凉拌：......
+
+  </div>
+</div>
         </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Nov 18, 2019
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vim_search_visual_text/">
+    Vim search visual text
+  </a>
+  <div class="vio-desc post-desc">
+    
+  vim 搜索光标下文字 / substitute 操作同样  Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl&#43;R 0......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">解决方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
       </div>
     </div>
   </div>
 </div>
-
 
 <footer id="footer">
   <div class="container">

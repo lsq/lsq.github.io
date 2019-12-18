@@ -19,42 +19,57 @@
   
   <url>
     <loc>https://lsq.github.io/categories/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/categories/demos/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/downloaded/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/ls/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/</loc>
-    <lastmod>2019-12-18T12:41:51+08:00</lastmod>
+    <lastmod>2019-12-18T21:25:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/tags/git/</loc>
+    <lastmod>2019-12-18T21:16:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/git-submodule/</loc>
+    <lastmod>2019-12-18T21:16:35+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/categories/linux-command-tools/</loc>
-    <lastmod>2019-11-18T14:40:41+00:00</lastmod>
+    <lastmod>2019-12-18T21:16:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/git-reset/</loc>
+    <lastmod>2019-12-18T21:15:28+08:00</lastmod>
   </url>
   
   <url>
@@ -153,12 +168,12 @@
   </url>
   
   <url>
-    <loc>https://lsq.github.io/categories/golang/</loc>
+    <loc>https://lsq.github.io/tags/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lsq.github.io/tags/golang/</loc>
+    <loc>https://lsq.github.io/categories/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   

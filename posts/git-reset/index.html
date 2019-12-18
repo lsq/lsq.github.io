@@ -102,7 +102,7 @@
   <div class="row">
     <div class="col-md-9">
       <div class="single series">
-        <h1 class="single-title">Downloaded file list</h1>
+        <h1 class="single-title">git 撤回提交</h1>
         <div class="vio-meta">
   <div class="vio-date">
     Dec 18, 2019
@@ -111,8 +111,8 @@
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/demos">
-          demos
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
         </a>
       
     </div>
@@ -121,17 +121,46 @@
 
         <div class="separator"></div>
         <div class="single-content">
-          <h1 id="commit-id">commit id</h1>
-<h2 id="e3e8785f5b4b07cfe65185851a1555fe6005c1dchttpsciappveyorcomprojectlsqblogsrbuilds29626200"><a href="https://ci.appveyor.com/project/lsq/blogsr/builds/29626200">e3e8785f5b4b07cfe65185851a1555fe6005c1dc</a></h2>
-<h2 id="download-98iu4r2a9n8h535dhttpsciappveyorcomapibuildjobs98iu4r2a9n8h535dartifacts98iu4r2a9n8h535dzip">Download <a href="https://ci.appveyor.com/api/buildjobs/98iu4r2a9n8h535d/artifacts/98iu4r2a9n8h535d.zip">98iu4r2a9n8h535d</a></h2>
-<h3 id="this-file-contains--downloaded-files">This file contains  downloaded files</h3>
+          <p>写完代码后，我们一般这样</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add . //添加所有文件
+git commit -m <span style="color:#d88200">&#34;本功能全部完成&#34;</span>
+</code></pre></div><h2 id="commit">撤回commit</h2>
+<p>执行完commit后，想撤回commit，怎么办？
+这样凉拌：</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git reset --soft HEAD^
+</code></pre></div><p>这样就成功的撤销了你的commit
+注意，仅仅是撤回commit操作，您写的代码仍然保留。
+HEAD^的意思是上一个版本，也可以写成HEAD~1
+如果你进行了2次commit，想都撤回，可以使用HEAD~2</p>
+<h2 id="heading">至于这几个参数</h2>
+<ul>
+<li>
+<p><code>--mixed </code>
+意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+这个为默认参数， <code>git reset --mixed HEAD^ </code>和 <code>git reset HEAD^ </code>效果是一样的。</p>
+</li>
+<li>
+<p><code>--soft </code>
+不删除工作空间改动代码，撤销<code>commit</code>，不撤销<code>git add . </code></p>
+</li>
+<li>
+<p><code>--hard</code>
+删除工作空间改动代码，撤销<code>commit</code>，撤销<code>git add . </code>
+注意完成这个操作后，就恢复到了上一次的commit状态。</p>
+</li>
+</ul>
+<h2 id="commit-1">修改commit注释</h2>
+<p>顺便说一下，如果commit注释写错了，只是想改一下注释，只需要：</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git commit --amend
+</code></pre></div><p>此时会进入默认vim编辑器，修改注释完毕后保存就好了。</p>
+<!-- raw HTML omitted -->
 
         </div>
         
           <div class="single-tags">
             
-              <a class="single-tag" href="https://lsq.github.io/tags/ls">
-                #ls
+              <a class="single-tag" href="https://lsq.github.io/tags/git">
+                #git
               </a>
             
           </div>
@@ -158,26 +187,58 @@
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Jun 23, 2019
+    Nov 18, 2019
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/demos">
-          demos
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/note-4/">
-    Note 4
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vim_search_visual_text/">
+    Vim search visual text
   </a>
   <div class="vio-desc post-desc">
     
-  This is a demo test Dim as arr as Integer, brr as String 上面语句用来定议变量......
+  vim 搜索光标下文字 / substitute 操作同样  Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl&#43;R 0......
+
+  </div>
+</div>
+        </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Nov 18, 2019
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/sed-reference-guide/">
+    Complete Sed Command Guide
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Complete Sed Command Guide [Explained with Practical Examples] In a previous article, I showed the basic usage of Sed, the stream editor, on a practical use case.......
 
   </div>
 </div>
@@ -196,12 +257,9 @@
         <h6>目录</h6>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#e3e8785f5b4b07cfe65185851a1555fe6005c1dchttpsciappveyorcomprojectlsqblogsrbuilds29626200">e3e8785f5b4b07cfe65185851a1555fe6005c1dc</a></li>
-    <li><a href="#download-98iu4r2a9n8h535dhttpsciappveyorcomapibuildjobs98iu4r2a9n8h535dartifacts98iu4r2a9n8h535dzip">Download 98iu4r2a9n8h535d</a>
-      <ul>
-        <li><a href="#this-file-contains--downloaded-files">This file contains  downloaded files</a></li>
-      </ul>
-    </li>
+    <li><a href="#commit">撤回commit</a></li>
+    <li><a href="#heading">至于这几个参数</a></li>
+    <li><a href="#commit-1">修改commit注释</a></li>
   </ul>
 </nav>
       </div>

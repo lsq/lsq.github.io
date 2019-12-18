@@ -6,7 +6,7 @@
     <description>Recent content in ls on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Dec 2019 12:41:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Dec 2019 21:25:49 +0800</lastBuildDate>
     
 	<atom:link href="https://lsq.github.io/tags/ls/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,10 @@
     <item>
       <title>Downloaded file list</title>
       <link>https://lsq.github.io/posts/downloaded/</link>
-      <pubDate>Wed, 18 Dec 2019 12:41:51 +0800</pubDate>
+      <pubDate>Wed, 18 Dec 2019 21:25:49 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/downloaded/</guid>
-      <description>commit id 5fedb6e44ae1ec796c19a9e65d9ad907e885f847 Download yvpfq7sx45en4etl This file contains downloaded files </description>
+      <description>commit id e3e8785f5b4b07cfe65185851a1555fe6005c1dc Download 98iu4r2a9n8h535d This file contains downloaded files </description>
     </item>
     
   </channel>
