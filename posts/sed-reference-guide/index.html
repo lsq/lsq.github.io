@@ -228,16 +228,13 @@ that:</p>
 <p>If the read was successful:</p>
 </li>
 </ol>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-a.  Apply in the script order all commands whose address matches the
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">a.  Apply in the script order all commands whose address matches the
 current input line
 
 b.  If sed was not launched in quiet mode <span style="color:#f92672">(</span><span style="color:#d88200">`</span>-n<span style="color:#d88200">`</span><span style="color:#f92672">)</span> print the content
 of the <span style="color:#f92672">(</span>potentially modified<span style="color:#f92672">)</span> pattern space
 
 c.  got back to 1.
-
-
 </code></pre></div><p>processed, it is not suitable for long-term storage. For that purpose,
 Sed has a second buffer, the <em>hold space</em>. Sed never clears, puts or
 gets data from the hold space unless you explicitly request it. We will
@@ -321,18 +318,14 @@ moment it is executed. It does not change in any way the state of the
 Sed abstract machine.</p>
 <p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-print-command.png" alt="The Sed \`print\`command"></p>
 <p>For example:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -e <span style="color:#d88200">&#39;p&#39;</span> inputfile
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -e <span style="color:#d88200">&#39;p&#39;</span> inputfile
 </code></pre></div><p>because you <em>explicitly</em> requested it using the <code>print</code> command, and a
 second time <em>implicitly</em> at the end of the processing loop (because we
 didn’t launch Sed in “quiet mode” here).</p>
 <p>If we are not interested in seeing each line twice, we have two way of
 fixing that:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;p&#39;</span> inputfile <span style="color:#75715e"># quiet mode with explicit print</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;p&#39;</span> inputfile <span style="color:#75715e"># quiet mode with explicit print</span>
 sed -e <span style="color:#d88200">&#39;&#39;</span> inputfile  <span style="color:#75715e"># empty &#34;do nothing&#34; program, implicit print</span>
-
 </code></pre></div><p>distinguish between commands and file names. Since a Sed invocation must
 contain at least one command, the <code>-e</code> flag is optional for that first
 command. However, I have the habit of using it, mostly for consistency
@@ -351,21 +344,17 @@ from a file. But what’s an address for Sed? And how are identified the
 to mean “the last line”) or a <em>regular expression</em>. When using line
 numbers, you have to remember lines are numbered starting from one in
 Sed— and not starting from zero.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile <span style="color:#75715e"># print only the first line of the file</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile <span style="color:#75715e"># print only the first line of the file</span>
 sed -n -e <span style="color:#d88200">&#39;5p&#39;</span> inputfile <span style="color:#75715e"># print only the line 5</span>
 sed -n -e <span style="color:#d88200">&#39;$p&#39;</span> inputfile <span style="color:#75715e"># print the last line of the file</span>
 sed -n -e <span style="color:#d88200">&#39;0p&#39;</span> inputfile <span style="color:#75715e"># will result in an error because 0 is not a valid line number</span>
-
 </code></pre></div><p>specifications](<a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html),">http://pubs.opengroup.org/onlinepubs/9699919799/utilities/sed.html),</a>
 line numbers are cumulative if you specify several input files. In other
 words, the line counter is not reset when Sed opens a new input file.
 So, the two commands below will do the same thing, printing only one
 line of text to the output:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile1 inputfile2 inputfile3
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile1 inputfile2 inputfile3
 cat inputfile1 inputfile2 inputfile3 <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;1p&#39;</span>
-
 </code></pre></div><blockquote>
 <p>If multiple file operands are specified, the named files shall be read
 in the order specified and the concatenation shall be edited.</p>
@@ -373,9 +362,7 @@ in the order specified and the concatenation shall be edited.</p>
 <p>However, some Sed implementations offer command line options to change
 that behavior, like the GNU Sed <code>-s</code> flag (which is implicitly applied
 too when using the GNU Sed <code>-i</code> flags):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -sn -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile1 inputfile2 inputfile3
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -sn -e <span style="color:#d88200">&#39;1p&#39;</span> inputfile1 inputfile2 inputfile3
 </code></pre></div><p>you check into the <code>man</code> for the details regarding them.</p>
 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="regular-expressions">Regular expressions</h3>
@@ -412,8 +399,7 @@ the web about that topic: regular expressions are a really powerful
 feature available in many standard Unix commands and programming
 language and a skill every Unixien should master.</p>
 <p>Here are few examples used in the context of a Sed address:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;/systemd/p&#39;</span> inputfile <span style="color:#75715e"># print only lines *containing* the literal string &#34;systemd&#34;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;/systemd/p&#39;</span> inputfile <span style="color:#75715e"># print only lines *containing* the literal string &#34;systemd&#34;</span>
 sed -n -e <span style="color:#d88200">&#39;/nologin$/p&#39;</span> inputfile <span style="color:#75715e"># print only lines ending with &#34;nologin&#34;</span>
 sed -n -e <span style="color:#d88200">&#39;/^bin/p&#39;</span> inputfile <span style="color:#75715e"># print only lines starting with &#34;bin&#34;</span>
 sed -n -e <span style="color:#d88200">&#39;/^$/p&#39;</span> inputfile <span style="color:#75715e"># print only empty lines (i.e.: nothing between the start and end of a line)</span>
@@ -424,26 +410,17 @@ sed -n -e <span style="color:#d88200">&#39;/1[0,3]/p&#39;</span> inputfile <span
 sed -n -e <span style="color:#d88200">&#39;/1[0-2]/p&#39;</span> inputfile <span style="color:#75715e"># print only lines containing a &#34;1&#34; followed by a &#34;0&#34;, &#34;1&#34;, &#34;2&#34; or &#34;3&#34;</span>
 sed -n -e <span style="color:#d88200">&#39;/1.*2/p&#39;</span> inputfile <span style="color:#75715e"># print only lines containing the character &#34;1&#34; followed by a &#34;2&#34; (with any number of arbitrary characters between them)</span>
 sed -n -e <span style="color:#d88200">&#39;/1[0-9]*2/p&#39;</span> inputfile <span style="color:#75715e"># print only lines containing the character &#34;1&#34; followed by zero, one or more digits, followed by a &#34;2&#34;</span>
-
 </code></pre></div><p>expression (including the regex delimiter symbol), you have to precede
 it with a slash:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Print all lines containing the string &#34;/usr/sbin/nologin&#34;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Print all lines containing the string &#34;/usr/sbin/nologin&#34;</span>
 sed -ne <span style="color:#d88200">&#39;/\/usr\/sbin\/nologin/p&#39;</span> inputfile
-
 </code></pre></div><p>delimiter in an address. You can use any other character that could suit
 your needs and tastes by preceding the first delimiter by a backslash.
 This is particularly useful when you have addresses that should match
 literal slashes like when working with file paths:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Both commands are perfectly identical</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Both commands are perfectly identical</span>
 sed -ne <span style="color:#d88200">&#39;/\/usr\/sbin\/nologin/p&#39;</span> inputfile
 sed -ne <span style="color:#d88200">&#39;\=/usr/sbin/nologin=p&#39;</span> inputfile
-
-
-
-
-
 </code></pre></div><h3 id="extended-regular-expressions">Extended regular expressions</h3>
 <p>By default, the Sed regular expression engine only understands the
 <a href="https://www.regular-expressions.info/posix.html#bre">POSIX basic regular
@@ -453,14 +430,8 @@ expressions</a>, you
 must add the <code>-E</code> flag to the Sed command. Extended regular expressions
 add a couple of extra feature to basic regular expressions and, most
 important maybe, they require far fewer backslashes. I let you compare:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;/\(www\)\|\(mail\)/p&#39;</span> inputfile
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;/\(www\)\|\(mail\)/p&#39;</span> inputfile
 sed -En -e <span style="color:#d88200">&#39;/(www)|(mail)/p&#39;</span> inputfile
-
-
-
-
-
 </code></pre></div><h3 id="the-bracket-quantifier">The bracket quantifier</h3>
 <p>One powerful feature of regular expressions is the <a href="https://www.regular-expressions.info/repeat.html#limit">range
 quantifier</a><code>{,}</code>.
@@ -486,45 +457,34 @@ be both easier to write and more portable.</p>
 <p>If I took the time to talk about the bracket notation for regex
 quantifiers, this is because that feature is often useful in Sed scripts
 to count characters.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -En -e <span style="color:#d88200">&#39;/^.{35}$/p&#39;</span> inputfile <span style="color:#75715e"># Print lines containing exactly 35 characters</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -En -e <span style="color:#d88200">&#39;/^.{35}$/p&#39;</span> inputfile <span style="color:#75715e"># Print lines containing exactly 35 characters</span>
 sed -En -e <span style="color:#d88200">&#39;/^.{0,35}$/p&#39;</span> inputfile <span style="color:#75715e"># Print lines containing 35 characters or less</span>
 sed -En -e <span style="color:#d88200">&#39;/^.{,35}$/p&#39;</span> inputfile <span style="color:#75715e"># Print lines containing 35 characters or less</span>
 sed -En -e <span style="color:#d88200">&#39;/^.{35,}$/p&#39;</span> inputfile <span style="color:#75715e"># Print lines containing 35 characters or more</span>
 sed -En -e <span style="color:#d88200">&#39;/.{35}/p&#39;</span> inputfile <span style="color:#75715e"># I let you figure out this one by yourself (test it!)</span>
-
-
-
-
-
 </code></pre></div><h3 id="range-addresses">Range addresses</h3>
 <p>All the addresses we used so far were unique addresses. When using an
 unique address, the command is applied only the line(s) matching that
 address. However, Sed also supports range addresses. They are used to
 apply a command to all lines <em>between</em> the start and the end address of
 the range:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;1,5p&#39;</span> inputfile <span style="color:#75715e"># print only lines 1 through 5</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;1,5p&#39;</span> inputfile <span style="color:#75715e"># print only lines 1 through 5</span>
 sed -n -e <span style="color:#d88200">&#39;5,$p&#39;</span> inputfile <span style="color:#75715e"># print from line 5 to the end of the file</span>
 
 sed -n -e <span style="color:#d88200">&#39;/home/217283.cloudwaysapps.com/wgnxdnqkza/public_html/,/systemd/p&#39;</span> inputfile <span style="color:#75715e"># print from the first line matching the /home/217283.cloudwaysapps.com/wgnxdnqkza/public_html/ regular expression to the next line matching the /systemd/ regular expression.</span>
-
 </code></pre></div><p>the range is reduced to that line. Actually, if the second address is a
 number less than or equal to the line number of the first selected line
 of the range, only one line will be selected:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,4p&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,4p&#39;</span>
  4bd
 <span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,3p&#39;</span>
  4bd
-
 </code></pre></div><p>also applies when the <em>start address is a regular expression</em>. In that
 case, Sed will compare the <em>line number</em> of the first line matching the
 regex with the explicit <em>line number</em> given as end address. Once again,
 if the end line number is lower or equal to the start line number, the
 range will be reduced to one line:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># The /b/,4 address will match *three* one-line range</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># The /b/,4 address will match *three* one-line range</span>
 <span style="color:#75715e"># since each matching line has a line number &gt;= 4</span>
 <span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,4p&#39;</span>
  <span style="color:#ae81ff">4</span>  bd
@@ -539,12 +499,10 @@ range will be reduced to one line:</p>
  <span style="color:#ae81ff">3</span>  af
  <span style="color:#ae81ff">4</span>  bd
  <span style="color:#ae81ff">7</span>  <span style="color:#111">cd</span>
-
 </code></pre></div><p><em>regular expression</em>. In that case, the first line of the range is <em>not</em>
 tested against the end address, so the range will contain at least two
 lines (except of course if there is not enough input data):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,/d/p&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,/d/p&#39;</span>
  4bd
  5be
  6bf
@@ -555,33 +513,20 @@ lines (except of course if there is not enough input data):</p>
  5be
  6bf
  7cd
-
-
-
-
-
 </code></pre></div><p>Adding an exclamation mark (<code>!</code>) after an address select lines <em>not</em>
 matching that address. For example:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;5!p&#39;</span> inputfile <span style="color:#75715e"># Print all lines except line 5</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;5!p&#39;</span> inputfile <span style="color:#75715e"># Print all lines except line 5</span>
 sed -n -e <span style="color:#d88200">&#39;5,10!p&#39;</span> inputfile <span style="color:#75715e"># Print all lines except line 5 to 10</span>
 sed -n -e <span style="color:#d88200">&#39;/sys/!p&#39;</span> inputfile <span style="color:#75715e"># Print all lines except those containing &#34;sys&#34;</span>
-
-
-
-
-
 </code></pre></div><h3 id="conjunctions">Conjunctions</h3>
 <p>Sed allows to group commands in blocks using brackets (<code>{…​}</code>). You can
 leverage that feature to combine several addresses. For example, let’s
 compare the output of those two commands:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;/usb/{
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;/usb/{
 </span><span style="color:#d88200">/daemon/p
 </span><span style="color:#d88200">}&#39;</span> inputfile
 
 sed -n -e <span style="color:#d88200">&#39;/usb.*daemon/p&#39;</span> inputfile
-
 </code></pre></div><p>and “daemon” in any order. Whereas the regular expression “usb.*daemon”
 would only match lines where the “usb” string appears before the
 “daemon” string.</p>
@@ -596,18 +541,14 @@ iteration.</p>
 end of the input file. Why would someone want to do that?</p>
 <p>Well, if you remember, we’ve seen you can print the lines 1 through 5 of
 a file using the following command:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;1,5p&#39;</span> inputfile
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;1,5p&#39;</span> inputfile
 </code></pre></div><p>the remaining input lines, even if only the first five can produce a
 result. This may have a significant impact if your file contains
 millions of rows (or even worst, if you read from an infinite stream of
 data like <code>/dev/urandom</code> for example).</p>
 <p>Using the quit command, the same program can be rewritten much more
 efficiently:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -e <span style="color:#d88200">&#39;5q&#39;</span> inputfile
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -e <span style="color:#d88200">&#39;5q&#39;</span> inputfile
 </code></pre></div><p>pattern space at the end of each cycle, but it will quit, and thus not
 reading more data, after having processed the line 5.</p>
 <p>We could use a similar trick to print only a specific line of a file.
@@ -616,8 +557,7 @@ Sed expressions from the command line. The three variations bellow take
 benefit of Sed accepting several commands, either as different <code>-e</code>
 options, or in the same expression, but separated by newlines or
 semi-colon:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -n -e <span style="color:#d88200">&#39;5p&#39;</span> -e <span style="color:#d88200">&#39;5q&#39;</span> inputfile
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -n -e <span style="color:#d88200">&#39;5p&#39;</span> -e <span style="color:#d88200">&#39;5q&#39;</span> inputfile
 
 sed -n -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  5p
@@ -625,11 +565,9 @@ sed -n -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">&#39;</span> inputfile
 
 sed -n -e <span style="color:#d88200">&#39;5p;5q&#39;</span> inputfile
-
 </code></pre></div><p>brackets, something that we could use here to avoid repeating the same
 address twice:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># By grouping commands</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># By grouping commands</span>
 sed -e <span style="color:#d88200">&#39;5{
 </span><span style="color:#d88200">  p
 </span><span style="color:#d88200">  q
@@ -640,7 +578,6 @@ sed <span style="color:#d88200">&#39;5{p;q;}&#39;</span> inputfile
 
 <span style="color:#75715e"># As a POSIX extension, some implementations makes the semi-colon before the closing bracket optional:</span>
 sed <span style="color:#d88200">&#39;5{p;q}&#39;</span> inputfile
-
 </code></pre></div><h2 id="the-substitution-command">The substitution command</h2>
 <p>You can imagine the substitution command as the Sed equivalent to the
 search-replace feature you can find on most WYSIWYG editors. An
@@ -701,39 +638,31 @@ special meaning of any character by preceding it with a backslash:
 examples. To start, let’s say I want to display the first field of my
 test input file padded with spaces on the right up to 20 characters, I
 could write something like that:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed &lt; inputfile -E -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed &lt; inputfile -E -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/:// # replace the first field separator by 20 spaces
 </span><span style="color:#d88200">  s/(.{20}).*/\1/   # keep only the first 20 characters of the line
 </span><span style="color:#d88200">  s/.*/| &amp; |/   # add vertical bars for a nice output
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>to 1100, I could write something like that:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -En -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  /sonia/{
 </span><span style="color:#d88200">s/[0-9]+/1100/g
 </span><span style="color:#d88200">p
 </span><span style="color:#d88200">  }&#39;</span> inputfile
-
 </code></pre></div><p>modifies its behavior, so all occurrences of the search pattern are
 replaced. Without that option, only the first one would be.</p>
 <p>By the way, this is also a good occasion to mention the print command
 displays the content of the pattern space at the moment the command is
 executed. So, I can obtain a before-after output like that:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -En -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  /sonia/{
 </span><span style="color:#d88200">p
 </span><span style="color:#d88200">s/[0-9]+/1100/g
 </span><span style="color:#d88200">p
 </span><span style="color:#d88200">  }&#39;</span> inputfile
-
 </code></pre></div><p>case, the substitution command also accepts the <code>p</code> option for that
 purpose:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -En -e <span style="color:#d88200">&#39;/sonia/s/[0-9]+/1100/gp&#39;</span> inputfile
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -En -e <span style="color:#d88200">&#39;/sonia/s/[0-9]+/1100/gp&#39;</span> inputfile
 </code></pre></div><p>substitution command. We will examine it in detail <a href="#write-flag">later</a>.</p>
 <p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="the-delete-command">The delete command</h3>
@@ -743,20 +672,12 @@ implicit print of the pattern space even if the auto-print flag is set.</p>
 <p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-delete-command.png" alt="The Sed \`delete\`command"></p>
 <p>A particularly inefficient way of printing only the first five lines of
 a file would be:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -e <span style="color:#d88200">&#39;6,$d&#39;</span> inputfile
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -e <span style="color:#d88200">&#39;6,$d&#39;</span> inputfile
 </code></pre></div><p>try to re-read the section concerning the <a href="#quit">quit command</a>. The
 answer is there!</p>
 <p>The delete command is particularly useful when combined with regular
 expression-based addresses to remove matching lines from the output:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed -e <span style="color:#d88200">&#39;/systemd/d&#39;</span> inputfile
-
-
-
-
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed -e <span style="color:#d88200">&#39;/systemd/d&#39;</span> inputfile
 </code></pre></div><h3 id="the-next-command">The next command</h3>
 <p>This command prints the current pattern space if Sed is not running in
 quiet mode, then, in all cases, it reads the next input line into the
@@ -764,9 +685,7 @@ pattern space and executes the <em>remaining commands of the current cycle</em>
 with the new pattern space.</p>
 <p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-next-command.png" alt="The Sed \`next\`command"></p>
 <p>A common use case of the next command is to skip lines:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;n;n;p&#39;</span>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;n;n;p&#39;</span>
 </code></pre></div><p>input file. But the <code>next</code> command discards (and does not display
 because of the <code>-n</code> option) the pattern space and replaces it with the
 next line from the input. And the second <code>next</code> command will do the same
@@ -779,22 +698,16 @@ end of the file. Concretely, this prints one line over three of the
 input file.</p>
 <p>Using the next command, we can also find a couple of other ways to
 display the first five lines of a file:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;1{p;n;p;n;p;n;p;n;p}&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;1{p;n;p;n;p;n;p;n;p}&#39;</span>
 cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;p;n;p;n;p;n;p;n;p;q&#39;</span>
 cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;n;n;n;n;q&#39;</span>
-
 </code></pre></div><p>to process lines <em>relative</em> to some address:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n <span style="color:#d88200">&#39;/pulse/p&#39;</span>   <span style="color:#75715e"># print lines containing &#34;pulse&#34;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n <span style="color:#d88200">&#39;/pulse/p&#39;</span>   <span style="color:#75715e"># print lines containing &#34;pulse&#34;</span>
 cat -n inputfile <span style="color:#111">|</span> sed -n <span style="color:#d88200">&#39;/pulse/{n;p}&#39;</span>   <span style="color:#75715e"># print the line following</span>
    <span style="color:#75715e"># the line containing &#34;pulse&#34;</span>
 cat -n inputfile <span style="color:#111">|</span> sed -n <span style="color:#d88200">&#39;/pulse/{n;n;p}&#39;</span> <span style="color:#75715e"># print the line following</span>
    <span style="color:#75715e"># the line following</span>
    <span style="color:#75715e"># the line containing &#34;pulse&#34;</span>
-
-
-
 </code></pre></div><h2 id="working-with-the-hold-space">Working with the hold space</h2>
 <p>Until now, the command we’ve seen dealt only with the pattern space.
 However, as we’ve mentioned it at the very top of this article, there is
@@ -808,14 +721,11 @@ anything into the hold space, it is empty.</p>
 <p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-exchange-command.png" alt="The Sed \`exchange\`command"></p>
 <p>As a first example, we may use the exchange command to print in reverse
 order the first two lines of a file:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;x;n;p;x;p;q&#39;</span>
-
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;x;n;p;x;p;q&#39;</span>
 </code></pre></div><p>immediately after having set it, since the hold space remains untouched
 as long as you don’t explicitly modify it. In the following example, I
 use it to move the first line of the input after the fifth one:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  1{x;n}# Swap the hold and pattern space
 </span><span style="color:#d88200"># to store line 1 into the hold buffer
 </span><span style="color:#d88200"># and then read line two
@@ -830,11 +740,6 @@ cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:
 </span><span style="color:#d88200"># (not a typo! try to figure why this rule
 </span><span style="color:#d88200"># is NOT executed for line 1;)
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="the-hold-commands">The hold commands</h3>
 <p>The hold command (<code>h</code>) is used to store the content of the pattern space
 into the hold space. However, as opposed to the exchange command, this
@@ -855,8 +760,7 @@ using a newline as separator</p>
 <p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-hold-command.png" alt="The Sed \`hold\`command"></p>
 <p>The example above using the exchange command can be rewritten using the
 hold command instead:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  1{h;n}# Store line 1 into the hold buffer and continue
 </span><span style="color:#d88200">  5{# on line 5
 </span><span style="color:#d88200">x   # switch the pattern and hold space
@@ -870,11 +774,6 @@ cat -n inputfile <span style="color:#111">|</span> sed -n -e <span style="color:
 </span><span style="color:#d88200"># (not a typo! try to figure why this rule
 </span><span style="color:#d88200"># is NOT executed for line 1;)
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="the-get-command">The get command</h3>
 <p>The get command (<code>g</code>) does the exact opposite of the hold command: it
 takes the content of the hold space and put it into the pattern space.
@@ -901,8 +800,7 @@ should be simpler that way!</p>
 <p>In the meantime, I can show you another example that could serve for
 your inspiration. The goal here is to separate the users having a login
 shell from the others:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -En -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  \=(/usr/sbin/nologin|/bin/false)$= { H;d; }
 </span><span style="color:#d88200">  # Append matching lines to the hold buffer
 </span><span style="color:#d88200">  # and continue to next cycle
@@ -910,9 +808,6 @@ cat -n inputfile <span style="color:#111">|</span> sed -En -e <span style="color
 </span><span style="color:#d88200">  $ { g;p }   # On the last line,
 </span><span style="color:#d88200">  # get and print the content of the hold buffer
 </span><span style="color:#d88200">&#39;</span>
-
-
-
 </code></pre></div><h2 id="print-delete-and-next-revisited">print, delete and next revisited</h2>
 <p>Now you’ve gained more familiarities with the hold space, let me go back
 on the <code>print</code>, <code>delete</code> and <code>next</code> commands. We already talked about
@@ -942,17 +837,14 @@ Continue the execution of the current cycle.</p>
 <p>The main use case for those commands is to implement queues (<a href="https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)">FIFO
 lists</a>).
 The canonical example being removing the last 5 lines from a file:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -En -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  1 { N;N;N;N } # ensure the pattern space contains *five* lines
 </span><span style="color:#d88200">
 </span><span style="color:#d88200">  N # append a sixth line onto the queue
 </span><span style="color:#d88200">  P # Print the head of the queue
 </span><span style="color:#d88200">  D # Remove the head of the queue
 </span><span style="color:#d88200">&#39;</span>
-
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Print on two columns</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Print on two columns</span>
 sed &lt; inputfile -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200"> $!N# Append a new line to the pattern space
 </span><span style="color:#d88200"># *except* on the last line of input
@@ -968,7 +860,6 @@ sed &lt; inputfile -En -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200"> s/(.{20}).*\n/\1/  # Trim and join lines
 </span><span style="color:#d88200"> p  # Print result
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><h2 id="branching">Branching</h2>
 <p>We just saw Sed has buffer capabilities through the hold space. But it
 also has test and branch instructions. Having both those features makes
@@ -998,13 +889,11 @@ command of your choice in the program. The destination of a jump is
 explicitly defined using a label.</p>
 <p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-label-command.png" alt="The Sed \`label\`command"></p>
 <p>Here is an example:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#111">echo</span> hello <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">echo</span> hello <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  :start  # Put the &#34;start&#34; label on that line of the program
 </span><span style="color:#d88200">  p   # Print the pattern buffer
 </span><span style="color:#d88200">  b start # Continue execution at the :start label
 </span><span style="color:#d88200">&#39;</span> <span style="color:#111">|</span> less
-
 </code></pre></div><p>takes a string and produces an infinite stream of lines containing that
 string.</p>
 <p>Branching to a label as we did bypass all Sed automatic features: it
@@ -1015,17 +904,11 @@ in the source program order.</p>
 command (<code>b</code>) will branch to the end of the program. So Sed will start a
 new cycle. This may be useful to bypass some instructions and thus may
 be used as an alternative to blocks:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">/usb/!b
 </span><span style="color:#d88200">/daemon/!b
 </span><span style="color:#d88200">p
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="conditional-branch">Conditional branch</h3>
 <p>Until now, we’ve seen the so-called unconditional branches, even if the
 term is somewhat misleading in this context since Sed commands are
@@ -1043,8 +926,7 @@ branch. More formally, the test command will branch only if the
 <p>With the test instruction, you can easily perform loops in a Sed
 program. As a practical example, you can use that to pad lines to a
 certain length (something you can’t do with regex only):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Center text</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Center text</span>
 cut -d: -f1 inputfile <span style="color:#111">|</span> sed -Ee <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  :start
 </span><span style="color:#d88200">  s/^(.{,19})$/ \1 /# Pad lines shorter than 20 chars with
@@ -1055,13 +937,11 @@ cut -d: -f1 inputfile <span style="color:#111">|</span> sed -Ee <span style="col
 </span><span style="color:#d88200"># to fix the off-by-one error caused by
 </span><span style="color:#d88200"># odd lines
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>little bit by using the cut command to pre-process the data before
 feeding them to sed.</p>
 <p>We can, however, perform the same task using only sed at the cost of a
 small modification to the program:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat inputfile <span style="color:#111">|</span> sed -Ee <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat inputfile <span style="color:#111">|</span> sed -Ee <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/:.*//   # Remove all but the first field
 </span><span style="color:#d88200">  t start
 </span><span style="color:#d88200">  :start
@@ -1073,11 +953,8 @@ cat inputfile <span style="color:#111">|</span> sed -Ee <span style="color:#d882
 </span><span style="color:#d88200"># to fix the off-by-one error caused by
 </span><span style="color:#d88200"># odd lines
 </span><span style="color:#d88200">&#39;</span>
-
-</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-t start
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">t start
 :start
-
 </code></pre></div><p>instruction that would have been executed anyway. However, if you read
 the definition of the <code>test</code> command attentively, you will see it
 branches only <em>if there was a substitution</em> since the start of the
@@ -1092,8 +969,7 @@ substitution flag since the specific substitution command I used is
 idempotent once it has padded the string to the right length. So one
 extra iteration will not change the result. However, look at that second
 example now:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Classify user accounts based on their login program</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Classify user accounts based on their login program</span>
 cat inputfile <span style="color:#111">|</span> sed -Ene <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/^/login=/
 </span><span style="color:#d88200">  /nologin/s/^/type=SERV /
@@ -1103,7 +979,6 @@ cat inputfile <span style="color:#111">|</span> sed -Ene <span style="color:#d88
 </span><span style="color:#d88200">  :print
 </span><span style="color:#d88200">  s/:.*//p
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>depending on the configured default login program. If you ran it, you’ve
 seen the “SERV” tag as expected. However, no trace of the “USER” tag in
 the output. Why? Because the <code>t print</code> instruction will <em>always</em> branch
@@ -1111,8 +986,7 @@ since whatever was the content of the line, the <em>substitution flag</em> was
 set by the very first substitution command of the program. Once set, the
 flag remains set until a next line is read— or until the next test
 command. And gives us the solution to fix that program:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># Classify user accounts based on the login program</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Classify user accounts based on the login program</span>
 cat inputfile <span style="color:#111">|</span> sed -Ene <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/^/login=/
 </span><span style="color:#d88200">
@@ -1126,9 +1000,6 @@ cat inputfile <span style="color:#111">|</span> sed -Ene <span style="color:#d88
 </span><span style="color:#d88200">  :print
 </span><span style="color:#d88200">  s/:.*//p
 </span><span style="color:#d88200">&#39;</span>
-
-
-
 </code></pre></div><h2 id="handling-verbatim-text">Handling verbatim text</h2>
 <p>Sed is a text editor. A non-interactive one. But a text editor
 nevertheless. It wouldn’t be complete without some facility to insert
@@ -1139,35 +1010,29 @@ can’t avoid it.</p>
 insert (<code>i</code>) or append (<code>a</code>) some literal text to the output follow the
 same specific syntax: the command letter is followed by a backslash, and
 the text to insert start on the next line of the script:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-head -5 inputfile <span style="color:#111">|</span> sed <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">head -5 inputfile <span style="color:#111">|</span> sed <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">1i\
 </span><span style="color:#d88200"># List of user accounts
 </span><span style="color:#d88200">$a\
 </span><span style="color:#d88200"># end
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>backslash:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-head -5 inputfile <span style="color:#111">|</span> sed <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">head -5 inputfile <span style="color:#111">|</span> sed <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">1i\
 </span><span style="color:#d88200"># List of user accounts\
 </span><span style="color:#d88200"># (users 1 through 5)
 </span><span style="color:#d88200">$a\
 </span><span style="color:#d88200"># end
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>initial backslash optional, even when forced in <code>--posix</code> mode. I didn’t
 find anything in the standard that authorizes that alternate syntax. So
 use it at your own risks if portability is a premium (or leave a comment
 if I missed that feature in the specifications!):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># non-POSIX syntax:</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># non-POSIX syntax:</span>
 head -5 inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">1i \# List of user accounts
 </span><span style="color:#d88200">$a\# end
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>optional. Since this is, without any doubt this time, a vendor-specific
 extension to the POSIX specifications, I let you check the manual for
 the version of sed you use to check if it supports that syntax.</p>
@@ -1179,55 +1044,39 @@ now, starting with the change command I didn’t have presented yet.</p>
 cycle just like the <code>d</code> command. The only difference is the user
 provided text is written on the output when the command is executed.</p>
 <p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-change-command.png" alt="The Sed \`change\`command"></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">/systemd/c\
 </span><span style="color:#d88200"># :REMOVED:
 </span><span style="color:#d88200">s/:.*// # This will NOT be applied to the &#34;changed&#34; text
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>text is output only once, when reaching the last line of the range.
 Which somehow makes it an exception to the convention a Sed command is
 repeatedly applied to all lines of its range address:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">19,22c\
 </span><span style="color:#d88200"># :REMOVED:
 </span><span style="color:#d88200">s/:.*// # This will NOT be applied to the &#34;changed&#34; text
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>every line in a range, you have no other choice than wrapping it inside
 a block:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat -n inputfile <span style="color:#111">|</span> sed -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">19,22{c\
 </span><span style="color:#d88200"># :REMOVED:
 </span><span style="color:#d88200">}
 </span><span style="color:#d88200">s/:.*// # This will NOT be applied to the &#34;changed&#34; text
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="the-insert-command">The insert command</h3>
 <p>The insert command (<code>i\</code>) immediately print the user-provided text on
 the output. It does not alter in any way the program flow or buffer
 content.</p>
 <p><img src="https://i2.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-insert-command.png" alt="The Sed \`insert\`command"></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># display the first five user names with a title on the first row</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># display the first five user names with a title on the first row</span>
 sed &lt; inputfile -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">1i\
 </span><span style="color:#d88200">USER NAME
 </span><span style="color:#d88200">s/:.*//
 </span><span style="color:#d88200">5q
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="the-append-command">The append command</h3>
 <p>The append command (<code>a\</code>) queues some text to be displayed when the next
 line of input will be read. The text is output at the end of the current
@@ -1236,18 +1085,12 @@ from the input using either the <code>n</code> or <code>N</code> command.</p>
 <p><img src="https://i1.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-append-command.png" alt="The Sed \`append\`command"></p>
 <p>Same example as above, but inserts this time a footer instead of a
 header:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed &lt; inputfile -e <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed &lt; inputfile -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">5a\
 </span><span style="color:#d88200">USER NAME
 </span><span style="color:#d88200">s/:.*//
 </span><span style="color:#d88200">5q
 </span><span style="color:#d88200">&#39;</span>
-
-
-
-
-
 </code></pre></div><h3 id="the-read-command">The read command</h3>
 <p>There is a fourth command to insert literal content into the output
 stream: the read command (<code>r</code>). It works exactly like the append
@@ -1265,15 +1108,13 @@ and re-read from a temporary file, you may obtain some creative results
 (using a French equivalent of the
 <a href="https://en.wikipedia.org/wiki/Shiritori">Shiritori</a> game as an
 illustration):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#d88200">&#34;Trois p&#39;tits chats&#34;</span> <span style="color:#d88200">&#34;Chapeau d&#39; paille&#34;</span> <span style="color:#d88200">&#34;Paillasson&#34;</span> <span style="color:#111">|</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#d88200">&#34;Trois p&#39;tits chats&#34;</span> <span style="color:#d88200">&#34;Chapeau d&#39; paille&#34;</span> <span style="color:#d88200">&#34;Paillasson&#34;</span> <span style="color:#111">|</span>
 sed -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  r temp
 </span><span style="color:#d88200">  a\
 </span><span style="color:#d88200">  ----
 </span><span style="color:#d88200">  w temp
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>of literal text in the stream output. My last example was mostly for
 fun, but since I mentioned there the write command, that makes a perfect
 transition with the next section where we will see how to write data to
@@ -1296,41 +1137,29 @@ already exists, it is overwritten.</p>
 created anyway. For example, the following Sed program will
 create/overwrite the “output” file, even if the write command is never
 executed:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#111">echo</span> <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">echo</span> <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">q # immediately quit
 </span><span style="color:#d88200">w output  # this command is never executed
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>file. All write commands at the destination of the same file will append
 content to that file (more or less in the same manner as the <code>&gt;&gt;</code> shell
 redirection). :</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed &lt; inputfile -ne <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed &lt; inputfile -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">/:\/bin\/false$/w server
 </span><span style="color:#d88200">/:\/usr\/sbin\/nologin$/w server
 </span><span style="color:#d88200">w output
 </span><span style="color:#d88200">&#39;</span>
 cat server
-
-
-
-
-
 </code></pre></div><h3 id="the-substitution-command-write-flag">The substitution command <code>write</code> flag</h3>
 <p>A long time ago now, we had seen the substitution command has the <code>p</code>
 option for the common use case of printing the pattern space after a
 substitution. In a very similar manner it also has a <code>w</code> option to write
 the pattern space to a file after a substitution:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-sed &lt; inputfile -ne <span style="color:#d88200">&#39;
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sed &lt; inputfile -ne <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">s/:.*\/nologin$//w server
 </span><span style="color:#d88200">s/:.*\/false$//w server
 </span><span style="color:#d88200">&#39;</span>
 cat server
-
-
-
 </code></pre></div><h2 id="comments">Comments</h2>
 <p>I already used them countless times, but I never took the time to
 introduce them formally, so, let’s fix that: like in most programming
@@ -1403,37 +1232,29 @@ myself, I never used it for anything else than for debugging purposes.</p>
 space from a source set to a destination set. It is quite similar to the
 <code>tr</code> command, although more limited.</p>
 <p><img src="https://i0.wp.com/linuxhandbook.com/wp-content/uploads/2018/05//sed-transliterate-command.png" alt="The Sed \`transliterate\`command"></p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># The `y` c0mm4nd 1s for h4x0rz only</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># The `y` c0mm4nd 1s for h4x0rz only</span>
 sed &lt; inputfile -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/:.*//
 </span><span style="color:#d88200">  y/abcegio/48&lt;3610/
 </span><span style="color:#d88200">&#39;</span>
-
 </code></pre></div><p>substitution command syntax, it does not accept any option after the
 replacement string. The transliteration is always global.</p>
 <p>Beware that the transliterate command requires all the characters both
 in the original and destination set to be given verbatim. That means the
 following Sed program does not do what you might think at first sight:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># BEWARE: this doesn&#39;t do what you may think!</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># BEWARE: this doesn&#39;t do what you may think!</span>
 sed &lt; inputfile -e <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/:.*//
 </span><span style="color:#d88200">  y/[a-z]/[A-Z]/
 </span><span style="color:#d88200">&#39;</span>
-
-
-
 </code></pre></div><h2 id="the-last-word">The last word</h2>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
-<span style="color:#75715e"># What will this do?</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># What will this do?</span>
 <span style="color:#75715e"># Hint: the answer is not far away...</span>
 sed -E <span style="color:#d88200">&#39;
 </span><span style="color:#d88200">  s/.*\W(.*)/\1/
 </span><span style="color:#d88200">  h
 </span><span style="color:#d88200">  ${ x; p; }
 </span><span style="color:#d88200">  d&#39;</span> &lt; inputfile
-
 </code></pre></div><p>reached that point, you deserve congratulations, especially if you took
 the time to try the different examples on your system!</p>
 <p>As you’ve seen, Sed is a complex beast, not only because of its sparse
