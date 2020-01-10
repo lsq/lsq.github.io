@@ -19,37 +19,52 @@
   
   <url>
     <loc>https://lsq.github.io/categories/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/categories/demos/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/downloaded/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/ls/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/posts/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lsq.github.io/tags/</loc>
-    <lastmod>2019-12-22T22:13:14+08:00</lastmod>
+    <lastmod>2020-01-10T22:15:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/categories/linux-command-tools/</loc>
+    <lastmod>2020-01-10T20:02:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/tags/vim/</loc>
+    <lastmod>2020-01-10T20:02:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2020-01-10T20:02:42+08:00</lastmod>
   </url>
   
   <url>
@@ -63,18 +78,8 @@
   </url>
   
   <url>
-    <loc>https://lsq.github.io/categories/linux-command-tools/</loc>
-    <lastmod>2019-12-18T21:16:35+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lsq.github.io/posts/git-reset/</loc>
     <lastmod>2019-12-18T21:15:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lsq.github.io/tags/vim/</loc>
-    <lastmod>2019-11-18T14:40:41+00:00</lastmod>
   </url>
   
   <url>
@@ -168,12 +173,12 @@
   </url>
   
   <url>
-    <loc>https://lsq.github.io/tags/golang/</loc>
+    <loc>https://lsq.github.io/categories/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lsq.github.io/categories/golang/</loc>
+    <loc>https://lsq.github.io/tags/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   

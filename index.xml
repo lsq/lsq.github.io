@@ -6,7 +6,7 @@
     <description>Recent content on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Dec 2019 22:13:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 22:15:05 +0800</lastBuildDate>
     
 	<atom:link href="https://lsq.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -43,10 +43,21 @@
     <item>
       <title>Downloaded file list</title>
       <link>https://lsq.github.io/posts/downloaded/</link>
-      <pubDate>Sun, 22 Dec 2019 22:13:14 +0800</pubDate>
+      <pubDate>Fri, 10 Jan 2020 22:15:05 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/downloaded/</guid>
-      <description>commit id f7b6f043e3ed1c147ee21994bf27a28f1595e3d4 Download dvak41dpykg7ub35 This file contains downloaded files update at: Sun Dec 22 22:13:13 CST 2019  dl https://github.</description>
+      <description>commit id bc6641a8f4f558f39fddc866fd6981b54332ed18 Download gghf836w4529r834 This file contains downloaded files update at: Fri Jan 10 22:15:04 CST 2020  dl https://paste.</description>
+    </item>
+    
+    <item>
+      <title>vim中自动格式化代码</title>
+      <link>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</guid>
+      <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
+所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
+  gg 跳转到第一行</description>
     </item>
     
     <item>
