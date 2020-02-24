@@ -487,9 +487,9 @@ sed -n -e <span style="color:#d88200">&#39;/home/217283.cloudwaysapps.com/wgnxdn
 the range is reduced to that line. Actually, if the second address is a
 number less than or equal to the line number of the first selected line
 of the range, only one line will be selected:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,4p&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,4p&#39;</span>
      <span style="color:#ae81ff">4</span>    bd
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,3p&#39;</span>
+<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,3p&#39;</span>
      <span style="color:#ae81ff">4</span>    bd
 </code></pre></div><p>This is somewhat tricky, but the rule given in the previous paragraph
 also applies when the <em>start address is a regular expression</em>. In that
@@ -499,14 +499,14 @@ if the end line number is lower or equal to the start line number, the
 range will be reduced to one line:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># The /b/,4 address will match *three* one-line range</span>
 <span style="color:#75715e"># since each matching line has a line number &gt;= 4</span>
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,4p&#39;</span>
+<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,4p&#39;</span>
      <span style="color:#ae81ff">4</span>  bd
      <span style="color:#ae81ff">5</span>  be
      <span style="color:#ae81ff">6</span>  bf
 
 <span style="color:#75715e"># I let you figure by yourself how many ranges are matched</span>
 <span style="color:#75715e"># by that second example:</span>
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/d/,4p&#39;</span>
+<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/d/,4p&#39;</span>
      <span style="color:#ae81ff">1</span>  ad
      <span style="color:#ae81ff">2</span>  ae
      <span style="color:#ae81ff">3</span>  af
@@ -516,13 +516,13 @@ range will be reduced to one line:</p>
 <em>regular expression</em>. In that case, the first line of the range is <em>not</em>
 tested against the end address, so the range will contain at least two
 lines (except of course if there is not enough input data):</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,/d/p&#39;</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;/b/,/d/p&#39;</span>
      <span style="color:#ae81ff">4</span>    bd
      <span style="color:#ae81ff">5</span>    be
      <span style="color:#ae81ff">6</span>    bf
      <span style="color:#ae81ff">7</span>    <span style="color:#111">cd</span>
 
-<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}</span><span style="color:#f92672">{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,/d/p&#39;</span>
+<span style="color:#111">printf</span> <span style="color:#d88200">&#34;%s\n&#34;</span> <span style="color:#f92672">{</span>a,b,c<span style="color:#f92672">}{</span>d,e,f<span style="color:#f92672">}</span> <span style="color:#111">|</span> cat -n <span style="color:#111">|</span> sed -ne <span style="color:#d88200">&#39;4,/d/p&#39;</span>
      <span style="color:#ae81ff">4</span>    bd
      <span style="color:#ae81ff">5</span>    be
      <span style="color:#ae81ff">6</span>    bf
@@ -1355,11 +1355,12 @@ enough of them, we could publish a compilation of those Sed gems!</p>
       <ul>
         <li><a href="#a-little-bit-of-theory-on-sed">A little bit of theory on Sed</a></li>
         <li><a href="#a-first-look-at-the-sed-execution-model">A first look at the sed execution model</a></li>
-        <li><a href="#the-sed-abstract-machine-a-namethe-sed-abstract-machine-a">The Sed abstract machine </a></li>
+        <li><a href="#the-sed-abstract-machine-a-namethe-sed-abstract-machine-a">The Sed abstract machine <!-- raw HTML omitted --><!-- raw HTML omitted --></a></li>
         <li><a href="#a-more-accurate-sed-execution-model">A more accurate Sed execution model</a></li>
       </ul>
     </li>
-    <li><a href="#the-print-command">The print command</a></li>
+    <li><a href="#the-print-command"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+The print command</a></li>
     <li><a href="#addresses">Addresses</a>
       <ul>
         <li><a href="#line-numbers">Line numbers</a></li>
@@ -1367,32 +1368,38 @@ enough of them, we could publish a compilation of those Sed gems!</p>
         <li><a href="#extended-regular-expressions">Extended regular expressions</a></li>
         <li><a href="#the-bracket-quantifier">The bracket quantifier</a></li>
         <li><a href="#range-addresses">Range addresses</a></li>
-        <li><a href="#a-namecomplementcomplementa">Complement</a></li>
+        <li><a href="#a-namecomplementcomplementa"><!-- raw HTML omitted -->Complement<!-- raw HTML omitted --></a></li>
         <li><a href="#conjunctions">Conjunctions</a></li>
       </ul>
     </li>
-    <li><a href="#the-quit-command">The quit command</a></li>
-    <li><a href="#the-substitution-command">The substitution command</a>
+    <li><a href="#the-quit-command"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+The quit command</a></li>
+    <li><a href="#the-substitution-command"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+The substitution command</a>
       <ul>
         <li><a href="#the-delete-command">The delete command</a></li>
         <li><a href="#the-next-command">The next command</a></li>
       </ul>
     </li>
-    <li><a href="#working-with-the-hold-space">Working with the hold space</a>
+    <li><a href="#working-with-the-hold-space"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+Working with the hold space</a>
       <ul>
         <li><a href="#the-exchange-command">The exchange command</a></li>
         <li><a href="#the-hold-commands">The hold commands</a></li>
         <li><a href="#the-get-command">The get command</a></li>
       </ul>
     </li>
-    <li><a href="#print-delete-and-next-revisited">print, delete and next revisited</a></li>
-    <li><a href="#branching">Branching</a>
+    <li><a href="#print-delete-and-next-revisited"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+print, delete and next revisited</a></li>
+    <li><a href="#branching"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+Branching</a>
       <ul>
         <li><a href="#labels-and-branches">labels and branches</a></li>
         <li><a href="#conditional-branch">Conditional branch</a></li>
       </ul>
     </li>
-    <li><a href="#handling-verbatim-text">Handling verbatim text</a>
+    <li><a href="#handling-verbatim-text"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+Handling verbatim text</a>
       <ul>
         <li><a href="#the-change-command">The change command</a></li>
         <li><a href="#the-insert-command">The insert command</a></li>
@@ -1400,21 +1407,25 @@ enough of them, we could publish a compilation of those Sed gems!</p>
         <li><a href="#the-read-command">The read command</a></li>
       </ul>
     </li>
-    <li><a href="#alternate-output">Alternate output</a>
+    <li><a href="#alternate-output"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+Alternate output</a>
       <ul>
         <li><a href="#the-write-command">The write command</a></li>
-        <li><a href="#the-substitution-command-write-flag">The substitution command write flag</a></li>
+        <li><a href="#the-substitution-command-write-flag">The substitution command <code>write</code> flag</a></li>
       </ul>
     </li>
-    <li><a href="#comments">Comments</a></li>
-    <li><a href="#the-commands-you-will-rarely-need">The commands you will rarely need</a>
+    <li><a href="#comments"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+Comments</a></li>
+    <li><a href="#the-commands-you-will-rarely-need"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+The commands you will rarely need</a>
       <ul>
         <li><a href="#the-line-number-command">The line number command</a></li>
         <li><a href="#the-unambiguous-print-command">The unambiguous print command</a></li>
         <li><a href="#the-transliterate-command">The transliterate command</a></li>
       </ul>
     </li>
-    <li><a href="#the-last-word">The last word</a></li>
+    <li><a href="#the-last-word"><!-- raw HTML omitted --><!-- raw HTML omitted -->
+The last word</a></li>
   </ul>
 </nav>
       </div>
