@@ -6,18 +6,14 @@
     <description>Recent content in ls on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Feb 2020 13:12:31 +0800</lastBuildDate>
-    
-	<atom:link href="https://lsq.github.io/tags/ls/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 10 Nov 2020 11:01:00 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/ls/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Downloaded file list</title>
       <link>https://lsq.github.io/posts/downloaded/</link>
-      <pubDate>Mon, 24 Feb 2020 13:12:31 +0800</pubDate>
+      <pubDate>Tue, 10 Nov 2020 11:01:00 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/downloaded/</guid>
-      <description>commit id 9e03e9b9f9feb0f9f05a954bff04480772baba6e Download wyk1goy5ejb6e20i This file contains downloaded files update at: Mon Feb 24 13:12:23 CST 2020  dl https://p3terx.</description>
+      <description>commit id 8353a7b70415ccf96d441ef817c6bb878c414251 Download 236vtci0laqpdov2 This file contains downloaded files update at: Tue Nov 10 11:00:56 CST 2020  dl https://p3terx.</description>
     </item>
     
   </channel>

@@ -29,7 +29,7 @@
         
         
           <a href="https://lsq.github.io/categories/"
-             class="navbar-item active">
+             class="navbar-item ">
             <i class='icon icon-category'></i>
             分类
           </a>
@@ -98,131 +98,146 @@
 </nav>
 
 
-
-
-
-
-
-
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">shell查找文件中包含中文的行</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Nov 10, 2020
+  </div>
   
-    
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
   
+</div>
 
-  
+        <div class="separator"></div>
+        <div class="single-content">
+          <h2 id="shell查找文件中包含中文的行">shell查找文件中包含中文的行</h2>
+<p><code>awk '/[^!-~]/' file</code></p>
+<p>asscii码从!到~中包含所有的大小写字母，和英文符号</p>
+<p><code>cat file | grep &quot;[^\u4e00-\u9fa5]&quot;</code></p>
 
-  
-
-
-<div id="main" class="taxonomies">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <ul class="taxonomies-items">
-          <h5>
+        </div>
+        
+          <div class="single-tags">
             
-              <i class="icon icon-category"></i>
-              categories
-              <span class="taxonomies-count">
-                  (6)
-                </span>
-            
-          </h5>
-          
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/demos">
-                <i class="icon icon-circle text-danger" style="font-size: 12px;"></i>
-                demos
-                <span class="taxonomies-count">
-                  3
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/development">
-                <i class="icon icon-circle text-success" style="font-size: 12px;"></i>
-                development
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item  active ">
-              <a href="/categories/golang">
-                <i class="icon icon-circle text-warning" style="font-size: 12px;"></i>
-                golang
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/hugo">
-                <i class="icon icon-circle text-info" style="font-size: 12px;"></i>
-                hugo
-                <span class="taxonomies-count">
-                  2
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/linux-command-tools">
-                <i class="icon icon-circle text-primary" style="font-size: 12px;"></i>
-                linux-command-tools
-                <span class="taxonomies-count">
-                  6
-                </span>
-              </a>
-            </li>
-            
-          
-            <li class="taxonomies-item ">
-              <a href="/categories/notes">
-                <i class="icon icon-circle text-danger" style="font-size: 12px;"></i>
-                notes
-                <span class="taxonomies-count">
-                  3
-                </span>
-              </a>
-            </li>
-            
-          
-        </ul>
-      </div>
-      <div class="col-md-9">
-        <div class="taxonomies-content">
-          <div class="taxonomy">
-            <h4 class="taxonomy-title">golang</h4>
-            
-              <a href="https://lsq.github.io/posts/goisforlovers/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Apr 2, 2014
-                </div>
-                (Hu)go Template Primer
-              </a>
-            
-              <a href="https://lsq.github.io/posts/hugoisforlovers/" class="taxonomy-item">
-                <div class="vio-meta">
-                  Apr 2, 2014
-                </div>
-                Getting Started with Hugo
+              <a class="single-tag" href="https://lsq.github.io/tags/bash">
+                #bash
               </a>
             
           </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Jan 10, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/">
+    vim中自动格式化代码
+  </a>
+  <div class="vio-desc post-desc">
+    
+  vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
+所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
+  gg 跳转到第一行......
+
+  </div>
+</div>
         </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 18, 2019
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/git-submodule/">
+    Git submodule错误操作
+  </a>
+  <div class="vio-desc post-desc">
+    
+  IDEA中GIt克隆时报：
+ Server does not allow request for unadvertised object //工程针对子模块最近提交的改动ID......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#shell查找文件中包含中文的行">shell查找文件中包含中文的行</a></li>
+  </ul>
+</nav>
       </div>
     </div>
   </div>
 </div>
-
 
 <footer id="footer">
   <div class="container">

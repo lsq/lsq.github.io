@@ -6,10 +6,17 @@
     <description>Recent content in linux command tools on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Jan 2020 20:02:42 +0800</lastBuildDate>
-    
-	<atom:link href="https://lsq.github.io/categories/linux-command-tools/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 10 Nov 2020 10:51:10 +0800</lastBuildDate><atom:link href="https://lsq.github.io/categories/linux-command-tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell查找文件中包含中文的行</title>
+      <link>https://lsq.github.io/posts/shell%C4%BC%D0%B0%C4%B5/</link>
+      <pubDate>Tue, 10 Nov 2020 10:51:10 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/shell%C4%BC%D0%B0%C4%B5/</guid>
+      <description>shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file
+asscii码从!到~中包含所有的大小写字母，和英文符号
+cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
+    </item>
     
     <item>
       <title>vim中自动格式化代码</title>
