@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2020 11:16:12 +0800</lastBuildDate><atom:link href="https://lsq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Nov 2020 10:51:10 +0800</lastBuildDate><atom:link href="https://lsq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a New Theme</title>
       <link>https://lsq.github.io/posts/creating-a-new-theme/</link>
@@ -26,12 +26,12 @@
     </item>
     
     <item>
-      <title>Downloaded file list</title>
-      <link>https://lsq.github.io/posts/downloaded/</link>
-      <pubDate>Tue, 10 Nov 2020 11:16:12 +0800</pubDate>
+      <title>shell查找文件中包含中文的行</title>
+      <link>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</link>
+      <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/downloaded/</guid>
-      <description>commit id ceb96199cd8c9ef85e17aca81ef6715215228bb1 Download ay85rlksp5g4fu2m This file contains downloaded files update at: Tue Nov 10 11:16:08 CST 2020  dl https://p3terx.</description>
+      <guid>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</guid>
+      <description>windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&amp;ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes  echo -en echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030|iconv &amp;ndash;byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes</description>
     </item>
     
     <item>

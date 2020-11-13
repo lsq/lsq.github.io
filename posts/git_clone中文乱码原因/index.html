@@ -102,17 +102,17 @@
   <div class="row">
     <div class="col-md-9">
       <div class="single series">
-        <h1 class="single-title">Downloaded file list</h1>
+        <h1 class="single-title">shell查找文件中包含中文的行</h1>
         <div class="vio-meta">
   <div class="vio-date">
-    Nov 10, 2020
+    Nov 13, 2020
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/demos">
-          demos
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
         </a>
       
     </div>
@@ -121,21 +121,30 @@
 
         <div class="separator"></div>
         <div class="single-content">
-          <h1 id="commit-id">commit id</h1>
-<h2 id="ceb96199cd8c9ef85e17aca81ef6715215228bb1httpsciappveyorcomprojectlsqblogsrbuilds36221871"><a href="https://ci.appveyor.com/project/lsq/blogsr/builds/36221871">ceb96199cd8c9ef85e17aca81ef6715215228bb1</a></h2>
-<h2 id="download-ay85rlksp5g4fu2mhttpsciappveyorcomapibuildjobsay85rlksp5g4fu2martifactsay85rlksp5g4fu2mzip">Download <a href="https://ci.appveyor.com/api/buildjobs/ay85rlksp5g4fu2m/artifacts/ay85rlksp5g4fu2m.zip">ay85rlksp5g4fu2m</a></h2>
-<h3 id="this-file-contains--downloaded-files">This file contains  downloaded files</h3>
-<h3 id="update-at-tue-nov-10-111608-cst-2020">update at: Tue Nov 10 11:16:08 CST 2020</h3>
-<ul>
-<li>dl <a href="https://p3terx.com/archives/use-aria2-under-windows.html">https://p3terx.com/archives/use-aria2-under-windows.html</a> #</li>
-</ul>
+          <h2 id="windwos-系统中git-clone-下来文件名乱码原因">windwos 系统中git clone 下来文件名乱码原因</h2>
+<ol>
+<li>github上的文件名原来的编码就utf-8编码</li>
+<li>git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。
+pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes</li>
+</ol>
+<h1 id="echo--en-echo--en-texlive安装包下载地址iconv---byte-substx2x--t-utf-8--f-gb18030iconv---byte-substx2x--f-utf-8--t-gb18030">echo -en <code>echo -en &quot;texlive安装包下载地址&quot;|iconv --byte-subst=&quot;\x%2x&quot; -t utf-8 -f gb18030</code>|iconv &ndash;byte-subst=&quot;\x%2x&quot; -f utf-8 -t gb18030</h1>
+<p>texlive安装包下载地▒\x80
+pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes</p>
+<h1 id="printf-echo--en-echo--en-texlive安装包下载地址iconv---byte-substx2x--t-utf-8--f-gb18030iconv---byte-substx2x--f-utf-8--t-gb18030">printf $(echo -en <code>echo -en &quot;texlive安装包下载地址&quot;|iconv --byte-subst=&quot;\x%2x&quot; -t utf-8 -f gb18030</code>|iconv &ndash;byte-subst=&quot;\x%2x&quot; -f utf-8 -t gb18030)</h1>
+<p>texlive安装包下载地址</p>
+<h1 id="echo--en-texlive安装包下载地址xxd">echo -en &ldquo;texlive安装包下载地址&rdquo;|xxd</h1>
+<p>00000000: 7465 786c 6976 65e5 ae89 e8a3 85e5 8c85  texlive&hellip;&hellip;&hellip;
+00000010: e4b8 8be8 bdbd e59c b0e5 9d80            &hellip;&hellip;&hellip;&hellip;
+pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes</p>
+<h1 id="echo--en-0000000-e5ae-xxd--r-iconv--f-gb18030--t-utf-8">echo -en &ldquo;0000000: e5ae&rdquo; |xxd -r |iconv -f gb18030 -t utf-8</h1>
+<p>瀹</p>
 
         </div>
         
           <div class="single-tags">
             
-              <a class="single-tag" href="https://lsq.github.io/tags/ls">
-                #ls
+              <a class="single-tag" href="https://lsq.github.io/tags/git%20xxd%20iconv%20printf">
+                #git xxd iconv printf
               </a>
             
           </div>
@@ -162,26 +171,62 @@
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Jun 23, 2019
+    Nov 10, 2020
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/demos">
-          demos
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/note-4/">
-    Note 4
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/">
+    shell查找文件中包含中文的行
   </a>
   <div class="vio-desc post-desc">
     
-  This is a demo test Dim as arr as Integer, brr as String 上面语句用来定议变量......
+  shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file
+asscii码从!到~中包含所有的大小写字母，和英文符号
+cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
+
+  </div>
+</div>
+        </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Jan 10, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/">
+    vim中自动格式化代码
+  </a>
+  <div class="vio-desc post-desc">
+    
+  vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
+所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
+  gg 跳转到第一行......
 
   </div>
 </div>
@@ -200,13 +245,7 @@
         <h6>目录</h6>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#ceb96199cd8c9ef85e17aca81ef6715215228bb1httpsciappveyorcomprojectlsqblogsrbuilds36221871"><a href="https://ci.appveyor.com/project/lsq/blogsr/builds/36221871">ceb96199cd8c9ef85e17aca81ef6715215228bb1</a></a></li>
-    <li><a href="#download-ay85rlksp5g4fu2mhttpsciappveyorcomapibuildjobsay85rlksp5g4fu2martifactsay85rlksp5g4fu2mzip">Download <a href="https://ci.appveyor.com/api/buildjobs/ay85rlksp5g4fu2m/artifacts/ay85rlksp5g4fu2m.zip">ay85rlksp5g4fu2m</a></a>
-      <ul>
-        <li><a href="#this-file-contains--downloaded-files">This file contains  downloaded files</a></li>
-        <li><a href="#update-at-tue-nov-10-111608-cst-2020">update at: Tue Nov 10 11:16:08 CST 2020</a></li>
-      </ul>
-    </li>
+    <li><a href="#windwos-系统中git-clone-下来文件名乱码原因">windwos 系统中git clone 下来文件名乱码原因</a></li>
   </ul>
 </nav>
       </div>

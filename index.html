@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.78.1" />
+	<meta name="generator" content="Hugo 0.78.2" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hugo blog</title>
@@ -141,26 +141,26 @@
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Nov 10, 2020
+    Nov 13, 2020
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/demos">
-          demos
+        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
+          linux command tools
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/downloaded/">
-    Downloaded file list
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/">
+    shell查找文件中包含中文的行
   </a>
   <div class="vio-desc post-desc">
     
-  commit id ceb96199cd8c9ef85e17aca81ef6715215228bb1 Download ay85rlksp5g4fu2m This file contains downloaded files update at: Tue Nov 10 11:16:08 CST 2020  dl https://p3terx.......
+  windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到–byte-subst参数，然后再用printf或者echo -e来重新编码。 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes  echo -en echo -en &#34;texlive安装包下载地址&#34;|iconv --byte-subst=&#34;\x%2x&#34; -t utf-8 -f gb18030|iconv –byte-subst=&#34;\x%2x&#34; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes......
 
   </div>
 </div>
