@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Nov 2020 10:51:10 +0800</lastBuildDate><atom:link href="https://lsq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Apr 2021 09:37:25 +0800</lastBuildDate><atom:link href="https://lsq.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a New Theme</title>
       <link>https://lsq.github.io/posts/creating-a-new-theme/</link>
@@ -26,12 +26,40 @@
     </item>
     
     <item>
+      <title>power query查询</title>
+      <link>https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/</link>
+      <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/</guid>
+      <description>背景 去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示后1个月左右财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢​. 常见做法有：
+ 一个一个下载打开查找 一个一个下载，然后用VBA（遍历循环下载工作薄，提取符合内容） 爬虫人力资源网站，下载所有表格，Power Query合并查询 直接爬虫人力资源网站直接读取表格内容，抓取符合内容 其他更好的方法（欢迎指导）  方法3过年在家空闲时间已经实现，鉴于时间没有整理成文，现记录以供同仁相互切磋；方法3主要记录Power Query的用法，至于Spider内容有兴趣的可以相互学习。</description>
+    </item>
+    
+    <item>
+      <title>pdf去除空白边及转为png</title>
+      <link>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</link>
+      <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</guid>
+      <description>Intro These code are to export a chart from Excel to .</description>
+    </item>
+    
+    <item>
+      <title>vba导出pdf或者png</title>
+      <link>https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/</link>
+      <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/</guid>
+      <description>Intro These code are to export a chart from Excel to .</description>
+    </item>
+    
+    <item>
       <title>shell查找文件中包含中文的行</title>
       <link>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</link>
       <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</guid>
-      <description>windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&amp;ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes  echo -en echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030|iconv &amp;ndash;byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes</description>
+      <description>windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&amp;ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。  pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes # echo -en `echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030`|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes # printf $(echo -en `echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030`|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030) texlive安装包下载地址 # echo -en &amp;quot;texlive安装包下载地址&amp;quot;|xxd 00000000: 7465 786c 6976 65e5 ae89 e8a3 85e5 8c85 texlive.</description>
     </item>
     
     <item>

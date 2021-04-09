@@ -1,0 +1,291 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugo blog</title>
+  <link rel="icon" type="image/png" href="https://lsq.github.io/images/favicon.png">
+  <link href="//at.alicdn.com/t/font_1022901_2zjuy2ajfyt.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  
+  
+  <link href="/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-top" id="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          
+          <img class="logo" src="https://16pixel.github.io/cherry/images/logo.png" width="42" height="42" alt="logo">
+      </a>
+      <div class="navbar-burger" id="navbar-burger">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-start">
+        
+        
+          <a href="https://lsq.github.io/categories/"
+             class="navbar-item ">
+            <i class='icon icon-category'></i>
+            分类
+          </a>
+        
+          <a href="https://lsq.github.io/tags/"
+             class="navbar-item ">
+            <i class='icon icon-tag'></i>
+            标签
+          </a>
+        
+          <a href="https://lsq.github.io/series/"
+             class="navbar-item ">
+            <i class='icon icon-post'></i>
+            系列
+          </a>
+        
+          <a href="https://lsq.github.io/about/"
+             class="navbar-item ">
+            
+            关于
+          </a>
+        
+          <a href="https://lsq.github.io/posts/goisforlovers/"
+             class="navbar-item ">
+            
+            (Hu)go Template Primer
+          </a>
+        
+          <a href="https://lsq.github.io/posts/hugoisforlovers/"
+             class="navbar-item ">
+            
+            Getting Started with Hugo
+          </a>
+        
+          <a href="https://lsq.github.io"
+             class="navbar-item ">
+            
+            tutorials
+          </a>
+        
+      </div>
+      <div class="navbar-end">
+        
+          <div class="navbar-item btn-search" data-target="#modal-search">
+            <i class="icon icon-search"></i>
+            搜索
+          </div>
+        
+        <div class="modal" id="modal-search">
+          <div class="modal-content">
+            <header class="modal-header" style="padding-right: 40px">
+              <div class="form-group" style="margin-bottom: 0">
+                <div class="form-field form-icon-left">
+                  <input type="search" class="form-control" placeholder="搜索" id="search">
+                  <i class="icon icon-search form-icon"></i>
+                </div>
+              </div>
+              <div class="modal-close">×</div>
+            </header>
+            <section class="modal-body" id="search-content"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">vba导出pdf或者png</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+        <div class="separator"></div>
+        <div class="single-content">
+          <h2 id="intro">Intro</h2>
+<p>These code are to export a chart from Excel to .png and .pdf extensions.</p>
+<h2 id="how-to-proceed">How to proceed</h2>
+<p>go to <strong>Tools &gt; Macro &gt; Visual Basic Editor</strong>.</p>
+<ol>
+<li>In the new window, select <strong>Insert &gt; Module</strong> and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or  in the blank page.</li>
+<li>Then go to <strong>File &gt; Close &gt; Return to Microsoft Excel</strong></li>
+<li>Select a chart that you want to export</li>
+<li><strong>Tools &gt; Macro &gt; Macros</strong>, then select <em>SaveSelectedChartAsPDF</em> or <em>SaveSelectedChartAsImage</em> and press <em>Execute</em>.</li>
+<li>Check the image at the folder (current directory).</li>
+</ol>
+<h3 id="to-export-chart-as-pdf">To export chart as PDF</h3>
+<pre><code>Sub SaveSelectedChartAsPDF()
+    With ActiveChart.PageSetup
+        .Orientation = xlLandscape
+        .FitToPagesTall = 1
+        .FitToPagesWide = 1
+        .LeftMargin = 0
+        .RightMargin = 0
+        .BottomMargin = 0
+        .TopMargin = 0
+    End With
+    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
+End Sub
+</code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
+<pre><code>Sub SaveSelectedChartAsImage()
+    ActiveChart.Export &quot;figure.png&quot;
+End Sub```
+
+D:\Program Files\ImageMagick-7.0.10-Q16-HDRI;c:\lua541;D:\Program Files\inkscape\bin;D:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;D:\Program Files\gs\gs9.53.3\bin;C:\Program Files\7-Zip;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\航天信息财税平台\newslib;C:\msys;4\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\税务证书应用客户端;d:\Progr;m Files (x86)\LyX 2.3\Perl\bin;D:\Program Files (x86)\Calibre2\;D:\texlive\2020\bin\win64;D:\texlive\2020\bin\win32;D:\Program Files\qemu;C:\Program Files\pdf2svg;C:\Program Files\Pandoc\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\
+
+gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
+</code></pre>
+        </div>
+        
+          <div class="single-tags">
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/vba">
+                #vba
+              </a>
+            
+          </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/">
+    pdf去除空白边及转为png
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Intro These code are to export a chart from Excel to .......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#how-to-proceed">How to proceed</a>
+      <ul>
+        <li><a href="#to-export-chart-as-pdf">To export chart as PDF</a></li>
+        <li><a href="#to-export-chart-as-png">To export chart as PNG</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+    
+    
+    
+      
+    
+    © 2019 - 2021
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.4.6/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/smooth-scroll/15.2.0/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+
+<script src="/assets/app.min.js"></script>
+<script>
+  
+  const search = instantsearch({
+    appId: '2KA3KB1R4W',
+    apiKey: '23b12e7862db67f7211e1016361bbe1c',
+    indexName: 'often9',
+  });
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search',
+      magnifier: false,
+      wrapInput: false,
+      reset: false,
+    })
+  );
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#search-content',
+      templates: {
+        item: function (data) {
+          return (
+            '<a href="' + "/" + data.uri + '" class="search-hit-item">' +
+            data._highlightResult.title.value +
+            '</a>'
+          );
+        },
+      },
+    })
+  );
+  search.start();
+</script>
+</body>
+</html>

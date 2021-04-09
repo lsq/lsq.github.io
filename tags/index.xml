@@ -6,13 +6,103 @@
     <description>Recent content in Tags on Hugo blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Nov 2020 10:51:10 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Apr 2021 09:37:25 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>git xxd iconv printf</title>
-      <link>https://lsq.github.io/tags/git-xxd-iconv-printf/</link>
+      <title>power query</title>
+      <link>https://lsq.github.io/tags/power-query/</link>
+      <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/power-query/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruby</title>
+      <link>https://lsq.github.io/tags/ruby/</link>
+      <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spider</title>
+      <link>https://lsq.github.io/tags/spider/</link>
+      <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/spider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>财务</title>
+      <link>https://lsq.github.io/tags/%E8%B4%A2%E5%8A%A1/</link>
+      <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/%E8%B4%A2%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pdf</title>
+      <link>https://lsq.github.io/tags/pdf/</link>
+      <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tex</title>
+      <link>https://lsq.github.io/tags/tex/</link>
+      <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/tex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vba</title>
+      <link>https://lsq.github.io/tags/vba/</link>
+      <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/vba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://lsq.github.io/tags/git/</link>
       <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
       
-      <guid>https://lsq.github.io/tags/git-xxd-iconv-printf/</guid>
+      <guid>https://lsq.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iconv</title>
+      <link>https://lsq.github.io/tags/iconv/</link>
+      <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/iconv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>printf</title>
+      <link>https://lsq.github.io/tags/printf/</link>
+      <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/printf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>xxd</title>
+      <link>https://lsq.github.io/tags/xxd/</link>
+      <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/tags/xxd/</guid>
       <description></description>
     </item>
     
@@ -31,15 +121,6 @@
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
       
       <guid>https://lsq.github.io/tags/vim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://lsq.github.io/tags/git/</link>
-      <pubDate>Wed, 18 Dec 2019 21:16:35 +0800</pubDate>
-      
-      <guid>https://lsq.github.io/tags/git/</guid>
       <description></description>
     </item>
     

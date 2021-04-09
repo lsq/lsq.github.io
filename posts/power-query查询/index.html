@@ -1,0 +1,390 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugo blog</title>
+  <link rel="icon" type="image/png" href="https://lsq.github.io/images/favicon.png">
+  <link href="//at.alicdn.com/t/font_1022901_2zjuy2ajfyt.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  
+  
+  <link href="/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-top" id="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          
+          <img class="logo" src="https://16pixel.github.io/cherry/images/logo.png" width="42" height="42" alt="logo">
+      </a>
+      <div class="navbar-burger" id="navbar-burger">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-start">
+        
+        
+          <a href="https://lsq.github.io/categories/"
+             class="navbar-item ">
+            <i class='icon icon-category'></i>
+            分类
+          </a>
+        
+          <a href="https://lsq.github.io/tags/"
+             class="navbar-item ">
+            <i class='icon icon-tag'></i>
+            标签
+          </a>
+        
+          <a href="https://lsq.github.io/series/"
+             class="navbar-item ">
+            <i class='icon icon-post'></i>
+            系列
+          </a>
+        
+          <a href="https://lsq.github.io/about/"
+             class="navbar-item ">
+            
+            关于
+          </a>
+        
+          <a href="https://lsq.github.io/posts/goisforlovers/"
+             class="navbar-item ">
+            
+            (Hu)go Template Primer
+          </a>
+        
+          <a href="https://lsq.github.io/posts/hugoisforlovers/"
+             class="navbar-item ">
+            
+            Getting Started with Hugo
+          </a>
+        
+          <a href="https://lsq.github.io"
+             class="navbar-item ">
+            
+            tutorials
+          </a>
+        
+      </div>
+      <div class="navbar-end">
+        
+          <div class="navbar-item btn-search" data-target="#modal-search">
+            <i class="icon icon-search"></i>
+            搜索
+          </div>
+        
+        <div class="modal" id="modal-search">
+          <div class="modal-content">
+            <header class="modal-header" style="padding-right: 40px">
+              <div class="form-group" style="margin-bottom: 0">
+                <div class="form-field form-icon-left">
+                  <input type="search" class="form-control" placeholder="搜索" id="search">
+                  <i class="icon icon-search form-icon"></i>
+                </div>
+              </div>
+              <div class="modal-close">×</div>
+            </header>
+            <section class="modal-body" id="search-content"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">power query查询</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Apr 9, 2021
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+        <div class="separator"></div>
+        <div class="single-content">
+          <h2 id="背景">背景</h2>
+<p>去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示后1个月左右财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢​.
+<img src="./ygdx/list.png" alt="list">
+常见做法有：</p>
+<ol>
+<li>一个一个下载打开查找</li>
+<li>一个一个下载，然后用VBA（遍历循环下载工作薄，提取符合内容）</li>
+<li>爬虫人力资源网站，下载所有表格，Power Query合并查询</li>
+<li>直接爬虫人力资源网站直接读取表格内容，抓取符合内容</li>
+<li>其他更好的方法（欢迎指导）</li>
+</ol>
+<p><strong>方法3</strong>过年在家空闲时间已经实现，鉴于时间没有整理成文，现记录以供同仁相互切磋；方法3主要记录Power Query的用法，至于Spider内容有兴趣的可以相互学习。</p>
+<h2 id="数据处理">数据处理</h2>
+<h4 id="工具准备">工具准备</h4>
+<ol>
+<li><strong>RubyInstaller</strong>安装</li>
+<li><strong>Gems</strong>安装</li>
+<li><strong>Excel 2016</strong>及以上版本（低版本不包含Power Query）</li>
+</ol>
+<h5 id="step-1--rubyinstaller安装">STEP 1.  RubyInstaller安装</h5>
+<p>RubyInstaller可以在官网上下载，为方便更快下载，可以由<a href="https://mirrors.sjtug.sjtu.edu.cn/">上海交通大学软件源镜像服务</a>提供所有镜像<a href="https://mirror.sjtu.edu.cn/github-release/oneclick/rubyinstaller2/releases/download/?mirror_intel_list">rubyinstaller2</a>存档中下载，或者通过<a href="https://rubyinstaller.cn/downloads/">rubyinstaller.cn</a>下载<strong>Ruby+Devkit 2.7.X</strong>或者<strong>Ruby+Devkit 3.0.X</strong></p>
+<p><img src="./ygdx/rubyinstaller.png" alt="rubyinstaller"></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h5 id="step-2-gems安装">STEP 2. Gems安装</h5>
+<ol>
+<li>更新gem</li>
+</ol>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem update --system
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+gem sources -l
+https://gems.ruby-china.com
+<span style="color:#75715e"># 确保只有 gems.ruby-china.com</span>
+</code></pre></div><ol start="2">
+<li>安装依赖</li>
+</ol>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem install mechanize
+git clone https://github.com/songjiz/aria2-ruby
+<span style="color:#111">cd</span> aria2-ruby
+gem build aria2.gemspec
+gem install *.gem
+</code></pre></div><ol start="3">
+<li>安装aria2多线程加速下载工具</li>
+</ol>
+<p>配置文件可以参考<a href="https://github.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
+<p>编译参考<a href="https://github.com/myfreeer/aria2-build-msys2">aria2-build-msys2</a>、<a href="https://github.com/q3aql/aria2-static-builds">aria2-static-builds</a>、<a href="https://github.com/P3TERX/Aria2-Pro-Core">Aria2-Pro-Core</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/P3TERX/aria2.sh
+<span style="color:#111">cd</span> aria2.sh
+bash aria2.sh
+git clone https://github.com/P3TERX/aria2.conf
+mv aria2.conf ~/.aria2
+aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
+</code></pre></div><h4 id="下载表格">下载表格</h4>
+<p>主要是爬虫人力资源网站公示信息中包含“以工代训”链接，并打开链接下载公示表格</p>
+<p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/tree/master/content/postsygdx/getFiles.rb">下载链接</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
+<span style="color:#75715e"># 大概10s左右下载完</span>
+</code></pre></div><p><img src="./ygdx/getFiles.png" alt="getFiles"></p>
+<p><img src="./ygdx/ruby.png" alt="ruby"><img src="./ygdx/aria2.png" alt="aria2ng"><img src="./ygdx/fileList.png" alt="fileList"></p>
+<h4 id="power-query-查询数据">Power Query 查询数据</h4>
+<h5 id="查询代码">查询代码</h5>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#00a8c8">let</span>
+    <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">查询文件夹目录，根据你存放的位置修改</span>
+    <span style="color:#960050;background-color:#1e0010">源</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">Folder</span><span style="color:#f92672">.</span><span style="color:#00a8c8">Files</span><span style="color:#111">(</span><span style="color:#d88200">&#34;C:</span><span style="color:#8045ff">\</span><span style="color:#960050;background-color:#1e0010">Use</span><span style="color:#8045ff">r</span><span style="color:#d88200">s</span><span style="color:#8045ff">\</span><span style="color:#960050;background-color:#1e0010">pc</span><span style="color:#8045ff">\</span><span style="color:#d88200">Desktop</span><span style="color:#8045ff">\</span><span style="color:#960050;background-color:#1e0010">项目补贴资料</span><span style="color:#8045ff">\</span><span style="color:#d88200">巴达木2020年以工代补补贴资料</span><span style="color:#8045ff">\</span><span style="color:#960050;background-color:#1e0010">公示</span><span style="color:#8045ff">&#34;</span><span style="color:#d88200">),
+</span><span style="color:#d88200">    //pa = Table.AddColumn(源, &#34;</span><span style="color:#960050;background-color:#1e0010">路径</span><span style="color:#d88200">&#34;, each [Folder Path] &amp; [Name]),
+</span><span style="color:#d88200">    //sourcetable = Table.AddColumn(pa, &#34;</span><span style="color:#00a8c8">SourceTable</span><span style="color:#d88200">&#34;, each Web.Page(File.Contents([路径]))),
+</span><span style="color:#d88200">    sourcetable = Table.AddColumn(源, &#34;</span><span style="color:#00a8c8">SourceTable</span><span style="color:#d88200">&#34;, each Web.Page([Content])),    
+</span><span style="color:#d88200">    #&#34;</span><span style="color:#960050;background-color:#1e0010">展开的“</span><span style="color:#00a8c8">SourceTable</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#d88200">&#34; = Table.ExpandTableColumn(sourcetable, &#34;</span><span style="color:#00a8c8">SourceTable</span><span style="color:#d88200">&#34;, {&#34;</span><span style="color:#00a8c8">Caption</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Source</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">ClassName</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Id</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Data</span><span style="color:#d88200">&#34;}, {&#34;</span><span style="color:#00a8c8">Caption</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Source</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">ClassName</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Id</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Data</span><span style="color:#d88200">&#34;}),
+</span><span style="color:#d88200">    筛选的行 = Table.SelectRows(#&#34;</span><span style="color:#960050;background-color:#1e0010">展开的“</span><span style="color:#00a8c8">SourceTable</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#d88200">&#34;, each ([Source] = &#34;</span><span style="color:#00a8c8">Table</span><span style="color:#d88200">&#34;)),
+</span><span style="color:#d88200">    pici = Table.AddColumn(筛选的行, &#34;</span><span style="color:#960050;background-color:#1e0010">批次</span><span style="color:#d88200">&#34;, each [a=[Data]{0}[Column1]][a]),
+</span><span style="color:#d88200">    #&#34;</span><span style="color:#960050;background-color:#1e0010">展开的“</span><span style="color:#00a8c8">Data</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#d88200">&#34; = Table.ExpandTableColumn(pici, &#34;</span><span style="color:#00a8c8">Data</span><span style="color:#d88200">&#34;, {&#34;</span><span style="color:#00a8c8">Column1</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column2</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column3</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column4</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column5</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column6</span><span style="color:#d88200">&#34;}, {&#34;</span><span style="color:#00a8c8">Column1</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column2</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column3</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column4</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column5</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column6</span><span style="color:#d88200">&#34;}),
+</span><span style="color:#d88200">    删除的其他列 = Table.SelectColumns(#&#34;</span><span style="color:#960050;background-color:#1e0010">展开的“</span><span style="color:#00a8c8">Data</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#d88200">&#34;,{&#34;</span><span style="color:#00a8c8">Name</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column1</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column2</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column3</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column4</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">批次</span><span style="color:#d88200">&#34;}),
+</span><span style="color:#d88200">    重排序的列 = Table.ReorderColumns(删除的其他列,{&#34;</span><span style="color:#00a8c8">Name</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">批次</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column1</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column2</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column3</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#00a8c8">Column4</span><span style="color:#d88200">&#34;}),
+</span><span style="color:#d88200">    筛选的行1 = Table.SelectRows(重排序的列, each ([Column1] &lt;&gt; &#34;</span><span style="color:#960050;background-color:#1e0010">序号</span><span style="color:#d88200">&#34; and [Column1] &lt;&gt; &#34;</span><span style="color:#960050;background-color:#1e0010">合计</span><span style="color:#d88200">&#34; and Text.Start([Column1],2) &lt;&gt; &#34;</span><span style="color:#960050;background-color:#1e0010">宝安</span><span style="color:#d88200">&#34;)),
+</span><span style="color:#d88200">    重命名的列 = Table.RenameColumns(筛选的行1,{{&#34;</span><span style="color:#00a8c8">Column1</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">序号</span><span style="color:#d88200">&#34;}, {&#34;</span><span style="color:#00a8c8">Column2</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">单位名称</span><span style="color:#d88200">&#34;},{&#34;</span><span style="color:#00a8c8">Column3</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">公示人次</span><span style="color:#d88200">&#34;},{&#34;</span><span style="color:#00a8c8">Column4</span><span style="color:#d88200">&#34;, &#34;</span><span style="color:#960050;background-color:#1e0010">公示金额（元）</span><span style="color:#d88200">&#34;}})
+</span><span style="color:#d88200">in
+</span><span style="color:#d88200">    重命名的列
+</span></code></pre></div><h5 id="查询操作步骤">查询操作步骤</h5>
+<p>STEP <strong>1</strong>. 新建一个空白工作薄“公示查询”，打开并切换到《<strong>数据</strong>》标签页面，然后选择”<strong>新建查询</strong>“》”<strong>其他源</strong>“》”<strong>空白查询</strong>“，打开”<strong>高级编辑器</strong>“</p>
+<p><img src="./ygdx/bl_query.png" alt="qeury1">
+<img src="./ygdx/blank_query1.png" alt="qeury2"></p>
+<p>STEP <strong>2</strong>.全选并删除默认查询代码，然后粘贴<strong>查询代码</strong>，最后点击”<strong>完成</strong>“，就会出现查询结果，此步骤<strong>注意</strong>个改查询代码中的目录位置(<strong>源</strong>中的路径)
+<img src="./ygdx/query_code.png" alt="qeury3">
+<img src="./ygdx/query_process.png" alt="qeury4"></p>
+<p>STEP <strong>3</strong>.点击左上角“<strong>关闭并上载</strong>”下的<strong>箭头</strong>，选择“<strong>关闭并上载至&hellip;</strong>”选项，选择“<strong>现有工作表</strong>”，“<strong>加载</strong>”后就是最终结果。
+<img src="./ygdx/save_qr.png" alt="qeury5">
+<img src="./ygdx/save_query.png" alt="qeury6">
+<img src="./ygdx/query_result.png" alt="qeury7"></p>
+
+        </div>
+        
+          <div class="single-tags">
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/spider">
+                #spider
+              </a>
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/ruby">
+                #ruby
+              </a>
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/power%20query">
+                #power query
+              </a>
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/%e8%b4%a2%e5%8a%a1">
+                #财务
+              </a>
+            
+          </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/">
+    pdf去除空白边及转为png
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Intro These code are to export a chart from Excel to .......
+
+  </div>
+</div>
+        </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/">
+    vba导出pdf或者png
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Intro These code are to export a chart from Excel to .......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#数据处理">数据处理</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+    
+    
+    
+      
+    
+    © 2019 - 2021
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.4.6/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/smooth-scroll/15.2.0/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+
+<script src="/assets/app.min.js"></script>
+<script>
+  
+  const search = instantsearch({
+    appId: '2KA3KB1R4W',
+    apiKey: '23b12e7862db67f7211e1016361bbe1c',
+    indexName: 'often9',
+  });
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search',
+      magnifier: false,
+      wrapInput: false,
+      reset: false,
+    })
+  );
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#search-content',
+      templates: {
+        item: function (data) {
+          return (
+            '<a href="' + "/" + data.uri + '" class="search-hit-item">' +
+            data._highlightResult.title.value +
+            '</a>'
+          );
+        },
+      },
+    })
+  );
+  search.start();
+</script>
+</body>
+</html>

@@ -1,0 +1,2953 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+  <meta name="Generator" content="WPS Office ET"/>
+  <!--[if gte mso 9]>
+   <xml>
+    <o:DocumentProperties>
+     <o:Created>2021-02-01T18:51:22</o:Created>
+     <o:LastAuthor>Administrator</o:LastAuthor>
+     <o:LastSaved>2021-02-01T19:01:42</o:LastSaved>
+    </o:DocumentProperties>
+    <o:CustomDocumentProperties>
+     <o:KSOProductBuildVer dt:dt="string">2052-11.8.2.8696</o:KSOProductBuildVer>
+    </o:CustomDocumentProperties>
+   </xml>
+  <![endif]-->
+  <style>
+<!-- @page
+	{margin:1.00in 0.75in 1.00in 0.75in;
+	mso-header-margin:0.50in;
+	mso-footer-margin:0.50in;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+.font0
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font1
+	{color:#000000;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font2
+	{color:#000000;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font3
+	{color:#000000;
+	font-size:18.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font4
+	{color:#000000;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Arial Unicode MS";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font5
+	{color:#000000;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Arial Unicode MS";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font6
+	{color:#0000FF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font7
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font8
+	{color:#9C0006;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font9
+	{color:#006100;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font10
+	{color:#3F3F76;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font11
+	{color:#9C6500;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font12
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font13
+	{color:#800080;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font14
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font15
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font16
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font17
+	{color:#44546A;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font18
+	{color:#7F7F7F;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font19
+	{color:#44546A;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font20
+	{color:#44546A;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:134;}
+.font21
+	{color:#3F3F3F;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font22
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font23
+	{color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.font24
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"宋体";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;}
+.style0
+	{mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:"常规";
+	mso-style-id:0;}
+.style16
+	{mso-number-format:"_ \\¥* \#\,\#\#0_ \;_ \\¥* \\-\#\,\#\#0_ \;_ \\¥* \0022-\0022_ \;_ \@_ ";
+	mso-style-name:"货币[0]";
+	mso-style-id:7;}
+.style17
+	{mso-pattern:auto none;
+	background:#EDEDED;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 3";}
+.style18
+	{mso-pattern:auto none;
+	background:#FFCC99;
+	color:#3F3F76;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #7F7F7F;
+	mso-style-name:"输入";}
+.style19
+	{mso-number-format:"_ \\¥* \#\,\#\#0\.00_ \;_ \\¥* \\-\#\,\#\#0\.00_ \;_ \\¥* \0022-\0022??_ \;_ \@_ ";
+	mso-style-name:"货币";
+	mso-style-id:4;}
+.style20
+	{mso-number-format:"_ * \#\,\#\#0_ \;_ * \\-\#\,\#\#0_ \;_ * \0022-\0022_ \;_ \@_ ";
+	mso-style-name:"千位分隔[0]";
+	mso-style-id:6;}
+.style21
+	{mso-pattern:auto none;
+	background:#DBDBDB;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 3";}
+.style22
+	{mso-pattern:auto none;
+	background:#FFC7CE;
+	color:#9C0006;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"差";}
+.style23
+	{mso-number-format:"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
+	mso-style-name:"千位分隔";
+	mso-style-id:3;}
+.style24
+	{mso-pattern:auto none;
+	background:#C9C9C9;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 3";}
+.style25
+	{color:#0000FF;
+	font-size:11.0pt;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-style-name:"超链接";
+	mso-style-id:8;}
+.style26
+	{mso-number-format:"0%";
+	mso-style-name:"百分比";
+	mso-style-id:5;}
+.style27
+	{color:#800080;
+	font-size:11.0pt;
+	text-decoration:underline;
+	text-underline-style:single;
+	font-family:宋体;
+	mso-style-name:"已访问的超链接";
+	mso-style-id:9;}
+.style28
+	{mso-pattern:auto none;
+	background:#FFFFCC;
+	border:.5pt solid #B2B2B2;
+	mso-style-name:"注释";}
+.style29
+	{mso-pattern:auto none;
+	background:#F4B084;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 2";}
+.style30
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	mso-style-name:"标题 4";}
+.style31
+	{color:#FF0000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"警告文本";}
+.style32
+	{color:#44546A;
+	font-size:18.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	mso-style-name:"标题";}
+.style33
+	{color:#7F7F7F;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:italic;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"解释性文本";}
+.style34
+	{color:#44546A;
+	font-size:15.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #5B9BD5;
+	mso-style-name:"标题 1";}
+.style35
+	{color:#44546A;
+	font-size:13.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #5B9BD5;
+	mso-style-name:"标题 2";}
+.style36
+	{mso-pattern:auto none;
+	background:#9BC2E6;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 1";}
+.style37
+	{color:#44546A;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border-bottom:1.0pt solid #ACCCEA;
+	mso-style-name:"标题 3";}
+.style38
+	{mso-pattern:auto none;
+	background:#FFD966;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 4";}
+.style39
+	{mso-pattern:auto none;
+	background:#F2F2F2;
+	color:#3F3F3F;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #3F3F3F;
+	mso-style-name:"输出";}
+.style40
+	{mso-pattern:auto none;
+	background:#F2F2F2;
+	color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:.5pt solid #7F7F7F;
+	mso-style-name:"计算";}
+.style41
+	{mso-pattern:auto none;
+	background:#A5A5A5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border:2.0pt double #3F3F3F;
+	mso-style-name:"检查单元格";}
+.style42
+	{mso-pattern:auto none;
+	background:#E2EFDA;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 6";}
+.style43
+	{mso-pattern:auto none;
+	background:#ED7D31;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 2";}
+.style44
+	{color:#FA7D00;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border-bottom:2.0pt double #FF8001;
+	mso-style-name:"链接单元格";}
+.style45
+	{color:#000000;
+	font-size:11.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	border-top:.5pt solid #5B9BD5;
+	border-bottom:2.0pt double #5B9BD5;
+	mso-style-name:"汇总";}
+.style46
+	{mso-pattern:auto none;
+	background:#C6EFCE;
+	color:#006100;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"好";}
+.style47
+	{mso-pattern:auto none;
+	background:#FFEB9C;
+	color:#9C6500;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"适中";}
+.style48
+	{mso-pattern:auto none;
+	background:#D9E1F2;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 5";}
+.style49
+	{mso-pattern:auto none;
+	background:#5B9BD5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 1";}
+.style50
+	{mso-pattern:auto none;
+	background:#DDEBF7;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 1";}
+.style51
+	{mso-pattern:auto none;
+	background:#BDD7EE;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 1";}
+.style52
+	{mso-pattern:auto none;
+	background:#FCE4D6;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 2";}
+.style53
+	{mso-pattern:auto none;
+	background:#F8CBAD;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 2";}
+.style54
+	{mso-pattern:auto none;
+	background:#A5A5A5;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 3";}
+.style55
+	{mso-pattern:auto none;
+	background:#FFC000;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 4";}
+.style56
+	{mso-pattern:auto none;
+	background:#FFF2CC;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"20% - 强调文字颜色 4";}
+.style57
+	{mso-pattern:auto none;
+	background:#FFE699;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 4";}
+.style58
+	{mso-pattern:auto none;
+	background:#4472C4;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 5";}
+.style59
+	{mso-pattern:auto none;
+	background:#B4C6E7;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 5";}
+.style60
+	{mso-pattern:auto none;
+	background:#8EA9DB;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 5";}
+.style61
+	{mso-pattern:auto none;
+	background:#70AD47;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"强调文字颜色 6";}
+.style62
+	{mso-pattern:auto none;
+	background:#C6E0B4;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"40% - 强调文字颜色 6";}
+.style63
+	{mso-pattern:auto none;
+	background:#A9D08E;
+	color:#FFFFFF;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:0;
+	mso-style-name:"60% - 强调文字颜色 6";}
+td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	mso-number-format:"General";
+	text-align:general;
+	vertical-align:middle;
+	white-space:nowrap;
+	mso-rotate:0;
+	color:#000000;
+	font-size:11.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-font-charset:134;
+	border:none;
+	mso-protection:locked visible;}
+.xl65
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:14.0pt;
+	mso-font-charset:134;}
+.xl66
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:12.0pt;
+	mso-font-charset:134;}
+.xl67
+	{mso-style-parent:style0;
+	text-align:center;
+	font-size:18.0pt;
+	mso-font-charset:134;}
+.xl68
+	{mso-style-parent:style0;
+	white-space:normal;
+	font-size:18.0pt;
+	font-weight:700;
+	font-family:Arial Unicode MS;
+	mso-font-charset:134;}
+.xl69
+	{mso-style-parent:style0;
+	text-align:center;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl70
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:12.0pt;
+	font-family:Arial Unicode MS;
+	mso-font-charset:134;
+	border:.5pt solid windowtext;}
+.xl71
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:12.0pt;
+	font-family:Arial Unicode MS;
+	mso-font-charset:134;
+	border-left:.5pt solid windowtext;
+	border-top:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+.xl72
+	{mso-style-parent:style0;
+	text-align:center;
+	white-space:normal;
+	font-size:12.0pt;
+	font-family:Arial Unicode MS;
+	mso-font-charset:134;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;}
+ -->  </style>
+  <!--[if gte mso 9]>
+   <xml>
+    <x:ExcelWorkbook>
+     <x:ExcelWorksheets>
+      <x:ExcelWorksheet>
+       <x:Name>Sheet1</x:Name>
+       <x:WorksheetOptions>
+        <x:DefaultRowHeight>270</x:DefaultRowHeight>
+        <x:Selected/>
+        <x:Panes>
+         <x:Pane>
+          <x:Number>3</x:Number>
+          <x:ActiveCol>4</x:ActiveCol>
+          <x:ActiveRow>2</x:ActiveRow>
+          <x:RangeSelection>E3</x:RangeSelection>
+         </x:Pane>
+        </x:Panes>
+        <x:CodeName>Sheet1</x:CodeName>
+        <x:ProtectContents>False</x:ProtectContents>
+        <x:ProtectObjects>True</x:ProtectObjects>
+        <x:ProtectScenarios>True</x:ProtectScenarios>
+        <x:PageBreakZoom>100</x:PageBreakZoom>
+        <x:Print>
+         <x:PaperSizeIndex>9</x:PaperSizeIndex>
+        </x:Print>
+       </x:WorksheetOptions>
+      </x:ExcelWorksheet>
+     </x:ExcelWorksheets>
+     <x:ProtectStructure>False</x:ProtectStructure>
+     <x:ProtectWindows>False</x:ProtectWindows>
+     <x:SelectedSheets>0</x:SelectedSheets>
+     <x:WindowHeight>12195</x:WindowHeight>
+     <x:WindowWidth>13845</x:WindowWidth>
+    </x:ExcelWorkbook>
+   </xml>
+  <![endif]-->
+ </head>
+ <body link="blue" vlink="purple">
+  <table width="963.40" border="0" cellpadding="0" cellspacing="0" style='width:722.55pt;border-collapse:collapse;table-layout:fixed;'>
+   <col width="85.40" style='mso-width-source:userset;mso-width-alt:2732;'/>
+   <col width="341" style='mso-width-source:userset;mso-width-alt:10912;'/>
+   <col width="85" style='mso-width-source:userset;mso-width-alt:2720;'/>
+   <col width="167" style='mso-width-source:userset;mso-width-alt:5344;'/>
+   <col width="153" style='mso-width-source:userset;mso-width-alt:4896;'/>
+   <col width="132" style='mso-width-source:userset;mso-width-alt:4224;'/>
+   <tr height="40" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl67" height="40" width="678.40" colspan="4" style='height:30.00pt;width:508.80pt;border-right:none;border-bottom:none;' x:str>宝安区“以工代训”补贴公示名单（2020年第一百五十七批）</td>
+    <td class="xl68" width="153" style='width:114.75pt;'></td>
+    <td class="xl68" width="132" style='width:99.00pt;'></td>
+   </tr>
+   <tr height="16" style='height:12.00pt;mso-height-source:userset;mso-height-alt:240;'>
+    <td class="xl68" height="16" colspan="6" style='height:12.00pt;mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl65" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl69" height="40" style='height:30.00pt;' x:str>序号</td>
+    <td class="xl69" x:str>单位名称</td>
+    <td class="xl69" x:str>公示人次</td>
+    <td class="xl69" x:str>公示金额（元）</td>
+    <td class="xl65" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>1</td>
+    <td class="xl70" x:str>深圳市安堡胜科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>2</td>
+    <td class="xl70" x:str>深圳炎柏建筑装饰劳务有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>3</td>
+    <td class="xl70" x:str>深圳市赛迪照明科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>4</td>
+    <td class="xl70" x:str>深圳福莱自动化科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>5</td>
+    <td class="xl70" x:str>深圳市祥隆特贸易有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>6</td>
+    <td class="xl70" x:str>深圳市商显科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>7</td>
+    <td class="xl70" x:str>深圳市环响科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>8</td>
+    <td class="xl70" x:str>深圳市鹏荣源建筑工程有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>9</td>
+    <td class="xl70" x:str>深圳市保博科技有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>10</td>
+    <td class="xl70" x:str>深圳市恒正电子有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>11</td>
+    <td class="xl70" x:str>深圳市金诚佳科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>12</td>
+    <td class="xl70" x:str>深圳市波利贸易有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>13</td>
+    <td class="xl70" x:str>深圳市新达盛电子有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>14</td>
+    <td class="xl70" x:str>深圳市鑫华琪科技有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>15</td>
+    <td class="xl70" x:str>深圳市德众居装饰工程有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>16</td>
+    <td class="xl70" x:str>深圳市聚宏鑫科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>17</td>
+    <td class="xl70" x:str>深圳市蝉易网络科技有限公司</td>
+    <td class="xl70" x:num>25</td>
+    <td class="xl70" x:num>12500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>18</td>
+    <td class="xl70" x:str>丽轩时装（深圳）有限公司</td>
+    <td class="xl70" x:num>35</td>
+    <td class="xl70" x:num>17500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>19</td>
+    <td class="xl70" x:str>深圳市华倾建材装饰有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>20</td>
+    <td class="xl70" x:str>深圳市鸿之捷实业发展有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>21</td>
+    <td class="xl70" x:str>深圳市衣次元服饰有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>22</td>
+    <td class="xl70" x:str>深圳市新创富实业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>23</td>
+    <td class="xl70" x:str>深圳市立天金装饰设计工程有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>24</td>
+    <td class="xl70" x:str>深圳市亿诚精密机械有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>25</td>
+    <td class="xl70" x:str>深圳市佳静建材有限公司</td>
+    <td class="xl70" x:num>14</td>
+    <td class="xl70" x:num>7000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>26</td>
+    <td class="xl70" x:str>深圳众合汽车销售服务有限公司</td>
+    <td class="xl70" x:num>32</td>
+    <td class="xl70" x:num>16000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>27</td>
+    <td class="xl70" x:str>深圳市丰元鑫科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>28</td>
+    <td class="xl70" x:str>深圳市佳琦纸业有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>29</td>
+    <td class="xl70" x:str>深圳市中晟资产管理有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>30</td>
+    <td class="xl70" x:str>深圳市南城华飞物流服务有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>31</td>
+    <td class="xl70" x:str>深圳市安达净化技术有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>32</td>
+    <td class="xl70" x:str>深圳欧度软件有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>33</td>
+    <td class="xl70" x:str>深圳市加之隆塑胶五金制品有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>34</td>
+    <td class="xl70" x:str>深圳市鲁瑞科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>35</td>
+    <td class="xl70" x:str>深圳市华倾建材装饰有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>36</td>
+    <td class="xl70" x:str>深圳市先河电子有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>37</td>
+    <td class="xl70" x:str>深圳市鹏荣源建筑工程有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>38</td>
+    <td class="xl70" x:str>深圳市鸿途速运有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>39</td>
+    <td class="xl70" x:str>深圳市深龙汽车租赁有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>40</td>
+    <td class="xl70" x:str>深圳市德众居装饰工程有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>41</td>
+    <td class="xl70" x:str>深圳市永朋包装有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>42</td>
+    <td class="xl70" x:str>深圳市何氏实业有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>43</td>
+    <td class="xl70" x:str>深圳市惠米特科技有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>44</td>
+    <td class="xl70" x:str>深圳万华国际商务会馆有限公司</td>
+    <td class="xl70" x:num>37</td>
+    <td class="xl70" x:num>18500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>45</td>
+    <td class="xl70" x:str>深圳峰源通信有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>46</td>
+    <td class="xl70" x:str>深圳市瑞飞表业有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>47</td>
+    <td class="xl70" x:str>深圳市深盈电子有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>48</td>
+    <td class="xl70" x:str>深圳市华源腾创科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>49</td>
+    <td class="xl70" x:str>深圳市长鸿电子技术有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>50</td>
+    <td class="xl70" x:str>深圳市智雅光科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>51</td>
+    <td class="xl70" x:str>深圳市惠米特科技有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>52</td>
+    <td class="xl70" x:str>深圳市华丰信达贸易有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>53</td>
+    <td class="xl70" x:str>深圳市立鼎科技实业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>54</td>
+    <td class="xl70" x:str>深圳市聚宏鑫科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>55</td>
+    <td class="xl70" x:str>深圳炎柏建筑装饰劳务有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>56</td>
+    <td class="xl70" x:str>深圳市峻宇利达物流有限公司</td>
+    <td class="xl70" x:num>61</td>
+    <td class="xl70" x:num>30500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>57</td>
+    <td class="xl70" x:str>深圳市扈家科技有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>58</td>
+    <td class="xl70" x:str>深圳市安捷易供应链管理有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>59</td>
+    <td class="xl70" x:str>深圳市海亿精密电子有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>60</td>
+    <td class="xl70" x:str>深圳市鹏荣源建筑工程有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>61</td>
+    <td class="xl70" x:str>深圳市新视点文化传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>62</td>
+    <td class="xl70" x:str>深圳市龙成新纶服装有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>63</td>
+    <td class="xl70" x:str>深圳市新达盛电子有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>64</td>
+    <td class="xl70" x:str>深圳市心享吉尔科技有限公司</td>
+    <td class="xl70" x:num>14</td>
+    <td class="xl70" x:num>7000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>65</td>
+    <td class="xl70" x:str>深圳市鑫超越科技有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>66</td>
+    <td class="xl70" x:str>深圳市戈菲尔钟表有限公司</td>
+    <td class="xl70" x:num>12</td>
+    <td class="xl70" x:num>6000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>67</td>
+    <td class="xl70" x:str>深圳美妙音乐器材有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>68</td>
+    <td class="xl70" x:str>深圳市先河电子有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>69</td>
+    <td class="xl70" x:str>深圳市一招企业管理咨询有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>70</td>
+    <td class="xl70" x:str>深圳市广恒贸易有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>71</td>
+    <td class="xl70" x:str>深圳市玮宸科技有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>72</td>
+    <td class="xl70" x:str>深圳市希图服装有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>73</td>
+    <td class="xl70" x:str>深圳市华美家木业有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>74</td>
+    <td class="xl70" x:str>深圳市佳静建材有限公司</td>
+    <td class="xl70" x:num>13</td>
+    <td class="xl70" x:num>6500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>75</td>
+    <td class="xl70" x:str>深圳捷翔欣科技有限公司</td>
+    <td class="xl70" x:num>12</td>
+    <td class="xl70" x:num>6000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>76</td>
+    <td class="xl70" x:str>深圳市广恒贸易有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>77</td>
+    <td class="xl70" x:str>深圳市新和心家坊装饰建材有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>78</td>
+    <td class="xl70" x:str>深圳市亚洲汽车服务有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>79</td>
+    <td class="xl70" x:str>深圳市德派包装制品有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>80</td>
+    <td class="xl70" x:str>深圳市戈菲尔钟表有限公司</td>
+    <td class="xl70" x:num>12</td>
+    <td class="xl70" x:num>6000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>81</td>
+    <td class="xl70" x:str>深圳市平强纸业有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>82</td>
+    <td class="xl70" x:str>深圳市优谊科技有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>83</td>
+    <td class="xl70" x:str>深圳市微能兴光电有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>84</td>
+    <td class="xl70" x:str>深圳市来利天道投资有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>85</td>
+    <td class="xl70" x:str>深圳市鑫步步科科技有限公司</td>
+    <td class="xl70" x:num>17</td>
+    <td class="xl70" x:num>8500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>86</td>
+    <td class="xl70" x:str>深圳市众鑫新能源汽车销售有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>87</td>
+    <td class="xl70" x:str>深圳市合利通光电有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>88</td>
+    <td class="xl70" x:str>深圳市伟通生物科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>89</td>
+    <td class="xl70" x:str>深圳市中晟资产管理有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>90</td>
+    <td class="xl70" x:str>深圳索甲电子有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>91</td>
+    <td class="xl70" x:str>深圳市梓禹科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>92</td>
+    <td class="xl70" x:str>深圳市友源恩科技有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>93</td>
+    <td class="xl70" x:str>深圳市摩乐电子有限公司</td>
+    <td class="xl70" x:num>13</td>
+    <td class="xl70" x:num>6500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>94</td>
+    <td class="xl70" x:str>深圳市紫阳照科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>95</td>
+    <td class="xl70" x:str>深圳美妙音乐器材有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>96</td>
+    <td class="xl70" x:str>深圳诚兴雅居装饰设计有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>97</td>
+    <td class="xl70" x:str>深圳恒富美科技有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>98</td>
+    <td class="xl70" x:str>深圳市紫阳照科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>99</td>
+    <td class="xl70" x:str>深圳市乡下菜裕华酒楼有限公司</td>
+    <td class="xl70" x:num>24</td>
+    <td class="xl70" x:num>12000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>100</td>
+    <td class="xl70" x:str>深圳市瑞博成德科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>101</td>
+    <td class="xl70" x:str>深圳众合汽车销售服务有限公司</td>
+    <td class="xl70" x:num>32</td>
+    <td class="xl70" x:num>16000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>102</td>
+    <td class="xl70" x:str>深圳市波利贸易有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>103</td>
+    <td class="xl70" x:str>深圳市符氏文化传播有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>104</td>
+    <td class="xl70" x:str>深圳市雄皓工业设备有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>105</td>
+    <td class="xl70" x:str>深圳市华源腾创科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>106</td>
+    <td class="xl70" x:str>深圳市卓越之窗家居用品有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>107</td>
+    <td class="xl70" x:str>深圳市派宝跨境电子商务有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>108</td>
+    <td class="xl70" x:str>深圳市登科教育咨询有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>109</td>
+    <td class="xl70" x:str>深圳市佳静建材有限公司</td>
+    <td class="xl70" x:num>13</td>
+    <td class="xl70" x:num>6500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>110</td>
+    <td class="xl70" x:str>深圳市乡下菜裕华酒楼有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>111</td>
+    <td class="xl70" x:str>深圳市博联康科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>112</td>
+    <td class="xl70" x:str>深圳市现取咨询服务有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>113</td>
+    <td class="xl70" x:str>深圳市新创富实业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>114</td>
+    <td class="xl70" x:str>深圳市华丰信达贸易有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>115</td>
+    <td class="xl70" x:str>深圳市亿诚精密机械有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>116</td>
+    <td class="xl70" x:str>深圳市点智达电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>117</td>
+    <td class="xl70" x:str>深圳市长鸿电子技术有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>118</td>
+    <td class="xl70" x:str>深圳索甲电子有限公司</td>
+    <td class="xl70" x:num>27</td>
+    <td class="xl70" x:num>13500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>119</td>
+    <td class="xl70" x:str>深圳市思茵服饰设计有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>120</td>
+    <td class="xl70" x:str>深圳市衣次元服饰有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>121</td>
+    <td class="xl70" x:str>深圳市讯茂科技有限公司</td>
+    <td class="xl70" x:num>33</td>
+    <td class="xl70" x:num>16500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>122</td>
+    <td class="xl70" x:str>深圳市鸿途速运有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>123</td>
+    <td class="xl70" x:str>深圳市承和辉五金制品有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>124</td>
+    <td class="xl70" x:str>深圳市扈家科技有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>125</td>
+    <td class="xl70" x:str>深圳市中晶博科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>126</td>
+    <td class="xl70" x:str>深圳市科杰豪车业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>127</td>
+    <td class="xl70" x:str>深圳市中硕教育培训有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>128</td>
+    <td class="xl70" x:str>深圳市立鼎科技实业有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>129</td>
+    <td class="xl70" x:str>深圳市乐马传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>130</td>
+    <td class="xl70" x:str>深圳市安捷易供应链管理有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>131</td>
+    <td class="xl70" x:str>深圳市狮航国际物流有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>132</td>
+    <td class="xl70" x:str>深圳市瑞飞表业有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>133</td>
+    <td class="xl70" x:str>深圳市新创富实业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>134</td>
+    <td class="xl70" x:str>深圳市博联康科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>135</td>
+    <td class="xl70" x:str>深圳市拓普思德科技有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>136</td>
+    <td class="xl70" x:str>深圳市舒安环保设备工程有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>137</td>
+    <td class="xl70" x:str>深圳市深龙汽车租赁有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>138</td>
+    <td class="xl70" x:str>深圳市雅旭包装有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>139</td>
+    <td class="xl70" x:str>深圳市何氏实业有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>140</td>
+    <td class="xl70" x:str>中电安全智能科技（深圳）有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>141</td>
+    <td class="xl70" x:str>深圳市彩虹腾达科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>142</td>
+    <td class="xl70" x:str>深圳市佳荣能源科技有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>143</td>
+    <td class="xl70" x:str>深圳市渊信科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>144</td>
+    <td class="xl70" x:str>深圳市大珍电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>145</td>
+    <td class="xl70" x:str>深圳市优泰克自动化设备有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>146</td>
+    <td class="xl70" x:str>深圳市优谊科技有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>147</td>
+    <td class="xl70" x:str>深圳市全息调频医疗器械有限公司</td>
+    <td class="xl70" x:num>15</td>
+    <td class="xl70" x:num>7500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>148</td>
+    <td class="xl70" x:str>深圳市铭泰强将科技有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>149</td>
+    <td class="xl70" x:str>深圳市安捷易供应链管理有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>150</td>
+    <td class="xl70" x:str>深圳市舒安环保设备工程有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>151</td>
+    <td class="xl70" x:str>深圳市达宇兴自动化设备有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>152</td>
+    <td class="xl70" x:str>深圳市紫阳照科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>153</td>
+    <td class="xl70" x:str>深圳市来利天道投资有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>154</td>
+    <td class="xl70" x:str>深圳市德派包装制品有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>155</td>
+    <td class="xl70" x:str>深圳市登科教育咨询有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>156</td>
+    <td class="xl70" x:str>深圳市科杰豪车业有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>157</td>
+    <td class="xl70" x:str>深圳市海信达包装制品有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>158</td>
+    <td class="xl70" x:str>深圳市海亿精密电子有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>159</td>
+    <td class="xl70" x:str>深圳市金睿朗精密制造有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>160</td>
+    <td class="xl70" x:str>深圳市优泰克自动化设备有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>161</td>
+    <td class="xl70" x:str>深圳市华骏达装饰设计工程有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>162</td>
+    <td class="xl70" x:str>深圳丽鑫光电科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>163</td>
+    <td class="xl70" x:str>深圳市祥隆特贸易有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>164</td>
+    <td class="xl70" x:str>深圳恒富美科技有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>165</td>
+    <td class="xl70" x:str>深圳市聚宏鑫科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>166</td>
+    <td class="xl70" x:str>深圳市城中城建设有限公司</td>
+    <td class="xl70" x:num>21</td>
+    <td class="xl70" x:num>10500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>167</td>
+    <td class="xl70" x:str>深圳市优泰克自动化设备有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>168</td>
+    <td class="xl70" x:str>深圳市立天金装饰设计工程有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>169</td>
+    <td class="xl70" x:str>深圳市全息调频医疗器械有限公司</td>
+    <td class="xl70" x:num>13</td>
+    <td class="xl70" x:num>6500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>170</td>
+    <td class="xl70" x:str>深圳市华倾建材装饰有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>171</td>
+    <td class="xl70" x:str>深圳市志贤电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>172</td>
+    <td class="xl70" x:str>深圳市卓越之窗家居用品有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>173</td>
+    <td class="xl70" x:str>深圳市祥隆特贸易有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>174</td>
+    <td class="xl70" x:str>深圳市海信达包装制品有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>175</td>
+    <td class="xl70" x:str>深圳市戟牌科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>176</td>
+    <td class="xl70" x:str>深圳市华源腾创科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>177</td>
+    <td class="xl70" x:str>深圳市伟通生物科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>178</td>
+    <td class="xl70" x:str>深圳市航通汽车服务有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>179</td>
+    <td class="xl70" x:str>深圳中裕锦电子有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>180</td>
+    <td class="xl70" x:str>深圳市艾赛华信息技术有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>181</td>
+    <td class="xl70" x:str>深圳奥尼萦思空间艺术设计有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>182</td>
+    <td class="xl70" x:str>深圳市智雅光科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>183</td>
+    <td class="xl70" x:str>深圳市智能钻井技术有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>184</td>
+    <td class="xl70" x:str>深圳市艾赛华信息技术有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>185</td>
+    <td class="xl70" x:str>深圳市波利贸易有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>186</td>
+    <td class="xl70" x:str>深圳市亚洲汽车服务有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>187</td>
+    <td class="xl70" x:str>深圳市致柔电子科技有限公司</td>
+    <td class="xl70" x:num>18</td>
+    <td class="xl70" x:num>9000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>188</td>
+    <td class="xl70" x:str>深圳市新视点文化传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>189</td>
+    <td class="xl70" x:str>玄德建筑设计（深圳）有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>190</td>
+    <td class="xl70" x:str>深圳市乡下菜裕华酒楼有限公司</td>
+    <td class="xl70" x:num>24</td>
+    <td class="xl70" x:num>12000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>191</td>
+    <td class="xl70" x:str>深圳市新和心家坊装饰建材有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>192</td>
+    <td class="xl70" x:str>深圳美妙音乐器材有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>193</td>
+    <td class="xl70" x:str>深圳市丰元鑫科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>194</td>
+    <td class="xl70" x:str>深圳市新视点文化传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>195</td>
+    <td class="xl70" x:str>深圳市红树湾家具有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>196</td>
+    <td class="xl70" x:str>深圳市深龙汽车租赁有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>197</td>
+    <td class="xl70" x:str>深圳市比尔达科技有限公司</td>
+    <td class="xl70" x:num>36</td>
+    <td class="xl70" x:num>18000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>198</td>
+    <td class="xl70" x:str>深圳市金博兴科技有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>199</td>
+    <td class="xl70" x:str>深圳市加之隆塑胶五金制品有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>200</td>
+    <td class="xl70" x:str>深圳市丰元鑫科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>201</td>
+    <td class="xl70" x:str>深圳市扣扣服饰有限公司</td>
+    <td class="xl70" x:num>21</td>
+    <td class="xl70" x:num>10500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>202</td>
+    <td class="xl70" x:str>深圳市立天金装饰设计工程有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>203</td>
+    <td class="xl70" x:str>深圳众合汽车销售服务有限公司</td>
+    <td class="xl70" x:num>27</td>
+    <td class="xl70" x:num>13500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>204</td>
+    <td class="xl70" x:str>深圳炎柏建筑装饰劳务有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>205</td>
+    <td class="xl70" x:str>深圳市鑫琪德吸塑制品有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>206</td>
+    <td class="xl70" x:str>特斯特电子（深圳）有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>207</td>
+    <td class="xl70" x:str>深圳甲艾马达有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>208</td>
+    <td class="xl70" x:str>深圳市宝鸿科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>209</td>
+    <td class="xl70" x:str>深圳市一招企业管理咨询有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>210</td>
+    <td class="xl70" x:str>深圳市路昶环境工程有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>211</td>
+    <td class="xl70" x:str>深圳市大珍电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>212</td>
+    <td class="xl70" x:str>深圳市路昶环境工程有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>213</td>
+    <td class="xl70" x:str>深圳市共盟电子科技有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>214</td>
+    <td class="xl70" x:str>深圳市全汉创意科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>215</td>
+    <td class="xl70" x:str>深圳市心享吉尔科技有限公司</td>
+    <td class="xl70" x:num>14</td>
+    <td class="xl70" x:num>7000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>216</td>
+    <td class="xl70" x:str>深圳安馨堂生物科技有限公司</td>
+    <td class="xl70" x:num>20</td>
+    <td class="xl70" x:num>10000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>217</td>
+    <td class="xl70" x:str>深圳市怡帆影业传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>218</td>
+    <td class="xl70" x:str>深圳市墨锐科技有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>219</td>
+    <td class="xl70" x:str>中电安全智能科技（深圳）有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>220</td>
+    <td class="xl70" x:str>深圳市索微星电子有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>221</td>
+    <td class="xl70" x:str>深圳市天润达科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>222</td>
+    <td class="xl70" x:str>深圳市怡帆影业传媒有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>223</td>
+    <td class="xl70" x:str>深圳市飞博超强新材料有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>224</td>
+    <td class="xl70" x:str>深圳市翔龙科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>225</td>
+    <td class="xl70" x:str>深圳诚兴雅居装饰设计有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>226</td>
+    <td class="xl70" x:str>深圳市中晶博科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>227</td>
+    <td class="xl70" x:str>玄德建筑设计（深圳）有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>228</td>
+    <td class="xl70" x:str>深圳市天润达科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>229</td>
+    <td class="xl70" x:str>深圳市登科教育咨询有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>230</td>
+    <td class="xl70" x:str>深圳市众鑫新能源汽车销售有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>231</td>
+    <td class="xl70" x:str>深圳市宝源隆手板模型技术有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>232</td>
+    <td class="xl70" x:str>深圳市大润霖广告有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>233</td>
+    <td class="xl70" x:str>深圳市鑫超越科技有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>234</td>
+    <td class="xl70" x:str>深圳市赛迪照明科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>235</td>
+    <td class="xl70" x:str>深圳市先河电子有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>236</td>
+    <td class="xl70" x:str>深圳市中晟资产管理有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>237</td>
+    <td class="xl70" x:str>深圳市合利通光电有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>238</td>
+    <td class="xl70" x:str>深圳华宇视讯科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>239</td>
+    <td class="xl70" x:str>深圳市戈菲尔钟表有限公司</td>
+    <td class="xl70" x:num>12</td>
+    <td class="xl70" x:num>6000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>240</td>
+    <td class="xl70" x:str>深圳市何氏实业有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>241</td>
+    <td class="xl70" x:str>深圳市环响科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>242</td>
+    <td class="xl70" x:str>深圳市同朗科技有限公司</td>
+    <td class="xl70" x:num>16</td>
+    <td class="xl70" x:num>8000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>243</td>
+    <td class="xl70" x:str>丽轩时装（深圳）有限公司</td>
+    <td class="xl70" x:num>36</td>
+    <td class="xl70" x:num>18000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>244</td>
+    <td class="xl70" x:str>深圳市鑫科静通精密制品有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>245</td>
+    <td class="xl70" x:str>深圳诚兴雅居装饰设计有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>246</td>
+    <td class="xl70" x:str>中电安全智能科技（深圳）有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>247</td>
+    <td class="xl70" x:str>特斯特电子（深圳）有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>248</td>
+    <td class="xl70" x:str>深圳市鑫超越科技有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>249</td>
+    <td class="xl70" x:str>深圳市广恒贸易有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>250</td>
+    <td class="xl70" x:str>深圳华宇视讯科技有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>251</td>
+    <td class="xl70" x:str>深圳市长鸿电子技术有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>252</td>
+    <td class="xl70" x:str>深圳市亚洲汽车服务有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>253</td>
+    <td class="xl70" x:str>深圳索甲电子有限公司</td>
+    <td class="xl70" x:num>27</td>
+    <td class="xl70" x:num>13500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>254</td>
+    <td class="xl70" x:str>深圳市点智达电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>255</td>
+    <td class="xl70" x:str>深圳市舞状元科技有限公司</td>
+    <td class="xl70" x:num>9</td>
+    <td class="xl70" x:num>4500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>256</td>
+    <td class="xl70" x:str>深圳福莱自动化科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>257</td>
+    <td class="xl70" x:str>深圳欧度软件有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>258</td>
+    <td class="xl70" x:str>深圳市保视捷电子有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>259</td>
+    <td class="xl70" x:str>深圳市蝉易网络科技有限公司</td>
+    <td class="xl70" x:num>17</td>
+    <td class="xl70" x:num>8500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>260</td>
+    <td class="xl70" x:str>深圳市路昶环境工程有限公司</td>
+    <td class="xl70" x:num>6</td>
+    <td class="xl70" x:num>3000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>261</td>
+    <td class="xl70" x:str>丽轩时装（深圳）有限公司</td>
+    <td class="xl70" x:num>32</td>
+    <td class="xl70" x:num>16000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>262</td>
+    <td class="xl70" x:str>深圳市狮航国际物流有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>263</td>
+    <td class="xl70" x:str>深圳市赛迪照明科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>264</td>
+    <td class="xl70" x:str>深圳市现取咨询服务有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>265</td>
+    <td class="xl70" x:str>深圳市惠米特科技有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>266</td>
+    <td class="xl70" x:str>深圳市傲天货运代理有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>267</td>
+    <td class="xl70" x:str>深圳市南城华飞物流服务有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>268</td>
+    <td class="xl70" x:str>深圳甲艾马达有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>269</td>
+    <td class="xl70" x:str>深圳市海亿精密电子有限公司</td>
+    <td class="xl70" x:num>2</td>
+    <td class="xl70" x:num>1000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>270</td>
+    <td class="xl70" x:str>深圳市南城华飞物流服务有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>271</td>
+    <td class="xl70" x:str>深圳市德众居装饰工程有限公司</td>
+    <td class="xl70" x:num>7</td>
+    <td class="xl70" x:num>3500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>272</td>
+    <td class="xl70" x:str>深圳市共盟电子科技有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>273</td>
+    <td class="xl70" x:str>深圳市合利通光电有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>274</td>
+    <td class="xl70" x:str>深圳市硕耐电子科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>275</td>
+    <td class="xl70" x:str>深圳市天润达科技有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>276</td>
+    <td class="xl70" x:str>诺途（深圳）智能技术有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>277</td>
+    <td class="xl70" x:str>深圳市星烛电子科技有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>278</td>
+    <td class="xl70" x:str>深圳市言信电子科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>279</td>
+    <td class="xl70" x:str>深圳市绿士能电子有限公司</td>
+    <td class="xl70" x:num>4</td>
+    <td class="xl70" x:num>2000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>280</td>
+    <td class="xl70" x:str>深圳市瑞飞表业有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>281</td>
+    <td class="xl70" x:str>深圳市德馨斋文化传播有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>282</td>
+    <td class="xl70" x:str>深圳市新和心家坊装饰建材有限公司</td>
+    <td class="xl70" x:num>8</td>
+    <td class="xl70" x:num>4000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>283</td>
+    <td class="xl70" x:str>深圳万华国际商务会馆有限公司</td>
+    <td class="xl70" x:num>37</td>
+    <td class="xl70" x:num>18500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>284</td>
+    <td class="xl70" x:str>深圳市中硕教育培训有限公司</td>
+    <td class="xl70" x:num>5</td>
+    <td class="xl70" x:num>2500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>285</td>
+    <td class="xl70" x:str>深圳市来利天道投资有限公司</td>
+    <td class="xl70" x:num>22</td>
+    <td class="xl70" x:num>11000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>286</td>
+    <td class="xl70" x:str>深圳市全息调频医疗器械有限公司</td>
+    <td class="xl70" x:num>14</td>
+    <td class="xl70" x:num>7000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>287</td>
+    <td class="xl70" x:str>深圳市安堡胜科技有限公司</td>
+    <td class="xl70" x:num>1</td>
+    <td class="xl70" x:num>500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>288</td>
+    <td class="xl70" x:str>深圳市致柔电子科技有限公司</td>
+    <td class="xl70" x:num>18</td>
+    <td class="xl70" x:num>9000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>289</td>
+    <td class="xl70" x:str>深圳市宝鸿科技有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>290</td>
+    <td class="xl70" x:str>深圳市雄皓工业设备有限公司</td>
+    <td class="xl70" x:num>11</td>
+    <td class="xl70" x:num>5500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>291</td>
+    <td class="xl70" x:str>深圳明辉科技设备有限公司</td>
+    <td class="xl70" x:num>10</td>
+    <td class="xl70" x:num>5000</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>292</td>
+    <td class="xl70" x:str>深圳市卓越之窗家居用品有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl70" height="40" style='height:30.00pt;' x:str>293</td>
+    <td class="xl70" x:str>深圳市百亮光电有限公司</td>
+    <td class="xl70" x:num>3</td>
+    <td class="xl70" x:num>1500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <tr height="40" class="xl66" style='height:30.00pt;mso-height-source:userset;mso-height-alt:600;'>
+    <td class="xl71" height="40" colspan="2" style='height:30.00pt;border-right:.5pt solid windowtext;border-bottom:.5pt solid windowtext;' x:str>合计</td>
+    <td class="xl70" x:fmla="=SUM(C4:C296)" x:num>2101</td>
+    <td class="xl70" x:fmla="=SUM(D4:D296)" x:num>1050500</td>
+    <td class="xl66" colspan="2" style='mso-ignore:colspan;'></td>
+   </tr>
+   <![if supportMisalignedColumns]>
+    <tr width="0" style='display:none;'>
+     <td width="85" style='width:64;'></td>
+     <td width="341" style='width:256;'></td>
+     <td width="85" style='width:64;'></td>
+     <td width="167" style='width:125;'></td>
+     <td width="153" style='width:115;'></td>
+     <td width="132" style='width:99;'></td>
+    </tr>
+   <![endif]>
+  </table>
+ </body>
+</html>

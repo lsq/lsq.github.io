@@ -1,0 +1,459 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugo blog</title>
+  <link rel="icon" type="image/png" href="https://lsq.github.io/images/favicon.png">
+  <link href="//at.alicdn.com/t/font_1022901_2zjuy2ajfyt.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  
+  
+  <link href="/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-top" id="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          
+          <img class="logo" src="https://16pixel.github.io/cherry/images/logo.png" width="42" height="42" alt="logo">
+      </a>
+      <div class="navbar-burger" id="navbar-burger">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-start">
+        
+        
+          <a href="https://lsq.github.io/categories/"
+             class="navbar-item ">
+            <i class='icon icon-category'></i>
+            分类
+          </a>
+        
+          <a href="https://lsq.github.io/tags/"
+             class="navbar-item ">
+            <i class='icon icon-tag'></i>
+            标签
+          </a>
+        
+          <a href="https://lsq.github.io/series/"
+             class="navbar-item ">
+            <i class='icon icon-post'></i>
+            系列
+          </a>
+        
+          <a href="https://lsq.github.io/about/"
+             class="navbar-item ">
+            
+            关于
+          </a>
+        
+          <a href="https://lsq.github.io/posts/goisforlovers/"
+             class="navbar-item ">
+            
+            (Hu)go Template Primer
+          </a>
+        
+          <a href="https://lsq.github.io/posts/hugoisforlovers/"
+             class="navbar-item ">
+            
+            Getting Started with Hugo
+          </a>
+        
+          <a href="https://lsq.github.io"
+             class="navbar-item ">
+            
+            tutorials
+          </a>
+        
+      </div>
+      <div class="navbar-end">
+        
+          <div class="navbar-item btn-search" data-target="#modal-search">
+            <i class="icon icon-search"></i>
+            搜索
+          </div>
+        
+        <div class="modal" id="modal-search">
+          <div class="modal-content">
+            <header class="modal-header" style="padding-right: 40px">
+              <div class="form-group" style="margin-bottom: 0">
+                <div class="form-field form-icon-left">
+                  <input type="search" class="form-control" placeholder="搜索" id="search">
+                  <i class="icon icon-search form-icon"></i>
+                </div>
+              </div>
+              <div class="modal-close">×</div>
+            </header>
+            <section class="modal-body" id="search-content"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">pdf去除空白边及转为png</h1>
+        <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+        <div class="separator"></div>
+        <div class="single-content">
+          <h2 id="intro">Intro</h2>
+<p>These code are to export a chart from Excel to .png and .pdf extensions.</p>
+<h2 id="how-to-proceed">How to proceed</h2>
+<p>go to <strong>Tools &gt; Macro &gt; Visual Basic Editor</strong>.</p>
+<ol>
+<li>In the new window, select <strong>Insert &gt; Module</strong> and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or  in the blank page.</li>
+<li>Then go to <strong>File &gt; Close &gt; Return to Microsoft Excel</strong></li>
+<li>Select a chart that you want to export</li>
+<li><strong>Tools &gt; Macro &gt; Macros</strong>, then select <em>SaveSelectedChartAsPDF</em> or <em>SaveSelectedChartAsImage</em> and press <em>Execute</em>.</li>
+<li>Check the image at the folder (current directory).</li>
+</ol>
+<h3 id="to-export-chart-as-pdf">To export chart as PDF</h3>
+<pre><code>Sub SaveSelectedChartAsPDF()
+    With ActiveChart.PageSetup
+        .Orientation = xlLandscape
+        .FitToPagesTall = 1
+        .FitToPagesWide = 1
+        .LeftMargin = 0
+        .RightMargin = 0
+        .BottomMargin = 0
+        .TopMargin = 0
+    End With
+    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
+End Sub
+</code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
+<pre><code>Sub SaveSelectedChartAsImage()
+    ActiveChart.Export &quot;figure.png&quot;
+End Sub
+
+D:\Program Files\ImageMagick-7.0.10-Q16-HDRI;c:\lua541;D:\Program Files\inkscape\bin;D:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;D:\Program Files\gs\gs9.53.3\bin;C:\Program Files\7-Zip;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\航天信息财税平台\newslib;C:\msys;4\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\税务证书应用客户端;d:\Progr;m Files (x86)\LyX 2.3\Perl\bin;D:\Program Files (x86)\Calibre2\;D:\texlive\2020\bin\win64;D:\texlive\2020\bin\win32;D:\Program Files\qemu;C:\Program Files\pdf2svg;C:\Program Files\Pandoc\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\
+
+</code></pre><h3 id="crop-white-space-of-pdf-and-using-gs-convert-to-png">Crop white space of pdf and using <code>gs</code> convert to png</h3>
+<ol>
+<li>PDFCROP takes a PDF file as input, calculates the BoundingBox for each page by the help of ghostscript and generates a output PDF file with removed margins.<a href="https://github.com/ho-tex/pdfcrop">pdfcrop</a></li>
+<li>Normally pdfcrop will be installed by the TeX system.</li>
+<li><a href="https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs">https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs</a></li>
+<li><a href="https://tex.stackexchange.com/questions/17716/excel-chart-pdf-latex-but-need-to-remove-white-space">briss/xltoolbox</a></li>
+</ol>
+<pre><code>pdfcrop foo.pdf f.pdf
+gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
+# png256 png16 pnggray pngmono
+gswin64c.exe -dNOPAUSE -q -sDEVICE=pnggray -r500 -dBATCH -dFirstPage=2 -dLastPage=2 -sOutputFile=test.png test.pdf
+
+</code></pre><pre><code class="language-vbscript" data-lang="vbscript">Sub SaveSelectedChartAsPng()
+Dim tmpdir As String, outputPdf As String, outputPng As String, cropPdf As String
+Dim wshell As Object
+
+    Set wshell = CreateObject(&quot;WScript.Shell&quot;)
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    Application.EnableEvents = False
+    Application.DisplayAlerts = False
+    
+    tmpdir = VBA.Environ(&quot;temp&quot;)
+    outputPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure.pdf&quot;
+    outputPng = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; &quot;outputValue.png&quot;
+    cropPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure_crop.pdf&quot;
+    
+    With ActiveChart.PageSetup
+        .Orientation = xlLandscape
+        .FitToPagesWide = 1
+        .FitToPagesTall = 1
+        .LeftMargin = Application.InchesToPoints(0)
+        .RightMargin = Application.InchesToPoints(0)
+        .TopMargin = Application.InchesToPoints(0)
+        .BottomMargin = Application.InchesToPoints(0)
+        .HeaderMargin = Application.InchesToPoints(0)
+        .FooterMargin = Application.InchesToPoints(0)
+    End With
+    ActiveChart.ExportAsFixedFormat xlTypePDF, outputPdf, Quality:=xlQualityStandard, IncludeDocProperties:=True, _
+                IgnorePrintAreas:=False, OpenAfterPublish:=False
+    
+    wshell.Run &quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
+    wshell.Run &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r1200  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf, 0, True
+    wshell.Run &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
+    ' 需要安装texlive，其已经包含了pdfcrop程序
+    'Shell (&quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
+    '需要安装ghostscript
+    'Shell (&quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf)
+    '需要安装msys2, rm命令是linux 下命令
+    'Shell (&quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
+    
+    Set wshell = Nothing
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+    Application.EnableEvents = True
+    Application.DisplayAlerts = True
+    
+End Sub
+</code></pre><h3 id="另一种方案是把chart复制到powerpoint中然后在powerpoint中另存为emf文件">另一种方案是把chart复制到powerpoint中，然后在powerpoint中另存为emf文件</h3>
+<ol>
+<li>Select your Microsoft Excel plots.</li>
+<li>Copy.</li>
+<li>Open Microsoft PowerPoint.</li>
+<li>Paste-special as enhanced metafile (EMF) into an otherwise empty slide.</li>
+<li>Save your PowerPoint slide as an &ldquo;other format&rdquo; file, and choose &ldquo;EMF&rdquo; (Enhanced Windows Metafile).</li>
+<li>Import your EMF file into <a href="http://inkscape.org/">InkScape</a> and ungroup the object.</li>
+<li>Delete all the A4-sized crappy blank space from the image and enjoy.</li>
+</ol>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#00a8c8">Dim</span> <span style="color:#111">ppt</span> <span style="color:#f92672">As</span> <span style="color:#00a8c8">Object</span><span style="color:#111">,</span> <span style="color:#111">pr</span> <span style="color:#f92672">As</span> <span style="color:#00a8c8">Object</span>
+<span style="color:#00a8c8">Dim</span> <span style="color:#111">sl</span> <span style="color:#f92672">As</span> <span style="color:#00a8c8">Object</span>
+<span style="color:#111">Selection</span><span style="color:#111">.</span><span style="color:#111">Copy</span>
+<span style="color:#111">...</span>
+<span style="color:#00a8c8">With</span> <span style="color:#111">CreateObject</span><span style="color:#111">(</span><span style="color:#d88200">&#34;PowerPoint.Application&#34;</span><span style="color:#111">)</span>
+    <span style="color:#00a8c8">Set</span> <span style="color:#111">pr</span> <span style="color:#f92672">=</span> <span style="color:#111">.</span><span style="color:#111">Presentations</span><span style="color:#111">.</span><span style="color:#111">Add</span>
+    <span style="color:#00a8c8">Set</span> <span style="color:#111">sl</span> <span style="color:#f92672">=</span> <span style="color:#111">pr</span><span style="color:#111">.</span><span style="color:#111">Slides</span><span style="color:#111">.</span><span style="color:#111">Add</span><span style="color:#111">(</span><span style="color:#111">1</span><span style="color:#111">,</span> <span style="color:#111">11</span><span style="color:#111">)</span>
+    <span style="color:#111">sl</span><span style="color:#111">.</span><span style="color:#111">Shapes</span><span style="color:#111">.</span><span style="color:#111">PasteSpecial</span> <span style="color:#111">DataType</span><span style="color:#111">:</span><span style="color:#f92672">=</span><span style="color:#111">2</span>
+    <span style="color:#111">sl</span><span style="color:#111">.</span><span style="color:#111">Shapes</span><span style="color:#111">(</span><span style="color:#111">sl</span><span style="color:#111">.</span><span style="color:#111">Shapes</span><span style="color:#111">.</span><span style="color:#111">Count</span><span style="color:#111">).</span><span style="color:#111">Export</span> <span style="color:#d88200">&#34;C:\Test\Test.emf&#34;</span><span style="color:#111">,</span> <span style="color:#111">5</span>
+    <span style="color:#111">pr</span><span style="color:#111">.</span><span style="color:#111">Close</span>
+    <span style="color:#111">.</span><span style="color:#111">Quit</span>
+<span style="color:#00a8c8">End</span> <span style="color:#00a8c8">With</span>
+<span style="color:#00a8c8">End</span> <span style="color:#00a8c8">Sub</span>
+</code></pre></div><h3 id="还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</h3>
+<ol>
+<li><a href="https://stackoverflow.com/questions/1791369/excel-export-chart-to-wmf-or-emf">参考链接</a></li>
+<li><a href="https://stackoverflow.com/questions/60706703/export-excel-graphs-as-emf">参考链接</a></li>
+</ol>
+<pre><code class="language-vba" data-lang="vba">Option Explicit
+#If VBA7 Then
+Private Declare PtrSafe Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
+Private Declare PtrSafe Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As LongPtr) As Long
+Private Declare PtrSafe Function CloseClipboard Lib &quot;user32&quot; () As Long
+Private Declare PtrSafe Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
+Private Declare PtrSafe Function EmptyClipboard Lib &quot;user32&quot; () As Long
+Private Declare PtrSafe Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As LongPtr, ByVal lpszFile As String) As Long
+Private Declare PtrSafe Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As LongPtr) As Long
+#Else
+Private Declare Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
+Private Declare Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As Long) As Long
+Private Declare Function CloseClipboard Lib &quot;user32&quot; () As Long
+Private Declare Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
+Private Declare Function EmptyClipboard Lib &quot;user32&quot; () As Long
+Private Declare Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As Long, ByVal lpszFile As String) As Long
+Private Declare Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As Long) As Long
+#End If
+
+Public Function fnSaveAsEMF(strFileName As String) As Boolean
+Const CF_ENHMETAFILE As Long = 14
+
+Dim ReturnValue As Long
+
+  OpenClipboard 0
+
+  ReturnValue = CopyEnhMetaFileA(GetClipboardData(CF_ENHMETAFILE), strFileName)
+
+  EmptyClipboard
+
+  CloseClipboard
+
+  '// Release resources to it eg You can now delete it if required
+  '// or write over it. This is a MUST
+  DeleteEnhMetaFile ReturnValue
+
+  fnSaveAsEMF = (ReturnValue &lt;&gt; 0)
+
+End Function
+
+Sub SaveItToEMF()
+  Dim sFileName As String
+  Dim sCellCharacter As String
+  Dim x As Integer
+
+  ActiveChart.ChartArea.Select.Copy
+ 
+  sFileName = InputBox(&quot;Enter filename for export:&quot;, &quot;Export object&quot;, sFileName)
+ 
+  For x = 1 To Len(sFileName)
+  sCellCharacter = Mid(sFileName, x, 1)
+  If sCellCharacter Like &quot;[&lt;/*\?%??ü?]&quot; Then
+  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ', Replaces all illegal filename characters with &quot;_&quot;
+  End If
+ 
+  If Asc(sCellCharacter) &lt;= 32 Then
+  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ' Replaces all non printable characters with &quot;_&quot;
+  End If
+  Next
+
+  sFileName = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; sFileName &amp; &quot;.emf&quot;
+ 
+  If fnSaveAsEMF(sFileName) Then
+  MsgBox &quot;Saved&quot;, vbInformation
+  Else
+  MsgBox &quot;NOT Saved!&quot;, vbCritical
+  End If
+
+End Sub
+
+</code></pre><h3 id="emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</h3>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">identify -verbose ex1.emf
+
+identify -units PixelsPerinch -format <span style="color:#d88200">&#34;%xx%y by %[printsize.x]x%[printsize.y] by %wx%h by %U&#34;</span> outPutValue2020-12-10.png
+convert -units PixelsPerinch -density <span style="color:#ae81ff">300</span> -size 800x800 ex1.emf ff.png
+</code></pre></div>
+        </div>
+        
+          <div class="single-tags">
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/tex">
+                #tex
+              </a>
+            
+              <a class="single-tag" href="https://lsq.github.io/tags/pdf">
+                #pdf
+              </a>
+            
+          </div>
+        
+        <div class="separator"></div>
+        
+
+
+        
+
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          相关文章
+        </h4>
+      </div>
+      
+        <div class="col-md-6">
+          <div class="post post-card">
+  
+
+<div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
+  <div class="vio-meta">
+  <div class="vio-date">
+    Dec 9, 2020
+  </div>
+  
+    <div class="vio-categories">
+      
+        
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
+        </a>
+      
+    </div>
+  
+</div>
+
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/">
+    vba导出pdf或者png
+  </a>
+  <div class="vio-desc post-desc">
+    
+  Intro These code are to export a chart from Excel to .......
+
+  </div>
+</div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="separator"></div>
+
+        
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>目录</h6>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#how-to-proceed">How to proceed</a>
+      <ul>
+        <li><a href="#to-export-chart-as-pdf">To export chart as PDF</a></li>
+        <li><a href="#to-export-chart-as-png">To export chart as PNG</a></li>
+        <li><a href="#crop-white-space-of-pdf-and-using-gs-convert-to-png">Crop white space of pdf and using <code>gs</code> convert to png</a></li>
+        <li><a href="#另一种方案是把chart复制到powerpoint中然后在powerpoint中另存为emf文件">另一种方案是把chart复制到powerpoint中，然后在powerpoint中另存为emf文件</a></li>
+        <li><a href="#还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</a></li>
+        <li><a href="#emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="container">
+    
+    
+    
+      
+    
+    © 2019 - 2021
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.4.6/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/smooth-scroll/15.2.0/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+
+<script src="/assets/app.min.js"></script>
+<script>
+  
+  const search = instantsearch({
+    appId: '2KA3KB1R4W',
+    apiKey: '23b12e7862db67f7211e1016361bbe1c',
+    indexName: 'often9',
+  });
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: '#search',
+      magnifier: false,
+      wrapInput: false,
+      reset: false,
+    })
+  );
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: '#search-content',
+      templates: {
+        item: function (data) {
+          return (
+            '<a href="' + "/" + data.uri + '" class="search-hit-item">' +
+            data._highlightResult.title.value +
+            '</a>'
+          );
+        },
+      },
+    })
+  );
+  search.start();
+</script>
+</body>
+</html>

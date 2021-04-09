@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.78.2" />
+	<meta name="generator" content="Hugo 0.82.0" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hugo blog</title>
@@ -141,26 +141,27 @@
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Nov 13, 2020
+    Apr 9, 2021
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
-          linux command tools
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/">
-    shell查找文件中包含中文的行
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/">
+    power query查询
   </a>
   <div class="vio-desc post-desc">
     
-  windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到–byte-subst参数，然后再用printf或者echo -e来重新编码。 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes  echo -en echo -en &#34;texlive安装包下载地址&#34;|iconv --byte-subst=&#34;\x%2x&#34; -t utf-8 -f gb18030|iconv –byte-subst=&#34;\x%2x&#34; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes......
+  背景 去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示后1个月左右财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢​. 常见做法有：
+ 一个一个下载打开查找 一个一个下载，然后用VBA（遍历循环下载工作薄，提取符合内容） 爬虫人力资源网站，下载所有表格，Power Query合并查询 直接爬虫人力资源网站直接读取表格内容，抓取符合内容 其他更好的方法（欢迎指导）  方法3过年在家空闲时间已经实现，鉴于时间没有整理成文，现记录以供同仁相互切磋；方法3主要记录Power Query的用法，至于Spider内容有兴趣的可以相互学习。......
 
   </div>
 </div>
@@ -176,28 +177,26 @@
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Nov 10, 2020
+    Dec 9, 2020
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
-          linux command tools
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/">
-    shell查找文件中包含中文的行
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/">
+    vba导出pdf或者png
   </a>
   <div class="vio-desc post-desc">
     
-  shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file
-asscii码从!到~中包含所有的大小写字母，和英文符号
-cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
+  Intro These code are to export a chart from Excel to .......
 
   </div>
 </div>
@@ -213,28 +212,26 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
 <div class="post-img" style="background-image: url(https://lsq.github.io/images/cover.png)"></div>
   <div class="vio-meta">
   <div class="vio-date">
-    Jan 10, 2020
+    Dec 9, 2020
   </div>
   
     <div class="vio-categories">
       
         
-        <a class="vio-category" href="https://lsq.github.io/categories/linux%20command%20tools">
-          linux command tools
+        <a class="vio-category" href="https://lsq.github.io/categories/office">
+          office
         </a>
       
     </div>
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/">
-    vim中自动格式化代码
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/">
+    pdf去除空白边及转为png
   </a>
   <div class="vio-desc post-desc">
     
-  vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
-所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
-  gg 跳转到第一行......
+  Intro These code are to export a chart from Excel to .......
 
   </div>
 </div>
@@ -258,7 +255,7 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
     <div class="media-content">
       <div class="vio-meta">
   <div class="vio-date">
-    Dec 18, 2019
+    Nov 13, 2020
   </div>
   
     <div class="vio-categories">
@@ -272,8 +269,8 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
   
 </div>
 
-      <a class="vio-title h5" href="https://lsq.github.io/posts/git-submodule/">
-        Git submodule错误操作
+      <a class="vio-title h5" href="https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/">
+        shell查找文件中包含中文的行
       </a>
     </div>
   </div>
@@ -294,7 +291,7 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
     <div class="media-content">
       <div class="vio-meta">
   <div class="vio-date">
-    Dec 18, 2019
+    Nov 10, 2020
   </div>
   
     <div class="vio-categories">
@@ -308,8 +305,8 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
   
 </div>
 
-      <a class="vio-title h5" href="https://lsq.github.io/posts/git-reset/">
-        git 撤回提交
+      <a class="vio-title h5" href="https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/">
+        shell查找文件中包含中文的行
       </a>
     </div>
   </div>
@@ -330,7 +327,7 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
     <div class="media-content">
       <div class="vio-meta">
   <div class="vio-date">
-    Nov 18, 2019
+    Jan 10, 2020
   </div>
   
     <div class="vio-categories">
@@ -344,8 +341,8 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
   
 </div>
 
-      <a class="vio-title h5" href="https://lsq.github.io/posts/vim_search_visual_text/">
-        Vim search visual text
+      <a class="vio-title h5" href="https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/">
+        vim中自动格式化代码
       </a>
     </div>
   </div>
@@ -480,7 +477,7 @@ cat file | grep &#34;[^\u4e00-\u9fa5]&#34;......
     
       
     
-    © 2019 - 2020
+    © 2019 - 2021
   </div>
 </footer>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
