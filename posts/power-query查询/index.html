@@ -122,7 +122,7 @@
         <div class="separator"></div>
         <div class="single-content">
           <h2 id="背景">背景</h2>
-<p>去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示后1个月左右财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢​.
+<p>去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示通过后次月月底前财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢.
 <img src="./ygdx/list.png" alt="list">
 常见做法有：</p>
 <ol>
@@ -138,7 +138,7 @@
 <ol>
 <li><strong>RubyInstaller</strong>安装</li>
 <li><strong>Gems</strong>安装</li>
-<li><strong>Excel 2016</strong>及以上版本（低版本不包含Power Query）</li>
+<li><strong>Excel 2016</strong>及以上版本（低版本不包含<strong>Power Query</strong>）</li>
 </ol>
 <h5 id="step-1--rubyinstaller安装">STEP 1.  RubyInstaller安装</h5>
 <p>RubyInstaller可以在官网上下载，为方便更快下载，可以由<a href="https://mirrors.sjtug.sjtu.edu.cn/">上海交通大学软件源镜像服务</a>提供所有镜像<a href="https://mirror.sjtu.edu.cn/github-release/oneclick/rubyinstaller2/releases/download/?mirror_intel_list">rubyinstaller2</a>存档中下载，或者通过<a href="https://rubyinstaller.cn/downloads/">rubyinstaller.cn</a>下载<strong>Ruby+Devkit 2.7.X</strong>或者<strong>Ruby+Devkit 3.0.X</strong></p>
@@ -165,7 +165,7 @@ gem install *.gem
 </code></pre></div><ol start="3">
 <li>安装aria2多线程加速下载工具</li>
 </ol>
-<p>配置文件可以参考<a href="https://github.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
+<p>aria2配置文件<a href="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/aria2-windows.conf">下载地址</a>，配置文件可以参考<a href="https://github.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
 <p>编译参考<a href="https://github.com/myfreeer/aria2-build-msys2">aria2-build-msys2</a>、<a href="https://github.com/q3aql/aria2-static-builds">aria2-static-builds</a>、<a href="https://github.com/P3TERX/Aria2-Pro-Core">Aria2-Pro-Core</a></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/P3TERX/aria2.sh
 <span style="color:#111">cd</span> aria2.sh
@@ -175,7 +175,7 @@ mv aria2.conf ~/.aria2
 aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 </code></pre></div><h4 id="下载表格">下载表格</h4>
 <p>主要是爬虫人力资源网站公示信息中包含“以工代训”链接，并打开链接下载公示表格</p>
-<p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/tree/master/content/postsygdx/getFiles.rb">下载链接</a></p>
+<p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/getFiles.rb">下载链接</a></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
 <span style="color:#75715e"># 大概10s左右下载完</span>
 </code></pre></div><p><img src="./ygdx/getFiles.png" alt="getFiles"></p>
