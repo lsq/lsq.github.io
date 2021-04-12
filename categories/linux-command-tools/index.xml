@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux command tools on Hugo blog</title>
+    <title>linux command tools on lsq 的博客</title>
     <link>https://lsq.github.io/categories/linux-command-tools/</link>
-    <description>Recent content in linux command tools on Hugo blog</description>
+    <description>Recent content in linux command tools on lsq 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-Hans</language>
+    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。&lt;br /&gt;&lt;br /&gt;背景使用了 &lt;a href=&#34;https://www.pexels.com/zh-cn/&#34; target=&#34;_blank&#34;&gt;Pexels&lt;/a&gt; 上 &lt;a href=&#34;https://www.pexels.com/zh-cn/@minan1398&#34; target=&#34;_blank&#34;&gt;Min An&lt;/a&gt; 拍摄的&lt;a href=&#34;https://www.pexels.com/zh-cn/photo/1454794/&#34; target=&#34;_blank&#34;&gt;图片&lt;/a&gt;。</copyright>
     <lastBuildDate>Fri, 13 Nov 2020 10:51:10 +0800</lastBuildDate><atom:link href="https://lsq.github.io/categories/linux-command-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>shell查找文件中包含中文的行</title>
@@ -13,7 +14,7 @@
       <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</guid>
-      <description>windwos 系统中git clone 下来文件名乱码原因  github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&amp;ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。  pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes # echo -en `echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030`|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030 texlive安装包下载地▒\x80 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes # printf $(echo -en `echo -en &amp;quot;texlive安装包下载地址&amp;quot;|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -t utf-8 -f gb18030`|iconv --byte-subst=&amp;quot;\x%2x&amp;quot; -f utf-8 -t gb18030) texlive安装包下载地址 # echo -en &amp;quot;texlive安装包下载地址&amp;quot;|xxd 00000000: 7465 786c 6976 65e5 ae89 e8a3 85e5 8c85 texlive.</description>
+      <description>windwos 系统中git clone 下来文件名乱码原因 github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文</description>
     </item>
     
     <item>
@@ -22,9 +23,7 @@
       <pubDate>Tue, 10 Nov 2020 10:51:10 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/</guid>
-      <description>shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file
-asscii码从!到~中包含所有的大小写字母，和英文符号
-cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
+      <description>shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file asscii码从!到~中包含所有的大小写字母，和英文符号 cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
     </item>
     
     <item>
@@ -33,9 +32,7 @@ cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</guid>
-      <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
-所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
-  gg 跳转到第一行</description>
+      <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩</description>
     </item>
     
     <item>
@@ -44,8 +41,7 @@ cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
       <pubDate>Wed, 18 Dec 2019 21:16:35 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/git-submodule/</guid>
-      <description>IDEA中GIt克隆时报：
- Server does not allow request for unadvertised object //工程针对子模块最近提交的改动ID</description>
+      <description>IDEA中GIt克隆时报： Server does not allow request for unadvertised object //工程针对子模块最近提交的改动ID 误操作后工程最近改动为： -Subproject commit //工程针对子模块上次提交的改动I</description>
     </item>
     
     <item>
@@ -54,8 +50,7 @@ cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
       <pubDate>Wed, 18 Dec 2019 21:15:28 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/git-reset/</guid>
-      <description>写完代码后，我们一般这样
-git add . //添加所有文件 git commit -m &amp;#34;本功能全部完成&amp;#34; 撤回commit 执行完commit后，想撤回commit，怎么办？ 这样凉拌：</description>
+      <description>写完代码后，我们一般这样 git add . //添加所有文件 git commit -m &amp;#34;本功能全部完成&amp;#34; 撤回commit 执行完commit后，想撤回commi</description>
     </item>
     
     <item>
@@ -64,7 +59,7 @@ git add . //添加所有文件 git commit -m &amp;#34;本功能全部完成&amp;
       <pubDate>Mon, 18 Nov 2019 14:40:41 +0000</pubDate>
       
       <guid>https://lsq.github.io/posts/vim_search_visual_text/</guid>
-      <description>vim 搜索光标下文字 / substitute 操作同样  Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl+R 0</description>
+      <description>vim 搜索光标下文字 / substitute 操作同样 Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl+R 0 select text, v and move yank, y goto search mode, / paste the last yanked text, Ctrl + R, 0 Enter</description>
     </item>
     
     <item>
@@ -73,7 +68,7 @@ git add . //添加所有文件 git commit -m &amp;#34;本功能全部完成&amp;
       <pubDate>Mon, 18 Nov 2019 18:04:57 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/sed-reference-guide/</guid>
-      <description>Complete Sed Command Guide [Explained with Practical Examples] In a previous article, I showed the basic usage of Sed, the stream editor, on a practical use case.</description>
+      <description>Complete Sed Command Guide [Explained with Practical Examples] In a previous article, I showed the basic usage of Sed, the stream editor, on a practical use case. Today, be prepared to gain more insight about Sed as we will take an in-depth tour of the sed execution model. This will be also an opportunity to make an exhaustive review of all Sed commands and to dive into their details and subtleties.</description>
     </item>
     
   </channel>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>pdf on Hugo blog</title>
+    <title>pdf on lsq 的博客</title>
     <link>https://lsq.github.io/tags/pdf/</link>
-    <description>Recent content in pdf on Hugo blog</description>
+    <description>Recent content in pdf on lsq 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-Hans</language>
+    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。&lt;br /&gt;&lt;br /&gt;背景使用了 &lt;a href=&#34;https://www.pexels.com/zh-cn/&#34; target=&#34;_blank&#34;&gt;Pexels&lt;/a&gt; 上 &lt;a href=&#34;https://www.pexels.com/zh-cn/@minan1398&#34; target=&#34;_blank&#34;&gt;Min An&lt;/a&gt; 拍摄的&lt;a href=&#34;https://www.pexels.com/zh-cn/photo/1454794/&#34; target=&#34;_blank&#34;&gt;图片&lt;/a&gt;。</copyright>
     <lastBuildDate>Wed, 09 Dec 2020 17:09:52 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>pdf去除空白边及转为png</title>
@@ -13,7 +14,7 @@
       <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</guid>
-      <description>Intro These code are to export a chart from Excel to .</description>
+      <description>Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;</description>
     </item>
     
   </channel>

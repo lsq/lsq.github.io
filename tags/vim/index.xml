@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vim on Hugo blog</title>
+    <title>vim on lsq 的博客</title>
     <link>https://lsq.github.io/tags/vim/</link>
-    <description>Recent content in vim on Hugo blog</description>
+    <description>Recent content in vim on lsq 的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>zh-Hans</language>
+    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。&lt;br /&gt;&lt;br /&gt;背景使用了 &lt;a href=&#34;https://www.pexels.com/zh-cn/&#34; target=&#34;_blank&#34;&gt;Pexels&lt;/a&gt; 上 &lt;a href=&#34;https://www.pexels.com/zh-cn/@minan1398&#34; target=&#34;_blank&#34;&gt;Min An&lt;/a&gt; 拍摄的&lt;a href=&#34;https://www.pexels.com/zh-cn/photo/1454794/&#34; target=&#34;_blank&#34;&gt;图片&lt;/a&gt;。</copyright>
     <lastBuildDate>Fri, 10 Jan 2020 20:02:42 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vim中自动格式化代码</title>
@@ -13,9 +14,7 @@
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</guid>
-      <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，
-所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：
-  gg 跳转到第一行</description>
+      <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩</description>
     </item>
     
     <item>
@@ -24,7 +23,7 @@
       <pubDate>Mon, 18 Nov 2019 14:40:41 +0000</pubDate>
       
       <guid>https://lsq.github.io/posts/vim_search_visual_text/</guid>
-      <description>vim 搜索光标下文字 / substitute 操作同样  Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl+R 0</description>
+      <description>vim 搜索光标下文字 / substitute 操作同样 Or you can simply yank the selected text with y and go to search mode /, then you can paste the last yanked text with Ctrl+R 0 select text, v and move yank, y goto search mode, / paste the last yanked text, Ctrl + R, 0 Enter</description>
     </item>
     
   </channel>
