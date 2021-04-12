@@ -102,7 +102,7 @@
   <div class="row">
     <div class="col-md-9">
       <div class="single series">
-        <h1 class="single-title">power query查询</h1>
+        <h1 class="single-title">Ruby Spider 人力资源网站和power query合并查询</h1>
         <div class="vio-meta">
   <div class="vio-date">
     Apr 9, 2021
@@ -123,7 +123,7 @@
         <div class="single-content">
           <h2 id="背景">背景</h2>
 <p>去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公示的（公示通过后次月月底前财政拨款）、哪天拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是普通人，也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢.
-<img src="./ygdx/list.png" alt="list">
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/list.png" alt="list">
 常见做法有：</p>
 <ol>
 <li>一个一个下载打开查找</li>
@@ -132,7 +132,7 @@
 <li>直接爬虫人力资源网站直接读取表格内容，抓取符合内容</li>
 <li>其他更好的方法（欢迎指导）</li>
 </ol>
-<p><strong>方法3</strong>过年在家空闲时间已经实现，鉴于时间没有整理成文，现记录以供同仁相互切磋；方法3主要记录Power Query的用法，至于Spider内容有兴趣的可以相互学习。</p>
+<p><strong>方法3</strong>过年在家空闲时间已经实现，鉴于时间没有整理成文，现记录以供同仁相互切磋；方法3主要记录Power Query的用法，至于Spider内容有兴趣的可以相互学习；<strong>方法4</strong>下次再分享。</p>
 <h2 id="数据处理">数据处理</h2>
 <h4 id="工具准备">工具准备</h4>
 <ol>
@@ -142,7 +142,7 @@
 </ol>
 <h5 id="step-1--rubyinstaller安装">STEP 1.  RubyInstaller安装</h5>
 <p>RubyInstaller可以在官网上下载，为方便更快下载，可以由<a href="https://mirrors.sjtug.sjtu.edu.cn/">上海交通大学软件源镜像服务</a>提供所有镜像<a href="https://mirror.sjtu.edu.cn/github-release/oneclick/rubyinstaller2/releases/download/?mirror_intel_list">rubyinstaller2</a>存档中下载，或者通过<a href="https://rubyinstaller.cn/downloads/">rubyinstaller.cn</a>下载<strong>Ruby+Devkit 2.7.X</strong>或者<strong>Ruby+Devkit 3.0.X</strong></p>
-<p><img src="./ygdx/rubyinstaller.png" alt="rubyinstaller"></p>
+<p><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/rubyinstaller.png" alt="rubyinstaller"></p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h5 id="step-2-gems安装">STEP 2. Gems安装</h5>
@@ -178,8 +178,8 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 <p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/getFiles.rb">下载链接</a></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
 <span style="color:#75715e"># 大概10s左右下载完</span>
-</code></pre></div><p><img src="./ygdx/getFiles.png" alt="getFiles"></p>
-<p><img src="./ygdx/ruby.png" alt="ruby"><img src="./ygdx/aria2.png" alt="aria2ng"><img src="./ygdx/fileList.png" alt="fileList"></p>
+</code></pre></div><p><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/getFiles.png" alt="getFiles"></p>
+<p><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/ruby.png" alt="ruby"><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/aria2.png" alt="aria2ng"><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/fileList.png" alt="fileList"></p>
 <h4 id="power-query-查询数据">Power Query 查询数据</h4>
 <h5 id="查询代码">查询代码</h5>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#00a8c8">let</span>
@@ -200,15 +200,15 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 </span><span style="color:#d88200">    重命名的列
 </span></code></pre></div><h5 id="查询操作步骤">查询操作步骤</h5>
 <p>STEP <strong>1</strong>. 新建一个空白工作薄“公示查询”，打开并切换到《<strong>数据</strong>》标签页面，然后选择”<strong>新建查询</strong>“》”<strong>其他源</strong>“》”<strong>空白查询</strong>“，打开”<strong>高级编辑器</strong>“</p>
-<p><img src="./ygdx/bl_query.png" alt="qeury1">
-<img src="./ygdx/blank_query1.png" alt="qeury2"></p>
+<p><img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/bl_query.png" alt="qeury1">
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/blank_query1.png" alt="qeury2"></p>
 <p>STEP <strong>2</strong>.全选并删除默认查询代码，然后粘贴<strong>查询代码</strong>，最后点击”<strong>完成</strong>“，就会出现查询结果，此步骤<strong>注意</strong>个改查询代码中的目录位置(<strong>源</strong>中的路径)
-<img src="./ygdx/query_code.png" alt="qeury3">
-<img src="./ygdx/query_process.png" alt="qeury4"></p>
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_code.png" alt="qeury3">
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_process.png" alt="qeury4"></p>
 <p>STEP <strong>3</strong>.点击左上角“<strong>关闭并上载</strong>”下的<strong>箭头</strong>，选择“<strong>关闭并上载至&hellip;</strong>”选项，选择“<strong>现有工作表</strong>”，“<strong>加载</strong>”后就是最终结果。
-<img src="./ygdx/save_qr.png" alt="qeury5">
-<img src="./ygdx/save_query.png" alt="qeury6">
-<img src="./ygdx/query_result.png" alt="qeury7"></p>
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/save_qr.png" alt="qeury5">
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/save_query.png" alt="qeury6">
+<img src="/https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_result.png" alt="qeury7"></p>
 
         </div>
         
@@ -268,8 +268,8 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/">
-    pdf去除空白边及转为png
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/">
+    vba导出pdf或者png
   </a>
   <div class="vio-desc post-desc">
     
@@ -300,8 +300,8 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
   
 </div>
 
-  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/">
-    vba导出pdf或者png
+  <a class="vio-title post-title h5" href="https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/">
+    pdf去除空白边及转为png
   </a>
   <div class="vio-desc post-desc">
     
