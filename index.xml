@@ -30,15 +30,6 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
-      <title>关于</title>
-      <link>https://lsq.github.io/about/</link>
-      <pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate>
-      
-      <guid>https://lsq.github.io/about/</guid>
-      <description>Hugo 是個靜態網頁產生器。 它利用了一些開放原始碼的專案像是： Cobra Viper J Walter Weatherman Cast 了解並貢獻： GitHub.</description>
-    </item>
-    
-    <item>
       <title>Ruby Spider 人力资源网站和power query合并查询</title>
       <link>https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/</link>
       <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
