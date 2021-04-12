@@ -10,10 +10,10 @@
     <lastBuildDate>Wed, 09 Dec 2020 17:09:52 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>pdf去除空白边及转为png</title>
-      <link>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</link>
+      <link>https://lsq.github.io/posts/pdf_crop/</link>
       <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</guid>
+      <guid>https://lsq.github.io/posts/pdf_crop/</guid>
       <description>Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;</description>
     </item>
     

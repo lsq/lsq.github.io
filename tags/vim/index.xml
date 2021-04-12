@@ -10,10 +10,10 @@
     <lastBuildDate>Fri, 10 Jan 2020 20:02:42 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vim中自动格式化代码</title>
-      <link>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</link>
+      <link>https://lsq.github.io/posts/vim_format_code/</link>
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</guid>
+      <guid>https://lsq.github.io/posts/vim_format_code/</guid>
       <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩</description>
     </item>
     

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>shell查找文件中包含中文的行 | lsq 的博客</title>
+    <title>emf | lsq 的博客</title>
 
     
 <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -13,21 +13,19 @@
 
 
 <meta name="author" content="lsq" />
-<meta name="description" content="shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file asscii码从!到~中包含所有的大小写字母，和英文符号 cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;" />
+<meta name="description" content="lsq成长记录～" />
 
 
 
 <meta name="generator" content="Hugo 0.82.0" />
 
-<link rel="canonical" href="https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/" />
+<link rel="canonical" href="https://lsq.github.io/tags/emf/" />
 
 
-<meta property="og:title" content="shell查找文件中包含中文的行" />
-<meta property="og:description" content="shell查找文件中包含中文的行" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/" /><meta property="og:image" content="https://lsq.github.io/me/background.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-10T10:51:10&#43;08:00" />
-<meta property="article:modified_time" content="2020-11-10T10:51:10&#43;08:00" />
+<meta property="og:title" content="emf" />
+<meta property="og:description" content="lsq成长记录～" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lsq.github.io/tags/emf/" /><meta property="og:image" content="https://lsq.github.io/me/background.jpg"/>
 
 
 
@@ -35,8 +33,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lsq.github.io/me/background.jpg"/>
 
-<meta name="twitter:title" content="shell查找文件中包含中文的行"/>
-<meta name="twitter:description" content="shell查找文件中包含中文的行"/>
+<meta name="twitter:title" content="emf"/>
+<meta name="twitter:description" content="lsq成长记录～"/>
 
 
 <link rel="stylesheet" href="/css/semantic.min.css" />
@@ -87,17 +85,7 @@
 </style>
 
 
-    
-
-
-
-<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
-
-
-
-
-
-
+     
 
     
     <link rel="stylesheet" href="/css/custom.css" />
@@ -131,124 +119,11 @@
         <section class="front">
           <div class="dream-max-width">
             
-<div class="ui relaxed grid dream-grid dream-grid-single">
-  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
-    
-    
-    <div class="ui segment toc">
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#shell查找文件中包含中文的行">shell查找文件中包含中文的行</a></li>
-  </ul>
-</nav>
-    </div>
-    
-    <div class="ui segment actions">
-      <button
-        class="ui circular icon button save-as-image"
-        title="保存为图片"
-        onclick="savePostAsImg()">
-        <i class="save icon"></i>
-      </button>
 
-      <a href="https://twitter.com/intent/tweet?text=shell%e6%9f%a5%e6%89%be%e6%96%87%e4%bb%b6%e4%b8%ad%e5%8c%85%e5%90%ab%e4%b8%ad%e6%96%87%e7%9a%84%e8%a1%8c&url=https%3a%2f%2flsq.github.io%2fposts%2fshell%25E6%259F%25A5%25E6%2589%25BE%25E4%25B8%25AD%25E6%2596%2587charactor%2f" class="ui circular twitter icon button">
-  <i class="twitter icon"></i>
-</a>
-<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fshell%25E6%259F%25A5%25E6%2589%25BE%25E4%25B8%25AD%25E6%2596%2587charactor%2f" class="ui circular facebook icon button">
-  <i class="facebook icon"></i>
-</a>
-
-    </div>
-  </aside>
-  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
-    
-    <section class="ui attached segment">
-      <header>
-        <h1 class="ui large header">shell查找文件中包含中文的行<div class="sub header">
-            @
-            
-              lsq
-            
-
-            | 
-                星期二，十一月 10 日，2020 年
-              
-
-            | 1 分钟阅读
-
-            | 更新于
-              
-                星期二，十一月 10 日，2020 年
-              
-          </div>
-        </h1>
-      </header>
-
-      <article class="main"><h2 id="shell查找文件中包含中文的行">shell查找文件中包含中文的行</h2>
-<p><code>awk '/[^!-~]/' file</code></p>
-<p>asscii码从!到~中包含所有的大小写字母，和英文符号</p>
-<p><code>cat file | grep &quot;[^\u4e00-\u9fa5]&quot;</code></p>
-</article>
-    </section>
-
-    
-    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
-      <div id="disqus_thread"></div>
-      <script>
-        
-
-
-        var disqus_config = function () {
-          this.page.url = 'https:\/\/lsq.github.io\/posts\/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor\/';  
-          this.page.identifier = '\/posts\/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor\/'; 
-        };
-
-        (function() { 
-          var d = document, s = d.createElement('script');
-          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </article>
-    
-
-    
-    <article class="ui segment utterances-comments" data-html2canvas-ignore>
-      <script
-        src="https://utteranc.es/client.js"
-        repo="lsq/lsq.github.io"
-        issue-term="og:title"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-      </script>
-    </article>
-    
-
-    
-  </div>
-</div>
-
-
-            <footer class="ui basic center aligned segment" style="background-color: transparent;">
-              
-              <p>© 2011 - 2021 lsq 的博客</p>
-              
-
-              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
-
-              
-            </footer>
-          </div>
-        </section>
-        <section class="back">
-          <div class="dream-max-width">
-            <header class="ui basic very padded segment dream-header">
+<header class="ui basic very padded segment dream-header">
   <div class="ui small circular image">
     
-    <img src="/me/yy.jpg" alt="avatar" />
+    <img src="/me/pk.jpg" alt="avatar" />
     
   </div>
 
@@ -279,6 +154,10 @@
     
       <a class="ui label" href="/tags/development/" title="development">
         development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
       </a>
     
       <a class="ui label" href="/tags/git/" title="git">
@@ -315,6 +194,194 @@
     
       <a class="ui label" href="/tags/pdf/" title="pdf">
         pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="tex">
+        tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid">
+  
+  
+  <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
+    <article class="ui attached segment card dream-card">
+  <a class="image" href="https://lsq.github.io/posts/vba_export_png/">
+    
+    <img src="/images/vba_export_png.jpg" alt="vba导出pdf或者png" />
+    
+  </a>
+
+  <div class="content">
+    <h2 class="ui medium header">
+      <a href="/posts/vba_export_png/">vba导出pdf或者png</a>
+    </h2>
+    <div class="meta">
+      <p class="date">星期三，十二月 9 日，2020 年</p>
+    </div>
+    <div class="description">
+      Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &gt; Macro &gt; Visual Basic Editor. In the new window, select Insert &gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &gt; Close &gt; Return to Microsoft Excel Select a chart that you want to export Tools &gt;
+    </div>
+  </div>
+
+  <div class="extra content">
+    <div class="author"><img class="ui avatar image" src="/me/pk.jpg" alt="avatar" />lsq</div>
+    <div class="reading-time">
+      <i class="clock icon"></i>1 分钟阅读</div>
+  </div>
+</article>
+
+  </div>
+  
+
+  
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2021 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">与其感慨路难行，不如马上出发。</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
       </a>
     
       <a class="ui label" href="/tags/power-query/" title="power query">
@@ -458,6 +525,30 @@
 
   
   
+  <div class="sixteen wide mobile eight wide tablet eight wide computer column dream-column">
+    <article class="ui segment">
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/tags\/emf\/';  
+          this.page.identifier = '/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+  </div>
+  
+  
 </div>
 
           </div>
@@ -501,39 +592,9 @@
 <script src="/js/theme.js"></script>
 
     
-<script src="/js/html2canvas.min.js"></script>
-<script src="/js/post.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
-
-
-
-<script>
-  hljs.initHighlightingOnLoad()
-  setHighlightTheme()
-
-  function setHighlightTheme() {
-    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
-    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
-
-    var lightTheme = "tomorrow"
-    var darkTheme = "tomorrow-night"
-    var theme = isDark === 'y' ? darkTheme : lightTheme
-
-    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
-    $('pre').css('background', isDark === 'y' ? '#333' : '')
-  }
-</script>
-
-
-
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="/js/grid.js"></script>
 
 
     

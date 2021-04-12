@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>pdf去除空白边及转为png | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="lsq" />
+<meta name="description" content="Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;" />
+
+
+
+<meta name="generator" content="Hugo 0.82.0" />
+
+<link rel="canonical" href="https://lsq.github.io/posts/pdf_crop/" />
+
+
+<meta property="og:title" content="pdf去除空白边及转为png" />
+<meta property="og:description" content="Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &gt; Macro &gt; Visual Basic Editor. In the new window, select Insert &gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &gt; Close &gt; Return to Microsoft Excel Select a chart that you want to export Tools &gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/pdf_crop/" /><meta property="og:image" content="https://lsq.github.io/images/pdf_crop.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-09T17:09:52&#43;08:00" />
+<meta property="article:modified_time" content="2020-12-09T17:09:52&#43;08:00" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/pdf_crop.jpg"/>
+
+<meta name="twitter:title" content="pdf去除空白边及转为png"/>
+<meta name="twitter:description" content="Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &gt; Macro &gt; Visual Basic Editor. In the new window, select Insert &gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &gt; Close &gt; Return to Microsoft Excel Select a chart that you want to export Tools &gt;"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#how-to-proceed">How to proceed</a>
+      <ul>
+        <li><a href="#to-export-chart-as-pdf">To export chart as PDF</a></li>
+        <li><a href="#to-export-chart-as-png">To export chart as PNG</a></li>
+        <li><a href="#crop-white-space-of-pdf-and-using-gs-convert-to-png">Crop white space of pdf and using <code>gs</code> convert to png</a></li>
+        <li><a href="#另一种方案是把chart复制到powerpoint中然后在powerpoint中另存为emf文件">另一种方案是把chart复制到powerpoint中，然后在powerpoint中另存为emf文件</a></li>
+        <li><a href="#还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</a></li>
+        <li><a href="#emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=pdf%e5%8e%bb%e9%99%a4%e7%a9%ba%e7%99%bd%e8%be%b9%e5%8f%8a%e8%bd%ac%e4%b8%bapng&url=https%3a%2f%2flsq.github.io%2fposts%2fpdf_crop%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fpdf_crop%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/pdf_crop.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">pdf去除空白边及转为png<div class="sub header">
+            @
+            
+              
+                lsq
+              
+            
+
+            | 
+                星期三，十二月 9 日，2020 年
+              
+
+            | 3 分钟阅读
+
+            | 更新于
+              
+                星期三，十二月 9 日，2020 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><h2 id="intro">Intro</h2>
+<p>These code are to export a chart from Excel to .png and .pdf extensions.</p>
+<h2 id="how-to-proceed">How to proceed</h2>
+<p>go to <strong>Tools &gt; Macro &gt; Visual Basic Editor</strong>.</p>
+<ol>
+<li>In the new window, select <strong>Insert &gt; Module</strong> and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or  in the blank page.</li>
+<li>Then go to <strong>File &gt; Close &gt; Return to Microsoft Excel</strong></li>
+<li>Select a chart that you want to export</li>
+<li><strong>Tools &gt; Macro &gt; Macros</strong>, then select <em>SaveSelectedChartAsPDF</em> or <em>SaveSelectedChartAsImage</em> and press <em>Execute</em>.</li>
+<li>Check the image at the folder (current directory).</li>
+</ol>
+<h3 id="to-export-chart-as-pdf">To export chart as PDF</h3>
+<pre><code>Sub SaveSelectedChartAsPDF()
+    With ActiveChart.PageSetup
+        .Orientation = xlLandscape
+        .FitToPagesTall = 1
+        .FitToPagesWide = 1
+        .LeftMargin = 0
+        .RightMargin = 0
+        .BottomMargin = 0
+        .TopMargin = 0
+    End With
+    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
+End Sub
+</code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
+<pre><code>Sub SaveSelectedChartAsImage()
+    ActiveChart.Export &quot;figure.png&quot;
+End Sub
+
+D:\Program Files\ImageMagick-7.0.10-Q16-HDRI;c:\lua541;D:\Program Files\inkscape\bin;D:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;D:\Program Files\gs\gs9.53.3\bin;C:\Program Files\7-Zip;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\航天信息财税平台\newslib;C:\msys;4\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\税务证书应用客户端;d:\Progr;m Files (x86)\LyX 2.3\Perl\bin;D:\Program Files (x86)\Calibre2\;D:\texlive\2020\bin\win64;D:\texlive\2020\bin\win32;D:\Program Files\qemu;C:\Program Files\pdf2svg;C:\Program Files\Pandoc\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\
+
+</code></pre><h3 id="crop-white-space-of-pdf-and-using-gs-convert-to-png">Crop white space of pdf and using <code>gs</code> convert to png</h3>
+<ol>
+<li>PDFCROP takes a PDF file as input, calculates the BoundingBox for each page by the help of ghostscript and generates a output PDF file with removed margins.<a href="https://github.com/ho-tex/pdfcrop">pdfcrop</a></li>
+<li>Normally pdfcrop will be installed by the TeX system.</li>
+<li><a href="https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs">https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs</a></li>
+<li><a href="https://tex.stackexchange.com/questions/17716/excel-chart-pdf-latex-but-need-to-remove-white-space">briss/xltoolbox</a></li>
+</ol>
+<pre><code>pdfcrop foo.pdf f.pdf
+gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
+# png256 png16 pnggray pngmono
+gswin64c.exe -dNOPAUSE -q -sDEVICE=pnggray -r500 -dBATCH -dFirstPage=2 -dLastPage=2 -sOutputFile=test.png test.pdf
+
+</code></pre><pre><code class="language-vbscript" data-lang="vbscript">Sub SaveSelectedChartAsPng()
+Dim tmpdir As String, outputPdf As String, outputPng As String, cropPdf As String
+Dim wshell As Object
+
+    Set wshell = CreateObject(&quot;WScript.Shell&quot;)
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    Application.EnableEvents = False
+    Application.DisplayAlerts = False
+    
+    tmpdir = VBA.Environ(&quot;temp&quot;)
+    outputPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure.pdf&quot;
+    outputPng = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; &quot;outputValue.png&quot;
+    cropPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure_crop.pdf&quot;
+    
+    With ActiveChart.PageSetup
+        .Orientation = xlLandscape
+        .FitToPagesWide = 1
+        .FitToPagesTall = 1
+        .LeftMargin = Application.InchesToPoints(0)
+        .RightMargin = Application.InchesToPoints(0)
+        .TopMargin = Application.InchesToPoints(0)
+        .BottomMargin = Application.InchesToPoints(0)
+        .HeaderMargin = Application.InchesToPoints(0)
+        .FooterMargin = Application.InchesToPoints(0)
+    End With
+    ActiveChart.ExportAsFixedFormat xlTypePDF, outputPdf, Quality:=xlQualityStandard, IncludeDocProperties:=True, _
+                IgnorePrintAreas:=False, OpenAfterPublish:=False
+    
+    wshell.Run &quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
+    wshell.Run &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r1200  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf, 0, True
+    wshell.Run &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
+    ' 需要安装texlive，其已经包含了pdfcrop程序
+    'Shell (&quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
+    '需要安装ghostscript
+    'Shell (&quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf)
+    '需要安装msys2, rm命令是linux 下命令
+    'Shell (&quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
+    
+    Set wshell = Nothing
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+    Application.EnableEvents = True
+    Application.DisplayAlerts = True
+    
+End Sub
+</code></pre><h3 id="另一种方案是把chart复制到powerpoint中然后在powerpoint中另存为emf文件">另一种方案是把chart复制到powerpoint中，然后在powerpoint中另存为emf文件</h3>
+<ol>
+<li>Select your Microsoft Excel plots.</li>
+<li>Copy.</li>
+<li>Open Microsoft PowerPoint.</li>
+<li>Paste-special as enhanced metafile (EMF) into an otherwise empty slide.</li>
+<li>Save your PowerPoint slide as an &ldquo;other format&rdquo; file, and choose &ldquo;EMF&rdquo; (Enhanced Windows Metafile).</li>
+<li>Import your EMF file into <a href="http://inkscape.org/">InkScape</a> and ungroup the object.</li>
+<li>Delete all the A4-sized crappy blank space from the image and enjoy.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> ppt <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>, pr <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+<span style="color:#66d9ef">Dim</span> sl <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+Selection.Copy
+...
+<span style="color:#66d9ef">With</span> CreateObject(<span style="color:#e6db74">&#34;PowerPoint.Application&#34;</span>)
+    <span style="color:#66d9ef">Set</span> pr <span style="color:#f92672">=</span> .Presentations.Add
+    <span style="color:#66d9ef">Set</span> sl <span style="color:#f92672">=</span> pr.Slides.Add(1, 11)
+    sl.Shapes.PasteSpecial DataType:<span style="color:#f92672">=</span>2
+    sl.Shapes(sl.Shapes.Count).Export <span style="color:#e6db74">&#34;C:\Test\Test.emf&#34;</span>, 5
+    pr.Close
+    .Quit
+<span style="color:#66d9ef">End</span> <span style="color:#66d9ef">With</span>
+<span style="color:#66d9ef">End</span> <span style="color:#66d9ef">Sub</span>
+</code></pre></div><h3 id="还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</h3>
+<ol>
+<li><a href="https://stackoverflow.com/questions/1791369/excel-export-chart-to-wmf-or-emf">参考链接</a></li>
+<li><a href="https://stackoverflow.com/questions/60706703/export-excel-graphs-as-emf">参考链接</a></li>
+</ol>
+<pre><code class="language-vba" data-lang="vba">Option Explicit
+#If VBA7 Then
+Private Declare PtrSafe Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
+Private Declare PtrSafe Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As LongPtr) As Long
+Private Declare PtrSafe Function CloseClipboard Lib &quot;user32&quot; () As Long
+Private Declare PtrSafe Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
+Private Declare PtrSafe Function EmptyClipboard Lib &quot;user32&quot; () As Long
+Private Declare PtrSafe Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As LongPtr, ByVal lpszFile As String) As Long
+Private Declare PtrSafe Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As LongPtr) As Long
+#Else
+Private Declare Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
+Private Declare Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As Long) As Long
+Private Declare Function CloseClipboard Lib &quot;user32&quot; () As Long
+Private Declare Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
+Private Declare Function EmptyClipboard Lib &quot;user32&quot; () As Long
+Private Declare Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As Long, ByVal lpszFile As String) As Long
+Private Declare Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As Long) As Long
+#End If
+
+Public Function fnSaveAsEMF(strFileName As String) As Boolean
+Const CF_ENHMETAFILE As Long = 14
+
+Dim ReturnValue As Long
+
+  OpenClipboard 0
+
+  ReturnValue = CopyEnhMetaFileA(GetClipboardData(CF_ENHMETAFILE), strFileName)
+
+  EmptyClipboard
+
+  CloseClipboard
+
+  '// Release resources to it eg You can now delete it if required
+  '// or write over it. This is a MUST
+  DeleteEnhMetaFile ReturnValue
+
+  fnSaveAsEMF = (ReturnValue &lt;&gt; 0)
+
+End Function
+
+Sub SaveItToEMF()
+  Dim sFileName As String
+  Dim sCellCharacter As String
+  Dim x As Integer
+
+  ActiveChart.ChartArea.Select.Copy
+ 
+  sFileName = InputBox(&quot;Enter filename for export:&quot;, &quot;Export object&quot;, sFileName)
+ 
+  For x = 1 To Len(sFileName)
+  sCellCharacter = Mid(sFileName, x, 1)
+  If sCellCharacter Like &quot;[&lt;/*\?%??ü?]&quot; Then
+  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ', Replaces all illegal filename characters with &quot;_&quot;
+  End If
+ 
+  If Asc(sCellCharacter) &lt;= 32 Then
+  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ' Replaces all non printable characters with &quot;_&quot;
+  End If
+  Next
+
+  sFileName = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; sFileName &amp; &quot;.emf&quot;
+ 
+  If fnSaveAsEMF(sFileName) Then
+  MsgBox &quot;Saved&quot;, vbInformation
+  Else
+  MsgBox &quot;NOT Saved!&quot;, vbCritical
+  End If
+
+End Sub
+
+</code></pre><h3 id="emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">identify -verbose ex1.emf
+
+identify -units PixelsPerinch -format <span style="color:#e6db74">&#34;%xx%y by %[printsize.x]x%[printsize.y] by %wx%h by %U&#34;</span> outPutValue2020-12-10.png
+convert -units PixelsPerinch -density <span style="color:#ae81ff">300</span> -size 800x800 ex1.emf ff.png
+</code></pre></div></article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/pdf_crop\/';  
+          this.page.identifier = '\/posts\/pdf_crop\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2021 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">与其感慨路难行，不如马上出发。</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="tex">
+        tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>&lt;&ndash;! 职业是前端工程师&ndash;&gt;</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 12 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>

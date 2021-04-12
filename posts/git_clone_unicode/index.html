@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>shell查找文件中包含中文的行 | lsq 的博客</title>
+    <title>git_clone中文乱码原因 | lsq 的博客</title>
 
     
 <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -19,13 +19,13 @@
 
 <meta name="generator" content="Hugo 0.82.0" />
 
-<link rel="canonical" href="https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/" />
+<link rel="canonical" href="https://lsq.github.io/posts/git_clone_unicode/" />
 
 
-<meta property="og:title" content="shell查找文件中包含中文的行" />
-<meta property="og:description" content="shell查找文件中包含中文的行" />
+<meta property="og:title" content="git_clone中文乱码原因" />
+<meta property="og:description" content="windwos 系统中git clone 下来文件名乱码原因 github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/" /><meta property="og:image" content="https://lsq.github.io/me/background.jpg"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://lsq.github.io/posts/git_clone_unicode/" /><meta property="og:image" content="https://lsq.github.io/images/git_clone_unicode.jpg" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-11-13T10:51:10&#43;08:00" />
 <meta property="article:modified_time" content="2020-11-13T10:51:10&#43;08:00" />
 
@@ -33,10 +33,10 @@
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lsq.github.io/me/background.jpg"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/git_clone_unicode.jpg"/>
 
-<meta name="twitter:title" content="shell查找文件中包含中文的行"/>
-<meta name="twitter:description" content="shell查找文件中包含中文的行"/>
+<meta name="twitter:title" content="git_clone中文乱码原因"/>
+<meta name="twitter:description" content="windwos 系统中git clone 下来文件名乱码原因 github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文"/>
 
 
 <link rel="stylesheet" href="/css/semantic.min.css" />
@@ -151,10 +151,10 @@
         <i class="save icon"></i>
       </button>
 
-      <a href="https://twitter.com/intent/tweet?text=shell%e6%9f%a5%e6%89%be%e6%96%87%e4%bb%b6%e4%b8%ad%e5%8c%85%e5%90%ab%e4%b8%ad%e6%96%87%e7%9a%84%e8%a1%8c&url=https%3a%2f%2flsq.github.io%2fposts%2fgit_clone%25E4%25B8%25AD%25E6%2596%2587%25E4%25B9%25B1%25E7%25A0%2581%25E5%258E%259F%25E5%259B%25A0%2f" class="ui circular twitter icon button">
+      <a href="https://twitter.com/intent/tweet?text=git_clone%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81%e5%8e%9f%e5%9b%a0&url=https%3a%2f%2flsq.github.io%2fposts%2fgit_clone_unicode%2f" class="ui circular twitter icon button">
   <i class="twitter icon"></i>
 </a>
-<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fgit_clone%25E4%25B8%25AD%25E6%2596%2587%25E4%25B9%25B1%25E7%25A0%2581%25E5%258E%259F%25E5%259B%25A0%2f" class="ui circular facebook icon button">
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fgit_clone_unicode%2f" class="ui circular facebook icon button">
   <i class="facebook icon"></i>
 </a>
 
@@ -162,12 +162,18 @@
   </aside>
   <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
     
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/git_clone_unicode.jpg);"></div>
+    </div>
+    
     <section class="ui attached segment">
       <header>
-        <h1 class="ui large header">shell查找文件中包含中文的行<div class="sub header">
+        <h1 class="ui large header">git_clone中文乱码原因<div class="sub header">
             @
             
-              lsq
+              
+                lsq
+              
             
 
             | 
@@ -212,8 +218,8 @@ pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
 
 
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lsq.github.io\/posts\/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0\/';  
-          this.page.identifier = '\/posts\/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0\/'; 
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/git_clone_unicode\/';  
+          this.page.identifier = '\/posts\/git_clone_unicode\/'; 
         };
 
         (function() { 
@@ -261,7 +267,7 @@ pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
             <header class="ui basic very padded segment dream-header">
   <div class="ui small circular image">
     
-    <img src="/me/yy.jpg" alt="avatar" />
+    <img src="/me/pk.jpg" alt="avatar" />
     
   </div>
 
@@ -292,6 +298,10 @@ pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
     
       <a class="ui label" href="/tags/development/" title="development">
         development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
       </a>
     
       <a class="ui label" href="/tags/git/" title="git">
@@ -328,6 +338,10 @@ pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
     
       <a class="ui label" href="/tags/pdf/" title="pdf">
         pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
       </a>
     
       <a class="ui label" href="/tags/power-query/" title="power query">

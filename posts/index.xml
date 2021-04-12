@@ -31,55 +31,55 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     
     <item>
       <title>Ruby Spider 人力资源网站和power query合并查询</title>
-      <link>https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/</link>
+      <link>https://lsq.github.io/posts/ruby_power_query/</link>
       <pubDate>Fri, 09 Apr 2021 09:37:25 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/power-query%E6%9F%A5%E8%AF%A2/</guid>
-      <description>背景 去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体不清楚是哪天公</description>
+      <guid>https://lsq.github.io/posts/ruby_power_query/</guid>
+      <description>背景 去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体是哪天公示的（</description>
     </item>
     
     <item>
       <title>pdf去除空白边及转为png</title>
-      <link>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</link>
+      <link>https://lsq.github.io/posts/pdf_crop/</link>
       <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/pdf%E5%8E%BB%E9%99%A4%E7%A9%BA%E7%99%BD%E8%BE%B9%E5%8F%8A%E8%BD%AC%E4%B8%BApng/</guid>
+      <guid>https://lsq.github.io/posts/pdf_crop/</guid>
       <description>Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;</description>
     </item>
     
     <item>
       <title>vba导出pdf或者png</title>
-      <link>https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/</link>
+      <link>https://lsq.github.io/posts/vba_export_png/</link>
       <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/</guid>
+      <guid>https://lsq.github.io/posts/vba_export_png/</guid>
       <description>Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;</description>
     </item>
     
     <item>
-      <title>shell查找文件中包含中文的行</title>
-      <link>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</link>
+      <title>git_clone中文乱码原因</title>
+      <link>https://lsq.github.io/posts/git_clone_unicode/</link>
       <pubDate>Fri, 13 Nov 2020 10:51:10 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/git_clone%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E5%8E%9F%E5%9B%A0/</guid>
+      <guid>https://lsq.github.io/posts/git_clone_unicode/</guid>
       <description>windwos 系统中git clone 下来文件名乱码原因 github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文</description>
     </item>
     
     <item>
       <title>shell查找文件中包含中文的行</title>
-      <link>https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/</link>
+      <link>https://lsq.github.io/posts/find_chinese/</link>
       <pubDate>Tue, 10 Nov 2020 10:51:10 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/shell%E6%9F%A5%E6%89%BE%E4%B8%AD%E6%96%87charactor/</guid>
+      <guid>https://lsq.github.io/posts/find_chinese/</guid>
       <description>shell查找文件中包含中文的行 awk &#39;/[^!-~]/&#39; file asscii码从!到~中包含所有的大小写字母，和英文符号 cat file | grep &amp;quot;[^\u4e00-\u9fa5]&amp;quot;</description>
     </item>
     
     <item>
       <title>vim中自动格式化代码</title>
-      <link>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</link>
+      <link>https://lsq.github.io/posts/vim_format_code/</link>
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
       
-      <guid>https://lsq.github.io/posts/vim%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81/</guid>
+      <guid>https://lsq.github.io/posts/vim_format_code/</guid>
       <description>vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩</description>
     </item>
     

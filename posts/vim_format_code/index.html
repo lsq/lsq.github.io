@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>vba导出pdf或者png | lsq 的博客</title>
+    <title>vim中自动格式化代码 | lsq 的博客</title>
 
     
 <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -13,30 +13,30 @@
 
 
 <meta name="author" content="lsq" />
-<meta name="description" content="Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;" />
+<meta name="description" content="vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩" />
 
 
 
 <meta name="generator" content="Hugo 0.82.0" />
 
-<link rel="canonical" href="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/" />
+<link rel="canonical" href="https://lsq.github.io/posts/vim_format_code/" />
 
 
-<meta property="og:title" content="vba导出pdf或者png" />
-<meta property="og:description" content="vba导出pdf或者png" />
+<meta property="og:title" content="vim中自动格式化代码" />
+<meta property="og:description" content="vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lsq.github.io/posts/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png/" /><meta property="og:image" content="https://lsq.github.io/me/background.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-09T17:09:52&#43;08:00" />
-<meta property="article:modified_time" content="2020-12-09T17:09:52&#43;08:00" />
+<meta property="og:url" content="https://lsq.github.io/posts/vim_format_code/" /><meta property="og:image" content="https://lsq.github.io/images/vim_format_code.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-10T20:02:42&#43;08:00" />
+<meta property="article:modified_time" content="2020-01-10T20:02:42&#43;08:00" />
 
 
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lsq.github.io/me/background.jpg"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/vim_format_code.jpg"/>
 
-<meta name="twitter:title" content="vba导出pdf或者png"/>
-<meta name="twitter:description" content="vba导出pdf或者png"/>
+<meta name="twitter:title" content="vim中自动格式化代码"/>
+<meta name="twitter:description" content="vim中自动格式化代码 在vim中其实也有像Eclipse中的ctrl &#43; shift &#43;F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩"/>
 
 
 <link rel="stylesheet" href="/css/semantic.min.css" />
@@ -138,13 +138,7 @@
     <div class="ui segment toc">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#intro">Intro</a></li>
-    <li><a href="#how-to-proceed">How to proceed</a>
-      <ul>
-        <li><a href="#to-export-chart-as-pdf">To export chart as PDF</a></li>
-        <li><a href="#to-export-chart-as-png">To export chart as PNG</a></li>
-      </ul>
-    </li>
+    <li><a href="#vim中自动格式化代码">vim中自动格式化代码</a></li>
   </ul>
 </nav>
     </div>
@@ -157,10 +151,10 @@
         <i class="save icon"></i>
       </button>
 
-      <a href="https://twitter.com/intent/tweet?text=vba%e5%af%bc%e5%87%bapdf%e6%88%96%e8%80%85png&url=https%3a%2f%2flsq.github.io%2fposts%2fvba%25E5%25AF%25BC%25E5%2587%25BApdf%25E6%2588%2596%25E8%2580%2585png%2f" class="ui circular twitter icon button">
+      <a href="https://twitter.com/intent/tweet?text=vim%e4%b8%ad%e8%87%aa%e5%8a%a8%e6%a0%bc%e5%bc%8f%e5%8c%96%e4%bb%a3%e7%a0%81&url=https%3a%2f%2flsq.github.io%2fposts%2fvim_format_code%2f" class="ui circular twitter icon button">
   <i class="twitter icon"></i>
 </a>
-<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fvba%25E5%25AF%25BC%25E5%2587%25BApdf%25E6%2588%2596%25E8%2580%2585png%2f" class="ui circular facebook icon button">
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fvim_format_code%2f" class="ui circular facebook icon button">
   <i class="facebook icon"></i>
 </a>
 
@@ -168,61 +162,53 @@
   </aside>
   <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
     
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/vim_format_code.jpg);"></div>
+    </div>
+    
     <section class="ui attached segment">
       <header>
-        <h1 class="ui large header">vba导出pdf或者png<div class="sub header">
+        <h1 class="ui large header">vim中自动格式化代码<div class="sub header">
             @
             
-              lsq
+              
+                lsq
+              
             
 
             | 
-                星期三，十二月 9 日，2020 年
+                星期五，一月 10 日，2020 年
               
 
             | 1 分钟阅读
 
             | 更新于
               
-                星期三，十二月 9 日，2020 年
+                星期五，一月 10 日，2020 年
               
           </div>
         </h1>
       </header>
 
-      <article class="main"><h2 id="intro">Intro</h2>
-<p>These code are to export a chart from Excel to .png and .pdf extensions.</p>
-<h2 id="how-to-proceed">How to proceed</h2>
-<p>go to <strong>Tools &gt; Macro &gt; Visual Basic Editor</strong>.</p>
+      <article class="main"><h2 id="vim中自动格式化代码">vim中自动格式化代码</h2>
+<p>在vim中其实也有像Eclipse中的ctrl + shift +F 的自动格式化代码的操作，尽管非常强大，但是通常会破坏代码的原有的缩进，</p>
+<p>所以不建议在python这样缩进代替括号的语言中和源程序已经缩进过的代码中使用，废话少说，下面说步骤：</p>
 <ol>
-<li>In the new window, select <strong>Insert &gt; Module</strong> and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or  in the blank page.</li>
-<li>Then go to <strong>File &gt; Close &gt; Return to Microsoft Excel</strong></li>
-<li>Select a chart that you want to export</li>
-<li><strong>Tools &gt; Macro &gt; Macros</strong>, then select <em>SaveSelectedChartAsPDF</em> or <em>SaveSelectedChartAsImage</em> and press <em>Execute</em>.</li>
-<li>Check the image at the folder (current directory).</li>
+<li>
+<p>gg 跳转到第一行</p>
+</li>
+<li>
+<p>shift+v 转到可视模式</p>
+</li>
+<li>
+<p>shift+g 全选</p>
+</li>
+<li>
+<p>按下神奇的 =</p>
+</li>
 </ol>
-<h3 id="to-export-chart-as-pdf">To export chart as PDF</h3>
-<pre><code>Sub SaveSelectedChartAsPDF()
-    With ActiveChart.PageSetup
-        .Orientation = xlLandscape
-        .FitToPagesTall = 1
-        .FitToPagesWide = 1
-        .LeftMargin = 0
-        .RightMargin = 0
-        .BottomMargin = 0
-        .TopMargin = 0
-    End With
-    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
-End Sub
-</code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
-<pre><code>Sub SaveSelectedChartAsImage()
-    ActiveChart.Export &quot;figure.png&quot;
-End Sub```
-
-D:\Program Files\ImageMagick-7.0.10-Q16-HDRI;c:\lua541;D:\Program Files\inkscape\bin;D:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;D:\Program Files\gs\gs9.53.3\bin;C:\Program Files\7-Zip;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\航天信息财税平台\newslib;C:\msys;4\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\税务证书应用客户端;d:\Progr;m Files (x86)\LyX 2.3\Perl\bin;D:\Program Files (x86)\Calibre2\;D:\texlive\2020\bin\win64;D:\texlive\2020\bin\win32;D:\Program Files\qemu;C:\Program Files\pdf2svg;C:\Program Files\Pandoc\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\
-
-gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
-</code></pre></article>
+<p>你会惊奇的发现代码自动缩进了，呵呵，当然也可能是悲剧了。</p>
+</article>
     </section>
 
     
@@ -233,8 +219,8 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
 
 
         var disqus_config = function () {
-          this.page.url = 'https:\/\/lsq.github.io\/posts\/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png\/';  
-          this.page.identifier = '\/posts\/vba%E5%AF%BC%E5%87%BApdf%E6%88%96%E8%80%85png\/'; 
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/vim_format_code\/';  
+          this.page.identifier = '\/posts\/vim_format_code\/'; 
         };
 
         (function() { 
@@ -282,7 +268,7 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
             <header class="ui basic very padded segment dream-header">
   <div class="ui small circular image">
     
-    <img src="/me/yy.jpg" alt="avatar" />
+    <img src="/me/pk.jpg" alt="avatar" />
     
   </div>
 
@@ -313,6 +299,10 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
     
       <a class="ui label" href="/tags/development/" title="development">
         development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
       </a>
     
       <a class="ui label" href="/tags/git/" title="git">
@@ -349,6 +339,10 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
     
       <a class="ui label" href="/tags/pdf/" title="pdf">
         pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
       </a>
     
       <a class="ui label" href="/tags/power-query/" title="power query">
