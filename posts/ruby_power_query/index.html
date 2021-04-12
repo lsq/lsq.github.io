@@ -197,7 +197,7 @@
 
       <article class="main"><h2 id="背景">背景</h2>
 <p>去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体是哪天公示的（公示通过后次月月底前财政拨款）以及哪天能拨款到公司账户。大家都能想到的方法是去人力资源网站查询了，我也是这么干的，但是打开公示信息栏看到的是这样的，具体在哪在一百多批中的哪批呢.
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/list.png" alt="list">
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/list.png" alt="list">
 常见做法有：</p>
 <ol>
 <li>一个一个下载打开查找</li>
@@ -216,11 +216,11 @@
 </ol>
 <h5 id="step-1--rubyinstaller安装">STEP 1.  RubyInstaller安装</h5>
 <p>RubyInstaller可以在官网上下载，为方便更快下载，可以由<a href="https://mirrors.sjtug.sjtu.edu.cn/">上海交通大学软件源镜像服务</a>提供所有镜像<a href="https://mirror.sjtu.edu.cn/github-release/oneclick/rubyinstaller2/releases/download/?mirror_intel_list">rubyinstaller2</a>存档中下载，或者通过<a href="https://rubyinstaller.cn/downloads/">rubyinstaller.cn</a>下载<strong>Ruby+Devkit 2.7.X</strong>或者<strong>Ruby+Devkit 3.0.X</strong></p>
-<p><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/rubyinstaller.png" alt="rubyinstaller"></p>
+<p><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/rubyinstaller.png" alt="rubyinstaller"></p>
 <!--
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/rubyinstaller.png" width="200px" />
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/rubyinstaller.png" style="height:200px" />
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/rubyinstaller.png" style="zoom:50%" />
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/rubyinstaller.png" width="200px" />
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/rubyinstaller.png" style="height:200px" />
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/rubyinstaller.png" style="zoom:50%" />
 or-->
 <h5 id="step-2-gems安装">STEP 2. Gems安装</h5>
 <ol>
@@ -242,7 +242,7 @@ gem install *.gem
 </code></pre></div><ol start="3">
 <li>安装aria2多线程加速下载工具</li>
 </ol>
-<p>aria2配置文件<a href="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/aria2-windows.conf">下载地址</a>，配置文件可以参考<a href="https://github.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
+<p>aria2配置文件<a href="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/aria2-windows.conf">下载地址</a>，配置文件可以参考<a href="https://github.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
 <p>编译参考<a href="https://github.com/myfreeer/aria2-build-msys2">aria2-build-msys2</a>、<a href="https://github.com/q3aql/aria2-static-builds">aria2-static-builds</a>、<a href="https://github.com/P3TERX/Aria2-Pro-Core">Aria2-Pro-Core</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/P3TERX/aria2.sh
 cd aria2.sh
@@ -252,11 +252,11 @@ mv aria2.conf ~/.aria2
 aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 </code></pre></div><h4 id="下载表格">下载表格</h4>
 <p>主要是爬虫人力资源网站公示信息中包含“以工代训”链接，并打开链接下载公示表格</p>
-<p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/getFiles.rb">下载链接</a></p>
+<p>代码用ruby写的，<a href="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/getFiles.rb">下载链接</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
 <span style="color:#75715e"># 大概10s左右下载完</span>
-</code></pre></div><p><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/getFiles.png" alt="getFiles"></p>
-<p><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/ruby.png" alt="ruby"><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/aria2.png" alt="aria2ng"><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/fileList.png" alt="fileList"></p>
+</code></pre></div><p><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/getFiles.png" alt="getFiles"></p>
+<p><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/ruby.png" alt="ruby"><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/aria2.png" alt="aria2ng"><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/fileList.png" alt="fileList"></p>
 <h4 id="power-query-查询数据">Power Query 查询数据</h4>
 <h5 id="查询代码">查询代码</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">let</span>
@@ -277,15 +277,15 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 </span><span style="color:#e6db74">    重命名的列
 </span></code></pre></div><h5 id="查询操作步骤">查询操作步骤</h5>
 <p>STEP <strong>1</strong>. 新建一个空白工作薄“公示查询”，打开并切换到《<strong>数据</strong>》标签页面，然后选择”<strong>新建查询</strong>“》”<strong>其他源</strong>“》”<strong>空白查询</strong>“，打开”<strong>高级编辑器</strong>“</p>
-<p><img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/bl_query.png" alt="qeury1">
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/blank_query1.png" alt="qeury2"></p>
+<p><img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/bl_query.png" alt="qeury1">
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/blank_query1.png" alt="qeury2"></p>
 <p>STEP <strong>2</strong>.全选并删除默认查询代码，然后粘贴<strong>查询代码</strong>，最后点击”<strong>完成</strong>“，就会出现查询结果，此步骤<strong>注意</strong>个改查询代码中的目录位置(<strong>源</strong>中的路径)
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_code.png" alt="qeury3">
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_process.png" alt="qeury4"></p>
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/query_code.png" alt="qeury3">
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/query_process.png" alt="qeury4"></p>
 <p>STEP <strong>3</strong>.点击左上角“<strong>关闭并上载</strong>”下的<strong>箭头</strong>，选择“<strong>关闭并上载至&hellip;</strong>”选项，选择“<strong>现有工作表</strong>”，“<strong>加载</strong>”后就是最终结果。
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/save_qr.png" alt="qeury5">
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/save_query.png" alt="qeury6">
-<img src="https://github.com/lsq/blogsr/tree/master/content/posts/ygdx/query_result.png" alt="qeury7"></p>
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/save_qr.png" alt="qeury5">
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/save_query.png" alt="qeury6">
+<img src="https://github.com/lsq/blogsr/raw/master/content/posts/ygdx/query_result.png" alt="qeury7"></p>
 </article>
     </section>
 
