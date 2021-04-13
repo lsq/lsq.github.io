@@ -302,14 +302,14 @@
       <p class="date">星期三，十二月 9 日，2020 年</p>
     </div>
     <div class="description">
-      Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &gt; Macro &gt; Visual Basic Editor. In the new window, select Insert &gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &gt; Close &gt; Return to Microsoft Excel Select a chart that you want to export Tools &gt;
+      Crop white space of pdf and using gs convert to png PDFCROP takes a PDF file as input, calculates the BoundingBox for each page by the help of ghostscript and generates a output PDF file with removed margins.pdfcrop Normally pdfcrop will be installed by the TeX system. https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs briss/xltoolbox pdfcrop foo.pdf f.pdf gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600 -sOutputFile=foo.png o.pdf -dBATCH Sub SaveSelectedChartAsPng() Dim tmpdir As String, outputPdf As String, outputPng As
     </div>
   </div>
 
   <div class="extra content">
     <div class="author"><img class="ui avatar image" src="/me/pk.jpg" alt="avatar" />lsq</div>
     <div class="reading-time">
-      <i class="clock icon"></i>3 分钟阅读</div>
+      <i class="clock icon"></i>1 分钟阅读</div>
   </div>
 </article>
 
@@ -338,7 +338,7 @@
   <div class="extra content">
     <div class="author"><img class="ui avatar image" src="/me/pk.jpg" alt="avatar" />lsq</div>
     <div class="reading-time">
-      <i class="clock icon"></i>1 分钟阅读</div>
+      <i class="clock icon"></i>2 分钟阅读</div>
   </div>
 </article>
 

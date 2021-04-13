@@ -44,7 +44,7 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       <pubDate>Wed, 09 Dec 2020 17:09:52 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/pdf_crop/</guid>
-      <description>Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &amp;gt; Macro &amp;gt; Visual Basic Editor. In the new window, select Insert &amp;gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &amp;gt; Close &amp;gt; Return to Microsoft Excel Select a chart that you want to export Tools &amp;gt;</description>
+      <description>Crop white space of pdf and using gs convert to png PDFCROP takes a PDF file as input, calculates the BoundingBox for each page by the help of ghostscript and generates a output PDF file with removed margins.pdfcrop Normally pdfcrop will be installed by the TeX system. https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs briss/xltoolbox pdfcrop foo.pdf f.pdf gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600 -sOutputFile=foo.png o.pdf -dBATCH Sub SaveSelectedChartAsPng() Dim tmpdir As String, outputPdf As String, outputPng As</description>
     </item>
     
     <item>
