@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>初学者软件设计学习方法 | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="大宽宽" />
+<meta name="description" content="相关资料 可阅读王垠的 解密“设计模式”，不远要辩证地从历史角度去看，现代程序语言中加入了很多特性，不必刻意去使用某种设计模式。 先好好写代码，有" />
+
+
+
+<meta name="generator" content="Hugo 0.82.0" />
+
+<link rel="canonical" href="https://lsq.github.io/posts/design_pattern/" />
+
+
+<meta property="og:title" content="初学者软件设计学习方法" />
+<meta property="og:description" content="相关资料 可阅读王垠的 解密“设计模式”，不远要辩证地从历史角度去看，现代程序语言中加入了很多特性，不必刻意去使用某种设计模式。 先好好写代码，有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/design_pattern/" /><meta property="og:image" content="https://lsq.github.io/images/design_patterns.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-17T00:00:00&#43;08:00" />
+<meta property="article:modified_time" content="2020-02-17T00:00:00&#43;08:00" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/design_patterns.jpg"/>
+
+<meta name="twitter:title" content="初学者软件设计学习方法"/>
+<meta name="twitter:description" content="相关资料 可阅读王垠的 解密“设计模式”，不远要辩证地从历史角度去看，现代程序语言中加入了很多特性，不必刻意去使用某种设计模式。 先好好写代码，有"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=%e5%88%9d%e5%ad%a6%e8%80%85%e8%bd%af%e4%bb%b6%e8%ae%be%e8%ae%a1%e5%ad%a6%e4%b9%a0%e6%96%b9%e6%b3%95&url=https%3a%2f%2flsq.github.io%2fposts%2fdesign_pattern%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fdesign_pattern%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/design_patterns.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">初学者软件设计学习方法<div class="sub header">
+            @
+            
+              
+                大宽宽
+              
+            
+
+            | 
+                星期一，二月 17 日，2020 年
+              
+
+            | 2 分钟阅读
+
+            | 更新于
+              
+                星期一，二月 17 日，2020 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><p><a href="https://www.zhihu.com/question/19679933/answer/584699815">相关资料</a></p>
+<p>可阅读王垠的
+<a href="http://www.yinwang.org/blog-cn/2013/03/07/design-patterns">解密“设计模式”</a>，不远要辩证地从历史角度去看，现代程序语言中加入了很多特性，不必刻意去使用某种设计模式。
+先好好写代码，有了较多实践后，结构的东西其义自见
+既然是初学者，就不要怕走弯路，吃的苦越多，才能走的越远
+模式都是前人的总结，只能用来参考
+书嘛，可以去网上搜索</p>
+<p>初学软件设计最好不要先看书，或者说可以大概看看，但不要认真。</p>
+<p>设计这个东西不像是做二元一次方程，给出来，给出固定解法和步骤就能得到唯一的解。设计的精髓在于“在多个相互矛盾的目标中找到权衡”。设计的上下文对设计非常的重要，上下文变一点点，都有可能造成设计方案完全不同。</p>
+<p>设计就像是乐队指挥，要对大量的乐器很熟悉、对于乐曲要表达的感觉要很熟悉、对观众的反应要很熟悉。如果你什么都不熟悉，那就做不了这个指挥。</p>
+<p>回到软件设计，要熟悉领域知识，业务需求，主机硬件，云服务，编程语言，网络，数据存储等。这些都能摸熟，再来谈设计。再强调一次，设计是权衡的艺术。如果连要权衡什么东西都不知道，那就是瞎扯。</p>
+<p>而一般设计初学者最喜欢干的事情，就是直接读GoF这种的书，自以为天下的设计模式只有23种，然后拿着这23个锤子去满世界找钉子。</p>
+<p>如果一定要有个入门，我觉得比较好的方案是：</p>
+<p>在你工作的领域中，找到最常用的设计模式。比如做Web的，MVC、MVVM这类应该很常见思考和分析，为什么这种模式适合这个场景，好处在哪里，代价在哪里。针对你更小一个级别的领域（比如做电商的Web，或者做社交的Web），是否存在一些设计是专门针对这类场景的阅读一些设计的书籍，与你面临的现实对照。如果不符，就找高人问问为什么。比如系统上用的是MVC的某种变体，那么为啥要“变”呢？到底是当时的程序员脑子抽了，还是有个什么特别的需求。进一步阅读一些设计模式的资料，分析他们出现的上下文和背景。思考下你用的编程语言，那些设计思路编程语言可以帮助你快速完成；那些只能自己手工堆出来再回到第1步反思，重来一遍1～6过了3～5遍后，开始看其他领域和其他编程语言的设计</p>
+<p>当然，为了面试，还是把23种设计模式背牢，毕竟这个世界中二的面试官有很多。</p>
+</article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/design_pattern\/';  
+          this.page.identifier = '\/posts\/design_pattern\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2021 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">世界经济史是一部基于假象和谎言的连续剧</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/design-patterns/" title="design-patterns">
+        design-patterns
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="tex">
+        tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E4%BA%BA%E7%89%A9/" title="人物">
+        人物
+      </a>
+    
+      <a class="ui label" href="/tags/%E5%85%83%E7%BC%96%E7%A8%8B/" title="元编程">
+        元编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="泛型编程">
+        泛型编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 11 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>

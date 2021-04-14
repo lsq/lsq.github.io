@@ -75,6 +75,33 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
+      <title>c&#43;&#43;泛型编程与模板元编程</title>
+      <link>https://lsq.github.io/posts/c&#43;&#43;_generic_program_and_meta_programming/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/c&#43;&#43;_generic_program_and_meta_programming/</guid>
+      <description>写在前面 今天来写点有点难度的东东：泛型编程与模板元编程。 写这种生僻的东东我是比较排斥的，但谁让我看到boost库中专门对这两个东东分了个大类</description>
+    </item>
+    
+    <item>
+      <title>初学者软件设计学习方法</title>
+      <link>https://lsq.github.io/posts/design_pattern/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/design_pattern/</guid>
+      <description>相关资料 可阅读王垠的 解密“设计模式”，不远要辩证地从历史角度去看，现代程序语言中加入了很多特性，不必刻意去使用某种设计模式。 先好好写代码，有</description>
+    </item>
+    
+    <item>
+      <title>走近周恩来</title>
+      <link>https://lsq.github.io/posts/%E8%B5%B0%E8%BF%9B%E5%91%A8%E6%81%A9%E6%9D%A5/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/%E8%B5%B0%E8%BF%9B%E5%91%A8%E6%81%A9%E6%9D%A5/</guid>
+      <description>本文摘自《走近周恩来》，权延赤著，人民日报出版社出版 周恩来不是帅才。我曾经难以容忍这个观点或这句话，以为这是对我心目中至圣至伟的周恩来的莫大</description>
+    </item>
+    
+    <item>
       <title>vim中自动格式化代码</title>
       <link>https://lsq.github.io/posts/vim_format_code/</link>
       <pubDate>Fri, 10 Jan 2020 20:02:42 +0800</pubDate>
