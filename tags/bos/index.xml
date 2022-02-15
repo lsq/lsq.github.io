@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BOS on lsq 的博客</title>
+    <link>https://lsq.github.io/tags/bos/</link>
+    <description>Recent content in BOS on lsq 的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。&lt;br /&gt;&lt;br /&gt;背景使用了 &lt;a href=&#34;https://www.pexels.com/zh-cn/&#34; target=&#34;_blank&#34;&gt;Pexels&lt;/a&gt; 上 &lt;a href=&#34;https://www.pexels.com/zh-cn/@minan1398&#34; target=&#34;_blank&#34;&gt;Min An&lt;/a&gt; 拍摄的&lt;a href=&#34;https://www.pexels.com/zh-cn/photo/1454794/&#34; target=&#34;_blank&#34;&gt;图片&lt;/a&gt;。</copyright>
+    <lastBuildDate>Tue, 15 Feb 2022 15:36:04 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/bos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python列表插件查询行内码(保存提交审核操作)</title>
+      <link>https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/</link>
+      <pubDate>Tue, 15 Feb 2022 15:36:04 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/</guid>
+      <description>Python列表插件查询行内码 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&amp;mdash;实现步骤</description>
+    </item>
+    
+    <item>
+      <title>Python插件执行数据库操作示例</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Tue, 21 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/</guid>
+      <description>操作数据库示例 1 import clr clr.AddReference(&amp;#34;Kingdee.BOS&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.App&amp;#34;) from Kingdee.BOS.App.Data import * from Kingdee.BOS import * from System import * def BarItemClick(e): if e.BarItemKey == &amp;#34;tbHello&amp;#34;: this.View.ShowMessage(&amp;#34;操作开始&amp;#34;); DBUtils.Execute(this.Context,</description>
+    </item>
+    
+    <item>
+      <title>Python插件常用事件方法</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%96%B9%E6%B3%95/</guid>
+      <description>Python插件常用事件方法 常用事件方法 获取单据体总行数 rows=this.Model.GetEntryRowCount(&amp;#34;单据体的</description>
+    </item>
+    
+    <item>
+      <title>Python插件弹窗确认与执行</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%BC%B9%E7%AA%97%E7%A1%AE%E8%AE%A4%E4%B8%8E%E6%89%A7%E8%A1%8C/</link>
+      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%BC%B9%E7%AA%97%E7%A1%AE%E8%AE%A4%E4%B8%8E%E6%89%A7%E8%A1%8C/</guid>
+      <description>Python插件弹窗确认与执行 应用场景 用户编辑单据后，点击按钮后提示并要求确认方案 在表单插件中增加python插件 import clr; clr.AddReference(&amp;#34;System&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) from System import Action from Kingdee.BOS.Core.DynamicForm import MessageBoxResult from</description>
+    </item>
+    
+    <item>
+      <title>python插件提交后刷新当前单据</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/</link>
+      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/</guid>
+      <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示方</description>
+    </item>
+    
+    <item>
+      <title>Python插件测试</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</guid>
+      <description>Python插件测试 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&amp;mdash;实现步骤 1. 登录BO</description>
+    </item>
+    
+  </channel>
+</rss>

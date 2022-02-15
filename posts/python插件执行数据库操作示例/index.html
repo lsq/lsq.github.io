@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Python插件执行数据库操作示例 | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="lsq" />
+<meta name="description" content="操作数据库示例 1 import clr clr.AddReference(&amp;#34;Kingdee.BOS&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.App&amp;#34;) from Kingdee.BOS.App.Data import * from Kingdee.BOS import * from System import * def BarItemClick(e): if e.BarItemKey == &amp;#34;tbHello&amp;#34;: this.View.ShowMessage(&amp;#34;操作开始&amp;#34;); DBUtils.Execute(this.Context," />
+
+
+
+<meta name="generator" content="Hugo 0.92.2" />
+
+<link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
+
+
+<meta property="og:title" content="Python插件执行数据库操作示例" />
+<meta property="og:description" content="操作数据库示例 1 import clr clr.AddReference(&#34;Kingdee.BOS&#34;) clr.AddReference(&#34;Kingdee.BOS.Core&#34;) clr.AddReference(&#34;Kingdee.BOS.App&#34;) from Kingdee.BOS.App.Data import * from Kingdee.BOS import * from System import * def BarItemClick(e): if e.BarItemKey == &#34;tbHello&#34;: this.View.ShowMessage(&#34;操作开始&#34;); DBUtils.Execute(this.Context," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" /><meta property="og:image" content="https://lsq.github.io/images/python_get_objects.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-21T08:47:46+08:00" />
+<meta property="article:modified_time" content="2021-12-21T08:47:46+08:00" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/python_get_objects.jpg"/>
+
+<meta name="twitter:title" content="Python插件执行数据库操作示例"/>
+<meta name="twitter:description" content="操作数据库示例 1 import clr clr.AddReference(&#34;Kingdee.BOS&#34;) clr.AddReference(&#34;Kingdee.BOS.Core&#34;) clr.AddReference(&#34;Kingdee.BOS.App&#34;) from Kingdee.BOS.App.Data import * from Kingdee.BOS import * from System import * def BarItemClick(e): if e.BarItemKey == &#34;tbHello&#34;: this.View.ShowMessage(&#34;操作开始&#34;); DBUtils.Execute(this.Context,"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#操作数据库示例-1">操作数据库示例 1</a></li>
+        <li><a href="#操作数据库示例2">操作数据库示例2</a></li>
+        <li><a href="#操作数据库示例3">操作数据库示例3</a></li>
+        <li><a href="#python保存自动调用提交审核">Python保存自动调用提交审核</a></li>
+        <li><a href="#操作成功后执行sql">操作成功后执行SQL</a></li>
+        <li><a href="#审核成功后自动关闭当前窗体httpsvipkingdeecomarticle175566954026221824"><a href="https://vip.kingdee.com/article/175566954026221824">审核成功后自动关闭当前窗体</a></a></li>
+        <li><a href="#表单插件执行sqlhttpsvipkingdeecomarticle84693901407538432"><a href="https://vip.kingdee.com/article/84693901407538432">表单插件执行SQL</a></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=Python%e6%8f%92%e4%bb%b6%e6%89%a7%e8%a1%8c%e6%95%b0%e6%8d%ae%e5%ba%93%e6%93%8d%e4%bd%9c%e7%a4%ba%e4%be%8b&url=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E6%258F%2592%25E4%25BB%25B6%25E6%2589%25A7%25E8%25A1%258C%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%25E6%2593%258D%25E4%25BD%259C%25E7%25A4%25BA%25E4%25BE%258B%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E6%258F%2592%25E4%25BB%25B6%25E6%2589%25A7%25E8%25A1%258C%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%25E6%2593%258D%25E4%25BD%259C%25E7%25A4%25BA%25E4%25BE%258B%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/python_get_objects.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">Python插件执行数据库操作示例<div class="sub header">
+            @
+            
+              
+                lsq
+              
+            
+
+            | 
+                星期二，十二月 21 日，2021 年
+              
+
+            | 4 分钟阅读
+
+            | 更新于
+              
+                星期二，十二月 21 日，2021 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><h3 id="操作数据库示例-1">操作数据库示例 1</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbHello&#34;</span>:
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作开始&#34;</span>);
+		DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, <span style="color:#e6db74">&#34;UPDATE t_PUR_POOrder SET F_ORA_REMARKS=&#39;aha数据被修改了--&#39; where FBILLNO=&#39;PO20211214001&#39; &#34;</span>,<span style="color:#66d9ef">None</span>,<span style="color:#66d9ef">False</span>);
+         <span style="color:#75715e"># UPDATE T_TABLE SET D = A + B -C WHERE ID=11</span>
+		<span style="color:#75715e">#this.View.InvokeFormOperation(&#34;Refresh&#34;)</span>
+         <span style="color:#75715e"># 操作数据库成功后，重新刷新单据获取数据</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
+</code></pre></div><h3 id="操作数据库示例2">操作数据库示例2</h3>
+<h4 id="应用场景">应用场景</h4>
+<p>销售出库单，点击按钮，执行数据库，更新全部单据，<a href="https://vip.kingdee.com/article/66914031969567232">备注信息</a></p>
+<h4 id="实现步骤">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#75715e">//点击按钮事件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> BarItemClick(BOS.Core.DynamicForm.PlugIn.Args.BarItemClickEventArg
+s e)
+{
+<span style="color:#66d9ef">base</span>.BarItemClick(e);
+<span style="color:#75715e">//当点击YDIE_tbTest按钮,触发
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(e.BarItemKey == <span style="color:#e6db74">&#34;YDIE_tbTest&#34;</span>)
+{
+<span style="color:#75715e">//执行sql语句返回Int，表示影响了多少行
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> x = DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, <span style="color:#e6db74">&#34;/*dialect*/update T_SAL_OUTSTOCKENTRY set FNOTE =&#39;测
+</span><span style="color:#e6db74"></span><span style="color:#960050;background-color:#1e0010">试&#39;</span><span style="color:#e6db74">&#34;);
+</span><span style="color:#e6db74"></span><span style="color:#75715e">//弹窗显示
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span>.View.ShowMessage(x.ToString());
+}
+}
+</code></pre></div><h3 id="操作数据库示例3">操作数据库示例3</h3>
+<h4 id="应用场景-1">应用场景</h4>
+<p>生产用料清单上添加自定义字段&mdash;欠料数量，计算逻辑为欠料数量=未领数量+作业不良退料数量-补料数量</p>
+<h4 id="实现步骤-1">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbHello&#34;</span>,StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作开始&#34;);</span>
+        <span style="color:#75715e"># 注意数据库的分库分表</span>
+		<span style="color:#75715e">#sql= &#34;UPDATE T_PRD_PPBOMENTRY_Q SET F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>
+		n <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,<span style="color:#e6db74">&#34;/*dialect*/ update T_PRD_PPBOMENTRY_Q set F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>)
+		<span style="color:#75715e">#DBUtils.Execute(this.Context,sql)</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作成功--影响数据条数：&#34;</span> <span style="color:#f92672">+</span> n<span style="color:#f92672">.</span>ToString())
+		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作成功--影响数据条数：&#34;)</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 打开单据自动计算欠料数量</span>
+<span style="color:#75715e">#引入clr运行库</span>
+<span style="color:#f92672">import</span> clr
+<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeBindData</span>(e):
+	rows<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FEntity&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
+	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,rows,<span style="color:#ae81ff">1</span>):
+		<span style="color:#66d9ef">if</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FIssueType&#34;</span>,i) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;7&#39;</span>:
+			a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FNoPickedQty&#34;</span>,i) <span style="color:#f92672">-</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FRePickedQty&#34;</span>,i) <span style="color:#f92672">+</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FProcessDefectReturnQty&#34;</span>,i);
+			this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;F_maxeye_Wlsl&#34;</span>,a,i);
+			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>UpdateView(<span style="color:#e6db74">&#34;FA_DEPRADJUSTENTRY&#34;</span>);
+</code></pre></div><h3 id="python保存自动调用提交审核">Python保存自动调用提交审核</h3>
+<h4 id="应用场景-2">应用场景</h4>
+<p>其他入库单保存后，自动提交审核</p>
+<h4 id="实现步骤-2">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):
+    idList <span style="color:#f92672">=</span> List[object]()
+    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:
+        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>])
+        idList<span style="color:#f92672">.</span>Add(BillId)
+    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray()
+    formID <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id
+    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID)
+    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+    subResult<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption)
+    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption)
+</code></pre></div><h3 id="操作成功后执行sql">操作成功后执行SQL</h3>
+<h4 id="应用场景-3">应用场景</h4>
+<p>单据上的菜单绑定了某种操作，当点击该菜单时，会触发绑定在该菜单上的操作，当操作执行成功后，执行一段SQL。</p>
+<h4 id="案例演示">案例演示</h4>
+<p>采购订单，审核菜单，绑定了审核操作，点击审核菜单触发审核操作并执行成功后，执行一段SQL。</p>
+<h4 id="实现步骤-3">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> Kingdee.BOS.App.Data;
+<span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn;
+<span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
+<span style="color:#66d9ef">using</span> Kingdee.BOS.Util;
+<span style="color:#66d9ef">using</span> System.ComponentModel;
+<span style="color:#66d9ef">namespace</span> Jac.XkDemo.BOS.Business.PlugIn
+{
+ <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span> <span style="color:#75715e">/// 【表单插件】操作成功后执行SQL
+</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e"> [Description(&#34;【表单插件】操作成功后执行SQL&#34;), HotUpdate]</span>
+ <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunSqlAfterOperationFormPlugIn</span> : AbstractDynamicFormPlugIn
+ {
+ <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span> <span style="color:#75715e">/// 表单操作执行后事件
+</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> AfterDoOperation(AfterDoOperationEventArgs e)
+ {
+ <span style="color:#66d9ef">base</span>.AfterDoOperation(e);
+ <span style="color:#75715e">// 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (e.Operation.OperationId == <span style="color:#ae81ff">1</span> &amp;&amp; e.OperationResult.IsSuccess)
+ {
+<span style="color:#66d9ef">var</span> sql = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE
+</span><span style="color:#e6db74"></span>FUSERID={<span style="color:#ae81ff">0</span>}<span style="color:#e6db74">&#34;, this.Context.UserId);
+</span><span style="color:#e6db74"></span>DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, sql);
+ <span style="color:#66d9ef">this</span>.View.ShowMessage(<span style="color:#e6db74">&#34;审核操作执行成功，SQL已执行，SQL脚本：&#34;</span> + sql);
+ }
+ }
+ }
+}
+</code></pre></div><p><a href="https://vip.kingdee.com/article/194808387228614144">AfterDoOperation</a></p>
+<h3 id="审核成功后自动关闭当前窗体httpsvipkingdeecomarticle175566954026221824"><a href="https://vip.kingdee.com/article/175566954026221824">审核成功后自动关闭当前窗体</a></h3>
+<h4 id="应用场景-4">应用场景</h4>
+<p>单据审核成功后，自动关闭当前窗体</p>
+<h4 id="案例演示-1">案例演示</h4>
+<p>采购订单编辑界面，单据审核成功后，自动关闭当前窗体。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e):
+ <span style="color:#75715e"># 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26</span>
+ <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>OperationId <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">and</span> (e<span style="color:#f92672">.</span>OperationResult<span style="color:#f92672">.</span>IsSuccess):
+ this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Close()
+</code></pre></div><h3 id="表单插件执行sqlhttpsvipkingdeecomarticle84693901407538432"><a href="https://vip.kingdee.com/article/84693901407538432">表单插件执行SQL</a></h3>
+<h4 id="应用场景-5">应用场景</h4>
+<p>在表单插件事件中，执行SQL语句</p>
+<h4 id="案例演示-2">案例演示</h4>
+<p>采购订单，新增菜单【查询SQL】和【执行SQL】。</p>
+<h4 id="实现步骤-4">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+ <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecuteScalar&#34;</span>:
+ <span style="color:#75715e"># 查询当前登录用户信息</span>
+    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNAME FROM T_SEC_USER WHERE FUSERID=&#34;</span><span style="color:#f92672">+</span>this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserId<span style="color:#f92672">.</span>ToString();
+    userName <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
+    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(userName);
+ <span style="color:#66d9ef">elif</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecute&#34;</span>:
+ <span style="color:#75715e"># 修改当前登录用户的描述</span>
+    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE</span>
+    FUSERID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;+this.Context.UserId.ToString();</span>
+    count <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql);
+    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;更新成功，SQL：&#34;</span><span style="color:#f92672">+</span>sql<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;，受影响行数：&#34;</span><span style="color:#f92672">+</span>count<span style="color:#f92672">.</span>ToString());
+</code></pre></div><p>【知识点】</p>
+<p>如果SQL语句不符合KSQL规范，在SQL语句的起始位置增加<code>/*dialect*/</code>申明。</p>
+<p>例如：<code>sql = &quot;/*dialect*/ SELECT FNAME FROM T_SEC_USER WHERE FUSERID=1&quot;</code></p>
+<p>【答疑】</p>
+<p>保存Python插件时，会提示错误信息：“Could not add reference to assembly Kingdee.BOS.App”， 老有同学问，哎呀，报错了，会不会有问题呢？ 统一答复如下： 此错误提示可不必理会，因为我们只是在BOSIDE上进行Python插件的注册，而这段Python代码最终是在 服务端运行，BOSIDE属于客户端软件，BOSIDE所在目录下肯定不会包含服务端的组件，其提示缺少服务 端的组件是正常的，而在应用服务器上是包含了所有的组件的，所以等真正到了运行时，此Python插件不 会缺少任何平台组件，可以正常运行的</p>
+</article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B\/';  
+          this.page.identifier = '\/posts\/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2022 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">世界经济史是一部基于假象和谎言的连续剧</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/bos/" title="BOS">
+        BOS
+      </a>
+    
+      <a class="ui label" href="/tags/design-patterns/" title="design-patterns">
+        design-patterns
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/python/" title="Python">
+        Python
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="tex">
+        tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E4%BA%BA%E7%89%A9/" title="人物">
+        人物
+      </a>
+    
+      <a class="ui label" href="/tags/%E5%85%83%E7%BC%96%E7%A8%8B/" title="元编程">
+        元编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="泛型编程">
+        泛型编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+      <a class="ui label" href="/tags/%E9%87%91%E8%9D%B6%E4%BA%91%E6%98%9F%E7%A9%BA/" title="金蝶云星空">
+        金蝶云星空
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 11 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>

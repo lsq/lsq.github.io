@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Python列表插件查询行内码(保存提交审核操作) | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="lsq" />
+<meta name="description" content="Python列表插件查询行内码 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&amp;mdash;实现步骤" />
+
+
+
+<meta name="generator" content="Hugo 0.92.2" />
+
+<link rel="canonical" href="https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/" />
+
+
+<meta property="og:title" content="Python列表插件查询行内码(保存提交审核操作)" />
+<meta property="og:description" content="Python列表插件查询行内码 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&mdash;实现步骤" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/" /><meta property="og:image" content="https://lsq.github.io/images/python_get_objects.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-15T15:36:04+08:00" />
+<meta property="article:modified_time" content="2022-02-15T15:36:04+08:00" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/python_get_objects.jpg"/>
+
+<meta name="twitter:title" content="Python列表插件查询行内码(保存提交审核操作)"/>
+<meta name="twitter:description" content="Python列表插件查询行内码 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&mdash;实现步骤"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#python列表插件查询行内码">Python列表插件查询行内码</a>
+      <ul>
+        <li><a href="#应用场景">应用场景</a></li>
+        <li><a href="#案例演示---实现步骤">案例演示&mdash;实现步骤</a></li>
+        <li><a href="#列表更新字段值">列表更新字段值</a></li>
+        <li><a href="#拆分表查询分录id">拆分表查询分录ID</a></li>
+        <li><a href="#python脚本实现保存自动提交审核httpsvipkingdeecomarticle157179291166940672"><a href="https://vip.kingdee.com/article/157179291166940672">Python脚本实现保存自动提交审核</a></a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=Python%e5%88%97%e8%a1%a8%e6%8f%92%e4%bb%b6%e6%9f%a5%e8%af%a2%e8%a1%8c%e5%86%85%e7%a0%81%28%e4%bf%9d%e5%ad%98%e6%8f%90%e4%ba%a4%e5%ae%a1%e6%a0%b8%e6%93%8d%e4%bd%9c%29&url=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E5%2588%2597%25E8%25A1%25A8%25E6%258F%2592%25E4%25BB%25B6%25E6%259F%25A5%25E8%25AF%25A2%25E8%25A1%258C%25E5%2586%2585%25E7%25A0%2581%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E5%2588%2597%25E8%25A1%25A8%25E6%258F%2592%25E4%25BB%25B6%25E6%259F%25A5%25E8%25AF%25A2%25E8%25A1%258C%25E5%2586%2585%25E7%25A0%2581%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/python_get_objects.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">Python列表插件查询行内码(保存提交审核操作)<div class="sub header">
+            @
+            
+              
+                lsq
+              
+            
+
+            | 
+                星期二，二月 15 日，2022 年
+              
+
+            | 6 分钟阅读
+
+            | 更新于
+              
+                星期二，二月 15 日，2022 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><h2 id="python列表插件查询行内码">Python列表插件查询行内码</h2>
+<h3 id="应用场景">应用场景</h3>
+<p>功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。</p>
+<h3 id="案例演示---实现步骤">案例演示&mdash;实现步骤</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.ServiceHelper&#34;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.List.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tbGetListSelectedRows&#39;</span>:
+		fentryid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+		fid<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo
+		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+			<span style="color:#75715e"># 单据体内码</span>
+			fentryid <span style="color:#f92672">=</span> fentryid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>EntryPrimaryKeyValue)
+			<span style="color:#75715e">#单据头内码</span>
+			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
+			fid <span style="color:#f92672">=</span> fid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>PrimaryKeyValue)
+			<span style="color:#75715e">#formMetadata = 	BusinessDataServiceHelper.loadSingle(fentryid)</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str(fentryid)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">+</span>str(fid))
+</code></pre></div><h3 id="列表更新字段值">列表更新字段值</h3>
+<h4 id="应用场景-1">应用场景</h4>
+<p><a href="https://vip.kingdee.com/article/217593193079030528">物料列表反审核按钮清空物料基础资料中的复选框字段值【python插件】</a></p>
+<h4 id="实现步骤">实现步骤</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#物料列表反审核插件【反审核成功更新物料页签中的复选框字段】</span>
+<span style="color:#f92672">from</span> clr <span style="color:#f92672">import</span> AddReference
+AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> DBUtils
+<span style="color:#75715e">#按钮点击事件</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbReject&#34;</span>:
+		Data <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetData(this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>SelectedRowsInfo)
+		num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
+		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> Data:
+			sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;update T_BD_MATERIAL set 【复选框类型字段名】= 0 where FMATERIALID = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(str(i[<span style="color:#e6db74">&#39;FMATERIALID&#39;</span>]))
+			returnData <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql)
+			num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;有</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">行数据受影响&#34;</span><span style="color:#f92672">%</span>num)
+</code></pre></div><h3 id="拆分表查询分录id">拆分表查询分录ID</h3>
+<h4 id="应用场景-2">应用场景</h4>
+<p>生产物料清单需要查询指定行分录ID</p>
+<h4 id="实现代码">实现代码</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+ <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbHello&#34;</span>:
+ <span style="color:#75715e"># 查询当前登录用户信息</span>
+    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FSEQ FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+    seq <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
+    sqln <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+    fid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqln,<span style="color:#66d9ef">None</span>);
+    sqlm <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FENTRYID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+    entryid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlm,<span style="color:#66d9ef">None</span>);
+    sqlq <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FISSUETYPE  FROM  T_PRD_PPBOMENTRY_C WHERE FENTRYID =  &#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
+    issuetype <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlq,<span style="color:#66d9ef">None</span>);
+    sqlp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNOPICKEDQTY FROM T_PRD_PPBOMENTRY_Q WHERE FENTRYID=&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
+    nopickedqty <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlp,<span style="color:#66d9ef">None</span>);
+    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(seq<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> fid<span style="color:#f92672">.</span>ToString()<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> issuetype<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> nopickedqty<span style="color:#f92672">.</span>ToString());
+ 
+</code></pre></div><h3 id="python脚本实现保存自动提交审核httpsvipkingdeecomarticle157179291166940672"><a href="https://vip.kingdee.com/article/157179291166940672">Python脚本实现保存自动提交审核</a></h3>
+<h4 id="代码实现一">代码实现一</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码如下：</span>
+<span style="color:#75715e">##****************************保存服务插件*******************</span>
+<span style="color:#75715e">#引入clr运行库</span>
+<span style="color:#f92672">import</span> clr
+<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#75715e">#from Kingdee.BOS.Orm import *</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):	    
+    e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>);<span style="color:#75715e">#复选框字段标识</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):	    
+    idList <span style="color:#f92672">=</span>List[object]();	    
+    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:		        
+        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>]);		        
+        F_IsAutoAudit <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>]);		        
+        <span style="color:#66d9ef">if</span> (F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">or</span> F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;True&#34;</span>):			            
+            idList<span style="color:#f92672">.</span>Add(BillId);	    
+    <span style="color:#66d9ef">if</span>(idList<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):		        
+        <span style="color:#66d9ef">return</span>;	    
+    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray();    
+    formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;    
+    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);	    
+    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;	    
+    subResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption);	    
+    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):		        
+        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;		        
+        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption);
+
+</code></pre></div><p>代码参考二</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码:</span>
+<span style="color:#75715e">##****************************保存服务插件*******************</span>
+<span style="color:#75715e">#引入clr运行库</span>
+<span style="color:#f92672">import</span> clr
+<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span><span style="color:#75715e">#参考代码:</span>
+<span style="color:#75715e">##****************************保存服务插件*******************</span>
+<span style="color:#75715e">#引入clr运行库</span>
+<span style="color:#f92672">import</span> clr
+<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
+    	pkIds <span style="color:#f92672">=</span> List[object]();
+    	debugStr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+    	selectedRowsInfo <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo;
+		datas <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListModel<span style="color:#f92672">.</span>GetData(selectedRowsInfo);
+		<span style="color:#66d9ef">if</span> (datas<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):
+			<span style="color:#66d9ef">return</span>;
+		listEntryId<span style="color:#f92672">=</span>List[str]();
+		<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> selectedRowsInfo:
+			selectEntryId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryPrimaryKeyValue);
+			selectPkId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>PrimaryKeyValue)
+			entityKey<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryEntityKey);
+			<span style="color:#66d9ef">if</span>(selectEntryId<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">or</span> selectEntryId<span style="color:#f92672">==</span><span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> entityKey<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#34;FEntity&#34;</span>):<span style="color:#75715e">#判断是否显示了需要查询的单据体</span>
+				this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;请在过滤里面显示单据体[FEntity]!&#34;</span>);
+				<span style="color:#66d9ef">return</span>;
+			<span style="color:#75715e">#listEntryId.Add(selectEntryId + &#39;/&#39; + entityKey);</span>
+			listEntryId<span style="color:#f92672">.</span>Add(selectEntryId);
+			pkIds<span style="color:#f92672">.</span>Add(selectPkId)
+		rowIndexs <span style="color:#f92672">=</span> str<span style="color:#f92672">.</span>Join(<span style="color:#e6db74">&#34;,&#34;</span>, listEntryId<span style="color:#f92672">.</span>ToArray());<span style="color:#75715e"># 选 中 行 的 单 据 体 明 细 Id 集 合 字 符 串 ( 格 式为:1001,1002,1003,...)</span>
+		<span style="color:#75715e">#this.View.ShowMessage(str((rowIndexs)))</span>
+		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
+		<span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> billObjects:
+			<span style="color:#66d9ef">for</span> entryObj <span style="color:#f92672">in</span> billObj[<span style="color:#e6db74">&#34;ReqEntry&#34;</span>]:
+				<span style="color:#75715e">#this.View.ShowMessage(str(entryObj[&#34;Id&#34;]))</span>
+				<span style="color:#66d9ef">if</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">in</span> listEntryId:
+					entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+					debugStr <span style="color:#f92672">=</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>])
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((debugStr)))
+		saveRslt <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo, billObjects, <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;Save&#34;</span>)
+    		<span style="color:#75715e">#for billObj in e.DataEntitys:</span>
+        	<span style="color:#75715e">#	billId=billObj[&#34;Id&#34;];</span>
+        	<span style="color:#75715e">#	pkIds.Add(billId);</span>
+    		<span style="color:#75715e">#formID=this.BusinessInfo.GetForm().Id;</span>
+    		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formID);</span>
+    		<span style="color:#75715e">#billObjects=BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(), meta.BusinessInfo.GetDynamicObjectType());</span>
+    		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
+    	<span style="color:#66d9ef">if</span> (saveRslt<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>):
+        	ss<span style="color:#f92672">=</span>saveRslt<span style="color:#f92672">.</span>ValidationErrors[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Message;
+        	<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>((<span style="color:#e6db74">&#34;保存出错:</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>format(ss))
+</code></pre></div><p>代码参考三</p>
+<p>如果你是load出的单据数据包，应该是一个集合，也就是你代码里面的billObjects 。 如果要通过数据包获取单据里面的字段信息或者单据体的话，用实体标识就可以了。 你可以把单据数据包理解成一个类似于 JSON对象的结构，一层一层解析而已。 具体数据模型参考https://vip.kingdee.com/article/35736及https://vip.kingdee.com/article/45021帖子内容</p>
+<p>获取单据头字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> billObj<span style="color:#f92672">=</span>billObjects[<span style="color:#ae81ff">0</span>];
+ billNo<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]; 
+</code></pre></div><p>获取单据体 ：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">entity<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;单据体ORM实体标识&#34;</span>]; 
+</code></pre></div><p>循环获取单据体里面的每一行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
+fld1<span style="color:#f92672">=</span>r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]; 
+</code></pre></div><p>同样的，和JSON类似，也可以修改数据包里面的数据, 修改完之后调用<code>BusinessDataServiceHelper.Save</code>方法就可以了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>; 
+</code></pre></div><p>修改单据体字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
+r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码:</span>
+<span style="color:#75715e">##****************************保存服务插件*******************</span>
+<span style="color:#75715e">#引入clr运行库</span>
+<span style="color:#f92672">import</span> clr
+<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+
+<span style="color:#75715e">#作者：Jack</span>
+<span style="color:#75715e">#来源：金蝶云社区</span>
+<span style="color:#75715e">#原文链接：https://vip.kingdee.com/article/139314926954577664</span>
+<span style="color:#75715e">#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
+         pkIds <span style="color:#f92672">=</span> List[object]()
+		<span style="color:#75715e">#fentryid = &#39;&#39;</span>
+		fids<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+		proPertiesList<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+		<span style="color:#66d9ef">if</span> (this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo<span style="color:#f92672">.</span>Count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+           		 this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;没有选择任何数据，请先选择！&#34;</span>)
+           		 <span style="color:#66d9ef">return</span>
+		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#75715e">#获取选中行</span>
+		<span style="color:#75715e">#this.View.ShowMessage(str(type(a)))</span>
+		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+			<span style="color:#75715e"># 单据体内码</span>
+			<span style="color:#75715e">#fentryid = fentryid + &#39;,&#39; + str(a[i].EntryPrimaryKeyValue)</span>
+			<span style="color:#75715e">#单据头内码</span>
+			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
+			<span style="color:#75715e">#fid =  str(a[i].PrimaryKeyValue)</span>
+			<span style="color:#75715e">#formMetadata = 	MetaDataServiceHelper.Load(this.Context,</span>
+			<span style="color:#75715e">#BusinessDataServiceHelper.loadSingle(fentryid)</span>
+			fid <span style="color:#f92672">=</span> a[i]<span style="color:#f92672">.</span>PrimaryKeyValue
+			fids <span style="color:#f92672">=</span> fids <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(fid)
+			pkIds<span style="color:#f92672">.</span>Add(fid)
+		<span style="color:#75715e">#this.View.ShowMessage(fids) # 调试</span>
+		<span style="color:#75715e"># 二开案例.列表插件.列表调用保存操作</span>
+        <span style="color:#75715e"># https://vip.kingdee.com/article/139314926954577664</span>
+        <span style="color:#75715e"># https://vip.kingdee.com/article/238671226909305344</span>
+        <span style="color:#75715e"># foreach (var dataObject in dataObjects)</span>
+            <span style="color:#75715e">#{</span>
+                <span style="color:#75715e">#// 修改采购订单的变更原因</span>
+                <span style="color:#75715e">#dataObject[&#34;ChangeReason&#34;] = &#34;666&#34;;</span>
+            <span style="color:#75715e">#}</span>
+         formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;
+		meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);
+		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), meta<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
+		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
+		<span style="color:#75715e">#formId = this.BusinessInfo.GetForm().Id</span>
+		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formId);</span>
+		<span style="color:#75715e"># 下面也生效</span>
+		<span style="color:#75715e">#billObjects = BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(),this.View.BillBusinessInfo.GetDynamicObjectType())</span>
+		<span style="color:#75715e">#this.View.ShowMessage(str(type(billObjects)))</span>
+		
+		billNo <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+		<span style="color:#75715e">#for j in billObjects:</span>
+			<span style="color:#75715e">#purQeqEntryDatas = j.GetValue(CONST_PUR_REQUISITION.CONST_FEntity.ENTITY_ORM_ReqEntry)</span>
+			<span style="color:#75715e">#purBiz = j.BusinessInfo()</span>
+			<span style="color:#75715e">#entity = purBiz.GetEntity(&#34;FEntity&#34;)</span>
+			<span style="color:#75715e">#entityData = entity</span>
+			<span style="color:#75715e">#this.View.ShowMessage(str(type(entity)))</span>
+			<span style="color:#75715e">#for entryData  in purQeqEntryDatas:</span>
+			<span style="color:#75715e">#	billNo = billNo + &#39;,&#39; + str(entryData.GetDynamicValue(CONST_PUR_REQUISITION.CONST_FEntity.ORM_ReqQty))</span>
+				
+		<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> billObjects:
+		<span style="color:#75715e">#	#this.View.ShowMessage(str(type(j)))</span>
+			<span style="color:#66d9ef">for</span> q <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
+				proPertiesList <span style="color:#f92672">=</span> proPertiesList <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(q<span style="color:#f92672">.</span>Name);
+				<span style="color:#75715e">#if (str(q.Name) == &#39;BillNo&#39;):</span>
+				<span style="color:#66d9ef">if</span> (str(q<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ReqEntry&#39;</span>):
+					<span style="color:#75715e">#billNo = str(type(j.ReqEntry))</span>
+					<span style="color:#66d9ef">for</span> purData <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>ReqEntry:
+						billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span>str(type(purData))
+						<span style="color:#75715e">#purData[]</span>
+						<span style="color:#75715e"># https://vip.kingdee.com/article/35736?islogin=true</span>
+						<span style="color:#75715e">#https://vip.kingdee.com/article/45021</span>
+						<span style="color:#66d9ef">for</span> proList <span style="color:#f92672">in</span> purData<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
+							<span style="color:#75715e">#billNo = billNo +&#39;,&#39;+  str(proList.Name)</span>
+							<span style="color:#66d9ef">if</span> (str(proList<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Id&#39;</span>):
+								purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+								billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> proList<span style="color:#f92672">.</span>GetValue(purData)<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;;&#39;</span> <span style="color:#f92672">+</span> purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>]<span style="color:#f92672">.</span>ToString()
+			<span style="color:#75715e">#BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, j)</span>
+		<span style="color:#75715e">#	j[&#34;ReqQty&#34;] = 666</span>
+			<span style="color:#75715e">#for q in</span>
+		<span style="color:#75715e"># https://vip.kingdee.com/article/33705			</span>
+		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((billNo)))
+		<span style="color:#75715e">#this.View.ShowMessage(str((proPertiesList)))</span>
+		<span style="color:#75715e">#https://vip.kingdee.com/article/158234477305916928</span>
+		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
+		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
+		saveRslt<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, meta<span style="color:#f92672">.</span>BusinessInfo,billObjects , <span style="color:#66d9ef">None</span>,<span style="color:#e6db74">&#34;Save&#34;</span>);
+		<span style="color:#75715e">#raise Exception(&#34;问题出问题了，请打开单据检查单据字段&#34;)</span>
+		<span style="color:#66d9ef">if</span> (saveRslt <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+          		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;保存成功！&#34;</span>)
+         <span style="color:#66d9ef">else</span>:
+           		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;出错，保存不成功！&#34;</span>)
+</code></pre></div><h3 id="参考">参考</h3>
+<p><a href="https://vip.kingdee.com/article/158234477305916928">Python实现列表对暂存的单据批量保存</a></p>
+<p><a href="https://vip.kingdee.com/article/139314926954577664">二开案例.列表插件.列表调用保存操作</a></p>
+<p><a href="https://vip.kingdee.com/article/84697663127624960">二开案例.Python插件.抛异常</a></p>
+<p><a href="https://vip.kingdee.com/article/84693901407538432">二开案例.Python插件.表单插件执行SQL</a></p>
+<p><a href="https://vip.kingdee.com/article/119856062978967040">二开案例.表单插件.执行SQL</a></p>
+<p><a href="https://vip.kingdee.com/article/65753630238150656">表单插件，获取单据体FENTRYID内码，GetEntryPKValue</a></p>
+<p><a href="https://vip.kingdee.com/article/67375800848337920">列表插件，获取单据体分录，FID内码</a></p>
+</article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81\/';  
+          this.page.identifier = '\/posts\/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2022 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">世界经济史是一部基于假象和谎言的连续剧</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/bos/" title="BOS">
+        BOS
+      </a>
+    
+      <a class="ui label" href="/tags/design-patterns/" title="design-patterns">
+        design-patterns
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/python/" title="Python">
+        Python
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="tex">
+        tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E4%BA%BA%E7%89%A9/" title="人物">
+        人物
+      </a>
+    
+      <a class="ui label" href="/tags/%E5%85%83%E7%BC%96%E7%A8%8B/" title="元编程">
+        元编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="泛型编程">
+        泛型编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+      <a class="ui label" href="/tags/%E9%87%91%E8%9D%B6%E4%BA%91%E6%98%9F%E7%A9%BA/" title="金蝶云星空">
+        金蝶云星空
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 11 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>
