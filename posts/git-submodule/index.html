@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/git-submodule/" />
 
@@ -26,8 +26,8 @@
 <meta property="og:description" content="Git submodule错误操作" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lsq.github.io/posts/git-submodule/" /><meta property="og:image" content="https://lsq.github.io/me/background.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-12-18T21:16:35&#43;08:00" />
-<meta property="article:modified_time" content="2019-12-18T21:16:35&#43;08:00" />
+<meta property="article:published_time" content="2019-12-18T21:16:35+08:00" />
+<meta property="article:modified_time" content="2019-12-18T21:16:35+08:00" />
 
 
 
@@ -200,7 +200,7 @@
 <p>工程存储的子模块最近改动ID已经超前于子模块存储的最近改动ID，解决方法是移除子模块后重新添加。</p>
 <h3 id="解决方法">解决方法</h3>
 <p>工程的根目录下，Git Bash中依次执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf 子模块名称
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf 子模块名称
 $ git submodule deinit -f 子模块名称
 $ rm -rf .git/modules/子模块名称
 $ git rm -f 子模块名称
@@ -256,7 +256,7 @@ $ git push
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2011 - 2021 lsq 的博客</p>
+              <p>© 2011 - 2022 lsq 的博客</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>

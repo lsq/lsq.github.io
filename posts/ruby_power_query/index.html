@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/ruby_power_query/" />
 
@@ -26,8 +26,8 @@
 <meta property="og:description" content="背景 去年疫情影响，深圳市政府人力资源和社会保障局出台了“以工代训”补贴政策，这个项目我做完了后在一体化平台查询到有公示，但具体是哪天公示的（" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lsq.github.io/posts/ruby_power_query/" /><meta property="og:image" content="https://lsq.github.io/images/ruby_power_query.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-11T09:37:25&#43;08:00" />
-<meta property="article:modified_time" content="2021-04-11T09:37:25&#43;08:00" />
+<meta property="article:published_time" content="2021-04-11T09:37:25+08:00" />
+<meta property="article:modified_time" content="2021-04-11T09:37:25+08:00" />
 
 
 
@@ -226,7 +226,7 @@ or-->
 <ol>
 <li>更新gem</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem update --system
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem update --system
 gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
 gem sources -l
 https://gems.ruby-china.com
@@ -234,7 +234,7 @@ https://gems.ruby-china.com
 </code></pre></div><ol start="2">
 <li>安装依赖</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem install mechanize
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gem install mechanize
 git clone https://github.com/songjiz/aria2-ruby
 cd aria2-ruby
 gem build aria2.gemspec
@@ -244,7 +244,7 @@ gem install *.gem
 </ol>
 <p>aria2配置文件<a href="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/aria2-windows.conf">下载地址</a>，配置文件可以参考<a href="https://raw.githubusercontent.com/P3TERX/aria2.conf">P3TERX/aria2.conf</a></p>
 <p>编译参考<a href="https://github.com/myfreeer/aria2-build-msys2">aria2-build-msys2</a>、<a href="https://github.com/q3aql/aria2-static-builds">aria2-static-builds</a>、<a href="https://github.com/P3TERX/Aria2-Pro-Core">Aria2-Pro-Core</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/P3TERX/aria2.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/P3TERX/aria2.sh
 cd aria2.sh
 bash aria2.sh
 git clone https://github.com/P3TERX/aria2.conf
@@ -253,13 +253,13 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 </code></pre></div><h4 id="下载表格">下载表格</h4>
 <p>主要是爬虫人力资源网站公示信息中包含“以工代训”链接，并打开链接下载公示表格</p>
 <p>代码用ruby写的，<a href="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/getFiles.rb">下载链接</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ruby getFile.rb
 <span style="color:#75715e"># 大概10s左右下载完</span>
 </code></pre></div><p><img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/getFiles.png" alt="getFiles"></p>
 <p><img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/ruby.png" alt="ruby"><img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/aria2.png" alt="aria2ng"><img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/ygdx/fileList.png" alt="fileList"></p>
 <h4 id="power-query-查询数据">Power Query 查询数据</h4>
 <h5 id="查询代码">查询代码</h5>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">let</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">let</span>
     <span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">查询文件夹目录，根据你存放的位置修改</span>
     <span style="color:#960050;background-color:#1e0010">源</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Folder</span><span style="color:#f92672">.</span><span style="color:#66d9ef">Files</span>(<span style="color:#e6db74">&#34;C:</span><span style="color:#ae81ff">\</span><span style="color:#960050;background-color:#1e0010">Use</span><span style="color:#ae81ff">r</span><span style="color:#e6db74">s</span><span style="color:#ae81ff">\</span><span style="color:#960050;background-color:#1e0010">pc</span><span style="color:#ae81ff">\</span><span style="color:#e6db74">Desktop</span><span style="color:#ae81ff">\</span><span style="color:#960050;background-color:#1e0010">项目补贴资料</span><span style="color:#ae81ff">\</span><span style="color:#e6db74">2020年以工代补补贴资料</span><span style="color:#ae81ff">\</span><span style="color:#960050;background-color:#1e0010">公示</span><span style="color:#ae81ff">&#34;</span><span style="color:#e6db74">),
 </span><span style="color:#e6db74">    //pa = Table.AddColumn(源, &#34;</span><span style="color:#960050;background-color:#1e0010">路径</span><span style="color:#e6db74">&#34;, each [Folder Path] &amp; [Name]),
@@ -332,7 +332,7 @@ aria2c --conf-path<span style="color:#f92672">=</span>~/.aria2.conf
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2011 - 2021 lsq 的博客</p>
+              <p>© 2011 - 2022 lsq 的博客</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>

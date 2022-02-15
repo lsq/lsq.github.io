@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/git_clone_unicode/" />
 
@@ -26,8 +26,8 @@
 <meta property="og:description" content="windwos 系统中git clone 下来文件名乱码原因 github上的文件名原来的编码就utf-8编码 git clone 下来的uft-8编码被转为gb18030编码，因为中文" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lsq.github.io/posts/git_clone_unicode/" /><meta property="og:image" content="https://lsq.github.io/images/git_clone_unicode.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-13T10:51:10&#43;08:00" />
-<meta property="article:modified_time" content="2020-11-13T10:51:10&#43;08:00" />
+<meta property="article:published_time" content="2020-11-13T10:51:10+08:00" />
+<meta property="article:modified_time" content="2020-11-13T10:51:10+08:00" />
 
 
 
@@ -195,7 +195,7 @@
 <li>github上的文件名原来的编码就utf-8编码</li>
 <li>git clone 下来的uft-8编码被转为gb18030编码，因为中文的utf-8编码占用3个字节，中文的gb18030只占用两个字节(1,2,4)，会把utf-8三个中的两个字节（此时被当作gb18030编码）再转为utf-8（三个字节），其中遇到错误时会被舍弃，如不想舍弃，需要用到&ndash;byte-subst参数，然后再用printf或者echo -e来重新编码。</li>
 </ol>
-<pre><code>pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
+<pre tabindex="0"><code>pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
 # echo -en `echo -en &quot;texlive安装包下载地址&quot;|iconv --byte-subst=&quot;\x%2x&quot; -t utf-8 -f gb18030`|iconv --byte-subst=&quot;\x%2x&quot; -f utf-8 -t gb18030
 texlive安装包下载地▒\x80
 pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
@@ -253,7 +253,7 @@ pc@pc-PC MINGW64 /g/tmp/t/LaTeX_Notes
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2011 - 2021 lsq 的博客</p>
+              <p>© 2011 - 2022 lsq 的博客</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>

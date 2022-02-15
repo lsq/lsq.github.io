@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/pdf_crop/" />
 
@@ -26,8 +26,8 @@
 <meta property="og:description" content="Crop white space of pdf and using gs convert to png PDFCROP takes a PDF file as input, calculates the BoundingBox for each page by the help of ghostscript and generates a output PDF file with removed margins.pdfcrop Normally pdfcrop will be installed by the TeX system. https://superuser.com/questions/415707/export-excel-graphs-as-vector-graphics-files-e-g-svgs briss/xltoolbox Export Excel chart to SVG creates an empty file pdfcrop foo.pdf f.pdf gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600 -sOutputFile=foo.png o.pdf -dBATCH Sub SaveSelectedChartAsPng()" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lsq.github.io/posts/pdf_crop/" /><meta property="og:image" content="https://lsq.github.io/images/pdf_crop.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-09T17:09:52&#43;08:00" />
-<meta property="article:modified_time" content="2020-12-09T17:09:52&#43;08:00" />
+<meta property="article:published_time" content="2020-12-09T17:09:52+08:00" />
+<meta property="article:modified_time" content="2020-12-09T17:09:52+08:00" />
 
 
 
@@ -202,10 +202,10 @@
 <li><a href="https://tex.stackexchange.com/questions/17716/excel-chart-pdf-latex-but-need-to-remove-white-space">briss/xltoolbox</a></li>
 <li><a href="https://stackoverflow.com/questions/65131924/export-excel-chart-to-svg-creates-an-empty-file">Export Excel chart to SVG creates an empty file</a></li>
 </ol>
-<pre><code>pdfcrop foo.pdf f.pdf
+<pre tabindex="0"><code>pdfcrop foo.pdf f.pdf
 gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
 
-</code></pre><pre><code class="language-vbscript" data-lang="vbscript">Sub SaveSelectedChartAsPng()
+</code></pre><pre tabindex="0"><code class="language-vbscript" data-lang="vbscript">Sub SaveSelectedChartAsPng()
 Dim tmpdir As String, outputPdf As String, outputPng As String, cropPdf As String
 Dim wshell As Object
 
@@ -297,7 +297,7 @@ End Sub
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2011 - 2021 lsq 的博客</p>
+              <p>© 2011 - 2022 lsq 的博客</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>

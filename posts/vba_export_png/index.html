@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.82.0" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/vba_export_png/" />
 
@@ -26,8 +26,8 @@
 <meta property="og:description" content="Intro These code are to export a chart from Excel to .png and .pdf extensions. How to proceed go to Tools &gt; Macro &gt; Visual Basic Editor. In the new window, select Insert &gt; Module and copy some from codes available (SaveSelectedChartAsPDF or SaveSelectedChartAsImage) or in the blank page. Then go to File &gt; Close &gt; Return to Microsoft Excel Select a chart that you want to export Tools &gt;" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lsq.github.io/posts/vba_export_png/" /><meta property="og:image" content="https://lsq.github.io/images/vba_export_png.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-09T17:09:52&#43;08:00" />
-<meta property="article:modified_time" content="2020-12-09T17:09:52&#43;08:00" />
+<meta property="article:published_time" content="2020-12-09T17:09:52+08:00" />
+<meta property="article:modified_time" content="2020-12-09T17:09:52+08:00" />
 
 
 
@@ -211,7 +211,7 @@
 <li>Check the image at the folder (current directory).</li>
 </ol>
 <h3 id="to-export-chart-as-pdf">To export chart as PDF</h3>
-<pre><code>Sub SaveSelectedChartAsPDF()
+<pre tabindex="0"><code>Sub SaveSelectedChartAsPDF()
     With ActiveChart.PageSetup
         .Orientation = xlLandscape
         .FitToPagesTall = 1
@@ -224,7 +224,7 @@
     ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
 End Sub
 </code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
-<pre><code>Sub SaveSelectedChartAsImage()
+<pre tabindex="0"><code>Sub SaveSelectedChartAsImage()
     ActiveChart.Export &quot;figure.png&quot;
 End Sub
 
@@ -242,7 +242,7 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
 <li>Import your EMF file into <a href="http://inkscape.org/">InkScape</a> and ungroup the object.</li>
 <li>Delete all the A4-sized crappy blank space from the image and enjoy.</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> ppt <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>, pr <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> ppt <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>, pr <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
 <span style="color:#66d9ef">Dim</span> sl <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
 Selection.Copy
 ...
@@ -260,7 +260,7 @@ Selection.Copy
 <li><a href="https://stackoverflow.com/questions/1791369/excel-export-chart-to-wmf-or-emf">参考链接</a></li>
 <li><a href="https://stackoverflow.com/questions/60706703/export-excel-graphs-as-emf">参考链接</a></li>
 </ol>
-<pre><code class="language-vba" data-lang="vba">Option Explicit
+<pre tabindex="0"><code class="language-vba" data-lang="vba">Option Explicit
 #If VBA7 Then
 Private Declare PtrSafe Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
 Private Declare PtrSafe Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As LongPtr) As Long
@@ -331,7 +331,7 @@ Sub SaveItToEMF()
 End Sub
 
 </code></pre><h3 id="emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">identify -verbose ex1.emf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">identify -verbose ex1.emf
 
 identify -units PixelsPerinch -format <span style="color:#e6db74">&#34;%xx%y by %[printsize.x]x%[printsize.y] by %wx%h by %U&#34;</span> outPutValue2020-12-10.png
 convert -units PixelsPerinch -density <span style="color:#ae81ff">300</span> -size 800x800 ex1.emf ff.png
@@ -385,7 +385,7 @@ gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r
 
             <footer class="ui basic center aligned segment" style="background-color: transparent;">
               
-              <p>© 2011 - 2021 lsq 的博客</p>
+              <p>© 2011 - 2022 lsq 的博客</p>
               
 
               <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
