@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
     <copyright>&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;&lt;img alt=&#34;知识共享许可协议&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;br /&gt;本作品采用&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-nc-sa/4.0/&#34;&gt;知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议&lt;/a&gt;进行许可。&lt;br /&gt;&lt;br /&gt;背景使用了 &lt;a href=&#34;https://www.pexels.com/zh-cn/&#34; target=&#34;_blank&#34;&gt;Pexels&lt;/a&gt; 上 &lt;a href=&#34;https://www.pexels.com/zh-cn/@minan1398&#34; target=&#34;_blank&#34;&gt;Min An&lt;/a&gt; 拍摄的&lt;a href=&#34;https://www.pexels.com/zh-cn/photo/1454794/&#34; target=&#34;_blank&#34;&gt;图片&lt;/a&gt;。</copyright>
-    <lastBuildDate>Tue, 15 Feb 2022 15:36:04 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/bos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2022 14:39:38 +0800</lastBuildDate><atom:link href="https://lsq.github.io/tags/bos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python列表动态创建列</title>
+      <link>https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%88%97/</link>
+      <pubDate>Tue, 01 Mar 2022 14:39:38 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%88%97/</guid>
+      <description>Python列表动态创建列 应用场景 列表界面上不依赖过滤方案指定的显示隐藏列配置，通过插件的方式动态的创建列并动态的给列赋值。 案例演示 打开采购</description>
+    </item>
+    
     <item>
       <title>Python列表插件查询行内码(保存提交审核操作)</title>
       <link>https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/</link>

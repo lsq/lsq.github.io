@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/" />
 
@@ -200,21 +200,21 @@
 <p>用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示<img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/f767e173c48f4bf0acae66fea7c8bdaf.png" alt="f767e173c48f4bf0acae66fea7c8bdaf"></p>
 <h3 id="方案">方案</h3>
 <p>在表单插件中增加python插件，在提交成功后自动刷新当前单据</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System.Core&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e): 
-  <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>upper() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;SUBMIT&#34;</span> <span style="color:#f92672">and</span> e<span style="color:#f92672">.</span>ExecuteResult:
-	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFormOperation(<span style="color:#e6db74">&#34;Refresh&#34;</span>)
-	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;hello, lsq&#34;</span>)
-	<span style="color:#75715e"># 自动关闭单据</span>
-	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFormOperation(<span style="color:#e6db74">&#34;Close&#34;</span>);
-</code></pre></div><p>原文链接：https://vip.kingdee.com/article/238668613153336320</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e): 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>upper() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;SUBMIT&#34;</span> <span style="color:#f92672">and</span> e<span style="color:#f92672">.</span>ExecuteResult:
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFormOperation(<span style="color:#e6db74">&#34;Refresh&#34;</span>)
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;hello, lsq&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 自动关闭单据</span>
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFormOperation(<span style="color:#e6db74">&#34;Close&#34;</span>);
+</span></span></code></pre></div><p>原文链接：https://vip.kingdee.com/article/238668613153336320</p>
 </article>
     </section>
 
@@ -320,6 +320,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -346,6 +350,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -388,8 +396,8 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

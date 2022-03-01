@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E5%88%97%E8%A1%A8%E6%8F%92%E4%BB%B6%E6%9F%A5%E8%AF%A2%E8%A1%8C%E5%86%85%E7%A0%81/" />
 
@@ -203,343 +203,342 @@
 <h3 id="应用场景">应用场景</h3>
 <p>功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。</p>
 <h3 id="案例演示---实现步骤">案例演示&mdash;实现步骤</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.ServiceHelper&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.List.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tbGetListSelectedRows&#39;</span>:
-		fentryid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
-		fid<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
-		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo
-		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
-			<span style="color:#75715e"># 单据体内码</span>
-			fentryid <span style="color:#f92672">=</span> fentryid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>EntryPrimaryKeyValue)
-			<span style="color:#75715e">#单据头内码</span>
-			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
-			fid <span style="color:#f92672">=</span> fid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>PrimaryKeyValue)
-			<span style="color:#75715e">#formMetadata = 	BusinessDataServiceHelper.loadSingle(fentryid)</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str(fentryid)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">+</span>str(fid))
-</code></pre></div><h3 id="列表更新字段值">列表更新字段值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.ServiceHelper&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.List.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tbGetListSelectedRows&#39;</span>:
+</span></span><span style="display:flex;"><span>		fentryid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		fid<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e"># 单据体内码</span>
+</span></span><span style="display:flex;"><span>			fentryid <span style="color:#f92672">=</span> fentryid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>EntryPrimaryKeyValue)
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#单据头内码</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
+</span></span><span style="display:flex;"><span>			fid <span style="color:#f92672">=</span> fid <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>PrimaryKeyValue)
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#formMetadata = 	BusinessDataServiceHelper.loadSingle(fentryid)</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str(fentryid)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">+</span>str(fid))
+</span></span></code></pre></div><h3 id="列表更新字段值">列表更新字段值</h3>
 <h4 id="应用场景-1">应用场景</h4>
 <p><a href="https://vip.kingdee.com/article/217593193079030528">物料列表反审核按钮清空物料基础资料中的复选框字段值【python插件】</a></p>
 <h4 id="实现步骤">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#物料列表反审核插件【反审核成功更新物料页签中的复选框字段】</span>
-<span style="color:#f92672">from</span> clr <span style="color:#f92672">import</span> AddReference
-AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> DBUtils
-<span style="color:#75715e">#按钮点击事件</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbReject&#34;</span>:
-		Data <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetData(this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>SelectedRowsInfo)
-		num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
-		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> Data:
-			sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;update T_BD_MATERIAL set 【复选框类型字段名】= 0 where FMATERIALID = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(str(i[<span style="color:#e6db74">&#39;FMATERIALID&#39;</span>]))
-			returnData <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql)
-			num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;有</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">行数据受影响&#34;</span><span style="color:#f92672">%</span>num)
-</code></pre></div><h3 id="拆分表查询分录id">拆分表查询分录ID</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#物料列表反审核插件【反审核成功更新物料页签中的复选框字段】</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> clr <span style="color:#f92672">import</span> AddReference
+</span></span><span style="display:flex;"><span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> DBUtils
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#按钮点击事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbReject&#34;</span>:
+</span></span><span style="display:flex;"><span>		Data <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetData(this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>SelectedRowsInfo)
+</span></span><span style="display:flex;"><span>		num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> Data:
+</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;update T_BD_MATERIAL set 【复选框类型字段名】= 0 where FMATERIALID = </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(str(i[<span style="color:#e6db74">&#39;FMATERIALID&#39;</span>]))
+</span></span><span style="display:flex;"><span>			returnData <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql)
+</span></span><span style="display:flex;"><span>			num <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;有</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">行数据受影响&#34;</span><span style="color:#f92672">%</span>num)
+</span></span></code></pre></div><h3 id="拆分表查询分录id">拆分表查询分录ID</h3>
 <h4 id="应用场景-2">应用场景</h4>
 <p>生产物料清单需要查询指定行分录ID</p>
 <h4 id="实现代码">实现代码</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
- <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbHello&#34;</span>:
- <span style="color:#75715e"># 查询当前登录用户信息</span>
-    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FSEQ FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
-    seq <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
-    sqln <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
-    fid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqln,<span style="color:#66d9ef">None</span>);
-    sqlm <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FENTRYID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
-    entryid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlm,<span style="color:#66d9ef">None</span>);
-    sqlq <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FISSUETYPE  FROM  T_PRD_PPBOMENTRY_C WHERE FENTRYID =  &#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
-    issuetype <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlq,<span style="color:#66d9ef">None</span>);
-    sqlp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNOPICKEDQTY FROM T_PRD_PPBOMENTRY_Q WHERE FENTRYID=&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
-    nopickedqty <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlp,<span style="color:#66d9ef">None</span>);
-    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(seq<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> fid<span style="color:#f92672">.</span>ToString()<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> issuetype<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> nopickedqty<span style="color:#f92672">.</span>ToString());
- 
-</code></pre></div><h3 id="python脚本实现保存自动提交审核httpsvipkingdeecomarticle157179291166940672"><a href="https://vip.kingdee.com/article/157179291166940672">Python脚本实现保存自动提交审核</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbHello&#34;</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 查询当前登录用户信息</span>
+</span></span><span style="display:flex;"><span>    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FSEQ FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+</span></span><span style="display:flex;"><span>    seq <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    sqln <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+</span></span><span style="display:flex;"><span>    fid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqln,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    sqlm <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FENTRYID FROM  T_PRD_PPBOMENTRY WHERE  FREPLACEGROUP=25 and FMOBILLNO=&#39;MO20220119001&#39; and FMOENTRYSEQ=1&#34;</span>;
+</span></span><span style="display:flex;"><span>    entryid <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlm,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    sqlq <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FISSUETYPE  FROM  T_PRD_PPBOMENTRY_C WHERE FENTRYID =  &#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
+</span></span><span style="display:flex;"><span>    issuetype <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlq,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    sqlp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNOPICKEDQTY FROM T_PRD_PPBOMENTRY_Q WHERE FENTRYID=&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString();
+</span></span><span style="display:flex;"><span>    nopickedqty <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sqlp,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(seq<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> fid<span style="color:#f92672">.</span>ToString()<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> entryid<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> issuetype<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> nopickedqty<span style="color:#f92672">.</span>ToString());
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><h3 id="python脚本实现保存自动提交审核httpsvipkingdeecomarticle157179291166940672"><a href="https://vip.kingdee.com/article/157179291166940672">Python脚本实现保存自动提交审核</a></h3>
 <h4 id="代码实现一">代码实现一</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码如下：</span>
-<span style="color:#75715e">##****************************保存服务插件*******************</span>
-<span style="color:#75715e">#引入clr运行库</span>
-<span style="color:#f92672">import</span> clr
-<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
-<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#75715e">#from Kingdee.BOS.Orm import *</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
-<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):	    
-    e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>);<span style="color:#75715e">#复选框字段标识</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):	    
-    idList <span style="color:#f92672">=</span>List[object]();	    
-    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:		        
-        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>]);		        
-        F_IsAutoAudit <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>]);		        
-        <span style="color:#66d9ef">if</span> (F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">or</span> F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;True&#34;</span>):			            
-            idList<span style="color:#f92672">.</span>Add(BillId);	    
-    <span style="color:#66d9ef">if</span>(idList<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):		        
-        <span style="color:#66d9ef">return</span>;	    
-    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray();    
-    formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;    
-    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);	    
-    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;	    
-    subResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption);	    
-    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):		        
-        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;		        
-        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption);
-
-</code></pre></div><p>代码参考二</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码:</span>
-<span style="color:#75715e">##****************************保存服务插件*******************</span>
-<span style="color:#75715e">#引入clr运行库</span>
-<span style="color:#f92672">import</span> clr
-<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
-<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span><span style="color:#75715e">#参考代码:</span>
-<span style="color:#75715e">##****************************保存服务插件*******************</span>
-<span style="color:#75715e">#引入clr运行库</span>
-<span style="color:#f92672">import</span> clr
-<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
-<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
-<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
-    	pkIds <span style="color:#f92672">=</span> List[object]();
-    	debugStr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
-    	selectedRowsInfo <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo;
-		datas <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListModel<span style="color:#f92672">.</span>GetData(selectedRowsInfo);
-		<span style="color:#66d9ef">if</span> (datas<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):
-			<span style="color:#66d9ef">return</span>;
-		listEntryId<span style="color:#f92672">=</span>List[str]();
-		<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> selectedRowsInfo:
-			selectEntryId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryPrimaryKeyValue);
-			selectPkId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>PrimaryKeyValue)
-			entityKey<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryEntityKey);
-			<span style="color:#66d9ef">if</span>(selectEntryId<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">or</span> selectEntryId<span style="color:#f92672">==</span><span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> entityKey<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#34;FEntity&#34;</span>):<span style="color:#75715e">#判断是否显示了需要查询的单据体</span>
-				this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;请在过滤里面显示单据体[FEntity]!&#34;</span>);
-				<span style="color:#66d9ef">return</span>;
-			<span style="color:#75715e">#listEntryId.Add(selectEntryId + &#39;/&#39; + entityKey);</span>
-			listEntryId<span style="color:#f92672">.</span>Add(selectEntryId);
-			pkIds<span style="color:#f92672">.</span>Add(selectPkId)
-		rowIndexs <span style="color:#f92672">=</span> str<span style="color:#f92672">.</span>Join(<span style="color:#e6db74">&#34;,&#34;</span>, listEntryId<span style="color:#f92672">.</span>ToArray());<span style="color:#75715e"># 选 中 行 的 单 据 体 明 细 Id 集 合 字 符 串 ( 格 式为:1001,1002,1003,...)</span>
-		<span style="color:#75715e">#this.View.ShowMessage(str((rowIndexs)))</span>
-		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
-		<span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> billObjects:
-			<span style="color:#66d9ef">for</span> entryObj <span style="color:#f92672">in</span> billObj[<span style="color:#e6db74">&#34;ReqEntry&#34;</span>]:
-				<span style="color:#75715e">#this.View.ShowMessage(str(entryObj[&#34;Id&#34;]))</span>
-				<span style="color:#66d9ef">if</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">in</span> listEntryId:
-					entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
-					debugStr <span style="color:#f92672">=</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>])
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((debugStr)))
-		saveRslt <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo, billObjects, <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;Save&#34;</span>)
-    		<span style="color:#75715e">#for billObj in e.DataEntitys:</span>
-        	<span style="color:#75715e">#	billId=billObj[&#34;Id&#34;];</span>
-        	<span style="color:#75715e">#	pkIds.Add(billId);</span>
-    		<span style="color:#75715e">#formID=this.BusinessInfo.GetForm().Id;</span>
-    		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formID);</span>
-    		<span style="color:#75715e">#billObjects=BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(), meta.BusinessInfo.GetDynamicObjectType());</span>
-    		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
-    	<span style="color:#66d9ef">if</span> (saveRslt<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>):
-        	ss<span style="color:#f92672">=</span>saveRslt<span style="color:#f92672">.</span>ValidationErrors[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Message;
-        	<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>((<span style="color:#e6db74">&#34;保存出错:</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>format(ss))
-</code></pre></div><p>代码参考三</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#参考代码如下：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##****************************保存服务插件*******************</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#from Kingdee.BOS.Orm import *</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):	    
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>);<span style="color:#75715e">#复选框字段标识</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):	    
+</span></span><span style="display:flex;"><span>    idList <span style="color:#f92672">=</span>List[object]();	    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:		        
+</span></span><span style="display:flex;"><span>        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>]);		        
+</span></span><span style="display:flex;"><span>        F_IsAutoAudit <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;F_IsAutoAudit&#34;</span>]);		        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#f92672">or</span> F_IsAutoAudit <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;True&#34;</span>):			            
+</span></span><span style="display:flex;"><span>            idList<span style="color:#f92672">.</span>Add(BillId);	    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(idList<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):		        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;	    
+</span></span><span style="display:flex;"><span>    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray();    
+</span></span><span style="display:flex;"><span>    formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;    
+</span></span><span style="display:flex;"><span>    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);	    
+</span></span><span style="display:flex;"><span>    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;	    
+</span></span><span style="display:flex;"><span>    subResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption);	    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):		        
+</span></span><span style="display:flex;"><span>        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>;		        
+</span></span><span style="display:flex;"><span>        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption);
+</span></span></code></pre></div><p>代码参考二</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#参考代码:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##****************************保存服务插件*******************</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span><span style="color:#75715e">#参考代码:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##****************************保存服务插件*******************</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
+</span></span><span style="display:flex;"><span>    	pkIds <span style="color:#f92672">=</span> List[object]();
+</span></span><span style="display:flex;"><span>    	debugStr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    	selectedRowsInfo <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo;
+</span></span><span style="display:flex;"><span>		datas <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListModel<span style="color:#f92672">.</span>GetData(selectedRowsInfo);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (datas<span style="color:#f92672">.</span>Count <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>		listEntryId<span style="color:#f92672">=</span>List[str]();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> selectedRowsInfo:
+</span></span><span style="display:flex;"><span>			selectEntryId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryPrimaryKeyValue);
+</span></span><span style="display:flex;"><span>			selectPkId<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>PrimaryKeyValue)
+</span></span><span style="display:flex;"><span>			entityKey<span style="color:#f92672">=</span>str(row<span style="color:#f92672">.</span>EntryEntityKey);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span>(selectEntryId<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">or</span> selectEntryId<span style="color:#f92672">==</span><span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> entityKey<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#34;FEntity&#34;</span>):<span style="color:#75715e">#判断是否显示了需要查询的单据体</span>
+</span></span><span style="display:flex;"><span>				this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;请在过滤里面显示单据体[FEntity]!&#34;</span>);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#listEntryId.Add(selectEntryId + &#39;/&#39; + entityKey);</span>
+</span></span><span style="display:flex;"><span>			listEntryId<span style="color:#f92672">.</span>Add(selectEntryId);
+</span></span><span style="display:flex;"><span>			pkIds<span style="color:#f92672">.</span>Add(selectPkId)
+</span></span><span style="display:flex;"><span>		rowIndexs <span style="color:#f92672">=</span> str<span style="color:#f92672">.</span>Join(<span style="color:#e6db74">&#34;,&#34;</span>, listEntryId<span style="color:#f92672">.</span>ToArray());<span style="color:#75715e"># 选 中 行 的 单 据 体 明 细 Id 集 合 字 符 串 ( 格 式为:1001,1002,1003,...)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str((rowIndexs)))</span>
+</span></span><span style="display:flex;"><span>		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> billObjects:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> entryObj <span style="color:#f92672">in</span> billObj[<span style="color:#e6db74">&#34;ReqEntry&#34;</span>]:
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#this.View.ShowMessage(str(entryObj[&#34;Id&#34;]))</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">in</span> listEntryId:
+</span></span><span style="display:flex;"><span>					entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>					debugStr <span style="color:#f92672">=</span> str(entryObj[<span style="color:#e6db74">&#34;Id&#34;</span>]) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(entryObj[<span style="color:#e6db74">&#34;ReqQty&#34;</span>])
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((debugStr)))
+</span></span><span style="display:flex;"><span>		saveRslt <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo, billObjects, <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;Save&#34;</span>)
+</span></span><span style="display:flex;"><span>    		<span style="color:#75715e">#for billObj in e.DataEntitys:</span>
+</span></span><span style="display:flex;"><span>        	<span style="color:#75715e">#	billId=billObj[&#34;Id&#34;];</span>
+</span></span><span style="display:flex;"><span>        	<span style="color:#75715e">#	pkIds.Add(billId);</span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#75715e">#formID=this.BusinessInfo.GetForm().Id;</span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formID);</span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#75715e">#billObjects=BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(), meta.BusinessInfo.GetDynamicObjectType());</span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">if</span> (saveRslt<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>        	ss<span style="color:#f92672">=</span>saveRslt<span style="color:#f92672">.</span>ValidationErrors[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Message;
+</span></span><span style="display:flex;"><span>        	<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>((<span style="color:#e6db74">&#34;保存出错:</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>format(ss))
+</span></span></code></pre></div><p>代码参考三</p>
 <p>如果你是load出的单据数据包，应该是一个集合，也就是你代码里面的billObjects 。 如果要通过数据包获取单据里面的字段信息或者单据体的话，用实体标识就可以了。 你可以把单据数据包理解成一个类似于 JSON对象的结构，一层一层解析而已。 具体数据模型参考https://vip.kingdee.com/article/35736及https://vip.kingdee.com/article/45021帖子内容</p>
 <p>获取单据头字段：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> billObj<span style="color:#f92672">=</span>billObjects[<span style="color:#ae81ff">0</span>];
- billNo<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]; 
-</code></pre></div><p>获取单据体 ：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">entity<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;单据体ORM实体标识&#34;</span>]; 
-</code></pre></div><p>循环获取单据体里面的每一行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
-fld1<span style="color:#f92672">=</span>r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]; 
-</code></pre></div><p>同样的，和JSON类似，也可以修改数据包里面的数据, 修改完之后调用<code>BusinessDataServiceHelper.Save</code>方法就可以了：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>; 
-</code></pre></div><p>修改单据体字段：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
-r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>;
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#参考代码:</span>
-<span style="color:#75715e">##****************************保存服务插件*******************</span>
-<span style="color:#75715e">#引入clr运行库</span>
-<span style="color:#f92672">import</span> clr
-<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
-<span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
-<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-
-<span style="color:#75715e">#作者：Jack</span>
-<span style="color:#75715e">#来源：金蝶云社区</span>
-<span style="color:#75715e">#原文链接：https://vip.kingdee.com/article/139314926954577664</span>
-<span style="color:#75715e">#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
-         pkIds <span style="color:#f92672">=</span> List[object]()
-		<span style="color:#75715e">#fentryid = &#39;&#39;</span>
-		fids<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
-		proPertiesList<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
-		<span style="color:#66d9ef">if</span> (this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo<span style="color:#f92672">.</span>Count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
-           		 this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;没有选择任何数据，请先选择！&#34;</span>)
-           		 <span style="color:#66d9ef">return</span>
-		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#75715e">#获取选中行</span>
-		<span style="color:#75715e">#this.View.ShowMessage(str(type(a)))</span>
-		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
-			<span style="color:#75715e"># 单据体内码</span>
-			<span style="color:#75715e">#fentryid = fentryid + &#39;,&#39; + str(a[i].EntryPrimaryKeyValue)</span>
-			<span style="color:#75715e">#单据头内码</span>
-			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
-			<span style="color:#75715e">#fid =  str(a[i].PrimaryKeyValue)</span>
-			<span style="color:#75715e">#formMetadata = 	MetaDataServiceHelper.Load(this.Context,</span>
-			<span style="color:#75715e">#BusinessDataServiceHelper.loadSingle(fentryid)</span>
-			fid <span style="color:#f92672">=</span> a[i]<span style="color:#f92672">.</span>PrimaryKeyValue
-			fids <span style="color:#f92672">=</span> fids <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(fid)
-			pkIds<span style="color:#f92672">.</span>Add(fid)
-		<span style="color:#75715e">#this.View.ShowMessage(fids) # 调试</span>
-		<span style="color:#75715e"># 二开案例.列表插件.列表调用保存操作</span>
-        <span style="color:#75715e"># https://vip.kingdee.com/article/139314926954577664</span>
-        <span style="color:#75715e"># https://vip.kingdee.com/article/238671226909305344</span>
-        <span style="color:#75715e"># foreach (var dataObject in dataObjects)</span>
-            <span style="color:#75715e">#{</span>
-                <span style="color:#75715e">#// 修改采购订单的变更原因</span>
-                <span style="color:#75715e">#dataObject[&#34;ChangeReason&#34;] = &#34;666&#34;;</span>
-            <span style="color:#75715e">#}</span>
-         formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;
-		meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);
-		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), meta<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
-		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
-		<span style="color:#75715e">#formId = this.BusinessInfo.GetForm().Id</span>
-		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formId);</span>
-		<span style="color:#75715e"># 下面也生效</span>
-		<span style="color:#75715e">#billObjects = BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(),this.View.BillBusinessInfo.GetDynamicObjectType())</span>
-		<span style="color:#75715e">#this.View.ShowMessage(str(type(billObjects)))</span>
-		
-		billNo <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
-		<span style="color:#75715e">#for j in billObjects:</span>
-			<span style="color:#75715e">#purQeqEntryDatas = j.GetValue(CONST_PUR_REQUISITION.CONST_FEntity.ENTITY_ORM_ReqEntry)</span>
-			<span style="color:#75715e">#purBiz = j.BusinessInfo()</span>
-			<span style="color:#75715e">#entity = purBiz.GetEntity(&#34;FEntity&#34;)</span>
-			<span style="color:#75715e">#entityData = entity</span>
-			<span style="color:#75715e">#this.View.ShowMessage(str(type(entity)))</span>
-			<span style="color:#75715e">#for entryData  in purQeqEntryDatas:</span>
-			<span style="color:#75715e">#	billNo = billNo + &#39;,&#39; + str(entryData.GetDynamicValue(CONST_PUR_REQUISITION.CONST_FEntity.ORM_ReqQty))</span>
-				
-		<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> billObjects:
-		<span style="color:#75715e">#	#this.View.ShowMessage(str(type(j)))</span>
-			<span style="color:#66d9ef">for</span> q <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
-				proPertiesList <span style="color:#f92672">=</span> proPertiesList <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(q<span style="color:#f92672">.</span>Name);
-				<span style="color:#75715e">#if (str(q.Name) == &#39;BillNo&#39;):</span>
-				<span style="color:#66d9ef">if</span> (str(q<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ReqEntry&#39;</span>):
-					<span style="color:#75715e">#billNo = str(type(j.ReqEntry))</span>
-					<span style="color:#66d9ef">for</span> purData <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>ReqEntry:
-						billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span>str(type(purData))
-						<span style="color:#75715e">#purData[]</span>
-						<span style="color:#75715e"># https://vip.kingdee.com/article/35736?islogin=true</span>
-						<span style="color:#75715e">#https://vip.kingdee.com/article/45021</span>
-						<span style="color:#66d9ef">for</span> proList <span style="color:#f92672">in</span> purData<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
-							<span style="color:#75715e">#billNo = billNo +&#39;,&#39;+  str(proList.Name)</span>
-							<span style="color:#66d9ef">if</span> (str(proList<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Id&#39;</span>):
-								purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
-								billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> proList<span style="color:#f92672">.</span>GetValue(purData)<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;;&#39;</span> <span style="color:#f92672">+</span> purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>]<span style="color:#f92672">.</span>ToString()
-			<span style="color:#75715e">#BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, j)</span>
-		<span style="color:#75715e">#	j[&#34;ReqQty&#34;] = 666</span>
-			<span style="color:#75715e">#for q in</span>
-		<span style="color:#75715e"># https://vip.kingdee.com/article/33705			</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((billNo)))
-		<span style="color:#75715e">#this.View.ShowMessage(str((proPertiesList)))</span>
-		<span style="color:#75715e">#https://vip.kingdee.com/article/158234477305916928</span>
-		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
-		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
-		saveRslt<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, meta<span style="color:#f92672">.</span>BusinessInfo,billObjects , <span style="color:#66d9ef">None</span>,<span style="color:#e6db74">&#34;Save&#34;</span>);
-		<span style="color:#75715e">#raise Exception(&#34;问题出问题了，请打开单据检查单据字段&#34;)</span>
-		<span style="color:#66d9ef">if</span> (saveRslt <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
-          		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;保存成功！&#34;</span>)
-         <span style="color:#66d9ef">else</span>:
-           		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;出错，保存不成功！&#34;</span>)
-</code></pre></div><h3 id="参考">参考</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> billObj<span style="color:#f92672">=</span>billObjects[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span> billNo<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]; 
+</span></span></code></pre></div><p>获取单据体 ：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>entity<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;单据体ORM实体标识&#34;</span>]; 
+</span></span></code></pre></div><p>循环获取单据体里面的每一行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
+</span></span><span style="display:flex;"><span>fld1<span style="color:#f92672">=</span>r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]; 
+</span></span></code></pre></div><p>同样的，和JSON类似，也可以修改数据包里面的数据, 修改完之后调用<code>BusinessDataServiceHelper.Save</code>方法就可以了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>billObj[<span style="color:#e6db74">&#34;字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>; 
+</span></span></code></pre></div><p>修改单据体字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> entity: 
+</span></span><span style="display:flex;"><span>r[<span style="color:#e6db74">&#34;单据体字段实体属性标识&#34;</span>]<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XXX&#34;</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#参考代码:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##****************************保存服务插件*******************</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#作者：Jack</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#来源：金蝶云社区</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#原文链接：https://vip.kingdee.com/article/139314926954577664</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
+</span></span><span style="display:flex;"><span>         pkIds <span style="color:#f92672">=</span> List[object]()
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#fentryid = &#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		fids<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		proPertiesList<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo<span style="color:#f92672">.</span>Count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>           		 this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;没有选择任何数据，请先选择！&#34;</span>)
+</span></span><span style="display:flex;"><span>           		 <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#75715e">#获取选中行</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(a)))</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e"># 单据体内码</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#fentryid = fentryid + &#39;,&#39; + str(a[i].EntryPrimaryKeyValue)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#单据头内码</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#fid = fentryid + &#39;,&#39; + str(a[i].PrimaryKeyValue)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#fid =  str(a[i].PrimaryKeyValue)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#formMetadata = 	MetaDataServiceHelper.Load(this.Context,</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#BusinessDataServiceHelper.loadSingle(fentryid)</span>
+</span></span><span style="display:flex;"><span>			fid <span style="color:#f92672">=</span> a[i]<span style="color:#f92672">.</span>PrimaryKeyValue
+</span></span><span style="display:flex;"><span>			fids <span style="color:#f92672">=</span> fids <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(fid)
+</span></span><span style="display:flex;"><span>			pkIds<span style="color:#f92672">.</span>Add(fid)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(fids) # 调试</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 二开案例.列表插件.列表调用保存操作</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># https://vip.kingdee.com/article/139314926954577664</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># https://vip.kingdee.com/article/238671226909305344</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># foreach (var dataObject in dataObjects)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">#// 修改采购订单的变更原因</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">#dataObject[&#34;ChangeReason&#34;] = &#34;666&#34;;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#}</span>
+</span></span><span style="display:flex;"><span>         formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;
+</span></span><span style="display:flex;"><span>		meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);
+</span></span><span style="display:flex;"><span>		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), meta<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#formId = this.BusinessInfo.GetForm().Id</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#meta = MetaDataServiceHelper.Load(this.Context, formId);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 下面也生效</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#billObjects = BusinessDataServiceHelper.Load(this.Context, pkIds.ToArray(),this.View.BillBusinessInfo.GetDynamicObjectType())</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(billObjects)))</span>
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		billNo <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#for j in billObjects:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#purQeqEntryDatas = j.GetValue(CONST_PUR_REQUISITION.CONST_FEntity.ENTITY_ORM_ReqEntry)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#purBiz = j.BusinessInfo()</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#entity = purBiz.GetEntity(&#34;FEntity&#34;)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#entityData = entity</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#this.View.ShowMessage(str(type(entity)))</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#for entryData  in purQeqEntryDatas:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#	billNo = billNo + &#39;,&#39; + str(entryData.GetDynamicValue(CONST_PUR_REQUISITION.CONST_FEntity.ORM_ReqQty))</span>
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> billObjects:
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#	#this.View.ShowMessage(str(type(j)))</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> q <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
+</span></span><span style="display:flex;"><span>				proPertiesList <span style="color:#f92672">=</span> proPertiesList <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(q<span style="color:#f92672">.</span>Name);
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#if (str(q.Name) == &#39;BillNo&#39;):</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (str(q<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ReqEntry&#39;</span>):
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#billNo = str(type(j.ReqEntry))</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">for</span> purData <span style="color:#f92672">in</span> j<span style="color:#f92672">.</span>ReqEntry:
+</span></span><span style="display:flex;"><span>						billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span>str(type(purData))
+</span></span><span style="display:flex;"><span>						<span style="color:#75715e">#purData[]</span>
+</span></span><span style="display:flex;"><span>						<span style="color:#75715e"># https://vip.kingdee.com/article/35736?islogin=true</span>
+</span></span><span style="display:flex;"><span>						<span style="color:#75715e">#https://vip.kingdee.com/article/45021</span>
+</span></span><span style="display:flex;"><span>						<span style="color:#66d9ef">for</span> proList <span style="color:#f92672">in</span> purData<span style="color:#f92672">.</span>DynamicObjectType<span style="color:#f92672">.</span>Properties:
+</span></span><span style="display:flex;"><span>							<span style="color:#75715e">#billNo = billNo +&#39;,&#39;+  str(proList.Name)</span>
+</span></span><span style="display:flex;"><span>							<span style="color:#66d9ef">if</span> (str(proList<span style="color:#f92672">.</span>Name) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Id&#39;</span>):
+</span></span><span style="display:flex;"><span>								purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>								billNo <span style="color:#f92672">=</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> proList<span style="color:#f92672">.</span>GetValue(purData)<span style="color:#f92672">.</span>ToString() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;;&#39;</span> <span style="color:#f92672">+</span> purData[<span style="color:#e6db74">&#34;ReqQty&#34;</span>]<span style="color:#f92672">.</span>ToString()
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, j)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#	j[&#34;ReqQty&#34;] = 666</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#for q in</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># https://vip.kingdee.com/article/33705			</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((billNo)))
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str((proPertiesList)))</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#https://vip.kingdee.com/article/158234477305916928</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
+</span></span><span style="display:flex;"><span>		saveRslt<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, meta<span style="color:#f92672">.</span>BusinessInfo,billObjects , <span style="color:#66d9ef">None</span>,<span style="color:#e6db74">&#34;Save&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#raise Exception(&#34;问题出问题了，请打开单据检查单据字段&#34;)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (saveRslt <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>          		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;保存成功！&#34;</span>)
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>           		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;出错，保存不成功！&#34;</span>)
+</span></span></code></pre></div><h3 id="参考">参考</h3>
 <p><a href="https://vip.kingdee.com/article/158234477305916928">Python实现列表对暂存的单据批量保存</a></p>
 <p><a href="https://vip.kingdee.com/article/139314926954577664">二开案例.列表插件.列表调用保存操作</a></p>
 <p><a href="https://vip.kingdee.com/article/84697663127624960">二开案例.Python插件.抛异常</a></p>
@@ -652,6 +651,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -678,6 +681,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -720,8 +727,8 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

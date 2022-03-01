@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/" />
 
@@ -204,18 +204,18 @@
 <h4 id="2-在采购订单的表单插件上注册python插件如下图所示7c39c673702d49c88e4fce1a115a9a89httpsrawgithubusercontentcomlsqblogsrmastercontentpostspython插件测试7c39c673702d49c88e4fce1a115a9a89png7b048cf669a6449fb4d22067374a054fhttpsrawgithubusercontentcomlsqblogsrmastercontentpostspython插件测试7b048cf669a6449fb4d22067374a054fpng">2. 在采购订单的表单插件上注册Python插件，如下图所示。<img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/7c39c673702d49c88e4fce1a115a9a89.png" alt="7c39c673702d49c88e4fce1a115a9a89"><img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/7b048cf669a6449fb4d22067374a054f.png" alt="7b048cf669a6449fb4d22067374a054f"></h4>
 <h4 id="3-baritem-事件">3. BarItem 事件</h4>
 <p>菜单自定义按钮（BarItem）点击事件Click，可以定义相关操作。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 第一步：按照需要添加程序集引用</span>
-<span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#75715e"># 第二步：添加插件事件对应的方法</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
- <span style="color:#75715e">#第三步：添加业务逻辑代码</span>
- <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbTest&#34;</span>:
- 	userName <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserName
- 	msg <span style="color:#f92672">=</span> userName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;，您好！&#34;</span>
- 	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
-</code></pre></div><h3 id="reference">Reference</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 第一步：按照需要添加程序集引用</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 第二步：添加插件事件对应的方法</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">#第三步：添加业务逻辑代码</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbTest&#34;</span>:
+</span></span><span style="display:flex;"><span> 	userName <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserName
+</span></span><span style="display:flex;"><span> 	msg <span style="color:#f92672">=</span> userName <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;，您好！&#34;</span>
+</span></span><span style="display:flex;"><span> 	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span></code></pre></div><h3 id="reference">Reference</h3>
 <p>原文链接：https://vip.kingdee.com/article/95847781369345280</p>
 </article>
     </section>
@@ -322,6 +322,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -348,6 +352,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -390,8 +398,8 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

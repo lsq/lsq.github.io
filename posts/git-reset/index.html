@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/git-reset/" />
 
@@ -187,13 +187,13 @@
       </header>
 
       <article class="main"><p>写完代码后，我们一般这样</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git add . //添加所有文件
-git commit -m <span style="color:#e6db74">&#34;本功能全部完成&#34;</span>
-</code></pre></div><h2 id="撤回commit">撤回commit</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git add . //添加所有文件
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;本功能全部完成&#34;</span>
+</span></span></code></pre></div><h2 id="撤回commit">撤回commit</h2>
 <p>执行完commit后，想撤回commit，怎么办？
 这样凉拌：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git reset --soft HEAD^
-</code></pre></div><p>这样就成功的撤销了你的commit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git reset --soft HEAD^
+</span></span></code></pre></div><p>这样就成功的撤销了你的commit
 注意，仅仅是撤回commit操作，您写的代码仍然保留。
 HEAD^的意思是上一个版本，也可以写成HEAD~1
 如果你进行了2次commit，想都撤回，可以使用HEAD~2</p>
@@ -216,8 +216,8 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
 </ul>
 <h2 id="修改commit注释">修改commit注释</h2>
 <p>顺便说一下，如果commit注释写错了，只是想改一下注释，只需要：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git commit --amend
-</code></pre></div><p>此时会进入默认vim编辑器，修改注释完毕后保存就好了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git commit --amend
+</span></span></code></pre></div><p>此时会进入默认vim编辑器，修改注释完毕后保存就好了。</p>
 <!-- 原文链接：https://blog.csdn.net/w958796636/article/details/53611133-->
 </article>
     </section>
@@ -324,6 +324,10 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -350,6 +354,10 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -392,8 +400,8 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

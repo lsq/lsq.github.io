@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%BC%B9%E7%AA%97%E7%A1%AE%E8%AE%A4%E4%B8%8E%E6%89%A7%E8%A1%8C/" />
 
@@ -200,21 +200,21 @@
 <p>用户编辑单据后，点击按钮后提示并要求确认<img src="https://raw.githubusercontent.com/lsq/blogsr/master/content/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/20211220103741.png" alt="20211220103741"></p>
 <h3 id="方案">方案</h3>
 <p>在表单插件中增加python插件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr;
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> Action
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> MessageBoxResult
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> MessageBoxOptions
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpper()<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TBCHECK&#34;</span>:
-		action<span style="color:#f92672">=</span>Action[MessageBoxResult](callback)
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;是否执行检测操作？&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, MessageBoxOptions<span style="color:#f92672">.</span>YesNo,action)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">callback</span>(r):
-	<span style="color:#66d9ef">if</span> r<span style="color:#f92672">==</span> MessageBoxResult<span style="color:#f92672">.</span>Yes:
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;do something...&#34;</span>)
-		<span style="color:#75715e">#.....To do Somethin</span>
-</code></pre></div><p>原文链接：https://vip.kingdee.com/article/238762823747025152</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr;
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> Action
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> MessageBoxResult
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> MessageBoxOptions
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpper()<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TBCHECK&#34;</span>:
+</span></span><span style="display:flex;"><span>		action<span style="color:#f92672">=</span>Action[MessageBoxResult](callback)
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;是否执行检测操作？&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, MessageBoxOptions<span style="color:#f92672">.</span>YesNo,action)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">callback</span>(r):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> r<span style="color:#f92672">==</span> MessageBoxResult<span style="color:#f92672">.</span>Yes:
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;do something...&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#.....To do Somethin</span>
+</span></span></code></pre></div><p>原文链接：https://vip.kingdee.com/article/238762823747025152</p>
 </article>
     </section>
 
@@ -320,6 +320,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -346,6 +350,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -388,8 +396,8 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

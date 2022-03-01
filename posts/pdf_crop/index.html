@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/pdf_crop/" />
 
@@ -204,21 +204,20 @@
 </ol>
 <pre tabindex="0"><code>pdfcrop foo.pdf f.pdf
 gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
-
 </code></pre><pre tabindex="0"><code class="language-vbscript" data-lang="vbscript">Sub SaveSelectedChartAsPng()
 Dim tmpdir As String, outputPdf As String, outputPng As String, cropPdf As String
 Dim wshell As Object
 
-    Set wshell = CreateObject(&quot;WScript.Shell&quot;)
+    Set wshell = CreateObject(&#34;WScript.Shell&#34;)
     Application.ScreenUpdating = False
     Application.Calculation = xlCalculationManual
     Application.EnableEvents = False
     Application.DisplayAlerts = False
     
-    tmpdir = VBA.Environ(&quot;temp&quot;)
-    outputPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure.pdf&quot;
-    outputPng = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; &quot;outputValue.png&quot;
-    cropPdf = tmpdir &amp; &quot;\&quot; &amp; &quot;figure_crop.pdf&quot;
+    tmpdir = VBA.Environ(&#34;temp&#34;)
+    outputPdf = tmpdir &amp; &#34;\&#34; &amp; &#34;figure.pdf&#34;
+    outputPng = ActiveWorkbook.Path &amp; &#34;\&#34; &amp; &#34;outputValue.png&#34;
+    cropPdf = tmpdir &amp; &#34;\&#34; &amp; &#34;figure_crop.pdf&#34;
     
     With ActiveChart.PageSetup
         .Orientation = xlLandscape
@@ -234,15 +233,15 @@ Dim wshell As Object
     ActiveChart.ExportAsFixedFormat xlTypePDF, outputPdf, Quality:=xlQualityStandard, IncludeDocProperties:=True, _
                 IgnorePrintAreas:=False, OpenAfterPublish:=False
     
-    wshell.Run &quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
-    wshell.Run &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r1200  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf, 0, True
-    wshell.Run &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf, 0, True
-    ' 需要安装texlive，其已经包含了pdfcrop程序
-    'Shell (&quot;pdfcrop &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf &amp; &quot; &amp;&amp; &quot; &amp; &quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
-    '需要安装ghostscript
-    'Shell (&quot;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&quot; &amp; outputPng &amp; &quot; &quot; &amp; cropPdf)
-    '需要安装msys2, rm命令是linux 下命令
-    'Shell (&quot;rm -rf &quot; &amp; outputPdf &amp; &quot; &quot; &amp; cropPdf)
+    wshell.Run &#34;pdfcrop &#34; &amp; outputPdf &amp; &#34; &#34; &amp; cropPdf, 0, True
+    wshell.Run &#34;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r1200  -sOutputFile=&#34; &amp; outputPng &amp; &#34; &#34; &amp; cropPdf, 0, True
+    wshell.Run &#34;rm -rf &#34; &amp; outputPdf &amp; &#34; &#34; &amp; cropPdf, 0, True
+    &#39; 需要安装texlive，其已经包含了pdfcrop程序
+    &#39;Shell (&#34;pdfcrop &#34; &amp; outputPdf &amp; &#34; &#34; &amp; cropPdf &amp; &#34; &amp;&amp; &#34; &amp; &#34;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&#34; &amp; outputPng &amp; &#34; &#34; &amp; cropPdf &amp; &#34; &amp;&amp; &#34; &amp; &#34;rm -rf &#34; &amp; outputPdf &amp; &#34; &#34; &amp; cropPdf)
+    &#39;需要安装ghostscript
+    &#39;Shell (&#34;gswin64c.exe -dBATCH -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=&#34; &amp; outputPng &amp; &#34; &#34; &amp; cropPdf)
+    &#39;需要安装msys2, rm命令是linux 下命令
+    &#39;Shell (&#34;rm -rf &#34; &amp; outputPdf &amp; &#34; &#34; &amp; cropPdf)
     
     Set wshell = Nothing
     Application.ScreenUpdating = True
@@ -356,6 +355,10 @@ End Sub
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -382,6 +385,10 @@ End Sub
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -424,8 +431,8 @@ End Sub
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

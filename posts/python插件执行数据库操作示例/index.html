@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
 
@@ -201,190 +201,190 @@
       </header>
 
       <article class="main"><h3 id="操作数据库示例-1">操作数据库示例 1</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbHello&#34;</span>:
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作开始&#34;</span>);
-		DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, <span style="color:#e6db74">&#34;UPDATE t_PUR_POOrder SET F_ORA_REMARKS=&#39;aha数据被修改了--&#39; where FBILLNO=&#39;PO20211214001&#39; &#34;</span>,<span style="color:#66d9ef">None</span>,<span style="color:#66d9ef">False</span>);
-         <span style="color:#75715e"># UPDATE T_TABLE SET D = A + B -C WHERE ID=11</span>
-		<span style="color:#75715e">#this.View.InvokeFormOperation(&#34;Refresh&#34;)</span>
-         <span style="color:#75715e"># 操作数据库成功后，重新刷新单据获取数据</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
-</code></pre></div><h3 id="操作数据库示例2">操作数据库示例2</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;tbHello&#34;</span>:
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作开始&#34;</span>);
+</span></span><span style="display:flex;"><span>		DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, <span style="color:#e6db74">&#34;UPDATE t_PUR_POOrder SET F_ORA_REMARKS=&#39;aha数据被修改了--&#39; where FBILLNO=&#39;PO20211214001&#39; &#34;</span>,<span style="color:#66d9ef">None</span>,<span style="color:#66d9ef">False</span>);
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e"># UPDATE T_TABLE SET D = A + B -C WHERE ID=11</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.InvokeFormOperation(&#34;Refresh&#34;)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#75715e"># 操作数据库成功后，重新刷新单据获取数据</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
+</span></span></code></pre></div><h3 id="操作数据库示例2">操作数据库示例2</h3>
 <h4 id="应用场景">应用场景</h4>
 <p>销售出库单，点击按钮，执行数据库，更新全部单据，<a href="https://vip.kingdee.com/article/66914031969567232">备注信息</a></p>
 <h4 id="实现步骤">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#75715e">//点击按钮事件
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> BarItemClick(BOS.Core.DynamicForm.PlugIn.Args.BarItemClickEventArg
-s e)
-{
-<span style="color:#66d9ef">base</span>.BarItemClick(e);
-<span style="color:#75715e">//当点击YDIE_tbTest按钮,触发
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(e.BarItemKey == <span style="color:#e6db74">&#34;YDIE_tbTest&#34;</span>)
-{
-<span style="color:#75715e">//执行sql语句返回Int，表示影响了多少行
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> x = DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, <span style="color:#e6db74">&#34;/*dialect*/update T_SAL_OUTSTOCKENTRY set FNOTE =&#39;测
-</span><span style="color:#e6db74"></span><span style="color:#960050;background-color:#1e0010">试&#39;</span><span style="color:#e6db74">&#34;);
-</span><span style="color:#e6db74"></span><span style="color:#75715e">//弹窗显示
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span>.View.ShowMessage(x.ToString());
-}
-}
-</code></pre></div><h3 id="操作数据库示例3">操作数据库示例3</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#75715e">//点击按钮事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> BarItemClick(BOS.Core.DynamicForm.PlugIn.Args.BarItemClickEventArg
+</span></span><span style="display:flex;"><span>s e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">base</span>.BarItemClick(e);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//当点击YDIE_tbTest按钮,触发</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(e.BarItemKey == <span style="color:#e6db74">&#34;YDIE_tbTest&#34;</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//执行sql语句返回Int，表示影响了多少行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> x = DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, <span style="color:#e6db74">&#34;/*dialect*/update T_SAL_OUTSTOCKENTRY set FNOTE =&#39;测
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#960050;background-color:#1e0010">试&#39;</span><span style="color:#e6db74">&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#75715e">//弹窗显示</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.View.ShowMessage(x.ToString());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="操作数据库示例3">操作数据库示例3</h3>
 <h4 id="应用场景-1">应用场景</h4>
 <p>生产用料清单上添加自定义字段&mdash;欠料数量，计算逻辑为欠料数量=未领数量+作业不良退料数量-补料数量</p>
 <h4 id="实现步骤-1">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
-	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbHello&#34;</span>,StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
-		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作开始&#34;);</span>
-        <span style="color:#75715e"># 注意数据库的分库分表</span>
-		<span style="color:#75715e">#sql= &#34;UPDATE T_PRD_PPBOMENTRY_Q SET F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>
-		n <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,<span style="color:#e6db74">&#34;/*dialect*/ update T_PRD_PPBOMENTRY_Q set F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>)
-		<span style="color:#75715e">#DBUtils.Execute(this.Context,sql)</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作成功--影响数据条数：&#34;</span> <span style="color:#f92672">+</span> n<span style="color:#f92672">.</span>ToString())
-		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作成功--影响数据条数：&#34;)</span>
-		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 打开单据自动计算欠料数量</span>
-<span style="color:#75715e">#引入clr运行库</span>
-<span style="color:#f92672">import</span> clr
-<span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeBindData</span>(e):
-	rows<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FEntity&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
-	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,rows,<span style="color:#ae81ff">1</span>):
-		<span style="color:#66d9ef">if</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FIssueType&#34;</span>,i) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;7&#39;</span>:
-			a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FNoPickedQty&#34;</span>,i) <span style="color:#f92672">-</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FRePickedQty&#34;</span>,i) <span style="color:#f92672">+</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FProcessDefectReturnQty&#34;</span>,i);
-			this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;F_maxeye_Wlsl&#34;</span>,a,i);
-			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>UpdateView(<span style="color:#e6db74">&#34;FA_DEPRADJUSTENTRY&#34;</span>);
-</code></pre></div><h3 id="python保存自动调用提交审核">Python保存自动调用提交审核</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbHello&#34;</span>,StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作开始&#34;);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 注意数据库的分库分表</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#sql= &#34;UPDATE T_PRD_PPBOMENTRY_Q SET F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>
+</span></span><span style="display:flex;"><span>		n <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,<span style="color:#e6db74">&#34;/*dialect*/ update T_PRD_PPBOMENTRY_Q set F_MAXEYE_WLSL=FNOPICKEDQTY-FREPICKEDQTY+FPRCDEFECTRETURNQTY&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#DBUtils.Execute(this.Context,sql)</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;操作成功--影响数据条数：&#34;</span> <span style="color:#f92672">+</span> n<span style="color:#f92672">.</span>ToString())
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(&#34;操作成功--影响数据条数：&#34;)</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Refresh()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 打开单据自动计算欠料数量</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeBindData</span>(e):
+</span></span><span style="display:flex;"><span>	rows<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FEntity&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,rows,<span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FIssueType&#34;</span>,i) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;7&#39;</span>:
+</span></span><span style="display:flex;"><span>			a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FNoPickedQty&#34;</span>,i) <span style="color:#f92672">-</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FRePickedQty&#34;</span>,i) <span style="color:#f92672">+</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FProcessDefectReturnQty&#34;</span>,i);
+</span></span><span style="display:flex;"><span>			this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;F_maxeye_Wlsl&#34;</span>,a,i);
+</span></span><span style="display:flex;"><span>			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>UpdateView(<span style="color:#e6db74">&#34;FA_DEPRADJUSTENTRY&#34;</span>);
+</span></span></code></pre></div><h3 id="python保存自动调用提交审核">Python保存自动调用提交审核</h3>
 <h4 id="应用场景-2">应用场景</h4>
 <p>其他入库单保存后，自动提交审核</p>
 <h4 id="实现步骤-2">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
-<span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):
-    idList <span style="color:#f92672">=</span> List[object]()
-    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:
-        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>])
-        idList<span style="color:#f92672">.</span>Add(BillId)
-    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray()
-    formID <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id
-    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID)
-    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
-    subResult<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption)
-    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
-        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
-        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption)
-</code></pre></div><h3 id="操作成功后执行sql">操作成功后执行SQL</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Contracts&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Contracts <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Text <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):
+</span></span><span style="display:flex;"><span>    idList <span style="color:#f92672">=</span> List[object]()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> billObj <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:
+</span></span><span style="display:flex;"><span>        BillId <span style="color:#f92672">=</span> str(billObj[<span style="color:#e6db74">&#34;Id&#34;</span>])
+</span></span><span style="display:flex;"><span>        idList<span style="color:#f92672">.</span>Add(BillId)
+</span></span><span style="display:flex;"><span>    pkArray <span style="color:#f92672">=</span> idList<span style="color:#f92672">.</span>ToArray()
+</span></span><span style="display:flex;"><span>    formID <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id
+</span></span><span style="display:flex;"><span>    meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID)
+</span></span><span style="display:flex;"><span>    submitOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    subResult<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Submit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,<span style="color:#e6db74">&#34;Submit&#34;</span>,submitOption)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (subResult<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        auditOption <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        auditResult <span style="color:#f92672">=</span> BusinessDataServiceHelper<span style="color:#f92672">.</span>Audit(this<span style="color:#f92672">.</span>Context,meta<span style="color:#f92672">.</span>BusinessInfo,pkArray,auditOption)
+</span></span></code></pre></div><h3 id="操作成功后执行sql">操作成功后执行SQL</h3>
 <h4 id="应用场景-3">应用场景</h4>
 <p>单据上的菜单绑定了某种操作，当点击该菜单时，会触发绑定在该菜单上的操作，当操作执行成功后，执行一段SQL。</p>
 <h4 id="案例演示">案例演示</h4>
 <p>采购订单，审核菜单，绑定了审核操作，点击审核菜单触发审核操作并执行成功后，执行一段SQL。</p>
 <h4 id="实现步骤-3">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c#" data-lang="c#"><span style="color:#66d9ef">using</span> Kingdee.BOS.App.Data;
-<span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn;
-<span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
-<span style="color:#66d9ef">using</span> Kingdee.BOS.Util;
-<span style="color:#66d9ef">using</span> System.ComponentModel;
-<span style="color:#66d9ef">namespace</span> Jac.XkDemo.BOS.Business.PlugIn
-{
- <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span> <span style="color:#75715e">/// 【表单插件】操作成功后执行SQL
-</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e"> [Description(&#34;【表单插件】操作成功后执行SQL&#34;), HotUpdate]</span>
- <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunSqlAfterOperationFormPlugIn</span> : AbstractDynamicFormPlugIn
- {
- <span style="color:#75715e">/// &lt;summary&gt;
-</span><span style="color:#75715e"></span> <span style="color:#75715e">/// 表单操作执行后事件
-</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;/summary&gt;
-</span><span style="color:#75715e"></span> <span style="color:#75715e">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;
-</span><span style="color:#75715e"></span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> AfterDoOperation(AfterDoOperationEventArgs e)
- {
- <span style="color:#66d9ef">base</span>.AfterDoOperation(e);
- <span style="color:#75715e">// 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (e.Operation.OperationId == <span style="color:#ae81ff">1</span> &amp;&amp; e.OperationResult.IsSuccess)
- {
-<span style="color:#66d9ef">var</span> sql = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE
-</span><span style="color:#e6db74"></span>FUSERID={<span style="color:#ae81ff">0</span>}<span style="color:#e6db74">&#34;, this.Context.UserId);
-</span><span style="color:#e6db74"></span>DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, sql);
- <span style="color:#66d9ef">this</span>.View.ShowMessage(<span style="color:#e6db74">&#34;审核操作执行成功，SQL已执行，SQL脚本：&#34;</span> + sql);
- }
- }
- }
-}
-</code></pre></div><p><a href="https://vip.kingdee.com/article/194808387228614144">AfterDoOperation</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.App.Data;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Util;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Jac.XkDemo.BOS.Business.PlugIn
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// 【表单插件】操作成功后执行SQL</span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e"> [Description(&#34;【表单插件】操作成功后执行SQL&#34;), HotUpdate]</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunSqlAfterOperationFormPlugIn</span> : AbstractDynamicFormPlugIn
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// 表单操作执行后事件</span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> AfterDoOperation(AfterDoOperationEventArgs e)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">base</span>.AfterDoOperation(e);
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (e.Operation.OperationId == <span style="color:#ae81ff">1</span> &amp;&amp; e.OperationResult.IsSuccess)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> sql = <span style="color:#66d9ef">string</span>.Format(<span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>FUSERID={<span style="color:#ae81ff">0</span>}<span style="color:#e6db74">&#34;, this.Context.UserId);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>DBUtils.Execute(<span style="color:#66d9ef">this</span>.Context, sql);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">this</span>.View.ShowMessage(<span style="color:#e6db74">&#34;审核操作执行成功，SQL已执行，SQL脚本：&#34;</span> + sql);
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><a href="https://vip.kingdee.com/article/194808387228614144">AfterDoOperation</a></p>
 <h3 id="审核成功后自动关闭当前窗体httpsvipkingdeecomarticle175566954026221824"><a href="https://vip.kingdee.com/article/175566954026221824">审核成功后自动关闭当前窗体</a></h3>
 <h4 id="应用场景-4">应用场景</h4>
 <p>单据审核成功后，自动关闭当前窗体</p>
 <h4 id="案例演示-1">案例演示</h4>
 <p>采购订单编辑界面，单据审核成功后，自动关闭当前窗体。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
-<span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e):
- <span style="color:#75715e"># 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26</span>
- <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>OperationId <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">and</span> (e<span style="color:#f92672">.</span>OperationResult<span style="color:#f92672">.</span>IsSuccess):
- this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Close()
-</code></pre></div><h3 id="表单插件执行sqlhttpsvipkingdeecomarticle84693901407538432"><a href="https://vip.kingdee.com/article/84693901407538432">表单插件执行SQL</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e):
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 新增：6，修改：5，删除：3，保存：8，提交：9，撤销：87，审核：1，反审核：26</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>OperationId <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">and</span> (e<span style="color:#f92672">.</span>OperationResult<span style="color:#f92672">.</span>IsSuccess):
+</span></span><span style="display:flex;"><span> this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Close()
+</span></span></code></pre></div><h3 id="表单插件执行sqlhttpsvipkingdeecomarticle84693901407538432"><a href="https://vip.kingdee.com/article/84693901407538432">表单插件执行SQL</a></h3>
 <h4 id="应用场景-5">应用场景</h4>
 <p>在表单插件事件中，执行SQL语句</p>
 <h4 id="案例演示-2">案例演示</h4>
 <p>采购订单，新增菜单【查询SQL】和【执行SQL】。</p>
 <h4 id="实现步骤-4">实现步骤</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> clr
-clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
-<span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
- <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecuteScalar&#34;</span>:
- <span style="color:#75715e"># 查询当前登录用户信息</span>
-    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNAME FROM T_SEC_USER WHERE FUSERID=&#34;</span><span style="color:#f92672">+</span>this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserId<span style="color:#f92672">.</span>ToString();
-    userName <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
-    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(userName);
- <span style="color:#66d9ef">elif</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecute&#34;</span>:
- <span style="color:#75715e"># 修改当前登录用户的描述</span>
-    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE</span>
-    FUSERID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;+this.Context.UserId.ToString();</span>
-    count <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql);
-    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;更新成功，SQL：&#34;</span><span style="color:#f92672">+</span>sql<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;，受影响行数：&#34;</span><span style="color:#f92672">+</span>count<span style="color:#f92672">.</span>ToString());
-</code></pre></div><p>【知识点】</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecuteScalar&#34;</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 查询当前登录用户信息</span>
+</span></span><span style="display:flex;"><span>    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT FNAME FROM T_SEC_USER WHERE FUSERID=&#34;</span><span style="color:#f92672">+</span>this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserId<span style="color:#f92672">.</span>ToString();
+</span></span><span style="display:flex;"><span>    userName <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context,sql,<span style="color:#66d9ef">None</span>);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(userName);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">elif</span> e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;tbExecute&#34;</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 修改当前登录用户的描述</span>
+</span></span><span style="display:flex;"><span>    sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UPDATE T_SEC_USER SET FDESCRIPTION=N&#39;哈哈哈&#39; WHERE</span>
+</span></span><span style="display:flex;"><span>    FUSERID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;+this.Context.UserId.ToString();</span>
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context,sql);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;更新成功，SQL：&#34;</span><span style="color:#f92672">+</span>sql<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;，受影响行数：&#34;</span><span style="color:#f92672">+</span>count<span style="color:#f92672">.</span>ToString());
+</span></span></code></pre></div><p>【知识点】</p>
 <p>如果SQL语句不符合KSQL规范，在SQL语句的起始位置增加<code>/*dialect*/</code>申明。</p>
 <p>例如：<code>sql = &quot;/*dialect*/ SELECT FNAME FROM T_SEC_USER WHERE FUSERID=1&quot;</code></p>
 <p>【答疑】</p>
@@ -494,6 +494,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -520,6 +524,10 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -562,8 +570,8 @@ clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

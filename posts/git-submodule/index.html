@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/git-submodule/" />
 
@@ -200,14 +200,14 @@
 <p>工程存储的子模块最近改动ID已经超前于子模块存储的最近改动ID，解决方法是移除子模块后重新添加。</p>
 <h3 id="解决方法">解决方法</h3>
 <p>工程的根目录下，Git Bash中依次执行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ rm -rf 子模块名称
-$ git submodule deinit -f 子模块名称
-$ rm -rf .git/modules/子模块名称
-$ git rm -f 子模块名称
-$ git submodule add 子模块存储网址
-$ git commit -m <span style="color:#e6db74">&#39;备注&#39;</span>
-$ git push
-</code></pre></div><p>然后就可以重新
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ rm -rf 子模块名称
+</span></span><span style="display:flex;"><span>$ git submodule deinit -f 子模块名称
+</span></span><span style="display:flex;"><span>$ rm -rf .git/modules/子模块名称
+</span></span><span style="display:flex;"><span>$ git rm -f 子模块名称
+</span></span><span style="display:flex;"><span>$ git submodule add 子模块存储网址
+</span></span><span style="display:flex;"><span>$ git commit -m <span style="color:#e6db74">&#39;备注&#39;</span>
+</span></span><span style="display:flex;"><span>$ git push
+</span></span></code></pre></div><p>然后就可以重新
 <code>$ git clone --recursive</code> 工程存储网址</p>
 <!-- 原文链接：https://blog.csdn.net/haoranhaoshi/article/details/97181494 -->
 </article>
@@ -315,6 +315,10 @@ $ git push
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -341,6 +345,10 @@ $ git push
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -383,8 +391,8 @@ $ git push
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">

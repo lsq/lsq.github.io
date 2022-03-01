@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.93.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/vba_export_png/" />
 
@@ -221,17 +221,16 @@
         .BottomMargin = 0
         .TopMargin = 0
     End With
-    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &quot;\figure.pdf&quot;, xlQualityStandard, False, False
+    ActiveChart.ExportAsFixedFormat xlTypePDF, ActiveWorkbook.Path + &#34;\figure.pdf&#34;, xlQualityStandard, False, False
 End Sub
 </code></pre><h3 id="to-export-chart-as-png">To export chart as PNG</h3>
 <pre tabindex="0"><code>Sub SaveSelectedChartAsImage()
-    ActiveChart.Export &quot;figure.png&quot;
+    ActiveChart.Export &#34;figure.png&#34;
 End Sub
 
 D:\Program Files\ImageMagick-7.0.10-Q16-HDRI;c:\lua541;D:\Program Files\inkscape\bin;D:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot\bin;D:\Program Files\gs\gs9.53.3\bin;C:\Program Files\7-Zip;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files (x86)\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files (x86)\航天信息财税平台\newslib;C:\msys;4\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\税务证书应用客户端;d:\Progr;m Files (x86)\LyX 2.3\Perl\bin;D:\Program Files (x86)\Calibre2\;D:\texlive\2020\bin\win64;D:\texlive\2020\bin\win32;D:\Program Files\qemu;C:\Program Files\pdf2svg;C:\Program Files\Pandoc\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\
 
 gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
-
 </code></pre><h3 id="另一种方案是把chart复制到powerpoint中然后在powerpoint中另存为emf文件">另一种方案是把chart复制到powerpoint中，然后在powerpoint中另存为emf文件</h3>
 <ol>
 <li>Select your Microsoft Excel plots.</li>
@@ -242,41 +241,41 @@ gswin64c.exe -dNOPAUSE -sDEVICE=png16m -r600  -sOutputFile=foo.png o.pdf -dBATCH
 <li>Import your EMF file into <a href="http://inkscape.org/">InkScape</a> and ungroup the object.</li>
 <li>Delete all the A4-sized crappy blank space from the image and enjoy.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> ppt <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>, pr <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
-<span style="color:#66d9ef">Dim</span> sl <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
-Selection.Copy
-...
-<span style="color:#66d9ef">With</span> CreateObject(<span style="color:#e6db74">&#34;PowerPoint.Application&#34;</span>)
-    <span style="color:#66d9ef">Set</span> pr <span style="color:#f92672">=</span> .Presentations.Add
-    <span style="color:#66d9ef">Set</span> sl <span style="color:#f92672">=</span> pr.Slides.Add(1, 11)
-    sl.Shapes.PasteSpecial DataType:<span style="color:#f92672">=</span>2
-    sl.Shapes(sl.Shapes.Count).Export <span style="color:#e6db74">&#34;C:\Test\Test.emf&#34;</span>, 5
-    pr.Close
-    .Quit
-<span style="color:#66d9ef">End</span> <span style="color:#66d9ef">With</span>
-<span style="color:#66d9ef">End</span> <span style="color:#66d9ef">Sub</span>
-</code></pre></div><h3 id="还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vb" data-lang="vb"><span style="display:flex;"><span><span style="color:#66d9ef">Dim</span> ppt <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>, pr <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Dim</span> sl <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+</span></span><span style="display:flex;"><span>Selection.Copy
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">With</span> CreateObject(<span style="color:#e6db74">&#34;PowerPoint.Application&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Set</span> pr <span style="color:#f92672">=</span> .Presentations.Add
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Set</span> sl <span style="color:#f92672">=</span> pr.Slides.Add(1, 11)
+</span></span><span style="display:flex;"><span>    sl.Shapes.PasteSpecial DataType:<span style="color:#f92672">=</span>2
+</span></span><span style="display:flex;"><span>    sl.Shapes(sl.Shapes.Count).Export <span style="color:#e6db74">&#34;C:\Test\Test.emf&#34;</span>, 5
+</span></span><span style="display:flex;"><span>    pr.Close
+</span></span><span style="display:flex;"><span>    .Quit
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">End</span> <span style="color:#66d9ef">With</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">End</span> <span style="color:#66d9ef">Sub</span>
+</span></span></code></pre></div><h3 id="还有一种是用windows-api函数直接导出emf文件">还有一种是用windows api函数直接导出emf文件</h3>
 <ol>
 <li><a href="https://stackoverflow.com/questions/1791369/excel-export-chart-to-wmf-or-emf">参考链接</a></li>
 <li><a href="https://stackoverflow.com/questions/60706703/export-excel-graphs-as-emf">参考链接</a></li>
 </ol>
 <pre tabindex="0"><code class="language-vba" data-lang="vba">Option Explicit
 #If VBA7 Then
-Private Declare PtrSafe Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
-Private Declare PtrSafe Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As LongPtr) As Long
-Private Declare PtrSafe Function CloseClipboard Lib &quot;user32&quot; () As Long
-Private Declare PtrSafe Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
-Private Declare PtrSafe Function EmptyClipboard Lib &quot;user32&quot; () As Long
-Private Declare PtrSafe Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As LongPtr, ByVal lpszFile As String) As Long
-Private Declare PtrSafe Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As LongPtr) As Long
+Private Declare PtrSafe Sub Sleep Lib &#34;kernel32&#34; (ByVal dwMilliseconds As Long)
+Private Declare PtrSafe Function OpenClipboard Lib &#34;user32&#34; (ByVal hwnd As LongPtr) As Long
+Private Declare PtrSafe Function CloseClipboard Lib &#34;user32&#34; () As Long
+Private Declare PtrSafe Function GetClipboardData Lib &#34;user32&#34; (ByVal wFormat As Long) As Long
+Private Declare PtrSafe Function EmptyClipboard Lib &#34;user32&#34; () As Long
+Private Declare PtrSafe Function CopyEnhMetaFileA Lib &#34;gdi32&#34; (ByVal hENHSrc As LongPtr, ByVal lpszFile As String) As Long
+Private Declare PtrSafe Function DeleteEnhMetaFile Lib &#34;gdi32&#34; (ByVal hemf As LongPtr) As Long
 #Else
-Private Declare Sub Sleep Lib &quot;kernel32&quot; (ByVal dwMilliseconds As Long)
-Private Declare Function OpenClipboard Lib &quot;user32&quot; (ByVal hwnd As Long) As Long
-Private Declare Function CloseClipboard Lib &quot;user32&quot; () As Long
-Private Declare Function GetClipboardData Lib &quot;user32&quot; (ByVal wFormat As Long) As Long
-Private Declare Function EmptyClipboard Lib &quot;user32&quot; () As Long
-Private Declare Function CopyEnhMetaFileA Lib &quot;gdi32&quot; (ByVal hENHSrc As Long, ByVal lpszFile As String) As Long
-Private Declare Function DeleteEnhMetaFile Lib &quot;gdi32&quot; (ByVal hemf As Long) As Long
+Private Declare Sub Sleep Lib &#34;kernel32&#34; (ByVal dwMilliseconds As Long)
+Private Declare Function OpenClipboard Lib &#34;user32&#34; (ByVal hwnd As Long) As Long
+Private Declare Function CloseClipboard Lib &#34;user32&#34; () As Long
+Private Declare Function GetClipboardData Lib &#34;user32&#34; (ByVal wFormat As Long) As Long
+Private Declare Function EmptyClipboard Lib &#34;user32&#34; () As Long
+Private Declare Function CopyEnhMetaFileA Lib &#34;gdi32&#34; (ByVal hENHSrc As Long, ByVal lpszFile As String) As Long
+Private Declare Function DeleteEnhMetaFile Lib &#34;gdi32&#34; (ByVal hemf As Long) As Long
 #End If
 
 Public Function fnSaveAsEMF(strFileName As String) As Boolean
@@ -292,8 +291,8 @@ Dim ReturnValue As Long
 
   CloseClipboard
 
-  '// Release resources to it eg You can now delete it if required
-  '// or write over it. This is a MUST
+  &#39;// Release resources to it eg You can now delete it if required
+  &#39;// or write over it. This is a MUST
   DeleteEnhMetaFile ReturnValue
 
   fnSaveAsEMF = (ReturnValue &lt;&gt; 0)
@@ -307,39 +306,37 @@ Sub SaveItToEMF()
 
   ActiveChart.ChartArea.Select.Copy
  
-  sFileName = InputBox(&quot;Enter filename for export:&quot;, &quot;Export object&quot;, sFileName)
+  sFileName = InputBox(&#34;Enter filename for export:&#34;, &#34;Export object&#34;, sFileName)
  
   For x = 1 To Len(sFileName)
   sCellCharacter = Mid(sFileName, x, 1)
-  If sCellCharacter Like &quot;[&lt;/*\?%??ü?]&quot; Then
-  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ', Replaces all illegal filename characters with &quot;_&quot;
+  If sCellCharacter Like &#34;[&lt;/*\?%??ü?]&#34; Then
+  sFileName = Replace(sFileName, sCellCharacter, &#34;_&#34;, 1) &#39;, Replaces all illegal filename characters with &#34;_&#34;
   End If
  
   If Asc(sCellCharacter) &lt;= 32 Then
-  sFileName = Replace(sFileName, sCellCharacter, &quot;_&quot;, 1) ' Replaces all non printable characters with &quot;_&quot;
+  sFileName = Replace(sFileName, sCellCharacter, &#34;_&#34;, 1) &#39; Replaces all non printable characters with &#34;_&#34;
   End If
   Next
 
-  sFileName = ActiveWorkbook.Path &amp; &quot;\&quot; &amp; sFileName &amp; &quot;.emf&quot;
+  sFileName = ActiveWorkbook.Path &amp; &#34;\&#34; &amp; sFileName &amp; &#34;.emf&#34;
  
   If fnSaveAsEMF(sFileName) Then
-  MsgBox &quot;Saved&quot;, vbInformation
+  MsgBox &#34;Saved&#34;, vbInformation
   Else
-  MsgBox &quot;NOT Saved!&quot;, vbCritical
+  MsgBox &#34;NOT Saved!&#34;, vbCritical
   End If
 
 End Sub
-
 </code></pre><h3 id="emf转可调整分辨率图片暂时没有好的解决方案">emf转可调整分辨率图片暂时没有好的解决方案</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">identify -verbose ex1.emf
-
-identify -units PixelsPerinch -format <span style="color:#e6db74">&#34;%xx%y by %[printsize.x]x%[printsize.y] by %wx%h by %U&#34;</span> outPutValue2020-12-10.png
-convert -units PixelsPerinch -density <span style="color:#ae81ff">300</span> -size 800x800 ex1.emf ff.png
-
-<span style="color:#75715e"># png256 png16 pnggray pngmono</span>
-gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r500 -dBATCH -dFirstPage<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> -dLastPage<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> -sOutputFile<span style="color:#f92672">=</span>test.png test.pdf
-
-</code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>identify -verbose ex1.emf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>identify -units PixelsPerinch -format <span style="color:#e6db74">&#34;%xx%y by %[printsize.x]x%[printsize.y] by %wx%h by %U&#34;</span> outPutValue2020-12-10.png
+</span></span><span style="display:flex;"><span>convert -units PixelsPerinch -density <span style="color:#ae81ff">300</span> -size 800x800 ex1.emf ff.png
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># png256 png16 pnggray pngmono</span>
+</span></span><span style="display:flex;"><span>gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r500 -dBATCH -dFirstPage<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> -dLastPage<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> -sOutputFile<span style="color:#f92672">=</span>test.png test.pdf
+</span></span></code></pre></div></article>
     </section>
 
     
@@ -444,6 +441,10 @@ gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r
         emf
       </a>
     
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
       <a class="ui label" href="/tags/git/" title="git">
         git
       </a>
@@ -470,6 +471,10 @@ gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r
     
       <a class="ui label" href="/tags/js/" title="“js&#34;">
         “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
       </a>
     
       <a class="ui label" href="/tags/notes/" title="notes">
@@ -512,8 +517,8 @@ gswin64c.exe -dNOPAUSE -q -sDEVICE<span style="color:#f92672">=</span>pnggray -r
         templates
       </a>
     
-      <a class="ui label" href="/tags/tex/" title="tex">
-        tex
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
       </a>
     
       <a class="ui label" href="/tags/themes/" title="themes">
