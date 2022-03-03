@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.93.0" />
+<meta name="generator" content="Hugo 0.93.1" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
 
@@ -147,6 +147,7 @@
         <li><a href="#操作成功后执行sql">操作成功后执行SQL</a></li>
         <li><a href="#审核成功后自动关闭当前窗体httpsvipkingdeecomarticle175566954026221824"><a href="https://vip.kingdee.com/article/175566954026221824">审核成功后自动关闭当前窗体</a></a></li>
         <li><a href="#表单插件执行sqlhttpsvipkingdeecomarticle84693901407538432"><a href="https://vip.kingdee.com/article/84693901407538432">表单插件执行SQL</a></a></li>
+        <li><a href="#python-表单插件-执行sqlhttpsvipkingdeecomarticle119856062978967040"><a href="https://vip.kingdee.com/article/119856062978967040">Python 表单插件 执行SQL</a></a></li>
       </ul>
     </li>
   </ul>
@@ -190,7 +191,7 @@
                 星期二，十二月 21 日，2021 年
               
 
-            | 4 分钟阅读
+            | 5 分钟阅读
 
             | 更新于
               
@@ -389,7 +390,81 @@
 <p>例如：<code>sql = &quot;/*dialect*/ SELECT FNAME FROM T_SEC_USER WHERE FUSERID=1&quot;</code></p>
 <p>【答疑】</p>
 <p>保存Python插件时，会提示错误信息：“Could not add reference to assembly Kingdee.BOS.App”， 老有同学问，哎呀，报错了，会不会有问题呢？ 统一答复如下： 此错误提示可不必理会，因为我们只是在BOSIDE上进行Python插件的注册，而这段Python代码最终是在 服务端运行，BOSIDE属于客户端软件，BOSIDE所在目录下肯定不会包含服务端的组件，其提示缺少服务 端的组件是正常的，而在应用服务器上是包含了所有的组件的，所以等真正到了运行时，此Python插件不 会缺少任何平台组件，可以正常运行的</p>
-</article>
+<h3 id="python-表单插件-执行sqlhttpsvipkingdeecomarticle119856062978967040"><a href="https://vip.kingdee.com/article/119856062978967040">Python 表单插件 执行SQL</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#【Python】【表单插件】执行SQL</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System.Data&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbExecuteStoreProcedure&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 执行存储过程</span>
+</span></span><span style="display:flex;"><span>		procedureName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P_Pur_Order&#34;</span>
+</span></span><span style="display:flex;"><span>		sqlParameterList <span style="color:#f92672">=</span> List[SqlParam]()
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(SqlParam(<span style="color:#e6db74">&#34;@P1&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;CGDD&#34;</span>))
+</span></span><span style="display:flex;"><span>		p2<span style="color:#f92672">=</span> SqlParam(<span style="color:#e6db74">&#34;@P2&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;&#34;</span>, ParameterDirection<span style="color:#f92672">.</span>InputOutput)
+</span></span><span style="display:flex;"><span>		p2<span style="color:#f92672">.</span>Size <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(p2)
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(SqlParam(<span style="color:#e6db74">&#34;@ReturnValue&#34;</span>, KDDbType<span style="color:#f92672">.</span>Decimal, <span style="color:#ae81ff">0</span>, ParameterDirection<span style="color:#f92672">.</span>ReturnValue))
+</span></span><span style="display:flex;"><span>		returnParameterList <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteStoreProcedure(this<span style="color:#f92672">.</span>Context, procedureName, sqlParameterList)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#msg = string.Join(&#34;;&#34;, returnParameterList.Select(o =&gt; o.Name + &#34;:&#34; + o.Value))</span>
+</span></span><span style="display:flex;"><span>		msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;返回结果：&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;;&#34;</span><span style="color:#f92672">.</span>join((o<span style="color:#f92672">.</span>Name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> o<span style="color:#f92672">.</span>Value<span style="color:#f92672">.</span>ToString()) <span style="color:#66d9ef">for</span> o <span style="color:#f92672">in</span> returnParameterList)
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbExecute&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 执行SQL并返回受影响行数</span>
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UPDATE T_PUR_POORDER SET FCHANGEREASON=N&#39;货物破损&#39; WHERE FBILLNO=@BillNo&#34;</span>
+</span></span><span style="display:flex;"><span>		sqlParameterList <span style="color:#f92672">=</span> List[SqlParam]()
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(SqlParam(<span style="color:#e6db74">&#34;@BillNo&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;CGDD000519&#34;</span>))
+</span></span><span style="display:flex;"><span>		returnValue <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, sql, sqlParameterList)
+</span></span><span style="display:flex;"><span>		msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;受影响行数：&#34;</span> <span style="color:#f92672">+</span> returnValue<span style="color:#f92672">.</span>ToString()
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbExecuteDataSet&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 执行SQL并返回DataSet</span>
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM T_PUR_POORDER WHERE FBILLNO LIKE @BillNo&#34;</span>
+</span></span><span style="display:flex;"><span>		sqlParameterList <span style="color:#f92672">=</span> List[SqlParam]()
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(SqlParam(<span style="color:#e6db74">&#34;@BillNo&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;%CGDD%&#34;</span>))
+</span></span><span style="display:flex;"><span>		ds <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteDataSet(this<span style="color:#f92672">.</span>Context, sql, sqlParameterList)
+</span></span><span style="display:flex;"><span>		idList <span style="color:#f92672">=</span> List[String]()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows:
+</span></span><span style="display:flex;"><span>		    idList<span style="color:#f92672">.</span>Add(row[<span style="color:#e6db74">&#34;FID&#34;</span>]<span style="color:#f92672">.</span>ToString())
+</span></span><span style="display:flex;"><span>		msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;满足条件的订单内码集合：&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">.</span>join(o <span style="color:#66d9ef">for</span> o <span style="color:#f92672">in</span> idList)
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbExecuteReader&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 执行SQL并返回DataReader</span>
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT * FROM T_PUR_POORDER WHERE FBILLNO LIKE @BillNo&#34;</span>
+</span></span><span style="display:flex;"><span>		sqlParameterList <span style="color:#f92672">=</span> List[SqlParam]()
+</span></span><span style="display:flex;"><span>		sqlParameterList<span style="color:#f92672">.</span>Add(SqlParam(<span style="color:#e6db74">&#34;@BillNo&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;%CGDD%&#34;</span>))
+</span></span><span style="display:flex;"><span>		reader <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteReader(this<span style="color:#f92672">.</span>Context, sql, sqlParameterList)
+</span></span><span style="display:flex;"><span>		idList <span style="color:#f92672">=</span> List[String]()
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> reader<span style="color:#f92672">.</span>Read():
+</span></span><span style="display:flex;"><span>		    idList<span style="color:#f92672">.</span>Add(reader[<span style="color:#e6db74">&#34;FID&#34;</span>]<span style="color:#f92672">.</span>ToString())
+</span></span><span style="display:flex;"><span>		reader<span style="color:#f92672">.</span>Close()
+</span></span><span style="display:flex;"><span>		msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;满足条件的订单内码集合：&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">.</span>join(o <span style="color:#66d9ef">for</span> o <span style="color:#f92672">in</span> idList)
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbExecuteScalar&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 执行SQL并返回首行首列的值</span>
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT COUNT(*) FROM T_PUR_POORDER WHERE FBILLNO LIKE @BillNo&#34;</span>
+</span></span><span style="display:flex;"><span>		sqlParam <span style="color:#f92672">=</span> SqlParam(<span style="color:#e6db74">&#34;@BillNo&#34;</span>, KDDbType<span style="color:#f92672">.</span>AnsiString, <span style="color:#e6db74">&#34;%CGDD%&#34;</span>);
+</span></span><span style="display:flex;"><span>		orderCount <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteScalar(this<span style="color:#f92672">.</span>Context, sql, <span style="color:#ae81ff">0</span>, sqlParam)
+</span></span><span style="display:flex;"><span>		msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;满足条件的订单数量：&#34;</span> <span style="color:#f92672">+</span> orderCount<span style="color:#f92672">.</span>ToString();
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span></code></pre></div></article>
     </section>
 
     
