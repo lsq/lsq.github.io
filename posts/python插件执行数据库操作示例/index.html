@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.93.2" />
+<meta name="generator" content="Hugo 0.96.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
 
@@ -192,7 +192,7 @@
                 星期二，十二月 21 日，2021 年
               
 
-            | 7 分钟阅读
+            | 8 分钟阅读
 
             | 更新于
               
@@ -468,6 +468,8 @@
 </span></span></code></pre></div><h3 id="跨表单反写">跨表单反写</h3>
 <h4 id="应用场景-6">应用场景</h4>
 <p>物料下达PR上限，超过上限保存错误提示，并且在关闭、反关闭已下达PR相应减少、增加PR数量。</p>
+<h4 id="实现步骤-5">实现步骤</h4>
+<p>BOS打开采购申请单，注册表单Python插件，代码如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
@@ -510,7 +512,7 @@
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#dsM = DBUtils.ExecuteDataSet(this.Context, sqlM)</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(dsM.Tables[0].Rows)))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#if dsM.Tables[0].Rows[0][&#34;F_ORA_PRCONTROL&#34;]:</span>
-</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/SELECT FNUMBER, F_ORA_PRCONTROL, F_ORA_PRLIMITS, F_ORA_PRQTY FROM T_BD_MATERIAL WHERE FUSEORGID=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/SELECT a.FNUMBER, b.F_ORA_PRCONTROL, b.F_ORA_PRLIMITS, b.F_ORA_PRQTY FROM T_BD_MATERIAL a INNER JOIN T_BD_MATERIALPLAN b ON a.FMATERIALID=b.FMATERIALID  WHERE a.FUSEORGID=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  AND a.FMATERIALID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(rqOrg,rqMaterialId)
 </span></span><span style="display:flex;"><span>		ds <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteDataSet(this<span style="color:#f92672">.</span>Context, sql)
 </span></span><span style="display:flex;"><span>		prMeNum <span style="color:#f92672">=</span>ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;FNUMBER&#34;</span>]
 </span></span><span style="display:flex;"><span>		prControl <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRCONTROL&#34;</span>]
@@ -520,6 +522,8 @@
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (approQty <span style="color:#f92672">+</span> prQty <span style="color:#f92672">&gt;</span> prLimits):
 </span></span><span style="display:flex;"><span>				this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowErrMessage(<span style="color:#e6db74">&#34;物料: &#34;</span> <span style="color:#f92672">+</span>str(prMeNum) <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;采购上限是:&#34;</span> <span style="color:#f92672">+</span> str(prLimits)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;已下达PR数量:&#34;</span> <span style="color:#f92672">+</span> str(prQty)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;,请检查PR数量&#34;</span>)
 </span></span><span style="display:flex;"><span>				e<span style="color:#f92672">.</span>Cancel <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#nsql = (&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET  F_ORA_PRQTY= {0}    WHERE FUSEORGID={1}  AND FMATERIALID={2} &#34;&#34;&#34;).format(999,rqOrg,rqMaterialId)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#DBUtils.Execute(this.Context, nsql)</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(ds.Tables[0].Rows)))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(ds.Tables[0].Rows[0])))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 提取字段值</span>
@@ -543,7 +547,7 @@
 </span></span><span style="display:flex;"><span>		rqMaterialId <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FMATERIALID&#34;</span>,i)[<span style="color:#e6db74">&#34;Id&#34;</span>]
 </span></span><span style="display:flex;"><span>		approQty <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FBASEUNITQTY&#34;</span>,i)
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
-</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIAL SET  F_ORA_PRQTY=F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET  F_ORA_PRQTY=F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
 </span></span><span style="display:flex;"><span>		DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, sql)
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>OperationId <span style="color:#f92672">==</span> <span style="color:#ae81ff">26</span>) <span style="color:#f92672">and</span> (e<span style="color:#f92672">.</span>OperationResult<span style="color:#f92672">.</span>IsSuccess):
 </span></span><span style="display:flex;"><span>      rows<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FEntity&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
@@ -552,7 +556,7 @@
 </span></span><span style="display:flex;"><span>		rqMaterialId <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FMATERIALID&#34;</span>,i)[<span style="color:#e6db74">&#34;Id&#34;</span>]
 </span></span><span style="display:flex;"><span>		approQty <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FBASEUNITQTY&#34;</span>,i)
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
-</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIAL SET  F_ORA_PRQTY=F_ORA_PRQTY - </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>		sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET  F_ORA_PRQTY=F_ORA_PRQTY - </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
 </span></span><span style="display:flex;"><span>		DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, sql)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">#if (e.BarItemKey.Equals(&#34;tbBillClose&#34;, StringComparison.OrdinalIgnoreCase)):</span>
@@ -564,7 +568,7 @@
 </span></span><span style="display:flex;"><span>			rqMaterialId <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FMATERIALID&#34;</span>,i)[<span style="color:#e6db74">&#34;Id&#34;</span>]
 </span></span><span style="display:flex;"><span>			approQty <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FBASEUNITQTY&#34;</span>,i)
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
-</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIAL SET F_ORA_PRQTY=F_ORA_PRQTY - </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY=F_ORA_PRQTY - </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">    WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
 </span></span><span style="display:flex;"><span>			DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, sql)
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>Equals(<span style="color:#e6db74">&#34;tbBillUnClose&#34;</span>, StringComparison<span style="color:#f92672">.</span>OrdinalIgnoreCase)):
 </span></span><span style="display:flex;"><span>		rows<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FEntity&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
@@ -573,8 +577,19 @@
 </span></span><span style="display:flex;"><span>			rqMaterialId <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FMATERIALID&#34;</span>,i)[<span style="color:#e6db74">&#34;Id&#34;</span>]
 </span></span><span style="display:flex;"><span>			approQty <span style="color:#f92672">=</span>  this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FBASEUNITQTY&#34;</span>,i)
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
-</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIAL SET F_ORA_PRQTY = F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
-</span></span><span style="display:flex;"><span>			DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, sql)		
+</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/SELECT a.FNUMBER, b.F_ORA_PRCONTROL, b.F_ORA_PRLIMITS, b.F_ORA_PRQTY FROM T_BD_MATERIAL a INNER JOIN T_BD_MATERIALPLAN b ON a.FMATERIALID=b.FMATERIALID  WHERE a.FUSEORGID=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  AND a.FMATERIALID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			ds <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteDataSet(this<span style="color:#f92672">.</span>Context, sql)
+</span></span><span style="display:flex;"><span>			prMeNum <span style="color:#f92672">=</span>ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;FNUMBER&#34;</span>]
+</span></span><span style="display:flex;"><span>			prControl <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRCONTROL&#34;</span>]
+</span></span><span style="display:flex;"><span>			prLimits <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRLIMITS&#34;</span>]
+</span></span><span style="display:flex;"><span>			prQty <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRQTY&#34;</span>]
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> prControl <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (approQty <span style="color:#f92672">+</span> prQty <span style="color:#f92672">&gt;</span> prLimits):
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#this.View.ShowErrMessage(&#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#e.Cancel = True					</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;物料: &#34;</span> <span style="color:#f92672">+</span>str(prMeNum) <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;采购上限是:&#34;</span> <span style="color:#f92672">+</span> str(prLimits)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;已下达PR数量:&#34;</span> <span style="color:#f92672">+</span> str(prQty)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;,请检查PR数量&#34;</span>)
+</span></span><span style="display:flex;"><span>			addsql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, addsql)			
 </span></span></code></pre></div></article>
     </section>
 
