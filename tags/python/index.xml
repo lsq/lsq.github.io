@@ -36,6 +36,15 @@
     </item>
     
     <item>
+      <title>Python插件测试</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</guid>
+      <description>Python插件测试 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&amp;mdash;实现步骤 1. 登录BO</description>
+    </item>
+    
+    <item>
       <title>Python插件常用事件方法</title>
       <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6%E6%96%B9%E6%B3%95/</link>
       <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
@@ -60,15 +69,6 @@
       
       <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/</guid>
       <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示方</description>
-    </item>
-    
-    <item>
-      <title>Python插件测试</title>
-      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
-      
-      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/</guid>
-      <description>Python插件测试 应用场景 功能实现需要插件干预，不方便部署C#插件，且业务逻辑较为简单的业务场景。 案例演示&amp;mdash;实现步骤 1. 登录BO</description>
     </item>
     
   </channel>
