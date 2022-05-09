@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.97.3" />
+<meta name="generator" content="Hugo 0.98.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
 
@@ -150,6 +150,9 @@
         <li><a href="#python-表单插件-执行sqlhttpsvipkingdeecomarticle119856062978967040"><a href="https://vip.kingdee.com/article/119856062978967040">Python 表单插件 执行SQL</a></a></li>
         <li><a href="#跨表单反写">跨表单反写</a></li>
         <li><a href="#下拉列表根据场景增减枚举值">下拉列表根据场景增减枚举值</a></li>
+        <li><a href="#列表显示过滤行">列表显示过滤行</a></li>
+        <li><a href="#列表提交校验">列表提交校验</a></li>
+        <li><a href="#reference">Reference</a></li>
       </ul>
     </li>
   </ul>
@@ -193,7 +196,7 @@
                 星期二，十二月 21 日，2021 年
               
 
-            | 9 分钟阅读
+            | 11 分钟阅读
 
             | 更新于
               
@@ -470,7 +473,7 @@
 <h4 id="应用场景-6">应用场景</h4>
 <p>物料下达PR上限，超过上限保存错误提示，并且在关闭、反关闭已下达PR相应减少、增加PR数量。</p>
 <h4 id="实现步骤-5">实现步骤</h4>
-<p>BOS打开采购申请单，注册表单Python插件，代码如下：</p>
+<p>一、BOS打开采购申请单，注册表单Python插件，代码如下：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
@@ -682,6 +685,142 @@
 </span></span><span style="display:flex;"><span> <span style="color:#75715e">##		billTypeObjs = this.Model.GetValue(billTypeField.Key)</span>
 </span></span><span style="display:flex;"><span> <span style="color:#75715e">#		if (billTypeObjs is not None):</span>
 </span></span><span style="display:flex;"><span> <span style="color:#75715e">#			this.View.OpenParameter.SetCustomParameter(&#34;jac_defalutBillTypeId&#34;,billTypeObjs[0].ToString())</span>
+</span></span></code></pre></div><h3 id="列表显示过滤行">列表显示过滤行</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 导入clr时这个模块最好也一起导入，这样就可以用AddReference方法</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> System
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.List <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.List.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.List.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Report <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Report.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.SqlBuilder <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">PreOpenForm</span>(e):
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>OpenParameter<span style="color:#f92672">.</span>SetCustomParameter(<span style="color:#e6db74">&#34;showFilterRow&#34;</span>, <span style="color:#e6db74">&#34;True&#34;</span>);
+</span></span></code></pre></div><h3 id="列表提交校验">列表提交校验</h3>
+<h4 id="应用场景-8">应用场景</h4>
+<p>当表单插件校验生效，列表插件不生效的情况下，需要在”保存“和”提交“操作列表注册服务插件。</p>
+<h3 id="reference">Reference</h3>
+<p><a href="https://vip.kingdee.com/article/289754414091464448?productLineId=1">Python添加生产订单批改字段校验</a></p>
+<p><a href="https://vip.kingdee.com/article/270943780554196480?productLineId=1">Python继承AbstractValidator实现校验器案例</a></p>
+<p><a href="https://vip.kingdee.com/article/266283188564255488?productLineId=1">python日期字段范围校验</a></p>
+<p><a href="https://vip.kingdee.com/article/264491804915899392?productLineId=1">Python保存添加校验器</a></p>
+<p><a href="https://vip.kingdee.com/article/207528508652713728?productLineId=1">Python插件实现直接保存二开字段(忽略标准保存校验)</a></p>
+<p><a href="https://vip.kingdee.com/article/239320890406941952?productLineId=1">二开案例.列表插件.执行操作的校验器</a></p>
+<p><a href="https://vip.kingdee.com/article/104242911042083584?productLineId=1">二开案例.列表插件.调用表单操作</a></p>
+<p><a href="https://vip.kingdee.com/article/139314926954577664?productLineId=1">二开案例.列表插件.列表调用保存操作</a></p>
+<p><a href="https://vip.kingdee.com/article/266197335942436096?productLineId=1">Python保存添加校验器</a></p>
+<p><a href="https://vip.kingdee.com/article/238316028416101376?productLineId=1">二开案例.单据插件.执行操作的校验器</a></p>
+<p><a href="https://vip.kingdee.com/article/288758032665223424?productLineId=1">二开案例.服务插件.保存操作强制校验</a></p>
+<p><a href="https://vip.kingdee.com/article/130349586652598272?productLineId=1">二开案例.服务插件.校验器使用内置交互界面显示自定义数据源</a></p>
+<p><a href="https://vip.kingdee.com/article/69949660194215936?productLineId=1">操作服务插件，校验器，OnAddValidators，单据头，必录</a></p>
+<p><a href="https://vip.kingdee.com/article/70073980974954496?productLineId=1">操作服务插件，校验器，OnAddValidators，单据体，是否允许审核</a></p>
+<p><a href="https://vip.kingdee.com/article/69937467385663232?productLineId=1">操作服务插件，校验OnAddValidators，OnPreparePropertys加载</a></p>
+<h4 id="实现步骤-7">实现步骤</h4>
+<p>BOS操作列表，“提交”&ndash;&gt;“其他控制”&ndash;&gt;“服务插件”</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#【Python】【表单插件】执行SQL</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System.Data&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.EntityElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Validation <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Log <span style="color:#f92672">import</span> Logger
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#from System import DateTime</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FBaseReqQty&#34;</span>)
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FREQUIREORGID&#34;</span>)
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FMaterialId&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnAddValidators</span>(e):
+</span></span><span style="display:flex;"><span>	validateBillDate<span style="color:#f92672">=</span>ValidateBillDate() 
+</span></span><span style="display:flex;"><span>	validateBillDate<span style="color:#f92672">.</span>EntityKey<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;FBillHead&#34;</span>
+</span></span><span style="display:flex;"><span>	validateBillDate<span style="color:#f92672">.</span>EntityKey<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;FEntity&#34;</span>
+</span></span><span style="display:flex;"><span>	validateBillDate<span style="color:#f92672">.</span>AlwaysValidate<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>Validators<span style="color:#f92672">.</span>Add(validateBillDate)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ValidateBillDate</span>(AbstractValidator):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Validate</span>(self,dataEntities,validateContext,ctx):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> bill <span style="color:#f92672">in</span> dataEntities:
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#atreeEntity=bill[&#34;ReqEntry&#34;]</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#treeEntity=bill[&#34;Entity&#34;]</span>
+</span></span><span style="display:flex;"><span>			approQty <span style="color:#f92672">=</span> bill<span style="color:#f92672">.</span>DataEntity[<span style="color:#e6db74">&#34;BaseReqQty&#34;</span>];
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#billdate=bill.DataEntity[&#34;Date&#34;]</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#minDate=DateTime.Now.AddDays(-30)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#maxDate=DateTime.Now.AddDays(+30)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#for item in atreeEntity:</span>
+</span></span><span style="display:flex;"><span>			  
+</span></span><span style="display:flex;"><span>			  <span style="color:#75715e">#for row in item:	</span>
+</span></span><span style="display:flex;"><span>			  <span style="color:#75715e"># for p in item.DynamicObjectType.Properties:</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#proQty = item[&#34;aApproveQty&#34;]				</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#if(101  &gt; 100 ):</span>
+</span></span><span style="display:flex;"><span>			rqOrg <span style="color:#f92672">=</span> bill<span style="color:#f92672">.</span>DataEntity[<span style="color:#e6db74">&#34;RequireOrgId&#34;</span>][<span style="color:#e6db74">&#34;Id&#34;</span>]
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#rqOrgId = rqOrg[&#34;Id&#34;]</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#rqMaterialId =  this.Model.GetValue(&#34;FMATERIALID&#34;,i)[&#34;Id&#34;]</span>
+</span></span><span style="display:flex;"><span>			rqMaterialId <span style="color:#f92672">=</span> bill<span style="color:#f92672">.</span>DataEntity[<span style="color:#e6db74">&#34;MaterialId&#34;</span>][<span style="color:#e6db74">&#34;Id&#34;</span>]
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#approQty =  this.Model.GetValue(&#34;FBASEUNITQTY&#34;,i)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
+</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/SELECT a.FNUMBER, b.F_ORA_PRCONTROL, b.F_ORA_PRLIMITS, b.F_ORA_PRQTY FROM T_BD_MATERIAL a INNER JOIN T_BD_MATERIALPLAN b ON a.FMATERIALID=b.FMATERIALID  WHERE a.FUSEORGID=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  AND a.FMATERIALID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			ds <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteDataSet(this<span style="color:#f92672">.</span>Context, sql)
+</span></span><span style="display:flex;"><span>			prMeNum <span style="color:#f92672">=</span>ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;FNUMBER&#34;</span>]
+</span></span><span style="display:flex;"><span>			prControl <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRCONTROL&#34;</span>]
+</span></span><span style="display:flex;"><span>			prLimits <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRLIMITS&#34;</span>]
+</span></span><span style="display:flex;"><span>			prQty <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRQTY&#34;</span>]
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			billId<span style="color:#f92672">=</span>str(bill[<span style="color:#e6db74">&#34;Id&#34;</span>])
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#errorInf = str(treeEntity)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> prControl <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (approQty <span style="color:#f92672">+</span> prQty <span style="color:#f92672">&gt;</span> prLimits):
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#this.View.ShowErrMessage(&#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#e.Cancel = True					</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#		raise Exception(&#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的字段key，可以为空/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的字段key，可以为空/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的数据包在全部数据包中的顺序/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的数据行在全部数据行中的顺序，如果校验基于单据头，此为0/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误编码，可以任意设定一个字符，主要用于追查错误来源</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误的详细提示信息</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误的简明提示信息</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误级别：警告、错误...</span>
+</span></span><span style="display:flex;"><span>					errorInfo<span style="color:#f92672">=</span>ValidationErrorInfo(<span style="color:#e6db74">&#34;&#34;</span>,billId,bill<span style="color:#f92672">.</span>DataEntityIndex,bill<span style="color:#f92672">.</span>RowIndex,billId, <span style="color:#e6db74">&#34;物料: &#34;</span> <span style="color:#f92672">+</span>str(prMeNum) <span style="color:#f92672">+</span><span style="color:#e6db74">&#34;采购上限是:&#34;</span> <span style="color:#f92672">+</span> str(prLimits)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;已下达PR数量:&#34;</span> <span style="color:#f92672">+</span> str(prQty)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;,请检查PR数量&#34;</span>,<span style="color:#e6db74">&#34;&#34;</span>,ErrorLevel<span style="color:#f92672">.</span>Error)
+</span></span><span style="display:flex;"><span>					validateContext<span style="color:#f92672">.</span>AddError(<span style="color:#66d9ef">None</span>,errorInfo)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>					addsql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>					DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, addsql)				
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>				addsql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>				DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, addsql)				
 </span></span></code></pre></div></article>
     </section>
 
