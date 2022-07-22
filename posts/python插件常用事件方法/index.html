@@ -143,6 +143,7 @@
         <li><a href="#常用事件方法">常用事件方法</a></li>
         <li><a href="#单据体常用操作">单据体常用操作</a></li>
         <li><a href="#列表的插件常用方法">列表的插件常用方法</a></li>
+        <li><a href="#示例">示例</a></li>
       </ul>
     </li>
   </ul>
@@ -186,7 +187,7 @@
                 星期一，十二月 20 日，2021 年
               
 
-            | 2 分钟阅读
+            | 3 分钟阅读
 
             | 更新于
               
@@ -315,7 +316,40 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.ListView.SelectedRowsInfo[<span style="color:#ae81ff">0</span>].DataRow
 </span></span></code></pre></div></li>
 </ol>
-</article>
+<h3 id="示例">示例</h3>
+<h4 id="字段锁定">字段锁定</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">AfterBindData</span>(e):
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetFieldEditor(<span style="color:#e6db74">&#34;F_ora_PRQty&#34;</span>, <span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>Enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>判断单据是否新增、复制新增</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnLoad</span>(e):
+</span></span><span style="display:flex;"><span>	id <span style="color:#f92672">=</span> str(this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#this.View.ShowMessage(&#34;新增success!--&#34; + str(id))</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> id <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#f92672">or</span> id <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;0&#39;</span>:
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;新增success!&#34;</span>)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">CreateNewData</span>(e):
+</span></span><span style="display:flex;"><span>	IsNewData <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> IsNewData :
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;新增成功！&#34;</span>)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">AfterCopyData</span>(e):
+</span></span><span style="display:flex;"><span>	IsCopyData <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> IsCopyData :
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;Copy 成功！&#34;</span>)
+</span></span></code></pre></div></article>
     </section>
 
     
