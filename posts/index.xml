@@ -25,8 +25,8 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       
       <guid>https://lsq.github.io/posts/migrate-from-jekyll/</guid>
       <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%BC%B9%E7%AA%97%E7%A1%AE%E8%AE%A4%E4%B8%8E%E6%89%A7%E8%A1%8C/</guid>
-      <description>Python插件弹窗确认与执行 应用场景 用户编辑单据后，点击按钮后提示并要求确认方案 在表单插件中增加python插件 import clr; clr.AddReference(&amp;#34;System&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) from System import Action from Kingdee.BOS.Core.DynamicForm import MessageBoxResult from</description>
+      <description>Python插件弹窗确认与执行 应用场景 用户编辑单据后，点击按钮后提示并要求确认 方案 在表单插件中增加python插件 import clr; clr.AddReference(&amp;#34;System&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) from System import Action from Kingdee.BOS.Core.DynamicForm import MessageBoxResult from</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
       <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/</guid>
-      <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示方</description>
+      <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示 方</description>
     </item>
     
     <item>
@@ -284,7 +284,7 @@ Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at Install Hugo
 Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
 Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313 Corresponding pseudo commands:</description>
     </item>
     
   </channel>

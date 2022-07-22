@@ -17,7 +17,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.98.0" />
+<meta name="generator" content="Hugo 0.101.0" />
 
 <link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B/" />
 
@@ -196,7 +196,7 @@
                 星期二，十二月 21 日，2021 年
               
 
-            | 11 分钟阅读
+            | 13 分钟阅读
 
             | 更新于
               
@@ -821,6 +821,90 @@
 </span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>				addsql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY + </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
 </span></span><span style="display:flex;"><span>				DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, addsql)				
+</span></span></code></pre></div><p>BOS操作列表，“撤消/反审核”&ndash;&gt;“其他控制”&ndash;&gt;“服务插件”（撤消扣减数量）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.Core&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;Kingdee.BOS.App&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#【Python】【表单插件】执行SQL</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;mscorlib&#34;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#34;System.Data&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.EntityElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Validation <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Log <span style="color:#f92672">import</span> Logger
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#from System import DateTime</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FBaseUnitQty&#34;</span>)
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FREQUIREORGID&#34;</span>)
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FMaterialId&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterExecuteOperationTransaction</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> entity <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#atreeEntity=bill[&#34;ReqEntry&#34;]</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#treeEntity=bill[&#34;Entity&#34;]</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">## approQty = bill.DataEntity[&#34;BaseReqQty&#34;];</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#billdate=bill.DataEntity[&#34;Date&#34;]</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#minDate=DateTime.Now.AddDays(-30)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#maxDate=DateTime.Now.AddDays(+30)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#err = &#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#for item in bill.DynamicObjectType.Properties:</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#   err = str(err) + str(item.Name)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowErrMessage(&#34;errInfo: &#34;  + str(err))</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#for row in item:	</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e"># for p in item.DynamicObjectType.Properties:</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#proQty = item[&#34;aApproveQty&#34;]				</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#if(101  &gt; 100 ):</span>
+</span></span><span style="display:flex;"><span>		entry <span style="color:#f92672">=</span> entity[<span style="color:#e6db74">&#34;ReqEntry&#34;</span>]
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> bill <span style="color:#f92672">in</span> entry:
+</span></span><span style="display:flex;"><span>			approQty <span style="color:#f92672">=</span> bill[<span style="color:#e6db74">&#34;FBaseUnitQty&#34;</span>];
+</span></span><span style="display:flex;"><span>			rqOrg <span style="color:#f92672">=</span> bill[<span style="color:#e6db74">&#34;RequireOrgId&#34;</span>][<span style="color:#e6db74">&#34;Id&#34;</span>]
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#rqOrgId = rqOrg[&#34;Id&#34;]</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#rqMaterialId =  this.Model.GetValue(&#34;FMATERIALID&#34;,i)[&#34;Id&#34;]</span>
+</span></span><span style="display:flex;"><span>			rqMaterialId <span style="color:#f92672">=</span> bill[<span style="color:#e6db74">&#34;MaterialId&#34;</span>][<span style="color:#e6db74">&#34;Id&#34;</span>]
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#approQty =  this.Model.GetValue(&#34;FBASEUNITQTY&#34;,i)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#this.View.ShowMessage(str(approQty))</span>
+</span></span><span style="display:flex;"><span>			sql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/SELECT a.FNUMBER, b.F_ORA_PRCONTROL, b.F_ORA_PRLIMITS, b.F_ORA_PRQTY FROM T_BD_MATERIAL a INNER JOIN T_BD_MATERIALPLAN b ON a.FMATERIALID=b.FMATERIALID  WHERE a.FUSEORGID=</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  AND a.FMATERIALID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			ds <span style="color:#f92672">=</span> DBUtils<span style="color:#f92672">.</span>ExecuteDataSet(this<span style="color:#f92672">.</span>Context, sql)
+</span></span><span style="display:flex;"><span>			prMeNum <span style="color:#f92672">=</span>ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;FNUMBER&#34;</span>]
+</span></span><span style="display:flex;"><span>			prControl <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRCONTROL&#34;</span>]
+</span></span><span style="display:flex;"><span>			prLimits <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRLIMITS&#34;</span>]
+</span></span><span style="display:flex;"><span>			prQty <span style="color:#f92672">=</span> ds<span style="color:#f92672">.</span>Tables[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>Rows[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#34;F_ORA_PRQTY&#34;</span>]
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#billId=str(bill[&#34;Id&#34;])</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#errorInf = str(treeEntity)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#if prControl == &#39;1&#39;:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#	if (approQty + prQty &gt; prLimits):</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#this.View.ShowErrMessage(&#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#e.Cancel = True					</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#		raise Exception(&#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的字段key，可以为空/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的字段key，可以为空/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的数据包在全部数据包中的顺序/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 出错的数据行在全部数据行中的顺序，如果校验基于单据头，此为0/</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误编码，可以任意设定一个字符，主要用于追查错误来源</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误的详细提示信息</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误的简明提示信息</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e"># 错误级别：警告、错误...</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#errorInfo=ValidationErrorInfo(&#34;&#34;,billId,bill.DataEntityIndex,bill.RowIndex,billId, &#34;物料: &#34; +str(prMeNum) +&#34;采购上限是:&#34; + str(prLimits)+&#34;已下达PR数量:&#34; + str(prQty)+&#34;,请检查PR数量&#34;,&#34;&#34;,ErrorLevel.Error)</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#75715e">#validateContext.AddError(None,errorInfo)</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">#else:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#		addsql = (&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY + {0}  WHERE FUSEORGID={1}  AND FMATERIALID={2} &#34;&#34;&#34;).format(approQty,rqOrg,rqMaterialId)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#		DBUtils.Execute(this.Context, addsql)				</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">#else:</span>
+</span></span><span style="display:flex;"><span>			addsql <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;&#34;/*dialect*/UPDATE T_BD_MATERIALPLAN SET F_ORA_PRQTY = F_ORA_PRQTY - </span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">  WHERE FUSEORGID=</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">  AND FMATERIALID=</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74"> &#34;&#34;&#34;</span>)<span style="color:#f92672">.</span>format(approQty,rqOrg,rqMaterialId)
+</span></span><span style="display:flex;"><span>			DBUtils<span style="color:#f92672">.</span>Execute(this<span style="color:#f92672">.</span>Context, addsql)	
 </span></span></code></pre></div></article>
     </section>
 

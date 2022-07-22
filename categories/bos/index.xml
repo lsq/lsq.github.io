@@ -59,7 +59,7 @@
       <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E5%BC%B9%E7%AA%97%E7%A1%AE%E8%AE%A4%E4%B8%8E%E6%89%A7%E8%A1%8C/</guid>
-      <description>Python插件弹窗确认与执行 应用场景 用户编辑单据后，点击按钮后提示并要求确认方案 在表单插件中增加python插件 import clr; clr.AddReference(&amp;#34;System&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) from System import Action from Kingdee.BOS.Core.DynamicForm import MessageBoxResult from</description>
+      <description>Python插件弹窗确认与执行 应用场景 用户编辑单据后，点击按钮后提示并要求确认 方案 在表单插件中增加python插件 import clr; clr.AddReference(&amp;#34;System&amp;#34;) clr.AddReference(&amp;#34;Kingdee.BOS.Core&amp;#34;) from System import Action from Kingdee.BOS.Core.DynamicForm import MessageBoxResult from</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@
       <pubDate>Mon, 20 Dec 2021 08:47:46 +0800</pubDate>
       
       <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%90%8E%E9%87%8A%E6%94%BE%E7%BD%91%E7%BB%9C%E5%B9%B6%E5%85%B3%E9%97%AD/</guid>
-      <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示方</description>
+      <description>Python插件提交后刷新当前单据 应用场景 用户编辑单据后，点击提交启动了工作流示例，此时并没有释放网络控制，其他用户打开该单据会有如下 提示 方</description>
     </item>
     
   </channel>
