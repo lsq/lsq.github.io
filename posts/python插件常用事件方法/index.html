@@ -187,7 +187,7 @@
                 星期一，十二月 20 日，2021 年
               
 
-            | 3 分钟阅读
+            | 4 分钟阅读
 
             | 更新于
               
@@ -262,7 +262,16 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> subEntityData =  entityData.Where(e =&gt; e[subEntityProp] != <span style="color:#66d9ef">null</span>)
 </span></span><span style="display:flex;"><span>                   .SelectMany(e =&gt; (e[subEntityProp] <span style="color:#66d9ef">as</span> DynamicObjectCollection)	
 </span></span><span style="display:flex;"><span>		  <span style="color:#75715e">//subEntityProp 为**子单据体** ORM实体名</span>
-</span></span></code></pre></div></li>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> DateTime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeSave</span>(e):	
+</span></span><span style="display:flex;"><span>counts <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;FPAYBILLENTRY&#34;</span>) <span style="color:#f92672">---</span>单据明细的ID	
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(counts):		
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FCOSTID&#34;</span>,i)		
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>  x <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>: 			
+</span></span><span style="display:flex;"><span>        this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;FCOMMENT&#34;</span>,str(this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FCOSTID&#34;</span>,i)[<span style="color:#e6db74">&#34;NAME&#34;</span>]),i)
+</span></span></code></pre></div><p>``</p>
+</li>
 <li>
 <p>获取单据体对应字段数据</p>
 <ul>
@@ -273,6 +282,22 @@
 <li>通过获取的单据体数据获得，参考第5点</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>entityData[row][key] <span style="color:#f92672">//</span>key为绑定实体属性<span style="color:#960050;background-color:#1e0010">，</span>row是所处行index
+</span></span></code></pre></div><ul>
+<li>AfterBindData 控件绑定数据后触发，根据其他条件设置控件的可见性、可用性等样式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> AfterBindData(EventArgs e)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">base</span>.AfterBindData(e):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//设置可见性 - 隐藏“旧物料编码”字段</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.View.StyleManager.SetVisible(<span style="color:#e6db74">&#34;FOldNumber&#34;</span>, <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//设置光标锁定</span>
+</span></span><span style="display:flex;"><span>    Control ControlFBARCODE = <span style="color:#66d9ef">this</span>.View.GetControl(<span style="color:#e6db74">&#34;FBARCODE&#34;</span>); <span style="color:#75715e">//获取控件</span>
+</span></span><span style="display:flex;"><span>    ControlFBARCODE.SetEnterNavLock(<span style="color:#66d9ef">true</span>); <span style="color:#75715e">//应用刷条码业务场景，一直回车光标锁定</span>
+</span></span><span style="display:flex;"><span>    Control ControlFNumber = <span style="color:#66d9ef">this</span>.View.GetControl(<span style="color:#e6db74">&#34;FNumber&#34;</span>); <span style="color:#75715e">//获取控件</span>
+</span></span><span style="display:flex;"><span>    ControlFNumber.SetEnabled(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>    ControlFNumber.ControlAppearance.BackColor = <span style="color:#e6db74">&#34;#E90b19&#34;</span>;
+</span></span><span style="display:flex;"><span>    ControlFnumber.SetCustomPropertyValue(<span style="color:#e6db74">&#34;backcolor&#34;</span>, <span style="color:#e6db74">&#34;115,208,241&#34;</span>); <span style="color:#75715e">//背景</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><a href="https://vip.kingdee.com/article/213329000347951360">原文链接</a></p>
 </li>
 </ol>
@@ -325,8 +350,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span>  <span style="color:#a6e22e">AfterBindData</span>(e):
-</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetFieldEditor(<span style="color:#e6db74">&#34;F_ora_PRQty&#34;</span>, <span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>Enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span></code></pre></div><p>判断单据是否新增、复制新增</p>
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetFieldEditor(<span style="color:#e6db74">&#34;F_ora_PRQty&#34;</span>, <span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>Enabled <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span> <span style="color:#75715e"># 计划属性--PR下达数量锁定，参考官方教程</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#this.View.GetFieldEditor(&#34;F_JD_Number1&#34;, rowIndex).SetEnabled(&#34;&#34;, false);这种方法是一个一个单元格进行锁定的，要遍历这一行所有的字段，然后进行锁定；另外在该语句后不能用updateView这个方法，因为这个方法会把model里的字段属性重新刷到View上，而model里之前应该是不锁定这些单元格的。也就是如果要使用updateView，就要在updateView以后再对单元格进行锁定才能看到效果。</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#原文链接：https://vip.kingdee.com/article/81318303133493248?productLineId=1</span>
+</span></span></code></pre></div><p><a href="https://vip.kingdee.com/article/65480895016288768?productLineId=1">4.5、表单插件，锁定、隐藏，字段，this.View.GetControl()</a></p>
+<p>判断单据是否新增、复制新增</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
 </span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
 </span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
@@ -349,6 +377,47 @@
 </span></span><span style="display:flex;"><span>	IsCopyData <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> IsCopyData :
 </span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;Copy 成功！&#34;</span>)
+</span></span></code></pre></div><h4 id="字段值更新">字段值更新</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DependencyRules <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.EntityElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.FieldElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DataChanged</span>(e):
+</span></span><span style="display:flex;"><span>	fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Field<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#字段标识大写</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(fldKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;F_MAXEYE_GIVEAWAY&#34;</span> ):<span style="color:#75715e">#注意:示例代码是不等于，实际应使用等于进行判断</span>
+</span></span><span style="display:flex;"><span>		row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>		oldValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>OldValue;<span style="color:#75715e">#更新前字段值</span>
+</span></span><span style="display:flex;"><span>		newValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>NewValue;<span style="color:#75715e">#更新后的字段值</span>
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;第[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]行字段[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]从[</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">]更新成了[</span><span style="color:#e6db74">{3}</span><span style="color:#e6db74">]&#34;</span>)<span style="color:#f92672">.</span>format(row,fldKey,oldValue,newValue);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> newValue <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetItemValueByNumber(<span style="color:#e6db74">&#34;FSTOCKSTATUSID&#34;</span>,<span style="color:#e6db74">&#34;KCZT01_USR&#34;</span>,row); <span style="color:#75715e"># 基础资料赋值用法</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetItemValueByNumber(<span style="color:#e6db74">&#34;FSTOCKSTATUSID&#34;</span>,<span style="color:#e6db74">&#34;KCZT01_SYS&#34;</span>,row); <span style="color:#75715e"># 基础资料赋值用法</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
 </span></span></code></pre></div></article>
     </section>
 
