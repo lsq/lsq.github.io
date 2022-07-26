@@ -183,7 +183,7 @@
                 星期二，七月 26 日，2022 年
               
 
-            | 25 分钟阅读
+            | 24 分钟阅读
 
             | 更新于
               
@@ -394,122 +394,123 @@ this.View.Model.SetItemValueByNumber(&ldquo;字段标识&rdquo;,&ldquo;id&rdquo;
 </ul>
 <p>#单据新增界面打开时触发，可以获取到单据初始化之后的数据
 #通常用于对单据新增进行默认值填充，例如，设置默认日期，填充单据体默认数据等</p>
-<p>#应用案例:<a href="https://vip.kingdee.com/article/158257867764321280?productLineId=1">Python获取当前用户对应的员工</a>
-def <strong>AfterCreateModelData</strong>(e):
-billObj = this.Model.DataObject;#单据完整数据包,如需通过实体数据包操作读写数据,可从这里开始取
-this.View.Model.SetValue(&ldquo;FDate&rdquo;, &ldquo;2022-7-1&rdquo;);#设置默认日期
-#msg=(&quot;{0}&rdquo;).format(this.View.BillBusinessInfo.GetEntity(&ldquo;FBillHead&rdquo;).TableName);
-#this.View.ShowMessage(msg);</p>
-<p>#界面数据绑定完毕后触发，通常在这里对字段控件状态进行设置
-#例如,<a href="https://vip.kingdee.com/article/298154365838782720?productLineId=1">设置颜色</a>、设置字段锁定性/可见性、<a href="https://vip.kingdee.com/article/301688378930570752?productLineId=1">设置下拉列表动态枚举选项</a>等
-def <strong>AfterBindData</strong>(e):
-this.View.GetControl(&ldquo;FDate&rdquo;).Enabled=False;#False:锁定,True:解锁
-#this.View.GetControl(&ldquo;控件标识&rdquo;).Visible=False;#False:隐藏,True:显示</p>
-<p>#单据头菜单点击事件，从参数e中获取菜单标识，来判断是哪个菜单发生了点击
-#这里一定要加判断，只需要监听需要的菜单,多个菜单的话，使用if elif结构,Python中没有Switch结构</p>
-<p>#应用案例:<a href="https://vip.kingdee.com/article/291523970094684160?productLineId=1">点击菜单弹出动态表单传递参数到子页面</a>
-def <strong>BarItemClick</strong>(e):
-key=e.BarItemKey.ToUpperInvariant();#菜单标识大写
-if(key==&ldquo;TESTBTN1&rdquo;.ToUpperInvariant()):
-msg=(&ldquo;菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
-this.View.ShowMessage(msg);
-elif(key==&ldquo;TESTBTN2&rdquo;.ToUpperInvariant()):
-msg=(&ldquo;菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
-this.View.ShowMessage(msg);</p>
-<p>#单据体菜单点击事件，与BarItemClick类似,只不过这个是监听单据体菜单栏
-def <strong>EntryBarItemClick</strong>(e):
-key=e.BarItemKey.ToUpperInvariant();
-if(key==&ldquo;entryTESTBTN1&rdquo;.ToUpperInvariant()):
-msg=(&ldquo;单据体菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
-this.View.ShowMessage(msg);
-#这里通常需要获取当前单据体选中的行)(前面有讲怎么获取)，然后对这一行进行处理</p>
-<p>#按钮控件/超链接控件点击事件
+<p>#应用案例:<a href="https://vip.kingdee.com/article/158257867764321280?productLineId=1">Python获取当前用户对应的员工</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterCreateModelData</span>(e):
+</span></span><span style="display:flex;"><span>  billObj <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject;<span style="color:#75715e">#单据完整数据包,如需通过实体数据包操作读写数据,可从这里开始取</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;FDate&#34;</span>, <span style="color:#e6db74">&#34;2022-7-1&#34;</span>);<span style="color:#75715e">#设置默认日期</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#msg=(&#34;{0}&#34;).format(this.View.BillBusinessInfo.GetEntity(&#34;FBillHead&#34;).TableName);</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#this.View.ShowMessage(msg);</span>
+</span></span></code></pre></div><p>#界面数据绑定完毕后触发，通常在这里对字段控件状态进行设置
+#例如,<a href="https://vip.kingdee.com/article/298154365838782720?productLineId=1">设置颜色</a>、设置字段锁定性/可见性、<a href="https://vip.kingdee.com/article/301688378930570752?productLineId=1">设置下拉列表动态枚举选项</a>等</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterBindData</span>(e):
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetControl(<span style="color:#e6db74">&#34;FDate&#34;</span>)<span style="color:#f92672">.</span>Enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>;<span style="color:#75715e">#False:锁定,True:解锁</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#this.View.GetControl(&#34;控件标识&#34;).Visible=False;#False:隐藏,True:显示</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>\<span style="color:#75715e">#单据头菜单点击事件，从参数e中获取菜单标识，来判断是哪个菜单发生了点击</span>
+</span></span><span style="display:flex;"><span>\<span style="color:#75715e">#这里一定要加判断，只需要监听需要的菜单,多个菜单的话，使用if elif结构,Python中没有Switch结构</span>
+</span></span></code></pre></div><p>#应用案例:<a href="https://vip.kingdee.com/article/291523970094684160?productLineId=1">点击菜单弹出动态表单传递参数到子页面</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>  key<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#菜单标识大写</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TESTBTN1&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TESTBTN2&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#单据体菜单点击事件，与BarItemClick类似,只不过这个是监听单据体菜单栏</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntryBarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>  key<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpperInvariant();
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;entryTESTBTN1&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>    \<span style="color:#75715e">#这里通常需要获取当前单据体选中的行)(前面有讲怎么获取)，然后对这一行进行处理</span>
+</span></span></code></pre></div><p>#按钮控件/超链接控件点击事件
 #例如，点击一个超链接，弹出某个单据等等，在此事件实现</p>
-<p>#应用案例:<a href="https://vip.kingdee.com/article/291524092769768448?fromAction=POST_ARTICLE&amp;productLineId=1">子页面关闭返回数据到父页面</a>
-def <strong>ButtonClick</strong>(e):
-BtnKey=e.Key.ToUpperInvariant();#控件标识大写
-if(BtnKey==&ldquo;F_ora_LINK&rdquo;.ToUpperInvariant()):
-msg=(&ldquo;按钮[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(BtnKey);
-this.View.ShowMessage(msg);</p>
-<p>#单据体行双击事件,使用时一定要判断单据体!!!
+<p>#应用案例:<a href="https://vip.kingdee.com/article/291524092769768448?fromAction=POST_ARTICLE&amp;productLineId=1">子页面关闭返回数据到父页面</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ButtonClick</span>(e):
+</span></span><span style="display:flex;"><span>  BtnKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#控件标识大写</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(BtnKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;F_ora_LINK&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;按钮[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(BtnKey);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#单据体行双击事件,使用时一定要判断单据体!!!
 #只捕捉行双击:获取事件参数中的行号即可
-#需要捕捉单元格双击：获取事件参数中的行号和字段标识
-def <strong>EntityRowDoubleClick</strong>(e):
-entityKey=e.Key.ToUpperInvariant();#单据体标识大写
-row=e.Row;#双击行号,从0开始
-fldKey=e.ColKey.ToUpperInvariant();#双击单元格字段标识大写
-msg=(&ldquo;单据体[{0}]第[{1}]行,字段[{2}]双击啦！&rdquo;).format(entityKey,row,fldKey);
-this.View.ShowMessage(msg);</p>
-<p>#单据体行点击事件，也就是单据体单行选择事件,使用时一定要判断单据体!!!
-#通过此事件可以知道当前焦点行，通常需要开发切换行处理子单据体数据时使用
-def <strong>EntityRowClick</strong>(e):
-entityKey=e.Key.ToUpperInvariant();#单据体标识大写
-row=e.Row;#选择行号,从0开始
-msg=(&ldquo;单据体[{0}]第[{1}]行被选中啦！&rdquo;).format(entityKey,row);
-this.View.ShowMessage(msg);</p>
-<p>#单据体行删除事件，在这个事件里可以最后获取被删除的行数据
-#使用时一定要判断单据体!!!
-def <strong>AfterDeleteRow</strong>(e):
-entityKey=e.EntityKey.ToUpperInvariant();#单据体标识大写
-row=e.Row;#删除的行号,从0开始,注意：此时用此行号从单据实体数据包中取的数据已不是删除的行数据了
-deletRowObj=e.DataEntity;#删除的行数据包
-msg=(&ldquo;单据体[{0}]第[{1}]行被删除啦！&rdquo;).format(entityKey,row);
-this.View.ShowMessage(msg);</p>
-<p>#值更新事件，当BOS的值更新与实体服务配置实现不了想要的功能时，就会用到插件值更新事件
+#需要捕捉单元格双击：获取事件参数中的行号和字段标识</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntityRowDoubleClick</span>(e):
+</span></span><span style="display:flex;"><span>  entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>  row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#双击行号,从0开始</span>
+</span></span><span style="display:flex;"><span>  fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>ColKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#双击单元格字段标识大写</span>
+</span></span><span style="display:flex;"><span>  ms<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行,字段[</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">]双击啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row,fldKey);
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#单据体行点击事件，也就是单据体单行选择事件,使用时一定要判断单据体!!!
+#通过此事件可以知道当前焦点行，通常需要开发切换行处理子单据体数据时使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntityRowClick</span>(e):
+</span></span><span style="display:flex;"><span>  entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>  row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#选择行号,从0开始</span>
+</span></span><span style="display:flex;"><span>  msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行被选中啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row);
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#单据体行删除事件，在这个事件里可以最后获取被删除的行数据
+#使用时一定要判断单据体!!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDeleteRow</span>(e):
+</span></span><span style="display:flex;"><span>  entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>EntityKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>  row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#删除的行号,从0开始,注意：此时用此行号从单据实体数据包中取的数据已不是删除的行数据了</span>
+</span></span><span style="display:flex;"><span>  deletRowObj<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>DataEntity;<span style="color:#75715e">#删除的行数据包</span>
+</span></span><span style="display:flex;"><span>  msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行被删除啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row);
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#值更新事件，当BOS的值更新与实体服务配置实现不了想要的功能时，就会用到插件值更新事件
 #事件参数中可以获取:发生值更新的字段标识、行号、更新前字段值、更新后字段值
-#注意!!!使用时一定要判断字段标识!!!字段在BOS中勾选【即时触发值更新】才会触发插件值更新事件
-def <strong>DataChanged</strong>(e):
-fldKey=e.Field.Key.ToUpperInvariant();#字段标识大写
-if(fldKey&lt;&gt;&ldquo;ABC&rdquo;):#注意:示例代码是不等于，实际应使用等于进行判断
-row=e.Row;#字段所在的行号,从0开始，单据头字段为0
-oldValue=e.OldValue;#更新前字段值
-newValue=e.NewValue;#更新后的字段值
-msg=(&ldquo;第[{0}]行字段[{1}]从[{2}]更新成了[{3}]&rdquo;).format(row,fldKey,oldValue,newValue);
-this.View.ShowMessage(msg);</p>
-<p>#资料字段选择前事件,通俗来讲：就是放大镜点击弹出选择列表前触发的事件
+#注意!!!使用时一定要判断字段标识!!!字段在BOS中勾选【即时触发值更新】才会触发插件值更新事件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DataChanged</span>(e):
+</span></span><span style="display:flex;"><span>  fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Field<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#字段标识大写</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(fldKey<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#34;ABC&#34;</span>):<span style="color:#75715e">#注意:示例代码是不等于，实际应使用等于进行判断</span>
+</span></span><span style="display:flex;"><span>    row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>    oldValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>OldValue;<span style="color:#75715e">#更新前字段值</span>
+</span></span><span style="display:flex;"><span>    newValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>NewValue;<span style="color:#75715e">#更新后的字段值</span>
+</span></span><span style="display:flex;"><span>    msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;第[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]行字段[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]从[</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">]更新成了[</span><span style="color:#e6db74">{3}</span><span style="color:#e6db74">]&#34;</span>)<span style="color:#f92672">.</span>format(row,fldKey,oldValue,newValue);
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span></code></pre></div><p>#资料字段选择前事件,通俗来讲：就是放大镜点击弹出选择列表前触发的事件
 #<a href="https://vip.kingdee.com/article/157167808605429248?productLineId=1">用途1</a>:此用法最多，就是对弹出的选择列表进行动态过滤，控制数据选择范围
 #用途2:控制资料字段录入顺序,例如,可以控制没选供应商，就不能选物料，并弹出提示!
-#<a href="https://vip.kingdee.com/article/251000369826719488?productLineId=1">用途3</a>:非资料类型字段，启用编辑按钮(3个点&hellip;)，点击时触发
-def <strong>BeforeF7Select</strong>(e):
-#可以从事件参数中读取的信息
-fldKey=e.FieldKey.ToUpperInvariant();#触发的字段标识大写
-baseFormId=e.FormId;#资料字段的具体资料类型,例如物料，就是BD_Material
-row=e.Row;#字段所在的行号,从0开始，单据头字段为0
-#通过修改事件参数中的信息,可以实现的功能,一定要判断字段标识
-if(fldKey==&ldquo;FMATERIALID&rdquo;):
-supObj=this.View.Model.GetValue(&ldquo;FSupplierId&rdquo;);#使用字段标识,获取供应商
-billObj = this.Model.DataObject;#从单据实体数据包获取也一样,再演示1次,别忘了这种方法
-supObj=billObj[&ldquo;SupplierId&rdquo;];#使用绑定实体属性
-if(supObj==None):
-this.View.ShowWarnningMessage(&ldquo;请先选择供应商&rdquo;);
-e.Cancel=True;#取消弹出选择列表
-return;#跳出事件方法
-e.IsShowUsed = False;#允许选择禁用的数据
-e.IsShowApproved = False;#允许选择未审核的数据,True表示
-myFilterStr=(&quot; &lsquo;{0}&rsquo;=&lsquo;VEN00001&rsquo; &ldquo;).format(supObj[&ldquo;Number&rdquo;]);#拼接过滤条件,按照SQL条件表达式写即可
-e.ListFilterParameter.Filter=myFilterStr;#这里示例：供应商编码=&lsquo;VEN00001&rsquo;，才会弹出物料，否则弹出空白列表</p>
-<p>#通过编码给资料字段赋值前触发,插进赋值，或者直接将编码粘贴到字段里面
+#<a href="https://vip.kingdee.com/article/251000369826719488?productLineId=1">用途3</a>:非资料类型字段，启用编辑按钮(3个点&hellip;)，点击时触发</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeF7Select</span>(e):
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#可以从事件参数中读取的信息</span>
+</span></span><span style="display:flex;"><span>  fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>FieldKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发的字段标识大写</span>
+</span></span><span style="display:flex;"><span>  baseFormId<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>FormId;<span style="color:#75715e">#资料字段的具体资料类型,例如物料，就是BD_Material</span>
+</span></span><span style="display:flex;"><span>  row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#通过修改事件参数中的信息,可以实现的功能,一定要判断字段标识</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(fldKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;FMATERIALID&#34;</span>):
+</span></span><span style="display:flex;"><span>    supObj<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FSupplierId&#34;</span>);<span style="color:#75715e">#使用字段标识,获取供应商</span>
+</span></span><span style="display:flex;"><span>    billObj <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject;<span style="color:#75715e">#从单据实体数据包获取也一样,再演示1次,别忘了这种方法</span>
+</span></span><span style="display:flex;"><span>    supObj<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;SupplierId&#34;</span>];<span style="color:#75715e">#使用绑定实体属性</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(supObj<span style="color:#f92672">==</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>      this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;请先选择供应商&#34;</span>);
+</span></span><span style="display:flex;"><span>      e<span style="color:#f92672">.</span>Cancel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>;<span style="color:#75715e">#取消弹出选择列表</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span>;<span style="color:#75715e">#跳出事件方法</span>
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>IsShowUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许选择禁用的数据</span>
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>IsShowApproved <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许选择未审核的数据,True表示</span>
+</span></span><span style="display:flex;"><span>    myFilterStr<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34; &#39;</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;=&#39;VEN00001&#39; &#34;</span>)<span style="color:#f92672">.</span>format(supObj[<span style="color:#e6db74">&#34;Number&#34;</span>]);<span style="color:#75715e">#拼接过滤条件,按照SQL条件表达式写即可</span>
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>ListFilterParameter<span style="color:#f92672">.</span>Filter<span style="color:#f92672">=</span>myFilterStr;<span style="color:#75715e">#这里示例：供应商编码=&#39;VEN00001&#39;，才会弹出物料，否则弹出空白列表</span>
+</span></span></code></pre></div><p>#通过编码给资料字段赋值前触发,插进赋值，或者直接将编码粘贴到字段里面
 #在此事件可以对赋值编码进行校验,相当于对BeforeF7Select事件的一个补充
-#BeforeF7Select主要是界面录入时控制数据选择列表，但是通过插件赋值是不会触发的
-def <strong>BeforeSetItemValueByNumber</strong>(e):
-fldKey=e.BaseDataField.Key.ToUpperInvariant();#触发的字段标识大写
-Num=e.CurrentSetNumber;#当前赋值的资料编码
-row=e.Row;#字段所在的行号,从0开始，单据头字段为0
-e.IsShowUsed = False;#允许赋值禁用的数据
-e.IsShowApproved = False;#允许赋值未审核的数据,True表示
-e.Filter=&rdquo;&quot;;#同样可以拼接过滤条件进行数据范围控制</p>
-<p>#单据界面执行单据操作前触发，例如，保存,提交,审核等，使用时一定要判断操作代码
-#此事件在校验规则之前触发
-def <strong>BeforeDoOperation</strong>(e):
-opCode=e.Operation.FormOperation.Operation.ToUpperInvariant();#触发操作代码大写,例如保存:SAVE
-if(opCode==&ldquo;SAVE&rdquo;):
-e.Cancel=True;#可以取消触发操作
-this.View.ShowWarnningMessage(&ldquo;取消保存！&rdquo;);
-#单据界面执行单据操作完成后触发，例如，保存,提交,审核等，使用时一定要判断操作代码
-def <strong>AfterDoOperation</strong>(e):
-opCode=e.Operation.Operation.ToUpperInvariant();#触发操作代码大写,例如保存:SAVE
-this.View.ShowMessage(<strong>str</strong>(opCode));</p>
-<p>好了，表单插件事件就介绍到这里，表单插件事件还有一些没介绍，大家有兴趣的可以找资料研究一下，我这里介绍的都是常用的事件，基本能满足常见需求的实现了。</p>
+#BeforeF7Select主要是界面录入时控制数据选择列表，但是通过插件赋值是不会触发的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeSetItemValueByNumber</span>(e):
+</span></span><span style="display:flex;"><span>  fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BaseDataField<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发的字段标识大写</span>
+</span></span><span style="display:flex;"><span>  Num<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>CurrentSetNumber;<span style="color:#75715e">#当前赋值的资料编码</span>
+</span></span><span style="display:flex;"><span>  row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>  e<span style="color:#f92672">.</span>IsShowUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许赋值禁用的数据</span>
+</span></span><span style="display:flex;"><span>  e<span style="color:#f92672">.</span>IsShowApproved <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许赋值未审核的数据,True表示</span>
+</span></span><span style="display:flex;"><span>  e<span style="color:#f92672">.</span>Filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>;<span style="color:#75715e">#同样可以拼接过滤条件进行数据范围控制</span>
+</span></span></code></pre></div><p>#单据界面执行单据操作前触发，例如，保存,提交,审核等，使用时一定要判断操作代码
+#此事件在校验规则之前触发</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeDoOperation</span>(e):
+</span></span><span style="display:flex;"><span>  opCode<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>FormOperation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发操作代码大写,例如保存:SAVE</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span>(opCode<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;SAVE&#34;</span>):
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>Cancel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>;<span style="color:#75715e">#可以取消触发操作</span>
+</span></span><span style="display:flex;"><span>    this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;取消保存！&#34;</span>);
+</span></span></code></pre></div><p>#单据界面执行单据操作完成后触发，例如，保存,提交,审核等，使用时一定要判断操作代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e):
+</span></span><span style="display:flex;"><span>  opCode<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发操作代码大写,例如保存:SAVE</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#f92672">**</span>str<span style="color:#f92672">**</span>(opCode));
+</span></span></code></pre></div><p>好了，表单插件事件就介绍到这里，表单插件事件还有一些没介绍，大家有兴趣的可以找资料研究一下，我这里介绍的都是常用的事件，基本能满足常见需求的实现了。</p>
 <p>作者：CQ周玉立</p>
 <p>来源：金蝶云社区</p>
 <p>原文链接：https://vip.kingdee.com/article/338117169206442496?productLineId=1</p>
