@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>表单插件简介 | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="lsq" />
+<meta name="description" content="言归正传，前面我们学习了Python插件代码的构成&amp;quot;三部曲&amp;quot;，其中比较重要的一部分就是**【方法/函数】，再结合上一篇我" />
+
+
+
+<meta name="generator" content="Hugo 0.101.0" />
+
+<link rel="canonical" href="https://lsq.github.io/posts/python%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%A4%BA%E4%BE%8B/" />
+
+
+<meta property="og:title" content="表单插件简介" />
+<meta property="og:description" content="言归正传，前面我们学习了Python插件代码的构成&quot;三部曲&quot;，其中比较重要的一部分就是**【方法/函数】，再结合上一篇我" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/python%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%A4%BA%E4%BE%8B/" /><meta property="og:image" content="https://lsq.github.io/images/python_get_objects.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-26T17:05:00+08:00" />
+<meta property="article:modified_time" content="2022-07-26T17:05:00+08:00" />
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/python_get_objects.jpg"/>
+
+<meta name="twitter:title" content="表单插件简介"/>
+<meta name="twitter:description" content="言归正传，前面我们学习了Python插件代码的构成&quot;三部曲&quot;，其中比较重要的一部分就是**【方法/函数】，再结合上一篇我"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一表单插件简介"><strong>一、表单插件简介</strong></a></li>
+    <li><a href="#二表单插件中的重要成员介绍"><strong>二、表单插件中的重要成员介绍</strong></a></li>
+    <li><a href="#三新建一个表单插件"><strong>三、新建一个表单插件</strong></a></li>
+    <li><a href="#四表单插件常用事件介绍"><strong>四、表单插件常用事件介绍</strong></a></li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=%e8%a1%a8%e5%8d%95%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b&url=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E8%25A1%25A8%25E5%258D%2595%25E6%258F%2592%25E4%25BB%25B6%25E6%25A8%25A1%25E6%259D%25BF%25E7%25A4%25BA%25E4%25BE%258B%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E8%25A1%25A8%25E5%258D%2595%25E6%258F%2592%25E4%25BB%25B6%25E6%25A8%25A1%25E6%259D%25BF%25E7%25A4%25BA%25E4%25BE%258B%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/python_get_objects.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">表单插件简介<div class="sub header">
+            @
+            
+              
+                lsq
+              
+            
+
+            | 
+                星期二，七月 26 日，2022 年
+              
+
+            | 25 分钟阅读
+
+            | 更新于
+              
+                星期二，七月 26 日，2022 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><p>言归正传，前面我们学习了Python插件代码的构成&quot;三部曲&quot;，其中比较重要的一部分就是**【方法/函数】，<strong>再结合上一篇我们学习的插件中对单据的数据包进行操作，就可以实现具体功能了，后面我们将学习各类插件，其实就是学习如何使用【方法/函数】</strong>，<strong>当然，插件中更多的还是学习使用系统定义好的</strong>事件方法，**今天我们先来看一看表单插件中的事件方法。</p>
+<hr>
+<h2 id="一表单插件简介"><strong>一、表单插件简介</strong></h2>
+<p>表单插件是Web服务层插件，<strong>需要依赖于单据维护界面(View)才能触发</strong>，单据列表不会触发，曾经有小伙伴多次遇到单据下推，下游单据某些数据不能自动生成，就是因为单据转换过程本身是不触发实体服务规则、值更新事件以及表单插件的，遇到一些特别的开发场景需要触发表单插件、实体服务规则、值更新时，有时也会在后台构建单据的界面对象View来进行触发使用(<em>以后会做这方面的分享</em>)，现在先讲一些表单插件的基本用法。**
+**</p>
+<p>**那么那些业务对象可以使用表单插件呢？**表单插件在单据、动态表单、基础资料中都可以注册。</p>
+<p>在熟知的C#插件中，表单插件的基类是AbstractBillPlugIn，C#插件开发时，需要建一个AbstractBillPlugIn的派生类，来实现表单插件，而在开发Python插件时，在注册表单插件的位置注册Python脚本系统就默认是表单插件了，不需要过多考虑基类，所以我们需要更关注需要实现的事件方法。**
+**</p>
+<h2 id="二表单插件中的重要成员介绍"><strong>二、表单插件中的重要成员介绍</strong></h2>
+<p>插件基类为我们提供了许多重要的成员供开发时使用，下面介绍一下常用的一些属性和用法。</p>
+<p>在插件中可以通过<strong>this</strong>关键字来调用这些成员。**
+**</p>
+<ul>
+<li>
+<p><strong>Context:上下文对象</strong></p>
+<p>this.Context.UserId;#当前用户ID
+this.Context.UserName;#当前用户名称
+this.Context.UserPhone;#当前用户手机号
+this.Context.CurrentOrganizationInfo.ID;#当前组织Id
+this.Context.CurrentOrganizationInfo.Name;#当前组织名称
+this.Context.DBId;#当前数据中心Id
+this.Context.DataCenterNumber;#当前数据中心编码
+this.Context.DataCenterName;#当前数据中心名称
+this.Context.IpAddress;#客户端本机网络信息:IP、MAC等</p>
+</li>
+<li>
+<p>**View:视图层对象,**可理解为当前界面,界面类插件特有，服务类的插件没有这个，View能为开发提供很多特有的功能。</p>
+<p><strong>①View的常用属性</strong></p>
+<p>this.View.BillBusinessInfo;#单据的业务逻辑元数据，元数据包含的信息很多,下面列了一下常用的信息
+this.View.BillBusinessInfo.GetBillNoField().FieldName;#单据编号字段名
+this.View.BillBusinessInfo.GetBillStatusField().FieldName;#单据状态字段名
+this.View.BillBusinessInfo.GetBillTypeField().FieldName;#单据类型字段名
+this.View.BillBusinessInfo.GetForm().Id;#单据FormId
+this.View.BillBusinessInfo.MainOrgField.FieldName;#主业务组织字段名
+this.View.BillBusinessInfo.GetEntity(&ldquo;FBillHead&rdquo;).TableName;#单据头表名
+this.View.BillBusinessInfo.GetEntity(&ldquo;实体标识&rdquo;).TableName;#实体主表名
+this.View.BillBusinessInfo.GetEntity(&ldquo;实体标识&rdquo;).SplitTables;#实体所有拆分表</p>
+<p>#****************************************************************************************************</p>
+<p>this.View.OpenParameter;#表单入口参数
+this.View.OpenParameter.Status;#当前界面状态:0,新增;1,查看;2,修改;
+this.View.OpenParameter.GetCustomParameter(&ldquo;参数标识&rdquo;);#获取单据打开传入的参数</p>
+<p>#****************************************************************************************************</p>
+<p>this.View.ParentFormView;#获取父页面的View
+this.View.ParentFormView.BillBusinessInfo.GetForm().Id;#父页面的FormId,用来判断单据是从哪里进来的</p>
+<p><strong>②View的常用方法</strong></p>
+<p>this.View.GetFormTitle();#获取单据标题
+this.View.SetFormTitle(LocaleValue(&ldquo;新标题&rdquo;));#修改单据标题**
+**</p>
+<p>this.View.GetFormOperation(&ldquo;操作代码&rdquo;);#获取单据的一个操作实例对象
+this.View.InvokeFormOperation(&ldquo;操作代码&rdquo;);#触发单据的某个操作:保存、提交、审核、关闭 等!
+this.View.GetControl<a href="%22%E6%8E%A7%E4%BB%B6%E6%A0%87%E8%AF%86%22">控件类</a>;#获取单据上的控件:按钮、菜单等,可用来设置控件的状态(可见性，锁定性等)
+this.View.InvokeFieldUpdateService(&ldquo;字段标识&rdquo;,行号);#触发字段值更新，单据头字段行号填0
+#触发实体服务规则，下面2行代码
+obj=BOSActionExecuteContext(this.View);
+this.View.RuleContainer.RaiseDataChanged(&ldquo;字段标识&rdquo;, 字段所在实体行数据包,obj);#触发实体服务规则</p>
+<p>#显示3种提示信息
+this.View.ShowMessage(&ldquo;绿色背景提示信息&rdquo;);#显示正常提示信息
+this.View.ShowWarnningMessage(&ldquo;黄色背景提示信息&rdquo;);#显示警告提示信息
+this.View.ShowErrMessage(&ldquo;红色背景提示信息&rdquo;);#显示错误提示信息</p>
+<p>#刷新界面数据，修改实体数据包后需要刷新重新读取，必须传标识，不建议粗暴刷新整个单据</p>
+<p>this.View.UpdateView(&ldquo;字段标识/单据体标识&rdquo;);#刷新界面数据**
+**</p>
+</li>
+<li>
+<p><strong>Model:单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上1篇所讲的实体数据包。</strong></p>
+<p>this.View.Model;#单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上文
+<strong>this.View.Model.DataObject;</strong>#单据的完整数据包，相当于前面讲的单据头实体数据包</p>
+<p>this.View.Model.GetEntryCurrentRowIndex(&ldquo;单据体标识&rdquo;);#获取单据体当前焦点行号
+this.View.Model.GetEntryRowCount(&ldquo;单据体标识&rdquo;);#获取单据体行数
+this.View.Model.CreateNewEntryRow(&ldquo;单据体标识&rdquo;);#为单据体新增一行
+this.View.Model.BatchCreateNewEntryRow(&ldquo;单据体标识&rdquo;,x);#批量为单据体新增x行
+this.View.Model.InsertEntryRow(&ldquo;单据体标识&rdquo;, i);#在第i行前插入1行
+this.View.Model.DeleteEntryRow(&ldquo;单据体标识&rdquo;, i);#删除第i行
+this.View.Model.DeleteEntryData(&ldquo;单据体标识&rdquo;);#清空整个单据体数据</p>
+<p>#获取第x行(单据头不传x)某字段的值，不同字段类型返回不同类型数据，参考<a href="https://vip.kingdee.com/article/335071759478985984?productLineId=1">第3篇</a>讲解</p>
+<p>this.View.Model.GetValue(&ldquo;字段标识&rdquo;,x);</p>
+<p>#更新第x行(单据头不传x)某字段的值，不同字段类型赋值不同类型数据，参考第3篇讲解</p>
+<p>this.View.Model.SetValue(&ldquo;字段标识&rdquo;,x,字段值);
+this.View.Model.SetItemValueByID(&ldquo;字段标识&rdquo;,&ldquo;id&rdquo;,x);#用资料内码id更新第x行资料字段的值
+this.View.Model.SetItemValueByNumber(&ldquo;字段标识&rdquo;,&ldquo;id&rdquo;,x);#用资料编码更新第x行资料字段的值</p>
+</li>
+</ul>
+<p>上面对表单插件常用的一些属性和方法做了一下介绍，其实还有很多，这里篇幅有限，也列举不完，用得最多的基本就在这里了，我们可以发现，<strong>除了第3篇将的实体数据包操作之外，在表单插件中，我们有另外的方法对单据的数据进行操作</strong>，<strong>需要注意的是，表单插件中的这些方法使用的都是标识，而不是绑定实体属性名了</strong>，当然，<strong>在表单插件中实体数据包操作同样适用，并且用的时候也很多，不要觉得表单插件这些方法便捷好理解，就&quot;捡了芝麻丢了西瓜哦！&quot;。<img src="https://vipfront.s3.cn-north-1.amazonaws.com.cn/emotion/define/63.gif" alt="img"></strong></p>
+<h2 id="三新建一个表单插件"><strong>三、新建一个表单插件</strong></h2>
+<p><strong>我们先新建一个Python表单插件，然后就可以进行下面讲解的内容进行测试验证啦！</strong></p>
+<ul>
+<li>
+<p><strong>注意：我这里提供一个引用比较全的Python插件示例模板，在附件中可以下载示例代码，复制到BOS里面注册！</strong></p>
+</li>
+<li>
+<p><strong>Python表单插件注册方法：<strong>如下图所示</strong>，<strong>还是以</strong>采购订单</strong>为例，其他单据类似</p>
+<p><img src="python%E6%8F%92%E4%BB%B6%E6%B5%8B%E8%AF%95/7971505def1f4657977c8970ba558cc1.png" alt="image.png"></p>
+</li>
+</ul>
+<h2 id="四表单插件常用事件介绍"><strong>四、表单插件常用事件介绍</strong></h2>
+<p>有了前面讲解的这些单据数据操作方法是不是想赶紧验证一下呢，要在插件中触发这些代码，我们需要通过插件事件来作为入口，表单插件的事件也很多，这里介绍一下表单插件中最常用的一些事件，用来实现常见的需求场景够用啦！**
+**</p>
+<ul>
+<li>
+<p>**表单插件中的基本事件：**自动触发，一定会触发，按顺序触发。</p>
+<p>插件中的事件在单据运行过程中产生的，所以一些事件有固定执行顺序，且在不同阶段才能获取到特定的数据。</p>
+<table>
+<thead>
+<tr>
+<th><strong>单据新增界面打开</strong></th>
+<th><strong>单据修改/查看打开</strong></th>
+<th><strong>事件描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PreOpenForm</td>
+<td>PreOpenForm</td>
+<td>准备单据打开</td>
+</tr>
+<tr>
+<td>OnInitializeService</td>
+<td>OnInitializeService</td>
+<td>加载单据插件等，这里可以动态调整插件执行顺序等</td>
+</tr>
+<tr>
+<td>OnSetBusinessInfo</td>
+<td>OnSetBusinessInfo</td>
+<td>绑定单据元数据</td>
+</tr>
+<tr>
+<td>OnSetLayoutInfo</td>
+<td>OnSetLayoutInfo</td>
+<td>设置单据界面显示信息，如布局等</td>
+</tr>
+<tr>
+<td>OnCreateDataBinder</td>
+<td>OnCreateDataBinder</td>
+<td>创建数据源绑定对象</td>
+</tr>
+<tr>
+<td>OnInitialize</td>
+<td>OnInitialize</td>
+<td>单据初始化完毕，在这里可以获取一些控件备用</td>
+</tr>
+<tr>
+<td>OnBillInitialize</td>
+<td>OnBillInitialize</td>
+<td>单据初始化完毕</td>
+</tr>
+<tr>
+<td>CreateNewData</td>
+<td></td>
+<td>构建新单据初始实体数据，新增才会触发</td>
+</tr>
+<tr>
+<td>AfterCreateNewData</td>
+<td></td>
+<td>新单据初始实体数据构建完毕,在此可修改单据默认数据</td>
+</tr>
+<tr>
+<td>AfterCreateModelData</td>
+<td></td>
+<td>新单据实体数据构建到Model</td>
+</tr>
+<tr>
+<td></td>
+<td>LoadData</td>
+<td>开始加载单据实体数据</td>
+</tr>
+<tr>
+<td></td>
+<td>AfterLoadData</td>
+<td>加载完单据数据</td>
+</tr>
+<tr>
+<td>OnLoad</td>
+<td>OnLoad</td>
+<td></td>
+</tr>
+<tr>
+<td>BeforeBindData</td>
+<td>BeforeBindData</td>
+<td>开始绑定实体数据到界面控件</td>
+</tr>
+<tr>
+<td>AfterBindData</td>
+<td>AfterBindData</td>
+<td>绑定实体数据到界面控件完毕，尽量不要在此事件中修改数据，仅修改控件的状态(可见性、锁定性、颜色等)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>Python插件中如何使用事件</strong></p>
+<p>①事件就是定义好的方法，所以使用<strong>def</strong>关键字，后面跟上方法名称、参数列表即可，表单插件的事件一般没有返回值。</p>
+<p>②事件方法参数：在参数中我们能获取到当前事件应该提供信息，表单插件事件一般只有1个参数，在BOS写会提示。</p>
+<p>③参数名，用&quot;<strong>e</strong>&ldquo;即可。</p>
+<p>④示例：def <strong>AfterCreateModelData</strong>(e): ，注意最后有英文冒号&rdquo;:&ldquo;结尾，如果忘记Python的语法要点，看<a href="https://vip.kingdee.com/article/332534862269551872?productLineId=1">第2篇</a>。</p>
+</li>
+<li>
+<p>****表单插件中的常用事件用法介绍：****<em>下面列出的事件中都可以获取到单据数据包</em></p>
+</li>
+</ul>
+<p>#单据新增界面打开时触发，可以获取到单据初始化之后的数据
+#通常用于对单据新增进行默认值填充，例如，设置默认日期，填充单据体默认数据等</p>
+<p>#应用案例:<a href="https://vip.kingdee.com/article/158257867764321280?productLineId=1">Python获取当前用户对应的员工</a>
+def <strong>AfterCreateModelData</strong>(e):
+billObj = this.Model.DataObject;#单据完整数据包,如需通过实体数据包操作读写数据,可从这里开始取
+this.View.Model.SetValue(&ldquo;FDate&rdquo;, &ldquo;2022-7-1&rdquo;);#设置默认日期
+#msg=(&quot;{0}&rdquo;).format(this.View.BillBusinessInfo.GetEntity(&ldquo;FBillHead&rdquo;).TableName);
+#this.View.ShowMessage(msg);</p>
+<p>#界面数据绑定完毕后触发，通常在这里对字段控件状态进行设置
+#例如,<a href="https://vip.kingdee.com/article/298154365838782720?productLineId=1">设置颜色</a>、设置字段锁定性/可见性、<a href="https://vip.kingdee.com/article/301688378930570752?productLineId=1">设置下拉列表动态枚举选项</a>等
+def <strong>AfterBindData</strong>(e):
+this.View.GetControl(&ldquo;FDate&rdquo;).Enabled=False;#False:锁定,True:解锁
+#this.View.GetControl(&ldquo;控件标识&rdquo;).Visible=False;#False:隐藏,True:显示</p>
+<p>#单据头菜单点击事件，从参数e中获取菜单标识，来判断是哪个菜单发生了点击
+#这里一定要加判断，只需要监听需要的菜单,多个菜单的话，使用if elif结构,Python中没有Switch结构</p>
+<p>#应用案例:<a href="https://vip.kingdee.com/article/291523970094684160?productLineId=1">点击菜单弹出动态表单传递参数到子页面</a>
+def <strong>BarItemClick</strong>(e):
+key=e.BarItemKey.ToUpperInvariant();#菜单标识大写
+if(key==&ldquo;TESTBTN1&rdquo;.ToUpperInvariant()):
+msg=(&ldquo;菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
+this.View.ShowMessage(msg);
+elif(key==&ldquo;TESTBTN2&rdquo;.ToUpperInvariant()):
+msg=(&ldquo;菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
+this.View.ShowMessage(msg);</p>
+<p>#单据体菜单点击事件，与BarItemClick类似,只不过这个是监听单据体菜单栏
+def <strong>EntryBarItemClick</strong>(e):
+key=e.BarItemKey.ToUpperInvariant();
+if(key==&ldquo;entryTESTBTN1&rdquo;.ToUpperInvariant()):
+msg=(&ldquo;单据体菜单[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(key);
+this.View.ShowMessage(msg);
+#这里通常需要获取当前单据体选中的行)(前面有讲怎么获取)，然后对这一行进行处理</p>
+<p>#按钮控件/超链接控件点击事件
+#例如，点击一个超链接，弹出某个单据等等，在此事件实现</p>
+<p>#应用案例:<a href="https://vip.kingdee.com/article/291524092769768448?fromAction=POST_ARTICLE&amp;productLineId=1">子页面关闭返回数据到父页面</a>
+def <strong>ButtonClick</strong>(e):
+BtnKey=e.Key.ToUpperInvariant();#控件标识大写
+if(BtnKey==&ldquo;F_ora_LINK&rdquo;.ToUpperInvariant()):
+msg=(&ldquo;按钮[{0}]点击事件捕捉到了，可以继续菜单的功能啦！&rdquo;).format(BtnKey);
+this.View.ShowMessage(msg);</p>
+<p>#单据体行双击事件,使用时一定要判断单据体!!!
+#只捕捉行双击:获取事件参数中的行号即可
+#需要捕捉单元格双击：获取事件参数中的行号和字段标识
+def <strong>EntityRowDoubleClick</strong>(e):
+entityKey=e.Key.ToUpperInvariant();#单据体标识大写
+row=e.Row;#双击行号,从0开始
+fldKey=e.ColKey.ToUpperInvariant();#双击单元格字段标识大写
+msg=(&ldquo;单据体[{0}]第[{1}]行,字段[{2}]双击啦！&rdquo;).format(entityKey,row,fldKey);
+this.View.ShowMessage(msg);</p>
+<p>#单据体行点击事件，也就是单据体单行选择事件,使用时一定要判断单据体!!!
+#通过此事件可以知道当前焦点行，通常需要开发切换行处理子单据体数据时使用
+def <strong>EntityRowClick</strong>(e):
+entityKey=e.Key.ToUpperInvariant();#单据体标识大写
+row=e.Row;#选择行号,从0开始
+msg=(&ldquo;单据体[{0}]第[{1}]行被选中啦！&rdquo;).format(entityKey,row);
+this.View.ShowMessage(msg);</p>
+<p>#单据体行删除事件，在这个事件里可以最后获取被删除的行数据
+#使用时一定要判断单据体!!!
+def <strong>AfterDeleteRow</strong>(e):
+entityKey=e.EntityKey.ToUpperInvariant();#单据体标识大写
+row=e.Row;#删除的行号,从0开始,注意：此时用此行号从单据实体数据包中取的数据已不是删除的行数据了
+deletRowObj=e.DataEntity;#删除的行数据包
+msg=(&ldquo;单据体[{0}]第[{1}]行被删除啦！&rdquo;).format(entityKey,row);
+this.View.ShowMessage(msg);</p>
+<p>#值更新事件，当BOS的值更新与实体服务配置实现不了想要的功能时，就会用到插件值更新事件
+#事件参数中可以获取:发生值更新的字段标识、行号、更新前字段值、更新后字段值
+#注意!!!使用时一定要判断字段标识!!!字段在BOS中勾选【即时触发值更新】才会触发插件值更新事件
+def <strong>DataChanged</strong>(e):
+fldKey=e.Field.Key.ToUpperInvariant();#字段标识大写
+if(fldKey&lt;&gt;&ldquo;ABC&rdquo;):#注意:示例代码是不等于，实际应使用等于进行判断
+row=e.Row;#字段所在的行号,从0开始，单据头字段为0
+oldValue=e.OldValue;#更新前字段值
+newValue=e.NewValue;#更新后的字段值
+msg=(&ldquo;第[{0}]行字段[{1}]从[{2}]更新成了[{3}]&rdquo;).format(row,fldKey,oldValue,newValue);
+this.View.ShowMessage(msg);</p>
+<p>#资料字段选择前事件,通俗来讲：就是放大镜点击弹出选择列表前触发的事件
+#<a href="https://vip.kingdee.com/article/157167808605429248?productLineId=1">用途1</a>:此用法最多，就是对弹出的选择列表进行动态过滤，控制数据选择范围
+#用途2:控制资料字段录入顺序,例如,可以控制没选供应商，就不能选物料，并弹出提示!
+#<a href="https://vip.kingdee.com/article/251000369826719488?productLineId=1">用途3</a>:非资料类型字段，启用编辑按钮(3个点&hellip;)，点击时触发
+def <strong>BeforeF7Select</strong>(e):
+#可以从事件参数中读取的信息
+fldKey=e.FieldKey.ToUpperInvariant();#触发的字段标识大写
+baseFormId=e.FormId;#资料字段的具体资料类型,例如物料，就是BD_Material
+row=e.Row;#字段所在的行号,从0开始，单据头字段为0
+#通过修改事件参数中的信息,可以实现的功能,一定要判断字段标识
+if(fldKey==&ldquo;FMATERIALID&rdquo;):
+supObj=this.View.Model.GetValue(&ldquo;FSupplierId&rdquo;);#使用字段标识,获取供应商
+billObj = this.Model.DataObject;#从单据实体数据包获取也一样,再演示1次,别忘了这种方法
+supObj=billObj[&ldquo;SupplierId&rdquo;];#使用绑定实体属性
+if(supObj==None):
+this.View.ShowWarnningMessage(&ldquo;请先选择供应商&rdquo;);
+e.Cancel=True;#取消弹出选择列表
+return;#跳出事件方法
+e.IsShowUsed = False;#允许选择禁用的数据
+e.IsShowApproved = False;#允许选择未审核的数据,True表示
+myFilterStr=(&quot; &lsquo;{0}&rsquo;=&lsquo;VEN00001&rsquo; &ldquo;).format(supObj[&ldquo;Number&rdquo;]);#拼接过滤条件,按照SQL条件表达式写即可
+e.ListFilterParameter.Filter=myFilterStr;#这里示例：供应商编码=&lsquo;VEN00001&rsquo;，才会弹出物料，否则弹出空白列表</p>
+<p>#通过编码给资料字段赋值前触发,插进赋值，或者直接将编码粘贴到字段里面
+#在此事件可以对赋值编码进行校验,相当于对BeforeF7Select事件的一个补充
+#BeforeF7Select主要是界面录入时控制数据选择列表，但是通过插件赋值是不会触发的
+def <strong>BeforeSetItemValueByNumber</strong>(e):
+fldKey=e.BaseDataField.Key.ToUpperInvariant();#触发的字段标识大写
+Num=e.CurrentSetNumber;#当前赋值的资料编码
+row=e.Row;#字段所在的行号,从0开始，单据头字段为0
+e.IsShowUsed = False;#允许赋值禁用的数据
+e.IsShowApproved = False;#允许赋值未审核的数据,True表示
+e.Filter=&rdquo;&quot;;#同样可以拼接过滤条件进行数据范围控制</p>
+<p>#单据界面执行单据操作前触发，例如，保存,提交,审核等，使用时一定要判断操作代码
+#此事件在校验规则之前触发
+def <strong>BeforeDoOperation</strong>(e):
+opCode=e.Operation.FormOperation.Operation.ToUpperInvariant();#触发操作代码大写,例如保存:SAVE
+if(opCode==&ldquo;SAVE&rdquo;):
+e.Cancel=True;#可以取消触发操作
+this.View.ShowWarnningMessage(&ldquo;取消保存！&rdquo;);
+#单据界面执行单据操作完成后触发，例如，保存,提交,审核等，使用时一定要判断操作代码
+def <strong>AfterDoOperation</strong>(e):
+opCode=e.Operation.Operation.ToUpperInvariant();#触发操作代码大写,例如保存:SAVE
+this.View.ShowMessage(<strong>str</strong>(opCode));</p>
+<p>好了，表单插件事件就介绍到这里，表单插件事件还有一些没介绍，大家有兴趣的可以找资料研究一下，我这里介绍的都是常用的事件，基本能满足常见需求的实现了。</p>
+<p>作者：CQ周玉立</p>
+<p>来源：金蝶云社区</p>
+<p>原文链接：https://vip.kingdee.com/article/338117169206442496?productLineId=1</p>
+<p>著作权归作者所有。未经允许禁止转载，如需转载请联系作者获得授权。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#引入clr运行库</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加对cloud插件开发的常用组件的引用</span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;System.Data&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.DataEntity&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App.Core&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.ServiceHelper&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#导入cloud基础库中的常用实体对象（分命名空间导入，不会递归导入）</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DependencyRules <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Collections.Generic <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.ServiceHelper <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.EntityElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.FieldElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Orm.DataEntity <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据新增界面打开时触发，可以获取到单据初始化之后的数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#通常用于对单据新增进行默认值填充，例如，设置默认日期，填充单据体默认数据等</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterCreateModelData</span>(e):
+</span></span><span style="display:flex;"><span>	billObj <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject;<span style="color:#75715e">#单据完整数据包,如需通过实体数据包操作读写数据,可从这里开始取</span>
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;FDate&#34;</span>, <span style="color:#e6db74">&#34;2022-7-1&#34;</span>);<span style="color:#75715e">#设置默认日期</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#msg=(&#34;{0}&#34;).format(this.View.BillBusinessInfo.GetEntity(&#34;FBillHead&#34;).TableName);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#this.View.ShowMessage(msg);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#界面数据绑定完毕后触发，通常在这里对字段控件状态进行设置</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#例如,设置颜色、设置字段锁定性/可见性、设置下拉列表动态枚举选项等</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterBindData</span>(e):
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetControl(<span style="color:#e6db74">&#34;FDate&#34;</span>)<span style="color:#f92672">.</span>Enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>;<span style="color:#75715e">#False:锁定,True:解锁</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#this.View.GetControl(&#34;控件标识&#34;).Visible=False;#False:隐藏,True:显示</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据头菜单点击事件，从参数e中获取菜单标识，来判断是哪个菜单发生了点击</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#这里一定要加判断，只需要监听需要的菜单,多个菜单的话，使用if elif结构,Python中没有Switch结构</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	key<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#菜单标识大写</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TESTBTN1&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">elif</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;TESTBTN2&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据体菜单点击事件，与BarItemClick类似,只不过这个是监听单据体菜单栏</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntryBarItemClick</span>(e):
+</span></span><span style="display:flex;"><span>	key<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BarItemKey<span style="color:#f92672">.</span>ToUpperInvariant();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(key<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;entryTESTBTN1&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体菜单[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(key);
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#这里通常需要获取当前单据体选中的行)(前面有讲怎么获取)，然后对这一行进行处理</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#按钮控件/超链接控件点击事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#例如，点击一个超链接，弹出某个单据等等，在此事件实现</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ButtonClick</span>(e):
+</span></span><span style="display:flex;"><span>	BtnKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#控件标识大写</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(BtnKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;F_ora_LINK&#34;</span><span style="color:#f92672">.</span>ToUpperInvariant()):
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;按钮[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]点击事件捕捉到了，可以继续菜单的功能啦！&#34;</span>)<span style="color:#f92672">.</span>format(BtnKey);
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据体行双击事件,使用时一定要判断单据体!!!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#只捕捉行双击:获取事件参数中的行号即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#需要捕捉单元格双击：获取事件参数中的行号和字段标识</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntityRowDoubleClick</span>(e):
+</span></span><span style="display:flex;"><span>	entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>	row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#双击行号,从0开始</span>
+</span></span><span style="display:flex;"><span>	fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>ColKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#双击单元格字段标识大写</span>
+</span></span><span style="display:flex;"><span>	msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行,字段[</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">]双击啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row,fldKey);
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据体行点击事件，也就是单据体单行选择事件,使用时一定要判断单据体!!!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#通过此事件可以知道当前焦点行，通常需要开发切换行处理子单据体数据时使用</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EntityRowClick</span>(e):
+</span></span><span style="display:flex;"><span>	entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>	row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#选择行号,从0开始</span>
+</span></span><span style="display:flex;"><span>	msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行被选中啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row);
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据体行删除事件，在这个事件里可以最后获取被删除的行数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#使用时一定要判断单据体!!!</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDeleteRow</span>(e):
+</span></span><span style="display:flex;"><span>	entityKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>EntityKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#单据体标识大写</span>
+</span></span><span style="display:flex;"><span>	row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#删除的行号,从0开始,注意：此时用此行号从单据实体数据包中取的数据已不是删除的行数据了</span>
+</span></span><span style="display:flex;"><span>	deletRowObj<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>DataEntity;<span style="color:#75715e">#删除的行数据包</span>
+</span></span><span style="display:flex;"><span>	msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;单据体[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]第[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]行被删除啦！&#34;</span>)<span style="color:#f92672">.</span>format(entityKey,row);
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#值更新事件，当BOS的值更新与实体服务配置实现不了想要的功能时，就会用到插件值更新事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#事件参数中可以获取:发生值更新的字段标识、行号、更新前字段值、更新后字段值</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#注意!!!使用时一定要判断字段标识!!!字段在BOS中勾选【即时触发值更新】才会触发插件值更新事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">DataChanged</span>(e):
+</span></span><span style="display:flex;"><span>	fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Field<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#字段标识大写</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(fldKey<span style="color:#f92672">&lt;&gt;</span><span style="color:#e6db74">&#34;ABC&#34;</span>):<span style="color:#75715e">#注意:示例代码是不等于，实际应使用等于进行判断</span>
+</span></span><span style="display:flex;"><span>		row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>		oldValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>OldValue;<span style="color:#75715e">#更新前字段值</span>
+</span></span><span style="display:flex;"><span>		newValue<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>NewValue;<span style="color:#75715e">#更新后的字段值</span>
+</span></span><span style="display:flex;"><span>		msg<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;第[</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">]行字段[</span><span style="color:#e6db74">{1}</span><span style="color:#e6db74">]从[</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">]更新成了[</span><span style="color:#e6db74">{3}</span><span style="color:#e6db74">]&#34;</span>)<span style="color:#f92672">.</span>format(row,fldKey,oldValue,newValue);
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#资料字段选择前事件,通俗来讲：就是放大镜点击弹出选择列表前触发的事件</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#用途1:此用法最多，就是对弹出的选择列表进行动态过滤，控制数据选择范围</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#用途2:控制资料字段录入顺序,例如,可以控制没选供应商，就不能选物料，并弹出提示!</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#用途3:非资料类型字段，启用编辑按钮(3个点...)，点击时触发</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeF7Select</span>(e):
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#可以从事件参数中读取的信息</span>
+</span></span><span style="display:flex;"><span>	fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>FieldKey<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发的字段标识大写</span>
+</span></span><span style="display:flex;"><span>	baseFormId<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>FormId;<span style="color:#75715e">#资料字段的具体资料类型,例如物料，就是BD_Material</span>
+</span></span><span style="display:flex;"><span>	row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">#通过修改事件参数中的信息,可以实现的功能,一定要判断字段标识</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(fldKey<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;FMATERIALID&#34;</span>):
+</span></span><span style="display:flex;"><span>		supObj<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;FSupplierId&#34;</span>);<span style="color:#75715e">#使用字段标识,获取供应商</span>
+</span></span><span style="display:flex;"><span>		billObj <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject;<span style="color:#75715e">#从单据实体数据包获取也一样,再演示1次,别忘了这种方法</span>
+</span></span><span style="display:flex;"><span>		supObj<span style="color:#f92672">=</span>billObj[<span style="color:#e6db74">&#34;SupplierId&#34;</span>];<span style="color:#75715e">#使用绑定实体属性</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(supObj<span style="color:#f92672">==</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>			this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;请先选择供应商&#34;</span>);
+</span></span><span style="display:flex;"><span>			e<span style="color:#f92672">.</span>Cancel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>;<span style="color:#75715e">#取消弹出选择列表</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;<span style="color:#75715e">#跳出事件方法</span>
+</span></span><span style="display:flex;"><span>		e<span style="color:#f92672">.</span>IsShowUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许选择禁用的数据</span>
+</span></span><span style="display:flex;"><span>		e<span style="color:#f92672">.</span>IsShowApproved <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许选择未审核的数据,True表示</span>
+</span></span><span style="display:flex;"><span>		myFilterStr<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34; &#39;</span><span style="color:#e6db74">{0}</span><span style="color:#e6db74">&#39;=&#39;VEN00001&#39; &#34;</span>)<span style="color:#f92672">.</span>format(supObj[<span style="color:#e6db74">&#34;Number&#34;</span>]);<span style="color:#75715e">#拼接过滤条件,按照SQL条件表达式写即可</span>
+</span></span><span style="display:flex;"><span>		e<span style="color:#f92672">.</span>ListFilterParameter<span style="color:#f92672">.</span>Filter<span style="color:#f92672">=</span>myFilterStr;<span style="color:#75715e">#测试设置了，供应商编码=&#39;VEN00001&#39;，才会弹出物料，否则弹出空白列表</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#通过编码给资料字段赋值前触发,插进赋值，或者直接将编码粘贴到字段里面</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#在此事件可以对赋值编码进行校验,相当于对BeforeF7Select事件的一个补充</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#BeforeF7Select主要是界面录入时控制数据选择列表，但是通过插件赋值是不会触发的</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeSetItemValueByNumber</span>(e):
+</span></span><span style="display:flex;"><span>	fldKey<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>BaseDataField<span style="color:#f92672">.</span>Key<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发的字段标识大写</span>
+</span></span><span style="display:flex;"><span>	Num<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>CurrentSetNumber;<span style="color:#75715e">#当前赋值的资料编码</span>
+</span></span><span style="display:flex;"><span>	row<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Row;<span style="color:#75715e">#字段所在的行号,从0开始，单据头字段为0</span>
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>IsShowUsed <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许赋值禁用的数据</span>
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>IsShowApproved <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>;<span style="color:#75715e">#允许赋值未审核的数据,True表示</span>
+</span></span><span style="display:flex;"><span>	e<span style="color:#f92672">.</span>Filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>;<span style="color:#75715e">#同样可以拼接过滤条件进行数据范围控制</span>
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据界面执行单据操作前触发，例如，保存,提交,审核等，使用时一定要判断操作代码</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#此事件在校验规则之前触发</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BeforeDoOperation</span>(e):
+</span></span><span style="display:flex;"><span>	opCode<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>FormOperation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发操作代码大写,例如保存:SAVE</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(opCode<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;SAVE&#34;</span>):
+</span></span><span style="display:flex;"><span>		e<span style="color:#f92672">.</span>Cancel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>;<span style="color:#75715e">#可以取消触发操作</span>
+</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;取消保存！&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单据界面执行单据操作完成后触发，例如，保存,提交,审核等，使用时一定要判断操作代码</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">AfterDoOperation</span>(e):
+</span></span><span style="display:flex;"><span>	opCode<span style="color:#f92672">=</span>e<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>Operation<span style="color:#f92672">.</span>ToUpperInvariant();<span style="color:#75715e">#触发操作代码大写,例如保存:SAVE</span>
+</span></span><span style="display:flex;"><span>	this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str(opCode));
+</span></span></code></pre></div></article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/python%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%A4%BA%E4%BE%8B\/';  
+          this.page.identifier = '\/posts\/python%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%A4%BA%E4%BE%8B\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2022 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">世界经济史是一部基于假象和谎言的连续剧</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/bos/" title="BOS">
+        BOS
+      </a>
+    
+      <a class="ui label" href="/tags/design-patterns/" title="design-patterns">
+        design-patterns
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/python/" title="Python">
+        Python
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E4%BA%BA%E7%89%A9/" title="人物">
+        人物
+      </a>
+    
+      <a class="ui label" href="/tags/%E5%85%83%E7%BC%96%E7%A8%8B/" title="元编程">
+        元编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="泛型编程">
+        泛型编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+      <a class="ui label" href="/tags/%E9%87%91%E8%9D%B6%E4%BA%91%E6%98%9F%E7%A9%BA/" title="金蝶云星空">
+        金蝶云星空
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 11 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>
