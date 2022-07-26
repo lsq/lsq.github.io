@@ -206,76 +206,75 @@
 <p>在插件中可以通过<strong>this</strong>关键字来调用这些成员。**
 **</p>
 <ul>
-<li>
-<p><strong>Context:上下文对象</strong></p>
-<p>this.Context.UserId;#当前用户ID
-this.Context.UserName;#当前用户名称
-this.Context.UserPhone;#当前用户手机号
-this.Context.CurrentOrganizationInfo.ID;#当前组织Id
-this.Context.CurrentOrganizationInfo.Name;#当前组织名称
-this.Context.DBId;#当前数据中心Id
-this.Context.DataCenterNumber;#当前数据中心编码
-this.Context.DataCenterName;#当前数据中心名称
-this.Context.IpAddress;#客户端本机网络信息:IP、MAC等</p>
-</li>
+<li><strong>Context:上下文对象</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserId;<span style="color:#75715e">#当前用户ID</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserName;<span style="color:#75715e">#当前用户名称</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>UserPhone;<span style="color:#75715e">#当前用户手机号</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>CurrentOrganizationInfo<span style="color:#f92672">.</span>ID;<span style="color:#75715e">#当前组织Id</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>CurrentOrganizationInfo<span style="color:#f92672">.</span>Name;<span style="color:#75715e">#当前组织名称</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>DBId;<span style="color:#75715e">#当前数据中心Id</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>DataCenterNumber;<span style="color:#75715e">#当前数据中心编码</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>DataCenterName;<span style="color:#75715e">#当前数据中心名称</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>Context<span style="color:#f92672">.</span>IpAddress;<span style="color:#75715e">#客户端本机网络信息:IP、MAC等</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>**View:视图层对象,**可理解为当前界面,界面类插件特有，服务类的插件没有这个，View能为开发提供很多特有的功能。</p>
 <p><strong>①View的常用属性</strong></p>
-<p>this.View.BillBusinessInfo;#单据的业务逻辑元数据，元数据包含的信息很多,下面列了一下常用的信息
-this.View.BillBusinessInfo.GetBillNoField().FieldName;#单据编号字段名
-this.View.BillBusinessInfo.GetBillStatusField().FieldName;#单据状态字段名
-this.View.BillBusinessInfo.GetBillTypeField().FieldName;#单据类型字段名
-this.View.BillBusinessInfo.GetForm().Id;#单据FormId
-this.View.BillBusinessInfo.MainOrgField.FieldName;#主业务组织字段名
-this.View.BillBusinessInfo.GetEntity(&ldquo;FBillHead&rdquo;).TableName;#单据头表名
-this.View.BillBusinessInfo.GetEntity(&ldquo;实体标识&rdquo;).TableName;#实体主表名
-this.View.BillBusinessInfo.GetEntity(&ldquo;实体标识&rdquo;).SplitTables;#实体所有拆分表</p>
-<p>#****************************************************************************************************</p>
-<p>this.View.OpenParameter;#表单入口参数
-this.View.OpenParameter.Status;#当前界面状态:0,新增;1,查看;2,修改;
-this.View.OpenParameter.GetCustomParameter(&ldquo;参数标识&rdquo;);#获取单据打开传入的参数</p>
-<p>#****************************************************************************************************</p>
-<p>this.View.ParentFormView;#获取父页面的View
-this.View.ParentFormView.BillBusinessInfo.GetForm().Id;#父页面的FormId,用来判断单据是从哪里进来的</p>
-<p><strong>②View的常用方法</strong></p>
-<p>this.View.GetFormTitle();#获取单据标题
-this.View.SetFormTitle(LocaleValue(&ldquo;新标题&rdquo;));#修改单据标题**
-**</p>
-<p>this.View.GetFormOperation(&ldquo;操作代码&rdquo;);#获取单据的一个操作实例对象
-this.View.InvokeFormOperation(&ldquo;操作代码&rdquo;);#触发单据的某个操作:保存、提交、审核、关闭 等!
-this.View.GetControl<a href="%22%E6%8E%A7%E4%BB%B6%E6%A0%87%E8%AF%86%22">控件类</a>;#获取单据上的控件:按钮、菜单等,可用来设置控件的状态(可见性，锁定性等)
-this.View.InvokeFieldUpdateService(&ldquo;字段标识&rdquo;,行号);#触发字段值更新，单据头字段行号填0
-#触发实体服务规则，下面2行代码
-obj=BOSActionExecuteContext(this.View);
-this.View.RuleContainer.RaiseDataChanged(&ldquo;字段标识&rdquo;, 字段所在实体行数据包,obj);#触发实体服务规则</p>
-<p>#显示3种提示信息
-this.View.ShowMessage(&ldquo;绿色背景提示信息&rdquo;);#显示正常提示信息
-this.View.ShowWarnningMessage(&ldquo;黄色背景提示信息&rdquo;);#显示警告提示信息
-this.View.ShowErrMessage(&ldquo;红色背景提示信息&rdquo;);#显示错误提示信息</p>
-<p>#刷新界面数据，修改实体数据包后需要刷新重新读取，必须传标识，不建议粗暴刷新整个单据</p>
-<p>this.View.UpdateView(&ldquo;字段标识/单据体标识&rdquo;);#刷新界面数据**
-**</p>
-</li>
-<li>
-<p><strong>Model:单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上1篇所讲的实体数据包。</strong></p>
-<p>this.View.Model;#单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上文
-<strong>this.View.Model.DataObject;</strong>#单据的完整数据包，相当于前面讲的单据头实体数据包</p>
-<p>this.View.Model.GetEntryCurrentRowIndex(&ldquo;单据体标识&rdquo;);#获取单据体当前焦点行号
-this.View.Model.GetEntryRowCount(&ldquo;单据体标识&rdquo;);#获取单据体行数
-this.View.Model.CreateNewEntryRow(&ldquo;单据体标识&rdquo;);#为单据体新增一行
-this.View.Model.BatchCreateNewEntryRow(&ldquo;单据体标识&rdquo;,x);#批量为单据体新增x行
-this.View.Model.InsertEntryRow(&ldquo;单据体标识&rdquo;, i);#在第i行前插入1行
-this.View.Model.DeleteEntryRow(&ldquo;单据体标识&rdquo;, i);#删除第i行
-this.View.Model.DeleteEntryData(&ldquo;单据体标识&rdquo;);#清空整个单据体数据</p>
-<p>#获取第x行(单据头不传x)某字段的值，不同字段类型返回不同类型数据，参考<a href="https://vip.kingdee.com/article/335071759478985984?productLineId=1">第3篇</a>讲解</p>
-<p>this.View.Model.GetValue(&ldquo;字段标识&rdquo;,x);</p>
-<p>#更新第x行(单据头不传x)某字段的值，不同字段类型赋值不同类型数据，参考第3篇讲解</p>
-<p>this.View.Model.SetValue(&ldquo;字段标识&rdquo;,x,字段值);
-this.View.Model.SetItemValueByID(&ldquo;字段标识&rdquo;,&ldquo;id&rdquo;,x);#用资料内码id更新第x行资料字段的值
-this.View.Model.SetItemValueByNumber(&ldquo;字段标识&rdquo;,&ldquo;id&rdquo;,x);#用资料编码更新第x行资料字段的值</p>
 </li>
 </ul>
-<p>上面对表单插件常用的一些属性和方法做了一下介绍，其实还有很多，这里篇幅有限，也列举不完，用得最多的基本就在这里了，我们可以发现，<strong>除了第3篇将的实体数据包操作之外，在表单插件中，我们有另外的方法对单据的数据进行操作</strong>，<strong>需要注意的是，表单插件中的这些方法使用的都是标识，而不是绑定实体属性名了</strong>，当然，<strong>在表单插件中实体数据包操作同样适用，并且用的时候也很多，不要觉得表单插件这些方法便捷好理解，就&quot;捡了芝麻丢了西瓜哦！&quot;。<img src="https://vipfront.s3.cn-north-1.amazonaws.com.cn/emotion/define/63.gif" alt="img"></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo;<span style="color:#75715e">#单据的业务逻辑元数据，元数据包含的信息很多,下面列了一下常用的信息</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetBillNoField()<span style="color:#f92672">.</span>FieldName;<span style="color:#75715e">#单据编号字段名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetBillStatusField()<span style="color:#f92672">.</span>FieldName;<span style="color:#75715e">#单据状态字段名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetBillTypeField()<span style="color:#f92672">.</span>FieldName;<span style="color:#75715e">#单据类型字段名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;<span style="color:#75715e">#单据FormId</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>MainOrgField<span style="color:#f92672">.</span>FieldName;<span style="color:#75715e">#主业务组织字段名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetEntity(<span style="color:#e6db74">&#34;FBillHead&#34;</span>)<span style="color:#f92672">.</span>TableName;<span style="color:#75715e">#单据头表名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetEntity(<span style="color:#e6db74">&#34;实体标识&#34;</span>)<span style="color:#f92672">.</span>TableName;<span style="color:#75715e">#实体主表名</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetEntity(<span style="color:#e6db74">&#34;实体标识&#34;</span>)<span style="color:#f92672">.</span>SplitTables;<span style="color:#75715e">#实体所有拆分表</span>
+</span></span></code></pre></div><p>#****************************************************************************************************</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>OpenParameter;<span style="color:#75715e">#表单入口参数</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>OpenParameter<span style="color:#f92672">.</span>Status;<span style="color:#75715e">#当前界面状态:0,新增;1,查看;2,修改;</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>OpenParameter<span style="color:#f92672">.</span>GetCustomParameter(<span style="color:#e6db74">&#34;参数标识&#34;</span>);<span style="color:#75715e">#获取单据打开传入的参数</span>
+</span></span></code></pre></div><p>#****************************************************************************************************</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ParentFormView;<span style="color:#75715e">#获取父页面的View</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ParentFormView<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;<span style="color:#75715e">#父页面的FormId,用来判断单据是从哪里进来的</span>
+</span></span></code></pre></div><p><strong>②View的常用方法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetFormTitle();<span style="color:#75715e">#获取单据标题</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>SetFormTitle(LocaleValue(<span style="color:#e6db74">&#34;新标题&#34;</span>));<span style="color:#75715e">#修改单据标题</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetFormOperation(<span style="color:#e6db74">&#34;操作代码&#34;</span>);<span style="color:#75715e">#获取单据的一个操作实例对象</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFormOperation(<span style="color:#e6db74">&#34;操作代码&#34;</span>);<span style="color:#75715e">#触发单据的某个操作:保存、提交、审核、关闭 等!</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>GetControl[控件类](<span style="color:#e6db74">&#34;控件标识&#34;</span>);<span style="color:#75715e">#获取单据上的控件:按钮、菜单等,可用来设置控件的状态(可见性，锁定性等)</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>InvokeFieldUpdateService(<span style="color:#e6db74">&#34;字段标识&#34;</span>,行号);<span style="color:#75715e">#触发字段值更新，单据头字段行号填0</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#触发实体服务规则，下面2行代码</span>
+</span></span><span style="display:flex;"><span>  obj<span style="color:#f92672">=</span>BOSActionExecuteContext(this<span style="color:#f92672">.</span>View);
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>RuleContainer<span style="color:#f92672">.</span>RaiseDataChanged(<span style="color:#e6db74">&#34;字段标识&#34;</span>, 字段所在实体行数据包,obj);<span style="color:#75715e">#触发实体服务规则</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#显示3种提示信息</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;绿色背景提示信息&#34;</span>);<span style="color:#75715e">#显示正常提示信息</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowWarnningMessage(<span style="color:#e6db74">&#34;黄色背景提示信息&#34;</span>);<span style="color:#75715e">#显示警告提示信息</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowErrMessage(<span style="color:#e6db74">&#34;红色背景提示信息&#34;</span>);<span style="color:#75715e">#显示错误提示信息</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#刷新界面数据，修改实体数据包后需要刷新重新读取，必须传标识，不建议粗暴刷新整个单据</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>UpdateView(<span style="color:#e6db74">&#34;字段标识/单据体标识&#34;</span>);<span style="color:#75715e">#刷新界面数据**</span>
+</span></span></code></pre></div><ul>
+<li><strong>Model:单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上1篇所讲的实体数据包。</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model;<span style="color:#75715e">#单据数据模型,很重要，单据的实体数据包获取从这里开始，结合上文</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DataObject;<span style="color:#f92672">**</span><span style="color:#75715e">#单据的完整数据包，相当于前面讲的单据头实体数据包</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryCurrentRowIndex(<span style="color:#e6db74">&#34;单据体标识&#34;</span>);<span style="color:#75715e">#获取单据体当前焦点行号</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetEntryRowCount(<span style="color:#e6db74">&#34;单据体标识&#34;</span>);<span style="color:#75715e">#获取单据体行数</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>CreateNewEntryRow(<span style="color:#e6db74">&#34;单据体标识&#34;</span>);<span style="color:#75715e">#为单据体新增一行</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>BatchCreateNewEntryRow(<span style="color:#e6db74">&#34;单据体标识&#34;</span>,x);<span style="color:#75715e">#批量为单据体新增x行</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>InsertEntryRow(<span style="color:#e6db74">&#34;单据体标识&#34;</span>, i);<span style="color:#75715e">#在第i行前插入1行</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DeleteEntryRow(<span style="color:#e6db74">&#34;单据体标识&#34;</span>, i);<span style="color:#75715e">#删除第i行</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>DeleteEntryData(<span style="color:#e6db74">&#34;单据体标识&#34;</span>);<span style="color:#75715e">#清空整个单据体数据</span>
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#获取第x行(单据头不传x)某字段的值，不同字段类型返回不同类型数据，参考[第3篇](https://vip.kingdee.com/article/335071759478985984?productLineId=1)讲解</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>GetValue(<span style="color:#e6db74">&#34;字段标识&#34;</span>,x);
+</span></span><span style="display:flex;"><span>  \<span style="color:#75715e">#更新第x行(单据头不传x)某字段的值，不同字段类型赋值不同类型数据，参考第3篇讲解</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetValue(<span style="color:#e6db74">&#34;字段标识&#34;</span>,x,字段值);
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetItemValueByID(<span style="color:#e6db74">&#34;字段标识&#34;</span>,<span style="color:#e6db74">&#34;id&#34;</span>,x);<span style="color:#75715e">#用资料内码id更新第x行资料字段的值</span>
+</span></span><span style="display:flex;"><span>  this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>Model<span style="color:#f92672">.</span>SetItemValueByNumber(<span style="color:#e6db74">&#34;字段标识&#34;</span>,<span style="color:#e6db74">&#34;id&#34;</span>,x);<span style="color:#75715e">#用资料编码更新第x行资料字段的值</span>
+</span></span></code></pre></div><p>上面对表单插件常用的一些属性和方法做了一下介绍，其实还有很多，这里篇幅有限，也列举不完，用得最多的基本就在这里了，我们可以发现，<strong>除了第3篇将的实体数据包操作之外，在表单插件中，我们有另外的方法对单据的数据进行操作</strong>，<strong>需要注意的是，表单插件中的这些方法使用的都是标识，而不是绑定实体属性名了</strong>，当然，<strong>在表单插件中实体数据包操作同样适用，并且用的时候也很多，不要觉得表单插件这些方法便捷好理解，就&quot;捡了芝麻丢了西瓜哦！&quot;。<img src="https://vipfront.s3.cn-north-1.amazonaws.com.cn/emotion/define/63.gif" alt="img"></strong></p>
 <h2 id="三新建一个表单插件"><strong>三、新建一个表单插件</strong></h2>
 <p><strong>我们先新建一个Python表单插件，然后就可以进行下面讲解的内容进行测试验证啦！</strong></p>
 <ul>
