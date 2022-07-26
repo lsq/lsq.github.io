@@ -30,6 +30,15 @@ We&amp;rsquo;ll start with creating a new site with a very basic template.</desc
     </item>
     
     <item>
+      <title>Python数据包操作</title>
+      <link>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 26 Jul 2022 17:05:00 +0800</pubDate>
+      
+      <guid>https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C/</guid>
+      <description>上一篇：第2篇：基本开发过程介绍 大家好，今天我们来讲一讲如何在插件中如何进行数据操作，实现一个开发功能，无非是对数据进行各种逻辑处理，那么我</description>
+    </item>
+    
+    <item>
       <title>表单插件简介</title>
       <link>https://lsq.github.io/posts/python%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6%E6%A8%A1%E6%9D%BF%E7%A4%BA%E4%BE%8B/</link>
       <pubDate>Tue, 26 Jul 2022 17:05:00 +0800</pubDate>
