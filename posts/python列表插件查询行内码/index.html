@@ -445,6 +445,12 @@
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Bill <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.DynamicForm.PlugIn.ControlModel <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Util <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Metadata.EntityElement <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Core.Validation <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.Log <span style="color:#f92672">import</span> Logger
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> System.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
@@ -457,7 +463,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">BarItemClick</span>(e):
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> e<span style="color:#f92672">.</span>BarItemKey <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;tb_list&#39;</span>:
-</span></span><span style="display:flex;"><span>         pkIds <span style="color:#f92672">=</span> List[object]()
+</span></span><span style="display:flex;"><span>         	pkIds <span style="color:#f92672">=</span> List[object]()
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#fentryid = &#39;&#39;</span>
 </span></span><span style="display:flex;"><span>		fids<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
 </span></span><span style="display:flex;"><span>		proPertiesList<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>
@@ -465,6 +471,7 @@
 </span></span><span style="display:flex;"><span>           		 this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;没有选择任何数据，请先选择！&#34;</span>)
 </span></span><span style="display:flex;"><span>           		 <span style="color:#66d9ef">return</span>
 </span></span><span style="display:flex;"><span>		a <span style="color:#f92672">=</span> this<span style="color:#f92672">.</span>ListView<span style="color:#f92672">.</span>SelectedRowsInfo <span style="color:#75715e">#获取选中行</span>
+</span></span><span style="display:flex;"><span>		billNos <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str(type(a)))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e"># 单据体内码</span>
@@ -477,6 +484,7 @@
 </span></span><span style="display:flex;"><span>			fid <span style="color:#f92672">=</span> a[i]<span style="color:#f92672">.</span>PrimaryKeyValue
 </span></span><span style="display:flex;"><span>			fids <span style="color:#f92672">=</span> fids <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#f92672">+</span> str(fid)
 </span></span><span style="display:flex;"><span>			pkIds<span style="color:#f92672">.</span>Add(fid)
+</span></span><span style="display:flex;"><span>			billNos <span style="color:#f92672">=</span> billNos <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#f92672">+</span> str(a[i]<span style="color:#f92672">.</span>BillNo)
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(fids) # 调试</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 二开案例.列表插件.列表调用保存操作</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># https://vip.kingdee.com/article/139314926954577664</span>
@@ -486,7 +494,7 @@
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">#// 修改采购订单的变更原因</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">#dataObject[&#34;ChangeReason&#34;] = &#34;666&#34;;</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">#}</span>
-</span></span><span style="display:flex;"><span>         formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;
+</span></span><span style="display:flex;"><span>        	formID<span style="color:#f92672">=</span>this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>BillBusinessInfo<span style="color:#f92672">.</span>GetForm()<span style="color:#f92672">.</span>Id;
 </span></span><span style="display:flex;"><span>		meta <span style="color:#f92672">=</span> MetaDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, formID);
 </span></span><span style="display:flex;"><span>		billObjects<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Load(this<span style="color:#f92672">.</span>Context, pkIds<span style="color:#f92672">.</span>ToArray(), meta<span style="color:#f92672">.</span>BusinessInfo<span style="color:#f92672">.</span>GetDynamicObjectType());
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt=BusinessDataServiceHelper.Save(this.Context, meta.BusinessInfo,billObjects , None,&#34;Save&#34;);</span>
@@ -527,17 +535,36 @@
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#	j[&#34;ReqQty&#34;] = 666</span>
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e">#for q in</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e"># https://vip.kingdee.com/article/33705			</span>
-</span></span><span style="display:flex;"><span>		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(str((billNo)))
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str((billNo)))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#this.View.ShowMessage(str((proPertiesList)))</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#https://vip.kingdee.com/article/158234477305916928</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#saveRslt = BusinessDataServiceHelper.Save(this.Context, this.View.BillBusinessInfo, billObjects, None, &#34;Save&#34;)</span>
-</span></span><span style="display:flex;"><span>		saveRslt<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, meta<span style="color:#f92672">.</span>BusinessInfo,billObjects , <span style="color:#66d9ef">None</span>,<span style="color:#e6db74">&#34;Save&#34;</span>);
+</span></span><span style="display:flex;"><span>		saveRslt<span style="color:#f92672">=</span>BusinessDataServiceHelper<span style="color:#f92672">.</span>Save(this<span style="color:#f92672">.</span>Context, meta<span style="color:#f92672">.</span>BusinessInfo,billObjects );
 </span></span><span style="display:flex;"><span>		<span style="color:#75715e">#raise Exception(&#34;问题出问题了，请打开单据检查单据字段&#34;)</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (saveRslt <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
-</span></span><span style="display:flex;"><span>          		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;保存成功！&#34;</span>)
-</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>           		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;出错，保存不成功！&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (saveRslt<span style="color:#f92672">.</span>IsSuccess <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>          		<span style="color:#75715e">#this.View.ShowMessage(&#34;单据&#34; + billNos + &#34;保存成功！&#34;)</span>
+</span></span><span style="display:flex;"><span>          		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowMessage(<span style="color:#e6db74">&#34;单据&lt;&#34;</span> <span style="color:#f92672">+</span> billNo <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&gt;保存成功！&#34;</span>)
+</span></span><span style="display:flex;"><span>        	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>           		FormatOperateResultValidationInfo(saveRslt)
+</span></span><span style="display:flex;"><span>           		this<span style="color:#f92672">.</span>View<span style="color:#f92672">.</span>ShowOperateResult(saveRslt<span style="color:#f92672">.</span>OperateResult)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">FormatOperateResultValidationInfo</span>(result):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result<span style="color:#f92672">.</span>ValidationErrors <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> result<span style="color:#f92672">.</span>ValidationErrors<span style="color:#f92672">.</span>Count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#this.View.ShowMessage(str(type(result)))</span>
+</span></span><span style="display:flex;"><span>    collection <span style="color:#f92672">=</span> result<span style="color:#f92672">.</span>OperateResult;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> errorInfo <span style="color:#f92672">in</span> result<span style="color:#f92672">.</span>ValidationErrors:
+</span></span><span style="display:flex;"><span>        rs <span style="color:#f92672">=</span> OperateResult()
+</span></span><span style="display:flex;"><span>        rs<span style="color:#f92672">.</span>PKValue <span style="color:#f92672">=</span> errorInfo<span style="color:#f92672">.</span>BillPKID
+</span></span><span style="display:flex;"><span>        rs<span style="color:#f92672">.</span>RowIndex <span style="color:#f92672">=</span> errorInfo<span style="color:#f92672">.</span>RowIndex
+</span></span><span style="display:flex;"><span>        rs<span style="color:#f92672">.</span>Name <span style="color:#f92672">=</span> errorInfo<span style="color:#f92672">.</span>Title
+</span></span><span style="display:flex;"><span>        rs<span style="color:#f92672">.</span>SuccessStatus <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        rs<span style="color:#f92672">.</span>Message <span style="color:#f92672">=</span> errorInfo<span style="color:#f92672">.</span>Message
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> errorInfo<span style="color:#f92672">.</span>Level <span style="color:#f92672">==</span> ErrorLevel<span style="color:#f92672">.</span>Warning :
+</span></span><span style="display:flex;"><span>        	rs<span style="color:#f92672">.</span>MessageType <span style="color:#f92672">=</span>  MessageType<span style="color:#f92672">.</span>Warning
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:        	
+</span></span><span style="display:flex;"><span>		rs<span style="color:#f92672">.</span>MessageType <span style="color:#f92672">=</span> MessageType<span style="color:#f92672">.</span>FatalError
+</span></span><span style="display:flex;"><span>        collection<span style="color:#f92672">.</span>Add(rs);
 </span></span></code></pre></div><h3 id="参考">参考</h3>
 <p><a href="https://vip.kingdee.com/article/158234477305916928">Python实现列表对暂存的单据批量保存</a></p>
 <p><a href="https://vip.kingdee.com/article/139314926954577664">二开案例.列表插件.列表调用保存操作</a></p>
