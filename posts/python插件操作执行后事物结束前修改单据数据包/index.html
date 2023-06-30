@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Python插件---操作执行后事物结束前修改单据数据包 | lsq 的博客</title>
+
+    
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+<meta name="author" content="lsq" />
+<meta name="description" content="二开案例.服务插件.操作执行后事物结束前修改单据数据包 【应用场景】在单据的某个操作执行后，且该操作的外围事务尚未结束前，修改单据的数据包并在" />
+
+
+
+<meta name="generator" content="Hugo 0.115.0">
+
+<link rel="canonical" href="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%89%A7%E8%A1%8C%E5%90%8E%E4%BA%8B%E7%89%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E4%BF%AE%E6%94%B9%E5%8D%95%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%8C%85/" />
+
+
+<meta property="og:title" content="Python插件---操作执行后事物结束前修改单据数据包" />
+<meta property="og:description" content="二开案例.服务插件.操作执行后事物结束前修改单据数据包 【应用场景】在单据的某个操作执行后，且该操作的外围事务尚未结束前，修改单据的数据包并在" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lsq.github.io/posts/python%E6%8F%92%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%89%A7%E8%A1%8C%E5%90%8E%E4%BA%8B%E7%89%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E4%BF%AE%E6%94%B9%E5%8D%95%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%8C%85/" /><meta property="og:image" content="https://lsq.github.io/images/python_get_objects.jpg" /><meta property="article:section" content="posts" />
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lsq.github.io/images/python_get_objects.jpg"/>
+
+<meta name="twitter:title" content="Python插件---操作执行后事物结束前修改单据数据包"/>
+<meta name="twitter:description" content="二开案例.服务插件.操作执行后事物结束前修改单据数据包 【应用场景】在单据的某个操作执行后，且该操作的外围事务尚未结束前，修改单据的数据包并在"/>
+
+
+<link rel="stylesheet" href="/css/semantic.min.css" />
+<link rel="stylesheet" href="/css/icomoon.css" />
+<link rel="stylesheet" href="/css/OverlayScrollbars.min.css" />
+<link rel="stylesheet" href="/css/github-markdown.css" />
+<link rel="stylesheet" href="/css/site.css" />
+
+<style>
+  a:not(.ui.button):hover {
+    text-decoration: underline;
+  }
+
+  
+  a:not(.ui.button) {
+    color: seagreen !important;
+  }
+  
+
+  
+  .inverted a:not(.ui.button),
+  .inverted a:not(.ui.button):hover {
+     color: darkseagreen !important;
+  }
+  
+
+  
+  body.default {
+    
+    background-color: #fff;
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+
+  
+  body.dark {
+    
+
+    
+    background-image: url(/me/background.jpg);
+    
+  }
+  
+</style>
+
+
+    
+
+
+
+<link rel="stylesheet" data-highlight href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/tomorrow.min.css" />
+
+
+
+
+
+
+
+    
+    <link rel="stylesheet" href="/css/custom.css" />
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu">
+
+  <div class="item">
+    <i class="large link bullseye icon dream-flip-toggle" title="翻转！"></i>
+  </div>
+  <div class="item">
+    <i class="large link home icon" title="首页" onclick="window.location.href = 'https:\/\/lsq.github.io'"></i>
+  </div>
+  
+  <div class="item">
+    <i class="large link icon theme-switch" onclick="themeSwitch()"></i>
+  </div>
+  
+  
+  <div class="item">
+    <i class="large link search icon" onclick="toggleSearch()"></i>
+  </div>
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed grid dream-grid dream-grid-single">
+  <aside class="sixteen wide mobile sixteen wide tablet four wide computer column dream-single-aside">
+    
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#二开案例服务插件操作执行后事物结束前修改单据数据包">二开案例.服务插件.操作执行后事物结束前修改单据数据包</a></li>
+  </ul>
+</nav>
+    </div>
+    
+    <div class="ui segment actions">
+      <button
+        class="ui circular icon button save-as-image"
+        title="保存为图片"
+        onclick="savePostAsImg()">
+        <i class="save icon"></i>
+      </button>
+
+      <a href="https://twitter.com/intent/tweet?text=Python%e6%8f%92%e4%bb%b6---%e6%93%8d%e4%bd%9c%e6%89%a7%e8%a1%8c%e5%90%8e%e4%ba%8b%e7%89%a9%e7%bb%93%e6%9d%9f%e5%89%8d%e4%bf%ae%e6%94%b9%e5%8d%95%e6%8d%ae%e6%95%b0%e6%8d%ae%e5%8c%85&url=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E6%258F%2592%25E4%25BB%25B6%25E6%2593%258D%25E4%25BD%259C%25E6%2589%25A7%25E8%25A1%258C%25E5%2590%258E%25E4%25BA%258B%25E7%2589%25A9%25E7%25BB%2593%25E6%259D%259F%25E5%2589%258D%25E4%25BF%25AE%25E6%2594%25B9%25E5%258D%2595%25E6%258D%25AE%25E6%2595%25B0%25E6%258D%25AE%25E5%258C%2585%2f" class="ui circular twitter icon button">
+  <i class="twitter icon"></i>
+</a>
+<a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flsq.github.io%2fposts%2fpython%25E6%258F%2592%25E4%25BB%25B6%25E6%2593%258D%25E4%25BD%259C%25E6%2589%25A7%25E8%25A1%258C%25E5%2590%258E%25E4%25BA%258B%25E7%2589%25A9%25E7%25BB%2593%25E6%259D%259F%25E5%2589%258D%25E4%25BF%25AE%25E6%2594%25B9%25E5%258D%2595%25E6%258D%25AE%25E6%2595%25B0%25E6%258D%25AE%25E5%258C%2585%2f" class="ui circular facebook icon button">
+  <i class="facebook icon"></i>
+</a>
+
+    </div>
+  </aside>
+  <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    
+    <div class="ui top attached segment cover">
+      <div class="cover-img" style="background-image: url(/images/python_get_objects.jpg);"></div>
+    </div>
+    
+    <section class="ui attached segment">
+      <header>
+        <h1 class="ui large header">Python插件---操作执行后事物结束前修改单据数据包<div class="sub header">
+            @
+            
+              
+                lsq
+              
+            
+
+            | 
+                星期一，一月 1 日，1 年
+              
+
+            | 2 分钟阅读
+
+            | 更新于
+              
+                星期一，一月 1 日，1 年
+              
+          </div>
+        </h1>
+      </header>
+
+      <article class="main"><h2 id="二开案例服务插件操作执行后事物结束前修改单据数据包">二开案例.服务插件.操作执行后事物结束前修改单据数据包</h2>
+<p>【应用场景】在单据的某个操作执行后，且该操作的外围事务尚未结束前，修改单据的数据包并在当前事务保护下完成数据库操作。</p>
+<p>【案例演示】采购订单执行审核操作后，将采购日期设置为审核日期。</p>
+<p>【实现步骤】</p>
+<p>&lt;1&gt;编写服务插件，代码如下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.App.Core;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Core.DynamicForm.PlugIn.Args;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Kingdee.BOS.Util;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.ComponentModel;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Jac.XkDemo.BOS.App.PlugIn
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/// 【服务插件】操作执行后事物结束前修改单据数据包</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">  [HotUpdate]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">  [Description(&#34;【服务插件】操作执行后事物结束前修改单据数据包&#34;)]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateFieldValueInTransactionOperationServicePlugIn</span> :AbstractOperationServicePlugIn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// &lt;summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// 操作事物后事件（**事务内触发**）</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// &lt;/summary&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// &lt;remarks&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// 1. 此事件在操作执行代码之后，操作的内部逻辑已经执行完毕</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// 2. 此事件在操作事务提交之前</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// 3. 此事件中的数据库处理，受操作的事务保护</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// 4. 通常此事件，可以用来做同步数据，如同步生成其他单据，而且需要受事务保护</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#75715e">/// &lt;/remarks&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> EndOperationTransaction(EndOperationTransactionArgs e)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      <span style="color:#66d9ef">base</span>.EndOperationTransaction(e);
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      <span style="color:#75715e">// 保存8提交9审核1反审核26</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.FormOperation.OperationId == <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      <span style="color:#75715e">//if (this.FormOperation.Operation.EqualsIgnoreCase(&#34;Audit&#34;))</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> dataEntity <span style="color:#66d9ef">in</span> e.DataEntitys)
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>        {
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>          <span style="color:#75715e">// 审核后设置采购日期等于审核日期</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>          dataEntity[<span style="color:#e6db74">&#34;Date&#34;</span>] = dataEntity[<span style="color:#e6db74">&#34;ApproveDate&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>        }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>        <span style="color:#75715e">// 保存变更后的数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>        <span style="color:#66d9ef">new</span> BusinessDataWriter(Context).Save(e.DataEntitys);
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>      }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>作者：Jack</p>
+<p>来源：金蝶云社区</p>
+<p>原文链接：https://vip.kingdee.com/article/114026264071335936?productLineId=1&amp;isKnowledge=2</p>
+<p>著作权归作者所有。未经允许禁止转载，如需转载请联系作者获得授权。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> clr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;mscorlib&#39;</span>)
+</span></span><span style="display:flex;"><span>clr<span style="color:#f92672">.</span>AddReference(<span style="color:#e6db74">&#39;Kingdee.BOS.App.Core&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Kingdee.BOS.App.Core <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Newtonsoft.Json <span style="color:#f92672">import</span> JsonConvert
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Newtonsoft.Json.Linq <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">OnPreparePropertys</span>(e):
+</span></span><span style="display:flex;"><span>    e<span style="color:#f92672">.</span>FieldKeys<span style="color:#f92672">.</span>Add(<span style="color:#e6db74">&#34;FApplicationDate&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#e.FieldKeys.Add(&#34;字段标识&#34;);#这里使用的是字段标识，后面从数据包取值用的是绑定实体属性</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EndOperationTransaction</span>(e):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> this<span style="color:#f92672">.</span>FormOperation<span style="color:#f92672">.</span>OperationId <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> dataEntity <span style="color:#f92672">in</span> e<span style="color:#f92672">.</span>DataEntitys:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">#审核后设置采购日期等于审核日期        		</span>
+</span></span><span style="display:flex;"><span>        	<span style="color:#75715e">#	msg=JsonConvert.SerializeObject(dataEntity);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#	raise Exception(msg);</span>
+</span></span><span style="display:flex;"><span>            dataEntity[<span style="color:#e6db74">&#34;ApplicationDate&#34;</span>] <span style="color:#f92672">=</span> dataEntity[<span style="color:#e6db74">&#34;ApproveDate&#34;</span>];
+</span></span><span style="display:flex;"><span>            BusinessDataWriter(this<span style="color:#f92672">.</span>Context)<span style="color:#f92672">.</span>Save(e<span style="color:#f92672">.</span>DataEntitys);
+</span></span></code></pre></div></article>
+    </section>
+
+    
+    <article class="ui segment post-disqus-area" data-html2canvas-ignore>
+      <div id="disqus_thread"></div>
+      <script>
+        
+
+
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/lsq.github.io\/posts\/python%E6%8F%92%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%89%A7%E8%A1%8C%E5%90%8E%E4%BA%8B%E7%89%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E4%BF%AE%E6%94%B9%E5%8D%95%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%8C%85\/';  
+          this.page.identifier = '\/posts\/python%E6%8F%92%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%89%A7%E8%A1%8C%E5%90%8E%E4%BA%8B%E7%89%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E4%BF%AE%E6%94%B9%E5%8D%95%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%8C%85\/'; 
+        };
+
+        (function() { 
+          var d = document, s = d.createElement('script');
+          s.src = 'https://' + 'lsq' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </article>
+    
+
+    
+    <article class="ui segment utterances-comments" data-html2canvas-ignore>
+      <script
+        src="https://utteranc.es/client.js"
+        repo="lsq/lsq.github.io"
+        issue-term="og:title"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </article>
+    
+
+    
+  </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2011 - 2023 lsq 的博客</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
+  <div class="ui small circular image">
+    
+    <img src="/me/pk.jpg" alt="avatar" />
+    
+  </div>
+
+  <div class="content">
+    <h1 class="ui medium header">lsq的博客<div class="sub header">世界经济史是一部基于假象和谎言的连续剧</div>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/posts">
+        <i class="archive icon" title="归档"></i>
+      </a>
+      
+      <a class="item" href="/categories">
+        <i class="th list icon" title="所有分类"></i>
+      </a>
+      <a class="item" href="/tags">
+        <i class="tags icon" title="所有标签"></i>
+      </a>
+    </article>
+
+    
+    <article class="dream-tags">
+    
+      <a class="ui label" href="/tags/bash/" title="bash">
+        bash
+      </a>
+    
+      <a class="ui label" href="/tags/bos/" title="BOS">
+        BOS
+      </a>
+    
+      <a class="ui label" href="/tags/design-patterns/" title="design-patterns">
+        design-patterns
+      </a>
+    
+      <a class="ui label" href="/tags/development/" title="development">
+        development
+      </a>
+    
+      <a class="ui label" href="/tags/emf/" title="emf">
+        emf
+      </a>
+    
+      <a class="ui label" href="/tags/enumitem/" title="enumitem">
+        enumitem
+      </a>
+    
+      <a class="ui label" href="/tags/git/" title="git">
+        git
+      </a>
+    
+      <a class="ui label" href="/tags/go/" title="go">
+        go
+      </a>
+    
+      <a class="ui label" href="/tags/golang/" title="golang">
+        golang
+      </a>
+    
+      <a class="ui label" href="/tags/hugo/" title="hugo">
+        hugo
+      </a>
+    
+      <a class="ui label" href="/tags/iconv/" title="iconv">
+        iconv
+      </a>
+    
+      <a class="ui label" href="/tags/images/" title="images">
+        images
+      </a>
+    
+      <a class="ui label" href="/tags/js/" title="“js&#34;">
+        “js&#34;
+      </a>
+    
+      <a class="ui label" href="/tags/latex/" title="LaTex">
+        LaTex
+      </a>
+    
+      <a class="ui label" href="/tags/notes/" title="notes">
+        notes
+      </a>
+    
+      <a class="ui label" href="/tags/pdf/" title="pdf">
+        pdf
+      </a>
+    
+      <a class="ui label" href="/tags/png/" title="png">
+        png
+      </a>
+    
+      <a class="ui label" href="/tags/power-query/" title="power query">
+        power query
+      </a>
+    
+      <a class="ui label" href="/tags/printf/" title="printf">
+        printf
+      </a>
+    
+      <a class="ui label" href="/tags/python/" title="Python">
+        Python
+      </a>
+    
+      <a class="ui label" href="/tags/ruby/" title="ruby">
+        ruby
+      </a>
+    
+      <a class="ui label" href="/tags/sed/" title="sed">
+        sed
+      </a>
+    
+      <a class="ui label" href="/tags/spider/" title="spider">
+        spider
+      </a>
+    
+      <a class="ui label" href="/tags/templates/" title="templates">
+        templates
+      </a>
+    
+      <a class="ui label" href="/tags/tex/" title="Tex">
+        Tex
+      </a>
+    
+      <a class="ui label" href="/tags/themes/" title="themes">
+        themes
+      </a>
+    
+      <a class="ui label" href="/tags/vba/" title="vba">
+        vba
+      </a>
+    
+      <a class="ui label" href="/tags/vim/" title="vim">
+        vim
+      </a>
+    
+      <a class="ui label" href="/tags/xxd/" title="xxd">
+        xxd
+      </a>
+    
+      <a class="ui label" href="/tags/%E4%BA%BA%E7%89%A9/" title="人物">
+        人物
+      </a>
+    
+      <a class="ui label" href="/tags/%E5%85%83%E7%BC%96%E7%A8%8B/" title="元编程">
+        元编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="泛型编程">
+        泛型编程
+      </a>
+    
+      <a class="ui label" href="/tags/%E8%B4%A2%E5%8A%A1/" title="财务">
+        财务
+      </a>
+    
+      <a class="ui label" href="/tags/%E9%87%91%E8%9D%B6%E4%BA%91%E6%98%9F%E7%A9%BA/" title="金蝶云星空">
+        金蝶云星空
+      </a>
+    
+    </article>
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment markdown-body">
+      <div class="ui medium header">关于我</div>
+      <p>lsq 的 ❤️ 博客</p>
+<p>记录一些 🌈 生活上，财务相关技术上的事</p>
+<p>毕业于 🏫 东北财经大学</p>
+<p>空闲时间会做分享财务工作上相关技术</p>
+<p>主要分享是：</p>
+<ul>
+<li>VBA &amp; Power Query</li>
+<li>Excel 图表制作</li>
+<li>LaTeX</li>
+</ul>
+<p>写着玩：</p>
+<ul>
+<li>Ruby</li>
+<li>Bash shell</li>
+<li>Python</li>
+</ul>
+<p>目前在深圳工作</p>
+<p>&ndash; 2021 年 04 月 11 日更新</p>
+
+    </article>
+  </div>
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">社交链接</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+  <div class="item">
+    <a href="/index.xml">
+      <i class="large rss square icon" title="RSS"></i>
+    </a>
+  </div>
+  
+
+  
+  <div class="item">
+    <a href="mailto:lsqypj@gmail.com">
+      <i class="large mail icon" title="Email"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <div class="item">
+    <a href="https://github.com/lsq" target="_blank">
+      <i class="large github icon" title="GitHub"></i>
+    </a>
+  </div>
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+    <article class="ui segment">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。
+    </article>
+    
+  </div>
+
+  
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark = "/me/background.jpg"
+  window.darkNav =  null 
+  window.hasTwitterEmbed =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
+<script src="/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/theme.js"></script>
+
+    
+<script src="/js/html2canvas.min.js"></script>
+<script src="/js/post.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/clojure.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/languages/ocaml.min.js"></script>
+
+
+
+<script>
+  hljs.initHighlightingOnLoad()
+  setHighlightTheme()
+
+  function setHighlightTheme() {
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    var lightTheme = "tomorrow"
+    var darkTheme = "tomorrow-night"
+    var theme = isDark === 'y' ? darkTheme : lightTheme
+
+    $('link[data-highlight]').attr('href', 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/' + theme + '.min.css')
+    $('pre').css('background', isDark === 'y' ? '#333' : '')
+  }
+</script>
+
+
+
+
+
+    
+    <div class="ui inverted segment" id="dream-search">
+  <div class="ui search">
+    <div class="ui transparent input">
+      <input class="prompt" type="text" placeholder="搜索" />
+    </div>
+    <div class="results"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $.getJSON('https:\/\/lsq.github.io/index.json', function (data) {
+      $('.ui.search').search({
+        source: data,
+        searchFields: ['title'],
+        showNoResults: true,
+      })
+    })
+  })
+</script>
+<script src="/js/search.js"></script>
+
+    
+
+    
+
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-98295641-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </body>
+</html>
